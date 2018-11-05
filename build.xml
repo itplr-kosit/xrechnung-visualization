@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="xrechnung-visualization" default="test">
+
+    <!-- project directory structure -->
+    <property name="dist.dir" location="${basedir}/dist"/>
+    <property name="lib.dir" location="${basedir}/lib"/>
+    <property name="build.dir" location="${basedir}/build"/>
+    <property name="src.dir" location="${basedir}/src"/>
+    <property name="download.dir" location="${build.dir}/download"/>
+
+    <property name="saxon.jar" value="saxon9he.jar"/>
+
+    <!-- Test resources -->
+    <property name="validator.jar" value="validationtool-1.0.1-standalone.jar"/>
+    <property name="validator.config.download.url.base"
+        value="https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download"/>
+    <property name="validator.config.release.version" value="release-2018-08-31"/>
+    <property name="validator.config.zip"
+        value="validator-configuration-xrechnung_1.1_2018-08-31.zip"/>
+    <property name="validator.repository.dir"
+        location="${build.dir}/xrechnung-configuration-repository"/>
+
+    <property name="xr.testsuite.docs.download.url.base"
+        value="https://raw.githubusercontent.com/itplr-kosit/xrechnung-testsuite/master/instances"/>
+
+
+    <property name="test.src.dir" location="${src.dir}/test"/>
+    <property name="test.build.dir" location="${build.dir}/test"/>
+    <property name="test.docs.dir" location="${test.build.dir}/instances"/>
+    <property name="test.transformed.dir"
+        location="${test.build.dir}/transformed"/>
+    <property name="test.reports.dir" location="${test.build.dir}/reports"/>
+
+    <target name="init"
+        description="Initializes build directory structure and ISO timestamp">
+        <!-- Create timestamps -->
+        <tstamp>
+            <format property="build.date" pattern="yyyy-MM-dd"/>
+        </tstamp>
+
+        <echo>Build date: ${build.date}</echo>
+        <!-- Create the build directory structure used by compile -->
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${download.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${lib.dir}"/>
+        <mkdir dir="${test.docs.dir}"/>
+        <mkdir dir="${test.transformed.dir}"/>
+        <mkdir dir="${test.reports.dir}"/>
+        <mkdir dir="${validator.repository.dir}"/>
+
+    </target>
+
+
+    <target name="prepare-saxon" depends="init"
+        description="Download Saxon-HE and add jar to library directory">
+        <get
+            src="https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-8J.zip/download"
+            dest="${download.dir}/SaxonHE9-8-0-8J.zip" verbose="true"
+            skipexisting="true" usetimestamp="true"/>
+        <fail unless="saxon.jar"
+            message="Provide a name for the extracted saxon jar"/>
+
+
+        <unzip src="${download.dir}/SaxonHE9-8-0-8J.zip" dest="${lib.dir}">
+            <patternset>
+                <include name="**/${saxon.jar}"/>
+            </patternset>
+            <flattenmapper/>
+        </unzip>
+    </target>
+
+    <target name="prepare-validationtool" depends="init"
+        description="Download KoSIT validation tool and add jar to library directory">
+        <get
+            src="https://github.com/itplr-kosit/validator/releases/download/validationtool-1_0_1/validationtool-dist-1.0.1-standalone.zip"
+            dest="${download.dir}" verbose="true" skipexisting="true"
+            usetimestamp="true"/>
+        <!-- Cause unzip task does not error on missing dest directory -->
+
+        <fail message="Lib directory ${lib.dir} does not exist!">
+            <condition>
+                <not>
+                    <available file="${lib.dir}"/>
+                </not>
+            </condition>
+        </fail>
+
+        <fail unless="validator.jar"
+            message="Need to specify property with name 'validator.jar'"/>
+        <unzip src="${download.dir}/validationtool-dist-1.0.1-standalone.zip"
+            dest="${lib.dir}">
+            <patternset>
+                <include name="**/${validator.jar}"/>
+            </patternset>
+            <flattenmapper/>
+        </unzip>
+    </target>
+
+    <target name="prepare-validator-configuration"
+        depends="prepare-validationtool">
+        <get
+            src="${validator.config.download.url.base}/${validator.config.release.version}/${validator.config.zip}"
+            dest="${download.dir}" verbose="true" skipexisting="true"
+            usetimestamp="true"/>
+        <unzip src="${download.dir}/${validator.config.zip}"
+            dest="${validator.repository.dir}"/>
+    </target>
+
+
+    <target name="prepare-testsuite" depends="init">
+        <copy todir="${test.build.dir}" verbose="true">
+            <fileset dir="${test.src.dir}" includes="**/*.xml"/>
+        </copy>
+
+        <loadfile property="urls"
+            srcFile="${test.src.dir}/testsuite-instances.txt">
+            <filterchain>
+                <prefixlines prefix="${xr.testsuite.docs.download.url.base}/"/>
+            </filterchain>
+        </loadfile>
+
+        <echo message="${urls}"
+            file="${test.build.dir}/testsuite-instance-urls.txt"/>
+
+        <get dest="${test.docs.dir}" verbose="true" skipexisting="true"
+            usetimestamp="true">
+
+            <resourcelist>
+                <file name="${test.build.dir}/testsuite-instance-urls.txt"/>
+            </resourcelist>
+        </get>
+    </target>
+
+    <target name="transform-ubl-to-xr"
+        depends="prepare-testsuite, prepare-saxon">
+
+        <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
+            style="${src.dir}/xsl/ubl-invoice-xr.xsl" includes="**/*ubl.xml,**/maxRechnung.xml">
+            
+            <classpath location="${lib.dir}/${saxon.jar}"/>
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+        </xslt>
+    </target>
+
+    <target name="test-testsuite"
+        depends="prepare-validationtool,prepare-validator-configuration, prepare-testsuite"
+        description="Testsuite validation with Validator XRechnung Configuration">
+        <echo>Creating validation reports ...</echo>
+        <java jar="${lib.dir}/${validator.jar}" failonerror="yes" fork="yes"
+            dir="${basedir}">
+            <arg value="-s"/>
+            <arg value="${validator.repository.dir}/scenarios.xml"/>
+
+            <arg value="-r"/>
+            <arg value="${validator.repository.dir}"/>
+            <arg value="-h"/>
+            <arg value="-o"/>
+            <arg value="${test.reports.dir}"/>
+            <arg value="${test.docs.dir}/*.xml"/>
+        </java>
+    </target>
+
+    <target name="test" depends="test-testsuite, transform-ubl-to-xr">
+        <schemavalidate fullchecking="yes" failonerror="yes">
+            <schema
+                namespace="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
+                file="${src.dir}/xsd/gen.xsd"/>
+            <fileset dir="${test.transformed.dir}" includes="*.xml"/>
+        </schemavalidate>
+    </target>
+
+
+    <target name="clean">
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true"/>
+        <delete dir="${dist.dir}"/>
+
+    </target>
+</project>
