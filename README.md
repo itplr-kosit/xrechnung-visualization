@@ -26,6 +26,8 @@ Projekt der XGen3-Anwendung: https://osci.bremen.de/svn/erechnung/spezifikation/
 
 https://osci.bremen.de/svn/erechnung/spezifikation/trunk/xrechnung-generator-visualisierung/build.xml erzeugt den Inhalt von xgen-applications/xrechnung-generator-visualisierung
 
-
+* Korrektur BT-95 für max-rechnung:
+ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false' and following-sibling::cac:TaxScheme/cbc:ID = 'VAT'
+BT-96, BT-102, BT-103 analog
 
 
