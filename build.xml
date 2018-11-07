@@ -31,6 +31,8 @@
         location="${test.build.dir}/transformed"/>
     <property name="test.reports.dir" location="${test.build.dir}/reports"/>
 
+    <property name="xrechnung.version" value="1.1"/>
+
     <target name="init"
         description="Initializes build directory structure and ISO timestamp">
         <!-- Create timestamps -->
@@ -135,8 +137,9 @@
     <target name="transform-ubl-invoice-to-xr"
         depends="prepare-testsuite, prepare-saxon">
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
-            style="${src.dir}/xsl/ubl-invoice-xr.xsl" includes="**/*ubl.xml,**/maxRechnung.xml">
-            
+            style="${src.dir}/xsl/ubl-invoice-xr.xsl"
+            includes="**/*ubl.xml,**/maxRechnung.xml">
+
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <mapper type="glob" from="*.xml" to="*-xr.xml"/>
@@ -149,7 +152,7 @@
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
             style="${src.dir}/xsl/ubl-creditnote-xr.xsl"
             includes="**/maxRechnung-creditnote.xml">
-            
+
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <mapper type="glob" from="*.xml" to="*-xr.xml"/>
@@ -174,20 +177,43 @@
         </java>
     </target>
 
-    <target name="test-transformation" depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr">
-        <schemavalidate fullchecking="yes" failonerror="yes" warn="true">
+    <target name="test-transformation"
+        depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr">
+        <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
+            lenient="false" >
             <schema
                 namespace="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
                 file="${src.dir}/xsd/xrechnung-semantic-model.xsd"/>
-            <fileset dir="${test.transformed.dir}" includes="*.xml"/>
+            <fileset dir="${test.transformed.dir}" includes="maxRechnung.xml"/>
         </schemavalidate>
     </target>
+    
+    <!--file="${test.transformed.dir}/maxRechnung-xr.xml"-->
+    <target name="direct-test-transformation">
+        <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
+            lenient="false"   >
+            <fileset dir="${test.transformed.dir}" includes="*.xml"/>
+            <schema
+                namespace="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
+                file="${src.dir}/xsd/xrechnung-semantic-model.xsd"/>
+            
+        </schemavalidate>
+    </target>
+    
+    
+    <target name="test" depends="test-testsuite, test-transformation"
+        description="Validates source UBL or CII XML against XRechnung,
+        transofrms to XR Sem Model and schema validates results"/>
 
+    <target name="dist" depends="test">
+        <zip destfile="${dist.dir}/xrechnung_${xrechnung.version}_${ant.project.name}_${build.date}.zip"
+            basedir="${src.dir}" excludes="download/**,test/**"/>
+
+    </target>
 
     <target name="clean">
         <!-- Delete the ${build} and ${dist} directory trees -->
         <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true"/>
         <delete dir="${dist.dir}"/>
-
     </target>
 </project>
