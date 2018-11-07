@@ -132,11 +132,23 @@
         </get>
     </target>
 
-    <target name="transform-ubl-to-xr"
+    <target name="transform-ubl-invoice-to-xr"
         depends="prepare-testsuite, prepare-saxon">
-
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
             style="${src.dir}/xsl/ubl-invoice-xr.xsl" includes="**/*ubl.xml,**/maxRechnung.xml">
+            
+            <classpath location="${lib.dir}/${saxon.jar}"/>
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+        </xslt>
+    </target>
+
+
+    <target name="transform-ubl-creditnote-to-xr"
+        depends="prepare-testsuite, prepare-saxon">
+        <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
+            style="${src.dir}/xsl/ubl-creditnote-xr.xsl"
+            includes="**/maxRechnung-creditnote.xml">
             
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
@@ -162,11 +174,11 @@
         </java>
     </target>
 
-    <target name="test" depends="test-testsuite, transform-ubl-to-xr">
-        <schemavalidate fullchecking="yes" failonerror="yes">
+    <target name="test-transformation" depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr">
+        <schemavalidate fullchecking="yes" failonerror="yes" warn="true">
             <schema
                 namespace="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
-                file="${src.dir}/xsd/gen.xsd"/>
+                file="${src.dir}/xsd/xrechnung-semantic-model.xsd"/>
             <fileset dir="${test.transformed.dir}" includes="*.xml"/>
         </schemavalidate>
     </target>
