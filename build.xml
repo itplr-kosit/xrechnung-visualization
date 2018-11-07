@@ -158,6 +158,19 @@
             <mapper type="glob" from="*.xml" to="*-xr.xml"/>
         </xslt>
     </target>
+    
+    
+    <target name="transform-cii-to-xr"
+        depends="prepare-testsuite, prepare-saxon">
+        <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
+            style="${src.dir}/xsl/cii-xr.xsl"
+            includes="**/*uncefact.xml">
+            
+            <classpath location="${lib.dir}/${saxon.jar}"/>
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+        </xslt>
+    </target>
 
     <target name="test-testsuite"
         depends="prepare-validationtool,prepare-validator-configuration, prepare-testsuite"
@@ -178,7 +191,7 @@
     </target>
 
     <target name="test-transformation"
-        depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr">
+        depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr, transform-cii-to-xr">
         <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
             lenient="false" >
             <schema
@@ -188,7 +201,9 @@
         </schemavalidate>
     </target>
     
-    <!--file="${test.transformed.dir}/maxRechnung-xr.xml"-->
+    
+    <!-- Just testing that task schemavalidate works cause it does not emit any
+        message on success -->
     <target name="direct-test-transformation">
         <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
             lenient="false"   >
