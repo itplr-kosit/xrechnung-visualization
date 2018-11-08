@@ -20,6 +20,14 @@
     <property name="validator.repository.dir"
         location="${build.dir}/xrechnung-configuration-repository"/>
 
+    <!-- vnu html validator -->
+    <property name="vnu.jar" value="vnu.jar"/>
+    <property name="vnu.version" value="18.11.5"/>
+    <property name="vnu.zip" value="${vnu.jar}_${vnu.version}.zip"/>
+
+    <property name="vnu.download.url"
+        value="https://github.com/validator/validator/releases/download/${vnu.version}/${vnu.zip}"/>
+
     <property name="xr.testsuite.docs.download.url.base"
         value="https://raw.githubusercontent.com/itplr-kosit/xrechnung-testsuite/master/instances"/>
 
@@ -29,6 +37,7 @@
     <property name="test.docs.dir" location="${test.build.dir}/instances"/>
     <property name="test.transformed.dir"
         location="${test.build.dir}/transformed"/>
+    <property name="test.transformed.html.dir" location="${test.build.dir}/html"/>
     <property name="test.reports.dir" location="${test.build.dir}/reports"/>
 
     <property name="xrechnung.version" value="1.1"/>
@@ -51,6 +60,7 @@
         <mkdir dir="${lib.dir}"/>
         <mkdir dir="${test.docs.dir}"/>
         <mkdir dir="${test.transformed.dir}"/>
+        <mkdir dir="${test.transformed.html.dir}"/>
         <mkdir dir="${test.reports.dir}"/>
         <mkdir dir="${validator.repository.dir}"/>
 
@@ -97,6 +107,31 @@
             dest="${lib.dir}">
             <patternset>
                 <include name="**/${validator.jar}"/>
+            </patternset>
+            <flattenmapper/>
+        </unzip>
+    </target>
+
+
+    <target name="prepare-vnu" depends="init" description="Download vNU">
+
+        <get src="${vnu.download.url}" dest="${download.dir}" verbose="true"
+            skipexisting="true" usetimestamp="true"/>
+        <!-- Cause unzip task does not error on missing dest directory -->
+
+        <fail message="Lib directory ${lib.dir} does not exist!">
+            <condition>
+                <not>
+                    <available file="${lib.dir}"/>
+                </not>
+            </condition>
+        </fail>
+
+        <fail unless="vnu.jar"
+            message="Need to specify property with name 'vnu.jar'"/>
+        <unzip src="${download.dir}/${vnu.zip}" dest="${lib.dir}">
+            <patternset>
+                <include name="**/${vnu.jar}"/>
             </patternset>
             <flattenmapper/>
         </unzip>
@@ -166,14 +201,30 @@
     <target name="transform-cii-to-xr"
         depends="prepare-testsuite, prepare-saxon">
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
-            style="${src.dir}/xsl/cii-xr.xsl"
-            includes="**/*uncefact.xml">
-
+            style="${src.dir}/xsl/cii-xr.xsl" includes="**/*uncefact.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <mapper type="glob" from="*.xml" to="*-xr.xml"/>
         </xslt>
     </target>
+
+    <target name="transform-ubl-to-xr"
+        description="Transforms UBl Invoice and
+        CreditNote to XRechnung Semantic Model"
+        depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr">
+        <!-- Just container for both transformations -->
+    </target>
+
+    <target name="transform-xr-to-html" depends="transform-ubl-to-xr">
+        <xslt basedir="${test.transformed.dir}"
+            destdir="${test.transformed.html.dir}"
+            style="${src.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml">
+            <classpath location="${lib.dir}/${saxon.jar}"/>
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <mapper type="glob" from="*.xml" to="*.html"/>
+        </xslt>
+    </target>
+
 
     <target name="test-testsuite"
         depends="prepare-validationtool,prepare-validator-configuration, prepare-testsuite"
@@ -193,41 +244,49 @@
         </java>
     </target>
 
-    <target name="test-transformation"
-        depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr">
-        <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
-            lenient="false" >
-            <schema
-                namespace="${xrechnung.xsd.ns}"
-                file="${src.dir}/xsd/xrechnung-semantic-model.xsd"/>
 
-                <fileset dir="${test.transformed.dir}" includes="*.xml"/>
-        </schemavalidate>
+    <target name="test-html" depends="prepare-vnu,transform-xr-to-html"
+        description="Tests HTML generation with vNU b W3C">
+        <echo>Validating HTML ...</echo>
+        <java jar="${lib.dir}/${vnu.jar}" failonerror="false" fork="yes"
+            dir="${basedir}" logerror="true">
+            <arg value="--skip-non-html"/>
+            <arg value="${test.transformed.html.dir}"/>
+            
+        </java>
     </target>
 
+    <target name="test-xr-transformation" depends="transform-ubl-to-xr">
+        <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
+            lenient="false">
+            <schema namespace="${xrechnung.xsd.ns}"
+                file="${src.dir}/xsd/xrechnung-semantic-model.xsd"/>
+
+            <fileset dir="${test.transformed.dir}" includes="*.xml"/>
+        </schemavalidate>
+    </target>
 
     <!-- Just testing that task schemavalidate works cause it does not emit any
         message on success -->
     <target name="direct-test-transformation">
         <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
-            lenient="false"   >
+            lenient="false">
             <fileset dir="${test.transformed.dir}" includes="*.xml"/>
-            <schema
-                namespace="${xrechnung.xsd.ns}"
+            <schema namespace="${xrechnung.xsd.ns}"
                 file="${src.dir}/xsd/xrechnung-semantic-model.xsd"/>
 
         </schemavalidate>
     </target>
 
 
-    <target name="test" depends="test-testsuite, test-transformation"
+    <target name="test" depends="test-testsuite, test-xr-transformation"
         description="Validates source UBL or CII XML against XRechnung,
         transofrms to XR Sem Model and schema validates results"/>
 
     <target name="dist" depends="test">
-        <zip destfile="${dist.dir}/xrechnung_${xrechnung.version}_${ant.project.name}_${build.date}.zip"
+        <zip
+            destfile="${dist.dir}/xrechnung_${xrechnung.version}_${ant.project.name}_${build.date}.zip"
             basedir="${src.dir}" excludes="download/**,test/**"/>
-
     </target>
 
     <target name="clean">
