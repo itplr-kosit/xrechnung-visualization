@@ -33,6 +33,9 @@
 
     <property name="xrechnung.version" value="1.1"/>
 
+    <property name="xrechnung.xsd.ns"
+        value="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"/>
+
     <target name="init"
         description="Initializes build directory structure and ISO timestamp">
         <!-- Create timestamps -->
@@ -158,14 +161,14 @@
             <mapper type="glob" from="*.xml" to="*-xr.xml"/>
         </xslt>
     </target>
-    
-    
+
+
     <target name="transform-cii-to-xr"
         depends="prepare-testsuite, prepare-saxon">
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
             style="${src.dir}/xsl/cii-xr.xsl"
             includes="**/*uncefact.xml">
-            
+
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <mapper type="glob" from="*.xml" to="*-xr.xml"/>
@@ -191,17 +194,18 @@
     </target>
 
     <target name="test-transformation"
-        depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr, transform-cii-to-xr">
+        depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr">
         <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
             lenient="false" >
             <schema
-                namespace="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
+                namespace="${xrechnung.xsd.ns}"
                 file="${src.dir}/xsd/xrechnung-semantic-model.xsd"/>
-            <fileset dir="${test.transformed.dir}" includes="maxRechnung.xml"/>
+
+                <fileset dir="${test.transformed.dir}" includes="*.xml"/>
         </schemavalidate>
     </target>
-    
-    
+
+
     <!-- Just testing that task schemavalidate works cause it does not emit any
         message on success -->
     <target name="direct-test-transformation">
@@ -209,13 +213,13 @@
             lenient="false"   >
             <fileset dir="${test.transformed.dir}" includes="*.xml"/>
             <schema
-                namespace="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
+                namespace="${xrechnung.xsd.ns}"
                 file="${src.dir}/xsd/xrechnung-semantic-model.xsd"/>
-            
+
         </schemavalidate>
     </target>
-    
-    
+
+
     <target name="test" depends="test-testsuite, test-transformation"
         description="Validates source UBL or CII XML against XRechnung,
         transofrms to XR Sem Model and schema validates results"/>
