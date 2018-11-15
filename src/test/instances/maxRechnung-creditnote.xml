@@ -24,7 +24,7 @@
 	<cac:ContractDocumentReference>
 		<cbc:ID>Vertragsreferenz</cbc:ID>
 	</cac:ContractDocumentReference>
-	
+
 	<cac:AdditionalDocumentReference>
 		<cbc:ID>Dokument Referenz</cbc:ID>
 		<cbc:DocumentType>Beschreibung der angehängten JPG-Datei</cbc:DocumentType>
