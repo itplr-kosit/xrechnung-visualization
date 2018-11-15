@@ -523,11 +523,11 @@
               <div class="boxtabelle boxinhalt borderSpacing">
                 <div class="boxzeile">
                   <div class="boxdaten legende">Kartennummer:</div>
-                  <div title="BT-87" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_CARD_INFORMATION/xr:Payment_card_primary_account_number"/></div>
+                  <div title="BT-87" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:PAYMENT_CARD_INFORMATION/xr:Payment_card_primary_account_number"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Karteninhaber:</div>
-                  <div title="BT-88" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_CARD_INFORMATION/xr:Payment_card_holder_name"/></div>
+                  <div title="BT-88" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:PAYMENT_CARD_INFORMATION/xr:Payment_card_holder_name"/></div>
                 </div>
               </div>
             </div>
@@ -540,15 +540,15 @@
               <div class="boxtabelle boxinhalt borderSpacing">
                 <div class="boxzeile">
                   <div class="boxdaten legende">Mandatsreferenznr.:</div>
-                  <div title="BT-89" class="boxdaten wert"><xsl:value-of select="xr:DIRECT_DEBIT/xr:Mandate_reference_identifier"/></div>
+                  <div title="BT-89" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:DIRECT_DEBIT/xr:Mandate_reference_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">IBAN:</div>
-                  <div title="BT-91" class="boxdaten wert"><xsl:value-of select="xr:DIRECT_DEBIT/xr:Debited_account_identifier"/></div>
+                  <div title="BT-91" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:DIRECT_DEBIT/xr:Debited_account_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Gläubiger-ID:</div>
-                  <div title="BT-90" class="boxdaten wert"><xsl:value-of select="xr:DIRECT_DEBIT/xr:Bank_assigned_creditor_identifier"/></div>
+                  <div title="BT-90" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:DIRECT_DEBIT/xr:Bank_assigned_creditor_identifier"/></div>
                 </div>
               </div>
             </div>
@@ -561,15 +561,15 @@
               <div class="boxtabelle boxinhalt borderSpacing">
                  <div class="boxzeile">
                     <div class="boxdaten legende">Kontoinhaber:</div>
-                    <div title="BT-85" class="boxdaten wert"><xsl:value-of select="xr:CREDIT_TRANSFER/xr:Payment_account_name"/></div>
+                    <div title="BT-85" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:CREDIT_TRANSFER/xr:Payment_account_name"/></div>
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende">IBAN:</div>
-                    <div title="BT-84" class="boxdaten wert"><xsl:value-of select="xr:CREDIT_TRANSFER/xr:Payment_account_identifier"/></div>
+                    <div title="BT-84" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:CREDIT_TRANSFER/xr:Payment_account_identifier"/></div>
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende">BIC:</div>
-                    <div title="BT-86" class="boxdaten wert"><xsl:value-of select="xr:CREDIT_TRANSFER/xr:Payment_service_provider_identifier"/></div>
+                    <div title="BT-86" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:CREDIT_TRANSFER/xr:Payment_service_provider_identifier"/></div>
                   </div>
               </div>
             </div>
