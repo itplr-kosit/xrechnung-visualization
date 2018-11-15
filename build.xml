@@ -279,7 +279,7 @@
     </target>
 
 
-    <target name="test" depends="test-testsuite, test-xr-transformation"
+    <target name="test" depends="test-testsuite, test-xr-transformation, test-html"
         description="Validates source UBL or CII XML against XRechnung,
         transofrms to XR Sem Model and schema validates results"/>
 
