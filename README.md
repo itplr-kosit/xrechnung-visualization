@@ -10,3 +10,5 @@ The transformations have to happen in two steps:
 2. Then you can use the [xrechnung-html.xsl](src/xsl/xrechnung-html.xsl) to render an HTML document
 
 You can find an example use of these transformations in the [ant build script](build.xml). It also includes some technical tests.
+
+This GitHub repository is only a mirror of a GitLab project repository.
