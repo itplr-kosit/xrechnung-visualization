@@ -1,8 +1,8 @@
 # XRechnung Visualization Transformators
 
-XSL transformations for web rendering of German CIUS XRechnung or EN16931-1:2017.
+XSL transformators for web rendering of German CIUS XRechnung or EN16931-1:2017.
 
-The transformations have to in either UBL Invoice/CreditNote XML and CII XML and have to be conforming to German CIUS XRechnung or EN16931-1:2017.
+The source documents have to be in either UBL Invoice/CreditNote XML and CII XML and have to be conforming to German CIUS XRechnung or EN16931-1:2017.
 
 The transformations have to happen in two steps:
 
