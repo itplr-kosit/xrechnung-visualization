@@ -14,7 +14,7 @@
       <xd:desc>
          <xd:p>
             <xd:b>Author:</xd:b> KoSIT Bremen (kosit@finanzen.bremen.de)</xd:p>
-         <xd:b>Fassung vom: 2018-11-07+01:00</xd:b>
+         <xd:b>Fassung vom: 2019-03-18+01:00</xd:b>
          <xd:p>Überführt eine zur EN 16931 konforme elektronische Rechnung in der konkreten Syntax UBL.2_1.CreditNote in eine Instanz gemäß des Schemas für den Namensraum urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1.</xd:p>
          <xd:p>Das Skript setzt voraus, dass das zu verarbeitende Dokument valide bzgl. des XML Schemas und der Schematron-Regeln der Quelle ist. Für nicht valide Dokumente ist das Ergebnis nicht definiert.</xd:p>
       </xd:desc>
@@ -1950,12 +1950,9 @@
       <xsl:if test="@schemeVersionID | @listVersionID">
          <xsl:attribute name="scheme_version_identifier"
                         select="(@listVersionID, @schemeVersionID)[1]"/>
-      </xsl:if>&lt;para&gt;Mit diesem Datentyp werden eindeutige Bezeichner bzw. Kennungen abgebildet (engl. Identifier, kurz ID). Für jeden Bezeichner bzw. jede Kennung, die innerhalb des semantischen Datenmodells auftritt, ist festgelegt, ob ein bestimmtes Bildungsmuster verwendet werden kann bzw. muss. Im letzteren Fall wird eine Liste der nutzbaren Bildungsmuster spezifiziert.&lt;/para&gt;
-&lt;para&gt;Der Datentyp basiert auf dem Typ &lt;quote&gt;Identifier. Type&lt;/quote&gt;, wie in ISO 15000-5:2014 Anhang B definiert.&lt;/para&gt;&lt;para&gt;Mit dieser Eigenschaft wird die Kennung des verwendeten Bildungsmusters angegeben. In Verbindung mit der Eigenschaft &lt;quote&gt;Scheme version identifier&lt;/quote&gt; wird das jeweilige Bildungsmuster eindeutig bestimmt.&lt;/para&gt;
-&lt;para&gt;Die Kardinalität der Eigenschaft ist im Kontext eines Informationselements, das auf dem Datentyp &lt;quote&gt;Identifier&lt;/quote&gt; basiert, spezifiziert.&lt;/para&gt;
-&lt;para&gt;Mit dieser Eigenschaft wird die Version des verwendeten Bildungsmusters angegeben. In Verbindung mit der Eigenschaft &lt;quote&gt;Scheme identifier&lt;/quote&gt; wird das jeweilige Bildungsmuster eindeutig bestimmt.&lt;/para&gt;
-&lt;para&gt;Die Kardinalität der Eigenschaft ist im Kontext eines Informationselements, das auf dem Datentyp &lt;quote&gt;Identifier&lt;/quote&gt; basiert, spezifiziert.&lt;/para&gt;
-</xsl:template>
+      </xsl:if>
+      <xsl:value-of select="."/>
+   </xsl:template>
    <xsl:template name="identifier-with-scheme">
       <xsl:param name="schemeID" as="element()?"/>
       <xsl:if test="@schemeID">
