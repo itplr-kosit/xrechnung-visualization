@@ -9,12 +9,9 @@
     <property name="saxon.jar" value="saxon9he.jar" />
     <!-- Test resources -->
     <property name="validator.jar" value="validationtool-1.0.1-standalone.jar" />
-    
     <property name="xrechnung.version.major.minor" value="1.2" />
     <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.1" />
-    
     <property name="github.group.url" value="https://github.com/itplr-kosit" />
-    
     <property name="validator.download.url" value="${github.group.url}/validationtool/releases/download/validationtool-1_0_1/validationtool-dist-1.0.1-standalone.zip" />
     
     <property name="validator.config.proj.name" value="validator-configuration-xrechnung" />
