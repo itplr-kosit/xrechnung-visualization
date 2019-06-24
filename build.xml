@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <project basedir="." name="xrechnung-visualization" default="test">
     <!-- project directory structure -->
     <property name="dist.dir" location="${basedir}/dist" />
@@ -10,19 +10,20 @@
     <!-- Test resources -->
     <property name="validator.jar" value="validationtool-1.0.1-standalone.jar" />
     
-    <property name="github.group.url" value="https://github.com/itplr-kosit"/>
-    <property name="xrechnung.version.full" value="1.2.0" />
-    <property name="validator.download.url"
-        value="${github.group.url}/validationtool/releases/download/validationtool-1_0_1/validationtool-dist-1.0.1-standalone.zip"/>
+    <property name="xrechnung.version.major.minor" value="1.2" />
+    <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.1" />
     
-    <property name="validator.config.proj.name" value="validator-configuration-xrechnung"/>
+    <property name="github.group.url" value="https://github.com/itplr-kosit" />
     
-    <property name="validator.config.download.url"
-        value="${github.group.url}/${validator.config.proj.name}/releases/download/release-2018-12-19/${validator.config.proj.name}_${xrechnung.version.full}_2018-12-19.zip"/>
-   
-    <property name="validator.config.release.version" value="release-2018-12-19" />
-    <property name="validator.config.zip"
-        value="validator-configuration-xrechnung_1.2.0_2018-12-19.zip" />
+    <property name="validator.download.url" value="${github.group.url}/validationtool/releases/download/validationtool-1_0_1/validationtool-dist-1.0.1-standalone.zip" />
+    
+    <property name="validator.config.proj.name" value="validator-configuration-xrechnung" />
+    
+    <property name="validator.config.release.date" value="2019-06-24" />
+    <property name="validator.config.download.url" value="${github.group.url}/${validator.config.proj.name}/releases/download/release-${validator.config.release.date}/${validator.config.proj.name}_${xrechnung.version.full}_${validator.config.release.date}.zip" />
+    
+    <property name="validator.config.release.version" value="release-${validator.config.release.date}" />
+    <property name="validator.config.zip" value="validator-configuration-xrechnung_${xrechnung.version.full}_${validator.config.release.date}.zip" />
     <property name="validator.repository.dir" location="${build.dir}/xrechnung-configuration-repository" />
     <!-- vnu html validator -->
     <property name="vnu.jar" value="vnu.jar" />
@@ -190,8 +191,7 @@
     <target name="test" depends="test-testsuite, test-xr-transformation, test-html" description="Validates source UBL or CII XML against XRechnung,
         transforms to XR Sem Model and schema validates results" />
     <target name="dist" depends="test">
-        <zip
-            destfile="${dist.dir}/xrechnung-${xrechnung.version.full}-${ant.project.name}-${build.date}.zip" basedir="${src.dir}" excludes="download/**,test/**" />
+        <zip destfile="${dist.dir}/xrechnung-${xrechnung.version.full}-${ant.project.name}-${build.date}.zip" basedir="${src.dir}" excludes="download/**,test/**" />
     </target>
     <target name="clean">
         <!-- Delete the ${build} and ${dist} directory trees -->
