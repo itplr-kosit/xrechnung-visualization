@@ -1,7 +1,9 @@
-dist
-build
-lib
-reports
+/dist
+/build
+/lib
+/reports
 .vscode
 *.xpr
-.ant-targets-build.xml 
+.ant-targets-build.xml
+/xslt
+*.zip
