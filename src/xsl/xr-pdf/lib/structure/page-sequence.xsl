@@ -37,10 +37,6 @@
         <fo:block-container height="17mm"
                             display-align="after">
           <fo:block xsl:use-attribute-sets="marker">
-            <fo:inline font-weight="bold">
-              <fo:retrieve-marker retrieve-class-name="aktueller-bereich"
-                                  retrieve-position="first-including-carryover"/>
-            </fo:inline>
             <fo:inline>
               <fo:retrieve-marker retrieve-class-name="aktueller-bereich-forts" 
                                   retrieve-position="first-including-carryover"/>
