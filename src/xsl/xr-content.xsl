@@ -145,7 +145,7 @@
   </xsl:template>
 
   <xsl:template name="uebersichtRechnungsuebersicht">
-    <xsl:call-template name="box">
+    <xsl:call-template name="spanned-box">
       <xsl:with-param name="identifier" select="'uebersichtRechnungsuebersicht'"/>
       <xsl:with-param name="content">
         <xsl:call-template name="value-list">
@@ -188,7 +188,7 @@
   </xsl:template>
 
   <xsl:template name="uebersichtUmsatzsteuer">
-    <xsl:call-template name="box">
+    <xsl:call-template name="spanned-box">
       <xsl:with-param name="identifier" select="'uebersichtUmsatzsteuer'"/>
       <xsl:with-param name="content">
         <xsl:for-each select="xr:VAT_BREAKDOWN">

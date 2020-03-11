@@ -30,14 +30,7 @@
         <xsl:with-param name="titel" select="$heading/label"/>
       </xsl:call-template>
 
-      <fo:block-container xsl:use-attribute-sets="box-container-kapitel">
-        <xsl:if test="$axf.extensions">
-          <xsl:attribute name="axf:column-fill">balance</xsl:attribute>          
-        </xsl:if>
-        <fo:block-container margin="0">
-          <xsl:copy-of select="$content"/>
-        </fo:block-container>
-      </fo:block-container>
+      <xsl:copy-of select="$content"/>
 
       <fo:block span="all" keep-with-previous="always">        
         <fo:marker marker-class-name="aktueller-bereich-forts">
@@ -58,33 +51,50 @@
 
     <xsl:if test="normalize-space($content)">
 
+    <xsl:variable name="heading">
+      <xsl:call-template name="field-mapping">
+        <xsl:with-param name="identifier" select="$identifier"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:call-template name="h2">
+      <xsl:with-param name="titel" select="$heading/label"/>
+    </xsl:call-template>
+
+    <!-- FIXME: keep-together.within-page="always" has been lost during refactor -->
+    <xsl:for-each select="$content/*">
+      <xsl:copy-of select="."/>
+    </xsl:for-each>
+    <fo:block xsl:use-attribute-sets="box-container-bereich"/>    
+
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="spanned-box">
+    <xsl:param name="identifier"/>
+    <xsl:param name="content"/>
+    
+    <xsl:if test="normalize-space($content)">
+      
       <xsl:variable name="heading">
         <xsl:call-template name="field-mapping">
           <xsl:with-param name="identifier" select="$identifier"/>
         </xsl:call-template>
       </xsl:variable>
-
-      <xsl:call-template name="h2">
-        <xsl:with-param name="titel" select="$heading/label"/>
-      </xsl:call-template>
-
-      <fo:block-container xsl:use-attribute-sets="box-container-bereich">
-        <xsl:if test="$axf.extensions">
-          <xsl:attribute name="axf:column-fill">balance</xsl:attribute>
-        </xsl:if>
-        <fo:block-container margin="0">
-          <xsl:for-each select="$content/*">
-            <xsl:if test="position()!=1">
-              <fo:block xsl:use-attribute-sets="separator"></fo:block>
-            </xsl:if>
-            <xsl:copy-of select="."/>
-          </xsl:for-each>
-        </fo:block-container>
-      </fo:block-container>
-
+      
+      <fo:block xsl:use-attribute-sets="box-container-bereich" span="all">
+        <xsl:call-template name="h2">
+          <xsl:with-param name="titel" select="$heading/label"/>
+        </xsl:call-template>
+                
+        <xsl:for-each select="$content/*">
+          <xsl:copy-of select="."/>
+        </xsl:for-each>
+      </fo:block>
+      
     </xsl:if>
   </xsl:template>
-
+  
 
   <!-- ==========================================================================
        == Inhalt eines Teilbereich eines Abschnittes
@@ -95,50 +105,40 @@
     <xsl:param name="content"/>
     
     <xsl:if test="normalize-space($content)">
-      <fo:block>
-        <fo:block-container>
-          <fo:block-container margin="0">
-
-            <xsl:if test="$headingId">
-              <xsl:variable name="heading">
-                <xsl:call-template name="field-mapping">
-                  <xsl:with-param name="identifier" select="$headingId"/>
-                </xsl:call-template>
-              </xsl:variable>
-              <xsl:call-template name="h3">
-                <xsl:with-param name="titel" select="$heading/label"/>
-              </xsl:call-template>
-            </xsl:if>
-            <xsl:choose>
-              <xsl:when test="$layout='zweispaltig'">
-                <fo:list-block provisional-distance-between-starts="92mm" 
-                               provisional-label-separation="4mm">
-                  <fo:list-item>
-                    <fo:list-item-label end-indent="label-end()">
-                      <fo:block>
-                        <xsl:copy-of select="$content/*[1]"/>
-                      </fo:block>
-                    </fo:list-item-label>
-                    <fo:list-item-body start-indent="body-start()">
-                      <fo:block>
-                        <xsl:copy-of select="$content/*[2]"/>
-                      </fo:block>
-                    </fo:list-item-body>
-                  </fo:list-item>
-                </fo:list-block>
-              </xsl:when>
-              <xsl:otherwise>
+      <xsl:if test="$headingId">
+        <xsl:variable name="heading">
+          <xsl:call-template name="field-mapping">
+            <xsl:with-param name="identifier" select="$headingId"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:call-template name="h3">
+          <xsl:with-param name="titel" select="$heading/label"/>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="$layout='zweispaltig'">
+          <fo:list-block provisional-distance-between-starts="92mm" 
+                         provisional-label-separation="4mm">
+            <fo:list-item>
+              <fo:list-item-label end-indent="label-end()">
                 <fo:block>
-                  <xsl:copy-of select="$content"/>
+                  <xsl:copy-of select="$content/*[1]"/>
                 </fo:block>
-              </xsl:otherwise>
-            </xsl:choose>
-            
-          </fo:block-container>
-        </fo:block-container>
-        <fo:block clear="both"></fo:block>
-      </fo:block>
-
+              </fo:list-item-label>
+              <fo:list-item-body start-indent="body-start()">
+                <fo:block>
+                  <xsl:copy-of select="$content/*[2]"/>
+                </fo:block>
+              </fo:list-item-body>
+            </fo:list-item>
+          </fo:list-block>
+        </xsl:when>
+        <xsl:otherwise>
+          <fo:block>
+            <xsl:copy-of select="$content"/>
+          </fo:block>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:if>
   </xsl:template>
 
@@ -154,42 +154,22 @@
     <xsl:if test="normalize-space($content)">
 
       <xsl:variable name="boxContent">
-        <fo:block-container xsl:use-attribute-sets="box-container-inner">
-          <xsl:if test="$axf.extensions">
-            <xsl:attribute name="axf:column-fill">balance</xsl:attribute>
-          </xsl:if>
-          <fo:block-container margin="0">
-            <xsl:attribute name="column-count">
-              <xsl:choose>
-                <xsl:when test="$layout = 'einspaltig'">1</xsl:when>
-                <xsl:when test="$layout = 'zweispaltig'">2</xsl:when>
-                <xsl:otherwise>2</xsl:otherwise>
-              </xsl:choose>
-            </xsl:attribute>
-            <xsl:copy-of select="$content"/>
-          </fo:block-container>
-        </fo:block-container>
+        <xsl:copy-of select="$content"/>
+        <!-- Placeholder for spacing after the box -->
+        <fo:block xsl:use-attribute-sets="box-container-inner"/>
       </xsl:variable>
 
-      <xsl:choose>
-        <xsl:when test="$headingId">
-          <fo:block>
-            <xsl:variable name="heading">
-              <xsl:call-template name="field-mapping">
-                <xsl:with-param name="identifier" select="$headingId"/>
-              </xsl:call-template>
-            </xsl:variable>
-            <xsl:call-template name="h3">
-              <xsl:with-param name="titel" select="$heading/label"/>
-            </xsl:call-template>
-            <xsl:copy-of select="$boxContent"/>
-          </fo:block>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:copy-of select="$boxContent"/>
-        </xsl:otherwise>
-      </xsl:choose>
-
+      <xsl:if test="$headingId">
+        <xsl:variable name="heading">
+          <xsl:call-template name="field-mapping">
+            <xsl:with-param name="identifier" select="$headingId"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:call-template name="h3">
+          <xsl:with-param name="titel" select="$heading/label"/>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:copy-of select="$boxContent"/>
     </xsl:if>
   </xsl:template>
 
@@ -201,18 +181,13 @@
     <xsl:param name="layout">zweispaltig</xsl:param>
     <xsl:param name="content"/>
 
-    <xsl:if test="normalize-space($content)">
-      <fo:block-container xsl:use-attribute-sets="box-container-inner">
-        <xsl:if test="$axf.extensions">
-          <xsl:attribute name="axf:column-fill">balance</xsl:attribute>
-        </xsl:if>        
-        <fo:block-container margin="0">
-          <xsl:call-template name="list">
-            <xsl:with-param name="layout" select="$layout"/>
-            <xsl:with-param name="content" select="$content"/>
-          </xsl:call-template>
-        </fo:block-container>
-      </fo:block-container>
+    <xsl:if test="normalize-space($content)">      
+      <xsl:call-template name="list">
+        <xsl:with-param name="layout" select="$layout"/>
+        <xsl:with-param name="content" select="$content"/>
+      </xsl:call-template>
+      <!-- Placeholder for spacing after the box -->
+      <fo:block xsl:use-attribute-sets="box-container-inner"/>        
     </xsl:if>
   </xsl:template>
 
@@ -232,50 +207,26 @@
           <xsl:with-param name="identifier" select="$field-mapping-identifier"/>
         </xsl:call-template>
       </xsl:variable>
-      <fo:block-container margin-bottom="1mm">
-        <fo:block-container margin="0">
-          <fo:table>
-            <fo:table-column>
-              <xsl:attribute name="column-width"><xsl:value-of select="$wert-legende-breite"/>mm</xsl:attribute>
-            </fo:table-column>
-            <fo:table-column column-width="{86 - $wert-legende-breite}mm"/>
-            <fo:table-header>
-              <fo:table-row><fo:table-cell><fo:block/></fo:table-cell></fo:table-row>
-            </fo:table-header>
-            <fo:table-body>
-              <fo:table-row>
-                <fo:table-cell>
-                  <fo:table width="100%">
-                    <fo:table-header>
-                      <fo:table-row><fo:table-cell><fo:block/></fo:table-cell></fo:table-row>
-                    </fo:table-header>
-                    <fo:table-body>
-                      <fo:table-row>
-                        <fo:table-cell xsl:use-attribute-sets="wert-legende">
-                          <fo:block><xsl:value-of select="$field-mapping/label"/>:</fo:block>
-                        </fo:table-cell>
-                      </fo:table-row>
-                    </fo:table-body>
-                  </fo:table>
-                </fo:table-cell>
-                <fo:table-cell xsl:use-attribute-sets="wert-ausgabe">
-                  <fo:block>
-                    <xsl:choose>
-                      <xsl:when test="$value">
-                        <xsl:copy-of select="$value"/>
-                      </xsl:when>
-                      <xsl:otherwise>
-                        <xsl:value-of select="."/>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                  </fo:block>
-                </fo:table-cell>
-              </fo:table-row>
-            </fo:table-body>
-          </fo:table>
-        </fo:block-container>
-      </fo:block-container>
-
+      <fo:list-block margin-bottom="1mm"
+                     provisional-distance-between-starts="{$wert-legende-breite}mm">
+        <fo:list-item>
+          <fo:list-item-label end-indent="label-end()">
+            <fo:block xsl:use-attribute-sets="wert-legende"><xsl:value-of select="$field-mapping/label"/>:</fo:block>
+          </fo:list-item-label>
+          <fo:list-item-body start-indent="body-start()">
+            <fo:block xsl:use-attribute-sets="wert-ausgabe">
+              <xsl:choose>
+                 <xsl:when test="$value">
+                   <xsl:copy-of select="$value"/>
+                 </xsl:when>
+                 <xsl:otherwise>
+                   <xsl:value-of select="."/>
+                 </xsl:otherwise>
+               </xsl:choose>
+             </fo:block>
+           </fo:list-item-body>
+        </fo:list-item>
+      </fo:list-block>
     </xsl:if>
   </xsl:template>
 

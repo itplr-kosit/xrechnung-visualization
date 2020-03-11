@@ -95,12 +95,10 @@
    
   <xsl:attribute-set name="wert-legende">
     <xsl:attribute name="font-size">7pt</xsl:attribute>
-    <xsl:attribute name="line-height">7pt</xsl:attribute>
-    <xsl:attribute name="min-height">5mm</xsl:attribute>
-    <xsl:attribute name="display-align">center</xsl:attribute>
-    <xsl:attribute name="padding-top">0mm</xsl:attribute>
-    <xsl:attribute name="padding-bottom">0mm</xsl:attribute>
-    <xsl:attribute name="padding-left">2mm</xsl:attribute>
+    <xsl:attribute name="line-height">10pt</xsl:attribute>        
+    <xsl:attribute name="padding-top">1mm</xsl:attribute>
+    <xsl:attribute name="padding-bottom">1mm</xsl:attribute>
+    <xsl:attribute name="margin-left">2mm</xsl:attribute>
     <xsl:attribute name="padding-right">1mm</xsl:attribute>
   </xsl:attribute-set>
   
@@ -112,8 +110,6 @@
     <xsl:attribute name="padding-bottom">1mm</xsl:attribute>
     <xsl:attribute name="padding-left">2mm</xsl:attribute>
     <xsl:attribute name="padding-right">2mm</xsl:attribute>
-    <xsl:attribute name="display-align">center</xsl:attribute>
-    <xsl:attribute name="width"><xsl:value-of select="90 - $wert-legende-breite - 4"/>mm</xsl:attribute>
     <xsl:attribute name="keep-together.within-column">always</xsl:attribute>
   </xsl:attribute-set>
    
@@ -187,18 +183,16 @@
   
   <!-- Box-Container -->
   <xsl:attribute-set name="box-container-kapitel">
-    <xsl:attribute name="column-gap">8mm</xsl:attribute>
     <xsl:attribute name="margin-bottom">10mm</xsl:attribute>
   </xsl:attribute-set>
    
   <xsl:attribute-set name="box-container-bereich">    
-    <xsl:attribute name="column-gap">8mm</xsl:attribute>
     <xsl:attribute name="margin-bottom">2mm</xsl:attribute>
     <xsl:attribute name="keep-together.within-page">always</xsl:attribute>
+    <xsl:attribute name="span">all</xsl:attribute>
   </xsl:attribute-set>
   
   <xsl:attribute-set name="box-container-inner">
-    <xsl:attribute name="column-gap">8mm</xsl:attribute>
     <xsl:attribute name="margin-bottom">2mm</xsl:attribute>
   </xsl:attribute-set>
   
