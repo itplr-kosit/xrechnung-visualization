@@ -384,7 +384,7 @@
   </xsl:template>
 
   <xsl:template name="detailsPosition">
-    <xsl:call-template name="detailsPosition_Content"/>
+    <xsl:call-template name="detailsPosition_Content"/>    
     <xsl:call-template name="detailsPositionAbrechnungszeitraum"/>
     <xsl:call-template name="detailsPositionPreiseinzelheiten"/>
     <xsl:call-template name="detailsPositionNachlaesse"/>
@@ -394,29 +394,37 @@
   </xsl:template>
 
   <xsl:template name="detailsPosition_Content">
+    <xsl:variable name="content">
+      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_note"/>
+      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier"/>
+      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier/@scheme_identifier"/>
+      <xsl:apply-templates mode="list-entry" select="xr:Referenced_purchase_order_line_reference"/>
+      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_Buyer_accounting_reference"/>
+    </xsl:variable>
     <xsl:call-template name="list">
-      <xsl:with-param name="content">
-        <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_note"/>
-        <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier"/>
-        <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier/@scheme_identifier"/>
-        <xsl:apply-templates mode="list-entry" select="xr:Referenced_purchase_order_line_reference"/>
-        <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_Buyer_accounting_reference"/>
-      </xsl:with-param>
+      <xsl:with-param name="content" select="$content"/>      
     </xsl:call-template>
+    <xsl:if test="normalize-space($content)">
+      <fo:block xsl:use-attribute-sets="separator" span="all"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="detailsPositionAbrechnungszeitraum">
+    <xsl:variable name="content">
+      <xsl:apply-templates mode="list-entry" select="xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date">
+        <xsl:with-param name="value" select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,'[D].[M].[Y]')"/>
+      </xsl:apply-templates>
+      <xsl:apply-templates mode="list-entry" select="xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date">
+        <xsl:with-param name="value" select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,'[D].[M].[Y]')"/>
+      </xsl:apply-templates>
+    </xsl:variable>    
     <xsl:call-template name="list">
       <xsl:with-param name="headingId" select="'detailsPositionAbrechnungszeitraum'"/>
-      <xsl:with-param name="content">
-        <xsl:apply-templates mode="list-entry" select="xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date">
-          <xsl:with-param name="value" select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,'[D].[M].[Y]')"/>
-        </xsl:apply-templates>
-        <xsl:apply-templates mode="list-entry" select="xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date">
-          <xsl:with-param name="value" select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,'[D].[M].[Y]')"/>
-        </xsl:apply-templates>
-      </xsl:with-param>
+      <xsl:with-param name="content" select="$content"/>      
     </xsl:call-template>
+    <xsl:if test="normalize-space($content)">
+      <fo:block xsl:use-attribute-sets="separator" span="all"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="detailsPositionPreiseinzelheiten">
@@ -488,36 +496,40 @@
   </xsl:template>
 
   <xsl:template name="detailsPositionZuschlaege">
+    <xsl:variable name="content">
+      <xsl:for-each select="INVOICE_LINE_CHARGES">
+        <xsl:call-template name="section">
+          <xsl:with-param name="layout" select="'einspaltig'"/>
+          <xsl:with-param name="content">
+            <xsl:call-template name="value-list">
+              <xsl:with-param name="content">
+                <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_charge_base_amount">
+                  <xsl:with-param name="value" select="format-number(xr:Invoice_line_charge_base_amount,'###.##0,00','decimal')"/>
+                </xsl:apply-templates>
+                <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_charge_percentage"/>
+                <xsl:apply-templates mode="sum-list-entry" select="xr:Invoice_line_charge_amount">
+                  <xsl:with-param name="value" select="format-number(xr:Invoice_line_charge_amount,'###.##0,00','decimal')"/>
+                </xsl:apply-templates>
+              </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="list">
+              <xsl:with-param name="layout" select="'einspaltig'"/>
+              <xsl:with-param name="content">
+                <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_charge_reason"/>
+                <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_charge_reason_code"/>
+              </xsl:with-param>
+            </xsl:call-template>
+          </xsl:with-param>
+        </xsl:call-template>
+      </xsl:for-each>
+    </xsl:variable>
     <xsl:call-template name="section">
       <xsl:with-param name="headingId" select="'detailsPositionZuschlaege'"/>
-      <xsl:with-param name="content">
-        <xsl:for-each select="INVOICE_LINE_CHARGES">
-          <xsl:call-template name="section">
-            <xsl:with-param name="layout" select="'einspaltig'"/>
-            <xsl:with-param name="content">
-              <xsl:call-template name="value-list">
-                <xsl:with-param name="content">
-                  <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_charge_base_amount">
-                    <xsl:with-param name="value" select="format-number(xr:Invoice_line_charge_base_amount,'###.##0,00','decimal')"/>
-                  </xsl:apply-templates>
-                  <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_charge_percentage"/>
-                  <xsl:apply-templates mode="sum-list-entry" select="xr:Invoice_line_charge_amount">
-                    <xsl:with-param name="value" select="format-number(xr:Invoice_line_charge_amount,'###.##0,00','decimal')"/>
-                  </xsl:apply-templates>
-                </xsl:with-param>
-              </xsl:call-template>
-              <xsl:call-template name="list">
-                <xsl:with-param name="layout" select="'einspaltig'"/>
-                <xsl:with-param name="content">
-                  <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_charge_reason"/>
-                  <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_charge_reason_code"/>
-                </xsl:with-param>
-              </xsl:call-template>
-            </xsl:with-param>
-          </xsl:call-template>
-        </xsl:for-each>
-      </xsl:with-param>
+      <xsl:with-param name="content" select="$content"/>      
     </xsl:call-template>
+    <xsl:if test="normalize-space($content)">
+      <fo:block xsl:use-attribute-sets="separator" span="all"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="detailsPositionArtikelinformationen">
