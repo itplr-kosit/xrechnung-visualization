@@ -29,15 +29,9 @@
       <xsl:call-template name="h1">
         <xsl:with-param name="titel" select="$heading/label"/>
       </xsl:call-template>
-
+      
       <xsl:copy-of select="$content"/>
 
-      <fo:block span="all" keep-with-previous="always">        
-        <fo:marker marker-class-name="aktueller-bereich-forts">
-          <fo:inline font-weight="bold"><xsl:value-of select="$heading/label"/></fo:inline>
-          <xsl:text> (Fortsetzung)</xsl:text>
-        </fo:marker>
-      </fo:block>
     </xsl:if>
   </xsl:template>
 
@@ -51,22 +45,21 @@
 
     <xsl:if test="normalize-space($content)">
 
-    <xsl:variable name="heading">
-      <xsl:call-template name="field-mapping">
-        <xsl:with-param name="identifier" select="$identifier"/>
+      <xsl:variable name="heading">
+        <xsl:call-template name="field-mapping">
+          <xsl:with-param name="identifier" select="$identifier"/>
+        </xsl:call-template>
+      </xsl:variable>
+  
+      <xsl:call-template name="h2">
+        <xsl:with-param name="titel" select="$heading/label"/>
       </xsl:call-template>
-    </xsl:variable>
-
-    <xsl:call-template name="h2">
-      <xsl:with-param name="titel" select="$heading/label"/>
-    </xsl:call-template>
-
-    <!-- FIXME: keep-together.within-page="always" has been lost during refactor -->
-    <xsl:for-each select="$content/*">
-      <xsl:copy-of select="."/>
-    </xsl:for-each>
-    <fo:block xsl:use-attribute-sets="box-container-bereich"/>    
-
+  
+      <!-- FIXME: keep-together.within-page="always" has been lost during refactor -->
+      <xsl:for-each select="$content/*">
+        <xsl:copy-of select="."/>
+      </xsl:for-each>    
+      <fo:block xsl:use-attribute-sets="box-container-bereich"/>    
     </xsl:if>
   </xsl:template>
 
@@ -138,8 +131,8 @@
             <xsl:copy-of select="$content"/>
           </fo:block>
         </xsl:otherwise>
-      </xsl:choose>
-    </xsl:if>
+      </xsl:choose>      
+    </xsl:if>    
   </xsl:template>
 
 
@@ -156,7 +149,7 @@
       <xsl:variable name="boxContent">
         <xsl:copy-of select="$content"/>
         <!-- Placeholder for spacing after the box -->
-        <fo:block xsl:use-attribute-sets="box-container-inner"/>
+        <fo:block xsl:use-attribute-sets="box-container-inner" line-height="0pt" span="all"/>
       </xsl:variable>
 
       <xsl:if test="$headingId">
@@ -187,7 +180,7 @@
         <xsl:with-param name="content" select="$content"/>
       </xsl:call-template>
       <!-- Placeholder for spacing after the box -->
-      <fo:block xsl:use-attribute-sets="box-container-inner"/>        
+      <fo:block xsl:use-attribute-sets="box-container-inner"  line-height="0pt" span="all"/>        
     </xsl:if>
   </xsl:template>
 
@@ -454,13 +447,18 @@
        =========================================================================== -->
 
   <xsl:template name="h1">
-    <xsl:param name="titel"/>    
+    <xsl:param name="titel"/>
+    <xsl:if test="not($axf.extensions)">
+      <fo:block>
+        <fo:marker marker-class-name="aktueller-bereich-forts"></fo:marker>
+        <fo:leader/>
+      </fo:block>
+    </xsl:if>                  
     <fo:block xsl:use-attribute-sets="h1">
       <xsl:if test="$axf.extensions">
         <xsl:attribute name="axf:suppress-if-first-on-page">true</xsl:attribute>
         <xsl:attribute name="axf:pdftag">h1</xsl:attribute>
       </xsl:if>
-      <fo:marker marker-class-name="aktueller-bereich-forts"></fo:marker>
       <fo:marker marker-class-name="aktueller-bereich-forts">
         <fo:inline font-weight="bold"><xsl:value-of select="$titel"/></fo:inline>
         <xsl:text> (Fortsetzung)</xsl:text>

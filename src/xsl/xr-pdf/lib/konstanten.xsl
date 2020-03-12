@@ -193,7 +193,7 @@
   </xsl:attribute-set>
   
   <xsl:attribute-set name="box-container-inner">
-    <xsl:attribute name="margin-bottom">2mm</xsl:attribute>
+    <xsl:attribute name="margin-bottom">2mm</xsl:attribute>    
   </xsl:attribute-set>
   
 </xsl:stylesheet>

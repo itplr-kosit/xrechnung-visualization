@@ -3,7 +3,8 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xr="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
-                xmlns:xrv="http://www.example.org/XRechnung-Viewer">
+                xmlns:xrv="http://www.example.org/XRechnung-Viewer"
+                xmlns:fo="http://www.w3.org/1999/XSL/Format">
   
   <xsl:decimal-format name="decimal" decimal-separator="," grouping-separator="." NaN="" />
   
@@ -297,7 +298,8 @@
         <xsl:call-template name="uebersichtZahlungInfo_Content"/>
         <xsl:call-template name="uebersichtZahlungKarte_Content"/>
         <xsl:call-template name="uebersichtZahlungLastschrift_Content"/>
-        <xsl:call-template name="uebersichtZahlungUeberweisung_Content"/>
+        <fo:block xsl:use-attribute-sets="separator" span="all" line-height="0pt"/>
+        <xsl:call-template name="uebersichtZahlungUeberweisung_Content"/>        
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
@@ -350,13 +352,13 @@
               <xsl:apply-templates mode="list-entry" select="xr:Payment_service_provider_identifier"/>
             </xsl:with-param>
           </xsl:call-template>
-        </xsl:for-each>
-      </xsl:with-param>
-    </xsl:call-template>
+        </xsl:for-each>        
+      </xsl:with-param>      
+    </xsl:call-template>    
   </xsl:template>
 
   <xsl:template name="uebersichtBemerkungen">
-    <xsl:call-template name="box">
+    <xsl:call-template name="spanned-box">
       <xsl:with-param name="identifier" select="'uebersichtBemerkungen'"/>
       <xsl:with-param name="content">
         <xsl:for-each select="xr:INVOICE_NOTE">
