@@ -414,21 +414,26 @@
 
   <xsl:template name="h1">
     <xsl:param name="titel"/>
+    <!-- Markers are not working with flat blocks approach that must have been used to for two-column layout in FOP -->
+    <!--
     <xsl:if test="not($axf.extensions)">
       <fo:block>
         <fo:marker marker-class-name="aktueller-bereich-forts"></fo:marker>
         <fo:leader/>
       </fo:block>
-    </xsl:if>                  
+    </xsl:if>
+    -->
     <fo:block xsl:use-attribute-sets="h1">
       <xsl:if test="$axf.extensions">
         <xsl:attribute name="axf:suppress-if-first-on-page">true</xsl:attribute>
         <xsl:attribute name="axf:pdftag">h1</xsl:attribute>
       </xsl:if>
+      <!--
       <fo:marker marker-class-name="aktueller-bereich-forts">
         <fo:inline font-weight="bold"><xsl:value-of select="$titel"/></fo:inline>
         <xsl:text> (Fortsetzung)</xsl:text>
       </fo:marker>
+      -->
       <xsl:value-of select="$titel"/>
     </fo:block>
   </xsl:template>
