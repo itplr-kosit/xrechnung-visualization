@@ -148,7 +148,7 @@
       dest="${validator.repository.dir}" />
   </target>
 
-  <target name="prepare-testsuite" depends="init">
+  <target name="prepare-testsuite" depends="init" description="Get data from xrechnung-testsuite for testing visualization">
     <copy todir="${test.build.dir}" verbose="true">
       <fileset dir="${test.src.dir}" includes="**/*.xml" />
     </copy>
@@ -200,8 +200,26 @@
 
   </target>
 
-  <target name="transform-ubl-invoice-to-xr"
-    depends="prepare-testsuite, prepare-saxon">
+
+  <!-- Check that data from xrechnung-testsuite is valid -->
+  <target name="test-testsuite"
+    depends="prepare-validationtool,prepare-validator-configuration, prepare-testsuite"
+    description="Testsuite validation with Validator XRechnung Configuration">
+    <echo>Creating validation reports ...</echo>
+    <java jar="${lib.dir}/${validator.jar}" failonerror="yes" fork="yes"
+      dir="${basedir}">
+      <arg value="-s" />
+      <arg value="${validator.repository.dir}/scenarios.xml" />
+      <arg value="-r" />
+      <arg value="${validator.repository.dir}" />
+      <arg value="-h" />
+      <arg value="-o" />
+      <arg value="${test.reports.dir}" />
+      <arg value="${test.docs.dir}" />
+    </java>
+  </target>
+
+  <target name="transform-ubl-invoice-to-xr" depends="test-testsuite,prepare-saxon">
 
     <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
       style="${src.dir}/xsl/ubl-invoice-xr.xsl"
@@ -213,7 +231,7 @@
   </target>
 
   <target name="transform-ubl-creditnote-to-xr"
-    depends="prepare-testsuite, prepare-saxon">
+    depends="test-testsuite, prepare-saxon">
     <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
       style="${src.dir}/xsl/ubl-creditnote-xr.xsl"
       includes="**/maxRechnung-creditnote.xml">
@@ -223,7 +241,7 @@
     </xslt>
   </target>
 
-  <target name="transform-cii-to-xr" depends="prepare-testsuite, prepare-saxon">
+  <target name="transform-cii-to-xr" depends="test-testsuite, prepare-saxon">
     <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
       style="${src.dir}/xsl/cii-xr.xsl" includes="**/*uncefact.xml">
       <classpath location="${lib.dir}/${saxon.jar}" />
@@ -232,10 +250,8 @@
     </xslt>
   </target>
 
-  <target name="transform-to-xr"
-    description="Transforms UBL Invoice and CreditNote to XRechnung Semantic Model"
-    depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr, transform-cii-to-xr">
-    <!-- Just container for all both transformations -->
+  <target name="transform-to-xr" depends="test-testsuite,transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr, transform-cii-to-xr" description="Calls transformation from all source formats to XR">
+    <!-- Just container for all transformations -->
   </target>
 
   <target name="transform-xr-to-html" depends="transform-to-xr">
@@ -250,23 +266,24 @@
 
   <target name="transform-xr-to-pdf" depends="transform-to-xr, prepare-fop">
 
-<xslt basedir="${test.transformed.dir}"
-      destdir="${test.transformed.pdf.dir}"
-      style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
+    <xslt basedir="${test.transformed.dir}"
+      destdir="${test.transformed.pdf.dir}" style="${src.dir}/xsl/xr-pdf.xsl"
+      includes="**/*.xml">
       <classpath location="${lib.dir}/${saxon.jar}" />
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
+      <param name="fop.extensions" type="STRING" expression="fop" />
       <mapper type="glob" from="*.xml" to="*.fo" />
     </xslt>
 
 
-        <fop format="application/pdf" 
-      outdir="${test.transformed.pdf.dir}" messagelevel="debug">
+    <fop format="application/pdf" outdir="${test.transformed.pdf.dir}"
+      messagelevel="debug">
       <fileset dir="${test.transformed.pdf.dir}">
-        <include name="01.01a-INVOICE_ubl-xr.fo" />
+        <include name="*.fo" />
       </fileset>
     </fop>
 
-  <!--  <java classname="org.apache.fop.cli.Main" failonerror="yes" fork="yes"
+    <!--  <java classname="org.apache.fop.cli.Main" failonerror="yes" fork="yes"
       dir="${basedir}"  >
       <classpath>
         <fileset dir="${fop.home}">
@@ -288,25 +305,18 @@
 
   </target>
 
-  <target name="test-testsuite"
-    depends="prepare-validationtool,prepare-validator-configuration, prepare-testsuite"
-    description="Testsuite validation with Validator XRechnung Configuration">
-    <echo>Creating validation reports ...</echo>
-    <java jar="${lib.dir}/${validator.jar}" failonerror="yes" fork="yes"
-      dir="${basedir}">
-      <arg value="-s" />
-      <arg value="${validator.repository.dir}/scenarios.xml" />
-      <arg value="-r" />
-      <arg value="${validator.repository.dir}" />
-      <arg value="-h" />
-      <arg value="-o" />
-      <arg value="${test.reports.dir}" />
-      <arg value="${test.docs.dir}" />
-    </java>
+  <target name="test-xr-transformation" depends="test-testsuite,transform-to-xr" description="All XR documents must be valid against XML Schema">
+    <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
+      lenient="false">
+      <schema namespace="${xrechnung.xsd.ns}"
+        file="${src.dir}/xsd/xrechnung-semantic-model.xsd" />
+      <fileset dir="${test.transformed.dir}" includes="*.xml" />
+    </schemavalidate>
   </target>
 
-  <target name="test-html" depends="prepare-vnu,transform-xr-to-html"
-    description="Tests HTML generation with vNU b W3C">
+  <target name="test-html"
+    depends="prepare-vnu,test-testsuite,transform-xr-to-html"
+    description="Tests HTML generation with VNU by W3C">
     <echo>Validating HTML ...</echo>
     <java jar="${lib.dir}/${vnu.jar}" failonerror="false" fork="yes"
       dir="${basedir}" logerror="true">
@@ -315,14 +325,9 @@
     </java>
   </target>
 
-  <target name="test-xr-transformation" depends="transform-to-xr">
-    <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
-      lenient="false">
-      <schema namespace="${xrechnung.xsd.ns}"
-        file="${src.dir}/xsd/xrechnung-semantic-model.xsd" />
-      <fileset dir="${test.transformed.dir}" includes="*.xml" />
-    </schemavalidate>
-  </target>
+<target name="test-pdf" depends="transform-xr-to-pdf" description="Currently, does nothing else but call transform-xr-to-pdf"></target>
+
+
   <!-- Just testing that task schemavalidate works cause it does not emit any
         message on success -->
   <target name="direct-test-transformation">
@@ -333,9 +338,11 @@
         file="${src.dir}/xsd/xrechnung-semantic-model.xsd" />
     </schemavalidate>
   </target>
+
+
   <target name="test"
-    depends="test-testsuite, test-xr-transformation, test-html"
-    description="Validates source UBL or CII XML against XRechnung,         transforms to XR Sem Model and schema validates results" />
+    depends="test-testsuite, test-xr-transformation, test-html, test-pdf"
+    description="Validates source UBL or CII XML against XRechnung, transforms to XR Sem Model and schema validates results and transforms and test HTML and PDF visualization" />
 
 
   <target name="dist" depends="test">
