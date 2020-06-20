@@ -14,7 +14,7 @@
       <xd:desc>
          <xd:p>
             <xd:b>Author:</xd:b> KoSIT Bremen (kosit@finanzen.bremen.de)</xd:p>
-         <xd:b>Fassung vom: 2019-03-18+01:00</xd:b>
+         <xd:b>Fassung vom: 2020-06-20+02:00</xd:b>
          <xd:p>Überführt eine zur EN 16931 konforme elektronische Rechnung in der konkreten Syntax UBL.2_1.CreditNote in eine Instanz gemäß des Schemas für den Namensraum urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1.</xd:p>
          <xd:p>Das Skript setzt voraus, dass das zu verarbeitende Dokument valide bzgl. des XML Schemas und der Schematron-Regeln der Quelle ist. Für nicht valide Dokumente ist das Ergebnis nicht definiert.</xd:p>
       </xd:desc>
@@ -1496,7 +1496,7 @@
       </xr:Attached_document>
    </xsl:template>
    <xsl:template mode="BG-25" match="/CreditNote:CreditNote/cac:CreditNoteLine">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:CreditNoteLine der Instanz in konkreter Syntax wird auf 14 Objekte der EN 16931 abgebildet. -->
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:CreditNoteLine der Instanz in konkreter Syntax wird auf 15 Objekte der EN 16931 abgebildet. -->
          <xsl:apply-templates mode="BT-126" select="./cbc:ID"/>
          <xsl:apply-templates mode="BT-127" select="./cbc:Note"/>
          <xsl:apply-templates mode="BT-128"
@@ -1514,6 +1514,7 @@
          <xsl:apply-templates mode="BG-29" select="./cac:Price"/>
          <xsl:apply-templates mode="BG-30" select="./cac:Item/cac:ClassifiedTaxCategory"/>
          <xsl:apply-templates mode="BG-31" select="./cac:Item"/>
+         <xr:warning>Syntaxbinding fehlt für BG-DEX-01: SUB INVOICE LINE</xr:warning>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:INVOICE_LINE>

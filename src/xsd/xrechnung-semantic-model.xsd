@@ -60,11 +60,15 @@
                         maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>BT-3</xs:appinfo>
-                  <xs:documentation>Ein Code, der den Funktionstyp der Rechnung angibt. Anmerkung: Der Rechnungstyp muss gemäß UNTDID 1001United Nations Trade Data Interchange Directory (UNTDID),  spezifiziert werden.  Folgende Codes aus der Codeliste sollen verwendet werden: 
+                  <xs:documentation>Ein Code, der den Funktionstyp der Rechnung angibt. Anmerkung: Der Rechnungstyp muss gemäß UNTDID 1001 spezifiziert werden.  Folgende Codes aus der Codeliste sollen verwendet werden: 
 326 (Partial invoice)
 380 (Commercial invoice)
 384 (Corrected invoice)
+389 (Self-billed invoice)
 381 (Credit note)
+875 (Partial construction invoice)
+876 (Partial final construction invoice)
+877 (Final construction invoice)
 </xs:documentation>
                </xs:annotation>
             </xs:element>
@@ -74,7 +78,7 @@
                         maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>BT-5</xs:appinfo>
-                  <xs:documentation>Die Währung, in der alle Rechnungsbeträge angegeben werden, ausgenommen ist der Umsatzsteuer-Gesamtbetrag, der in der Abrechnungswährung anzugeben ist. Anmerkung: Nur eine Währung ist in der Rechnung zu verwenden, der Invoice_total_VAT_amount_in_accounting_currency-BT-111; ist in der Abrechnungswährung auszuweisen. Die gültigen Währungen sind bei der ISO 4217 «Codes for the representation of currencies and funds» registriert.</xs:documentation>
+                  <xs:documentation>Die Währung, in der alle Rechnungsbeträge angegeben werden, ausgenommen ist der Umsatzsteuer-Gesamtbetrag, der in der Abrechnungswährung anzugeben ist. Anmerkung: Nur eine Währung ist in der Rechnung zu verwenden, der Invoice_total_VAT_amount_in_accounting_currency-BT-111; ist in der Abrechnungswährung auszuweisen. Die gültigen Währungen sind bei der ISO 4217 «Codes for the representation of currencies and funds» registriert. Nur die Alpha-3-Darstellung darf verwendet werden.</xs:documentation>
                </xs:annotation>
             </xs:element>
             <xs:element name="VAT_accounting_currency_code"
@@ -83,7 +87,7 @@
                         maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>BT-6</xs:appinfo>
-                  <xs:documentation>Die für die Umsatzsteuer-Abrechnungs- und -Meldezwecke verwendete Währung, die im Land des Verkäufers gültig ist oder verlangt wird. Anmerkung: Zu Verwenden in Kombination mit Invoice_total_VAT_amount_in_accounting_currency-BT-111;, wenn die Umsatzsteuerabrechnungswährung von der Rechnungswährung abweicht. Die gültigen Währungen sind bei der ISO 4217 «Codes for the representation of currencies and funds» registriert.</xs:documentation>
+                  <xs:documentation>Die für die Umsatzsteuer-Abrechnungs- und -Meldezwecke verwendete Währung, die im Land des Verkäufers gültig ist oder verlangt wird. Anmerkung: Zu Verwenden in Kombination mit Invoice_total_VAT_amount_in_accounting_currency-BT-111;, wenn die Umsatzsteuerabrechnungswährung von der Rechnungswährung abweicht. Die gültigen Währungen sind bei der ISO 4217 «Codes for the representation of currencies and funds» registriert. Nur die Alpha-3-Darstellung darf verwendet werden.</xs:documentation>
                </xs:annotation>
             </xs:element>
             <xs:element name="Value_added_tax_point_date"
@@ -105,7 +109,7 @@
 3 (Invoice document issue date time)
 35 (Delivery date/time, actual)
 432 (Paid to date)
- Dieser Code wird verwendet, wenn der Umsatzsteuersatz zum Zeitpunkt der Rechnungslegung noch nicht bekannt ist. Die Anwendung von BT-7 und 8 schließen sich gegenseitig aus.</xs:documentation>
+ Das Informationselement Value_added_tax_point_date_code-BT-8; wird verwendet, wenn das Informationselement Value_added_tax_point_date-BT-7; zum Zeitpunkt der Rechnungsstellung noch nicht bekannt ist. Die Anwendung von BT-7 und 8 schließen sich gegenseitig aus.</xs:documentation>
                </xs:annotation>
             </xs:element>
             <xs:element name="Payment_due_date"
@@ -195,7 +199,7 @@
                         maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>BT-18</xs:appinfo>
-                  <xs:documentation>Eine vom Verkäufer angegebene Kennung für ein Objekt, auf dem der in Rechnung gestellte Posten basiert bzw. die Daten basieren. (Z. B. Zählernummer, Telefonnummer, Kfz-Kennzeichen, versicherte Person)</xs:documentation>
+                  <xs:documentation>Eine vom Verkäufer angegebene Kennung für ein Objekt, auf das sich die Rechnung bezieht (z. B. Zählernummer, Telefonnummer, Kfz-Kennzeichen, versicherte Person, Abonnement-Nummer, Rufnummer).</xs:documentation>
                </xs:annotation>
             </xs:element>
             <xs:element name="Buyer_accounting_reference"
@@ -210,11 +214,8 @@
             <xs:element name="Payment_terms" type="xr:text" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>BT-20</xs:appinfo>
-                  <xs:documentation>Eine Textbeschreibung der Zahlungsbedingungen, die für den fälligen Zahlungsbetrag gelten (einschließlich Beschreibung möglicher Skonto- und Verzugsbedingungen). 
-Dieses Informationselement kann mehrere Zeilen und mehrere Angaben zu Zahlungsbedingungen beinhalten. Werden Informationen zur Gewährung von Skonto oder zur Berechnung von Verzugszinsen angegeben, sind sie wie folgt darzustellen:
-Anzugeben ist im ersten Segment «SKONTO» oder «VERZUG», im zweiten «TAGE=n», im dritten «PROZENT=n», wobei die Segmente jeweils von einer «#» umfasst sind.
-Prozentzahlen sind mit Punkt getrennt von zwei Nachkommastellen anzugeben.
-Liegt dem zu berechnenden Betrag nicht BT-115, «fälliger Betrag» zugrunde, sondern nur ein Teil des fälligen Betrags der Rechnung, ist der Grundwert zur Berechnung von Skonto oder Verzugszins als viertes Segment «BASISBETRAG=n» mit dem semantischen Datentyp Amount anzugeben. Beispiele mit drei Segmenten je Zeile: #SKONTO#TAGE=14#PROZENT=2.25# #SKONTO#TAGE=28#PROZENT=1.00# #SKONTO#TAGE=60#PROZENT=0.00# Beispiele mit vier Segmenten je Zeile (die Gewährung von Skonto bezieht sich nur auf einen Teilbetrag der Rechnung (z. B. Material) und der Grundwert zur Berechnung des Skonto muss mit angegeben werden): #SKONTO#TAGE=14#PROZENT=2.25#BASISBETRAG=357.93# #SKONTO#TAGE=28#PROZENT=1.00#BASISBETRAG=357.93# #SKONTO#TAGE=60#PROZENT=0.00#BASISBETRAG=357.93#</xs:documentation>
+                  <xs:documentation>Eine Textbeschreibung der Zahlungsbedingungen, die für den fälligen Zahlungsbetrag gelten (einschließlich Beschreibung möglicher Skonto- und Verzugsbedingungen). Dieses Informationselement kann mehrere Zeilen und mehrere Angaben zu Zahlungsbedingungen beinhalten und sowohl unstrukturierten als strukturierten Text enthalten. Der unstrukturierte Text darf dabei keine # enthalten. Werden Informationen zur Gewährung von Skonto oder zur Berechnung von Verzugszinsen angegeben, sind sie wie folgt darzustellen: Anzugeben ist im ersten Segment «SKONTO» oder «VERZUG», im zweiten «TAGE=n», im dritten «PROZENT=n».
+Prozentzahlen sind ohne Vorzeichen sowie mit Punkt getrennt von zwei Nachkommastellen anzugeben. Liegt dem zu berechnenden Betrag nicht BT-115, «fälliger Betrag» zugrunde, sondern nur ein Teil des fälligen Betrags der Rechnung, ist der Grundwert zur Berechnung von Skonto oder Verzugszins als viertes Segment «BASISBETRAG=n» gemäß dem semantischen Datentypen Amount anzugeben. Jeder Eintrag beginnt mit einer #, die Segmente sind mit einer # getrennt und eine Zeile schließt mit einer # ab. Am Ende einer vollständigen Skonto- oder Verzugsangabe muss ein XML-konformer Zeilenumbruch folgen. Beispiele mit drei Segmenten je Zeile: #SKONTO#TAGE=14#PROZENT=2.25# #SKONTO#TAGE=28#PROZENT=1.00# Beispiele mit vier Segmenten je Zeile (die Gewährung von Skonto bezieht sich nur auf einen Teilbetrag der Rechnung (z. B. Material) und der Grundwert zur Berechnung des Skonto muss mit angegeben werden): #SKONTO#TAGE=14#PROZENT=2.25#BASISBETRAG=357.93# #SKONTO#TAGE=28#PROZENT=1.00#BASISBETRAG=357.93# Alle Angaben zur Gewährung von Skonto oder zur Berechnung von Verzugszinsen müssen in Großbuchstaben gemacht werden. Zusätzliches Whitespace (Leerzeichen, Tabulatoren oder Zeilenumbrüche) ist nicht zulässig. Andere Zeichen oder Texte als in den oberen Beispielen genannt sind nicht zulässig.</xs:documentation>
                </xs:annotation>
             </xs:element>
             <xs:element name="INVOICE_NOTE"
@@ -384,7 +385,7 @@ Die Gruppe kann verwendet werden, um auf eine dem Erwerber bekannte Dokumentennu
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-24</xs:appinfo>
-               <xs:documentation>Eine Kennung der Spezifikation, die das gesamte Regelwerk zum semantischen Inhalt, zu den Kardinalitäten und den Geschäftsregeln enthält, denen die in der Rechnung enthaltenen Daten entsprechen. Anmerkung: Damit wird die Konformität zum jeweiligen Dokument erklärt. Für den Verweis auf die EU-Norm ist urn:ce.eu:en16931:2017 anzugeben. Rechnungen, die zum Standard XRechnung konform sind, geben hier urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung_1.1 an. Es ist kein Schema zu verwenden.</xs:documentation>
+               <xs:documentation>Eine Kennung der Spezifikation, die das gesamte Regelwerk zum semantischen Inhalt, zu den Kardinalitäten und den Geschäftsregeln enthält, denen die in der Rechnung enthaltenen Daten entsprechen. Anmerkung: Damit wird die Konformität zum jeweiligen Dokument erklärt. Für den Verweis auf die EU-Norm ist urn:cen.eu:en16931:2017 anzugeben. Rechnungen, die zum Standard XRechnung konform sind, geben hier urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2 an. Es ist kein Schema zu verwenden.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -566,7 +567,7 @@ von Eigenschaften.</xs:documentation>
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-40</xs:appinfo>
-               <xs:documentation>Ein Code, mit dem das Land bezeichnet wird. Anmerkung: Die Liste der zulässigen Länder ist bei der ISO 3166-1 «Codes for the representation of names of countries and their subdivisions» erhältlich.</xs:documentation>
+               <xs:documentation>Ein Code, mit dem das Land bezeichnet wird. Anmerkung: Die Liste der zulässigen Länder ist bei der ISO 3166-1 «Codes for the representation of names of countries and their subdivisions» erhältlich. Nur die Alpha-2-Darstellung darf verwendet werden.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -737,7 +738,7 @@ von Eigenschaften.</xs:documentation>
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-55</xs:appinfo>
-               <xs:documentation>Ein Code, mit dem das Land bezeichnet wird. Anmerkung: Die Liste der zulässigen Länder ist bei der ISO 3166-1 «Codes for the representation of names of countries and their subdivisions» erhältlich.</xs:documentation>
+               <xs:documentation>Ein Code, mit dem das Land bezeichnet wird. Anmerkung: Die Liste der zulässigen Länder ist bei der ISO 3166-1 «Codes for the representation of names of countries and their subdivisions» erhältlich. Nur die Alpha-2-Darstellung darf verwendet werden.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -898,7 +899,7 @@ von Eigenschaften.</xs:documentation>
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-69</xs:appinfo>
-               <xs:documentation>Ein Code, mit dem das Land bezeichnet wird. Anmerkung: Die Liste der zulässigen Länder ist bei der ISO 3166-1 «Codes for the representation of names of countries and their subdivisions» erhältlich.</xs:documentation>
+               <xs:documentation>Ein Code, mit dem das Land bezeichnet wird. Anmerkung: Die Liste der zulässigen Länder ist bei der ISO 3166-1 «Codes for the representation of names of countries and their subdivisions» erhältlich. Nur die Alpha-2-Darstellung darf verwendet werden.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -1039,7 +1040,7 @@ von Eigenschaften.</xs:documentation>
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-80</xs:appinfo>
-               <xs:documentation>Ein Code, mit dem das Land bezeichnet wird. Anmerkung: Die Liste der zulässigen Länder ist bei der ISO 3166-1 «Codes for the representation of names of countries and their subdivisions» erhältlich.</xs:documentation>
+               <xs:documentation>Ein Code, mit dem das Land bezeichnet wird. Anmerkung: Die Liste der zulässigen Länder ist bei der ISO 3166-1 «Codes for the representation of names of countries and their subdivisions» erhältlich. Nur die Alpha-2-Darstellung darf verwendet werden.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -1130,22 +1131,14 @@ von Eigenschaften.</xs:documentation>
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-86</xs:appinfo>
-               <xs:documentation>Die Kennung des Konto führenden Kreditinstitutes, ergibt sich bei Zahlungen im SEPA-Raum im Regelfall aus IBAN; für
-        Auslandszahlungen, bei denen um BIC ergänzt werden muss: 
-            
-                für alle Zahlungen an Bankverbindungen des SEPA-Raumes als SCT (Code 31 des Payment_means_type_code-BT-81;) oder SDD (Code 49 des Payment_means_type_code-BT-81;) mit Ausnahme der nachstehenden
-                    Ausnahmen, reicht die Angabe der IBAN, die in der Länge variiert; BIC nicht
-                    erforderlich. Ausnahmen: z. B. San Marino, Monaco, Schweiz, Saint Pierre und
-                    Miquelon, wobei die Länge der IBAN variiert, aber immer 1. und 2. Stelle =
-                    Ländercode nach ISO, 3. und 4. Stelle = Prüfziffer; Angabe des BIC ist neben der
-                    Angabe der IBAN zwingend erforderlich
-            
-            
-                für alle Zahlungen an Bankverbindungen außerhalb des SEPA-Raumes (Code
-                        42 des Payment_means_type_code-BT-81;) sind, abhängig vom
-                    empfangenden Institut, IBAN bzw. Kontonummer und BIC nötig
-            
-        </xs:documentation>
+               <xs:documentation>Die Kennung des Konto führenden Kreditinstitutes, ergibt sich bei Zahlungen im SEPA-Raum im Regelfall aus IBAN; für Auslandszahlungen, bei denen um BIC ergänzt werden muss: 
+        
+            für alle Zahlungen an Bankverbindungen des SEPA-Raumes als SCT (Code 58 des Payment_means_type_code-BT-81;) oder SDD (Code 59 des Payment_means_type_code-BT-81;) mit Ausnahme der nachstehenden Ausnahmen, reicht die Angabe der IBAN, die in der Länge variiert; BIC nicht erforderlich. Ausnahmen: z. B. San Marino, Monaco, Schweiz, Saint Pierre und Miquelon, wobei die Länge der IBAN variiert, aber immer 1. und 2. Stelle = Ländercode nach ISO, 3. und 4. Stelle = Prüfziffer; Angabe des BIC ist neben der Angabe der IBAN zwingend erforderlich
+        
+        
+            für alle Zahlungen an Bankverbindungen außerhalb des SEPA-Raumes (Code 30 (Credit transfer (non-SEPA)) bzw. (Code 49 Direct debit (non-SEPA)) des Payment_means_type_code-BT-81;) sind, abhängig vom empfangenden Institut, IBAN bzw. Kontonummer und BIC nötig
+        
+    </xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -1241,7 +1234,7 @@ von Eigenschaften.</xs:documentation>
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-95</xs:appinfo>
-               <xs:documentation>Ein Code für das Umsatzsteuermerkmal, das auf den Nachlass auf Dokumentenebene anzuwenden ist. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 werden verwendet: 
+               <xs:documentation>Ein Code für das Umsatzsteuermerkmal, das auf den Nachlass auf Dokumentenebene anzuwenden ist. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 müssen verwendet werden: 
 S (Standard rate)
 Z (Zero rated goods)
 E (Exempt from tax)
@@ -1319,7 +1312,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-102</xs:appinfo>
-               <xs:documentation>Ein Code für das Umsatzsteuermerkmal dieser Elementgruppe. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 werden verwendet: 
+               <xs:documentation>Ein Code für das Umsatzsteuermerkmal dieser Elementgruppe. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 müssen verwendet werden: 
 S (Standard rate)
 Z (Zero rated goods)
 E (Exempt from tax)
@@ -1480,7 +1473,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-118</xs:appinfo>
-               <xs:documentation>Codierte Bezeichnung einer Umsatzsteuerkategorie. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 werden verwendet: 
+               <xs:documentation>Codierte Bezeichnung einer Umsatzsteuerkategorie. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 müssen verwendet werden: 
 S (Standard rate)
 Z (Zero rated goods)
 E (Exempt from tax)
@@ -1517,7 +1510,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-121</xs:appinfo>
-               <xs:documentation>Ein Code für den Grund für die Ausnahme des Betrages von der Umsatzsteuerpflicht. Die Code-Liste wird von der Connecting Europe Facility gepflegt und herausgegeben.</xs:documentation>
+               <xs:documentation>Ein Code für den Grund für die Ausnahme des Betrages von der Umsatzsteuerpflicht. Die Codeliste «VAT exemption reason code list (VATEX)» wird von der Connecting Europe Facility gepflegt und herausgegeben.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -1591,7 +1584,7 @@ Anhangsdokument.</xs:documentation>
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-128</xs:appinfo>
-               <xs:documentation>Eine vom Verkäufer angegebene Kennung für einen Rechnungsgegenstand, auf den sich die Rechnungsposition bezieht (z. B. eine Abo-Nummer, eine Rufnummer, eine Zählernummer).</xs:documentation>
+               <xs:documentation>Eine vom Verkäufer angegebene Kennung für ein Objekt, auf das sich die Rechnungsposition bezieht (z. B. Zählernummer, Telefonnummer, Kfz-Kennzeichen, versicherte Person, Abonnement-Nummer, Rufnummer).</xs:documentation>
             </xs:annotation>
          </xs:element>
          <xs:element name="Invoiced_quantity"
@@ -1691,6 +1684,15 @@ Anhangsdokument.</xs:documentation>
             <xs:annotation>
                <xs:appinfo>BG-31</xs:appinfo>
                <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über die in Rechnung gestellten Waren und Dienstleistungen liefern.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="SUB_INVOICE_LINE"
+                     type="xr:SUB_INVOICE_LINEType"
+                     minOccurs="0"
+                     maxOccurs="unbounded">
+            <xs:annotation>
+               <xs:appinfo>BG-DEX-01</xs:appinfo>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über einzelne Rechnungspositionen liefern.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -1813,7 +1815,7 @@ Anhangsdokument.</xs:documentation>
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-145</xs:appinfo>
-               <xs:documentation>Der als Code angegebene Grund für die Rechnungspositionenabgaben.</xs:documentation>
+               <xs:documentation>Der als Code angegebene Grund für die Rechnungspositionenabgaben. Anmerkung: Hier sind die Codes aus der Codeliste UNTDID 7161 zu verwenden. Invoice line charge reason code und Invoice line charge reason müssen auf den gleichen Grund für die Abgaben auf die Rechnungsposition verweisen.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -1877,7 +1879,7 @@ Anhangsdokument.</xs:documentation>
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-151</xs:appinfo>
-               <xs:documentation>Der Code der für den in Rechnung gestellten Posten geltenden Umsatzsteuerkategorie. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 werden verwendet: 
+               <xs:documentation>Der Code der für den in Rechnung gestellten Posten geltenden Umsatzsteuerkategorie. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 müssen verwendet werden: 
 S (Standard rate)
 Z (Zero rated goods)
 E (Exempt from tax)
@@ -1961,7 +1963,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-159</xs:appinfo>
-               <xs:documentation>Der Ländercode, der das Land angibt, aus dem die Ware stammt oder in dem die Dienstleistung erbracht wird. Die Listen der zugelassenen Länder werden von der ISO 3166-1 Maintenance Agency «Codes for the representation of names of countries and their subdivisions» geführt. Es wird empfohlen, die Darstellung des Alpha-2-Codes anzuwenden.</xs:documentation>
+               <xs:documentation>Der Ländercode, der das Land angibt, aus dem die Ware stammt oder in dem die Dienstleistung erbracht wird. Anmerkung: Die Liste der zulässigen Länder ist bei der ISO 3166-1 «Codes for the representation of names of countries and their subdivisions» erhältlich. Nur die Alpha-2-Darstellung darf verwendet werden.</xs:documentation>
             </xs:annotation>
          </xs:element>
          <xs:element name="ITEM_ATTRIBUTES"
@@ -1994,6 +1996,334 @@ M (Tax for production, services and importation in Ceuta and Melilla)
             <xs:annotation>
                <xs:appinfo>BT-161</xs:appinfo>
                <xs:documentation>Der Wert der Eigenschaft des Postens, wie z. B. «rot».</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
+   </xs:complexType>
+   <xs:complexType name="SUB_INVOICE_LINEType">
+      <xs:sequence>
+         <xs:element name="Invoice_line_identifier"
+                     type="xr:identifier"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-126</xs:appinfo>
+               <xs:documentation>Eindeutige Bezeichnung für die betreffende Rechnungsposition.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_note"
+                     type="xr:text"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-127</xs:appinfo>
+               <xs:documentation>Ein Textvermerk, der unstrukturierte Informationen enthält, die für die Rechnungsposition maßgeblich sind.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_object_identifier"
+                     type="xr:identifier"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-128</xs:appinfo>
+               <xs:documentation>Eine vom Verkäufer angegebene Kennung für ein Objekt, auf das sich die Rechnungsposition bezieht (z. B. Zählernummer, Telefonnummer, Kfz-Kennzeichen, versicherte Person, Abonnement-Nummer, Rufnummer).</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoiced_quantity"
+                     type="xr:quantity"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-129</xs:appinfo>
+               <xs:documentation>Die Menge zu dem in der betreffenden Zeile in Rechnung gestellten Einzelposten (Waren oder Dienstleistungen).</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoiced_quantity_unit_of_measure_code"
+                     type="xr:code"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-130</xs:appinfo>
+               <xs:documentation>Die für die in Rechnung gestellte Menge geltende Maßeinheit. Die Maßeinheit muss unter Anwendung der in UN/ECE Rec No 20 Intro 2.a) beschriebenen Methode aus den Listen UN/ECE Recommendation No. 20 «Codes for Units of Measure Used in International Trade»UN/ECE Recommendation N° 20 Codes for Units of Measure Used in International Trade (gesichtet am 2015-07-26),  und UN/ECE Recommendation No 21 «Codes for Passengers, Types of Cargo, Packages and Packaging Materials (with Complementary Codes for Package Names)»UN/ECE Recommendation N°. 21 Codes for Passengers, Types of Cargo, Packages and Packaging Materials (with Complementary Codes for Package Names),  ausgewählt werden. In den meisten Fällen ist es nicht erforderlich, dass Verkäufer und Erwerber diese Listen vollständig in ihren Anwendungen implementieren. Verkäufer müssen nur die erforderlichen Einheiten für ihre Güter und Dienstleistungen unterstützen. Erwerber überprüfen lediglich, ob die in der Rechnung verwendeten Einheiten mit denen in anderen Dokumenten zum Erwerb (wie z. B. Vertrag, Katalog, Bestellung oder Lieferschein) identisch sind. </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_net_amount"
+                     type="xr:amount"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-131</xs:appinfo>
+               <xs:documentation>Der Gesamtbetrag der Rechnungsposition. Dies ist der Betrag ohne Umsatzsteuer, aber einschließlich aller für die Rechnungsposition geltenden Nachlässe und Abgaben sowie sonstiger anfallender Steuern.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Referenced_purchase_order_line_reference"
+                     type="xr:document_reference"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-132</xs:appinfo>
+               <xs:documentation>Eine vom Erwerber ausgegebene Kennung für eine referenzierte Position einer Bestellung/eines Auftrags. Anmerkung: Auf den Auftrag wird auf Rechnungsebene Bezug genommen.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_Buyer_accounting_reference"
+                     type="xr:text"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-133</xs:appinfo>
+               <xs:documentation>Ein Textwert, der angibt, an welcher Stelle die betreffenden Daten in den Finanzkonten des Erwerbers zu buchen sind. Anmerkung: Wenn die Angabe genutzt werden soll, muss der Erwerber dem Verkäufer diese Referenz vor der Rechnungserstellung mitteilen.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="SUB_INVOICE_LINE_PERIOD"
+                     type="xr:SUB_INVOICE_LINE_PERIODType"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BG-DEX-02</xs:appinfo>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den für die Rechnungsposition maßgeblichen Rechnungszeitraum liefern.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="SUB_INVOICE_LINE_ALLOWANCES"
+                     type="xr:SUB_INVOICE_LINE_ALLOWANCESType"
+                     minOccurs="0"
+                     maxOccurs="unbounded">
+            <xs:annotation>
+               <xs:appinfo>BG-DEX-03</xs:appinfo>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über die für die betreffende Rechnungsposition geltenden Nachlässe liefern.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="SUB_INVOICE_LINE_CHARGES"
+                     type="xr:SUB_INVOICE_LINE_CHARGESType"
+                     minOccurs="0"
+                     maxOccurs="unbounded">
+            <xs:annotation>
+               <xs:appinfo>BG-DEX-04</xs:appinfo>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über Kosten, Zuschläge, und Steuern ndash; ausgenommen die Umsatzsteuer ndash;  enthalten, die für die jeweilige Rechnungsposition gelten. Anmerkung: Es wird davon ausgegangen, dass alle Kosten und Zuschläge dem gleichen Umsatzsteuersatz unterliegen, wie die Rechnungsposition.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="SUB_INVOICE_PRICE_DETAILS"
+                     type="xr:SUB_INVOICE_PRICE_DETAILSType"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BG-DEX-05</xs:appinfo>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den Preis für die in der betreffenden Rechnungsposition in Rechnung gestellten Waren und Dienstleistungen liefern.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="SUB_INVOICE_LINE_VAT_INFORMATION"
+                     type="xr:SUB_INVOICE_LINE_VAT_INFORMATIONType"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BG-DEX-06</xs:appinfo>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über die Umsatzsteuer liefern, die für die in der betreffenden Zeile in Rechnung gestellten Waren und Dienstleistungen gilt.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
+   </xs:complexType>
+   <xs:complexType name="SUB_INVOICE_LINE_PERIODType">
+      <xs:sequence>
+         <xs:element name="Invoice_line_period_start_date"
+                     type="xr:date"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-134</xs:appinfo>
+               <xs:documentation>Das Datum, an dem der Rechnungszeitraum der betreffenden Rechnungsposition beginnt.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_period_end_date"
+                     type="xr:date"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-135</xs:appinfo>
+               <xs:documentation>Das Datum, an dem der Rechnungszeitraum der betreffenden Rechnungsposition endet.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
+   </xs:complexType>
+   <xs:complexType name="SUB_INVOICE_LINE_ALLOWANCESType">
+      <xs:sequence>
+         <xs:element name="Invoice_line_allowance_amount"
+                     type="xr:amount"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-136</xs:appinfo>
+               <xs:documentation>Der Nachlassbetrag ohne Umsatzsteuer.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_allowance_base_amount"
+                     type="xr:amount"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-137</xs:appinfo>
+               <xs:documentation>Der Grundbetrag, der in Verbindung mit dem prozentualen Rechnungspositionennachlass zur Berechnung des Betrags des Rechnungspositionennachlasses verwendet werden kann.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_allowance_percentage"
+                     type="xr:percentage"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-138</xs:appinfo>
+               <xs:documentation>Der Prozentsatz, der in Verbindung mit dem Grundbetrag des Rechnungspositionennachlasses zur Berechnung des Betrags des Rechnungspositionennachlasses verwendet werden kann.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_allowance_reason"
+                     type="xr:text"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-139</xs:appinfo>
+               <xs:documentation>Der in Textform angegebene Grund für den Rechnungspositionennachlass.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_allowance_reason_code"
+                     type="xr:code"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-140</xs:appinfo>
+               <xs:documentation>Der als Code angegebene Grund für den Rechnungspositionennachlass. Anmerkung: Hier sind die Codes aus der Codeliste UNTDID 5189 zu verwenden. Invoice line level allowance reason code und Invoice line level allowance reason müssen den gleichen Nachlassgrund angeben.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
+   </xs:complexType>
+   <xs:complexType name="SUB_INVOICE_LINE_CHARGESType">
+      <xs:sequence>
+         <xs:element name="Invoice_line_charge_amount"
+                     type="xr:amount"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-141</xs:appinfo>
+               <xs:documentation>Der Betrag einer Abgabe ohne die Umsatzsteuer.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_charge_base_amount"
+                     type="xr:amount"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-142</xs:appinfo>
+               <xs:documentation>Der Grundbetrag, der in Verbindung mit den prozentualen Rechnungspositionenabgaben zur Berechnung des Betrags der Rechnungspositionenabgaben verwendet werden kann.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_charge_percentage"
+                     type="xr:percentage"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-143</xs:appinfo>
+               <xs:documentation>Der Prozentsatz, der in Verbindung mit dem Grundbetrag der Rechnungspositionenabgaben zur Berechnung des Betrags der Rechnungspositionenabgaben verwendet werden kann.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_charge_reason"
+                     type="xr:text"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-144</xs:appinfo>
+               <xs:documentation>Der in Textform angegebene Grund für die Rechnungspositionenabgaben.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_charge_reason_code"
+                     type="xr:code"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-145</xs:appinfo>
+               <xs:documentation>Der als Code angegebene Grund für die Rechnungspositionenabgaben. Anmerkung: Hier sind die Codes aus der Codeliste UNTDID 7161 zu verwenden. Invoice line charge reason code und Invoice line charge reason müssen auf den gleichen Grund für die Abgaben auf die Rechnungsposition verweisen.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
+   </xs:complexType>
+   <xs:complexType name="SUB_INVOICE_PRICE_DETAILSType">
+      <xs:sequence>
+         <xs:element name="Item_net_price"
+                     type="xr:unit_price_amount"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-146</xs:appinfo>
+               <xs:documentation>Der Preis eines Postens, ohne Umsatzsteuer, nach Abzug des für diese Rechnungsposition geltenden Rabatts. Anmerkung: Item net price muss gleich Item gross price abzüglich Item price discount sein.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Item_price_discount"
+                     type="xr:unit_price_amount"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-147</xs:appinfo>
+               <xs:documentation>Der gesamte zur Berechnung des Netto-Postenpreises vom Brutto-Postenpreis subtrahierte Rabatt. Anmerkung: Nur anzugeben, wenn der Nachlass pro Verpackungseinheit gegeben wird und nicht in den Item gross price inkludiert ist.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Item_gross_price"
+                     type="xr:unit_price_amount"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-148</xs:appinfo>
+               <xs:documentation>Der Postenpreis ohne Umsatzsteuer vor Abzug des Postenpreisrabatts.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Item_price_base_quantity"
+                     type="xr:quantity"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-149</xs:appinfo>
+               <xs:documentation>Die Anzahl von Einheiten, für die der Postenpreis gilt.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Item_price_base_quantity_unit_of_measure"
+                     type="xr:code"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-150</xs:appinfo>
+               <xs:documentation>Der Code der zu Grunde gelegten Maßeinheit. Die Maßeinheit der Item price base quantity unit of measure sollte gleich der Maßeinheit der in Rechnung gestellten Menge (BT-130) sein.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
+   </xs:complexType>
+   <xs:complexType name="SUB_INVOICE_LINE_VAT_INFORMATIONType">
+      <xs:sequence>
+         <xs:element name="Invoiced_item_VAT_category_code"
+                     type="xr:code"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-151</xs:appinfo>
+               <xs:documentation>Der Code der für den in Rechnung gestellten Posten geltenden Umsatzsteuerkategorie. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 müssen verwendet werden: 
+S (Standard rate)
+Z (Zero rated goods)
+E (Exempt from tax)
+AE (VAT Reverse Charge)
+K (VAT exempt for EEA intra-community supply of goods and services)
+G (Free export item, tax not charged)
+O (Services outside scope of tax)
+L (Canary Islands general indirect tax)
+M (Tax for production, services and importation in Ceuta and Melilla)
+</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoiced_item_VAT_rate"
+                     type="xr:percentage"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-152</xs:appinfo>
+               <xs:documentation>Der für den in Rechnung gestellten Posten geltende und als Prozentsatz angegebene Umsatzsteuersatz. Anmerkung: Ein Umsatzsteuersatz von 0 Prozent wird für Kalkulationszwecke auch dann angewandt, wenn der Posten außerhalb der Reichweite der Umsatzsteuer ist.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>

@@ -797,6 +797,202 @@
       </div>
   </xsl:template>
 
+  <xsl:template match="xr:SUB_INVOICE_LINE">
+        <div class="boxtabelle boxabstandtop boxtabelleZweispaltig first">
+          <div class="boxzeile">
+            <div class="box subBox">
+              <div title="BT-126" class="boxtitel">Position <xsl:value-of select="xr:Invoice_line_identifier"/></div>
+              <div class="boxtabelle boxinhalt borderSpacing">
+                  <div class="boxzeile">
+                    <div class="boxdaten legende">Freitext:</div>
+                    <div title="BT-127" class="boxdaten wert"><xsl:value-of select="xr:Invoice_line_note"/></div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende">Objektkennung:</div>
+                    <div title="BT-128" class="boxdaten wert"><xsl:value-of select="xr:Invoice_line_object_identifier"/></div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende">Schema der Objektkennung:</div>
+                    <div title="BT-128" class="boxdaten wert"><xsl:value-of select="xr:Invoice_line_object_identifier/@scheme_identifier"/></div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende">Nummer der Auftragsposition:</div>
+                    <div title="BT-132" class="boxdaten wert"><xsl:value-of select="xr:Referenced_purchase_order_line_reference"/></div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende">Kontierungshinweis:</div>
+                    <div title="BT-133" class="boxdaten wert"><xsl:value-of select="xr:Invoice_line_Buyer_accounting_reference"/></div>
+                  </div>
+                  <h4 title="BG-26">Abrechnungszeitraum:</h4>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende">von:</div>
+                    <div title="BT-134" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,'[D].[M].[Y]')"/></div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende">bis:</div>
+                    <div title="BT-135" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,'[D].[M].[Y]')"/></div>
+                  </div>
+              </div>
+            </div>
+            <div class="box subBox">
+              <div title="BG-29" class="boxtitel boxtitelSub">Preiseinzelheiten</div>
+              <div class="boxtabelle boxinhalt">
+                <div class="rechnungsZeile">
+                  <div class="boxdaten detailSp1 color2">Menge</div>
+                  <div title="BT-129" class="boxdaten detailSp2"><xsl:value-of select="xr:Invoiced_quantity"/></div>
+                </div>
+                <div class="rechnungsZeile">
+                  <div class="boxdaten detailSp1 color2">Einheit</div>
+                  <div title="BT-130" class="boxdaten detailSp2"><xsl:value-of select="xr:Invoiced_quantity_unit_of_measure_code"/></div>
+                </div>
+                <div class="rechnungsZeile">
+                  <div class="boxdaten detailSp1 line1Bottom color2">Preis pro Einheit (netto)</div>
+                  <div title="BT-146" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_net_price,'###.###,00','decimal')"/></div>
+                </div>
+                <div class="rechnungsZeile">
+                  <div class="boxdaten detailSp1 color2">Gesamtpreis (netto)</div>
+                  <div title="BT-131" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_net_amount,'###.###,00','decimal')"/></div>
+                </div>
+              </div>
+              <div class="boxtabelle boxinhalt noPaddingTop borderSpacing">
+                <div class="boxzeile">
+                  <div class="boxdaten legende ">Rabatt (netto):</div>
+                  <div title="BT-147" class="boxdaten wert"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount,'###.###,00','decimal')"/></div>
+                </div>
+                <div class="boxzeile">
+                  <div class="boxdaten legende ">Listenpreis (netto):</div>
+                  <div title="BT-148" class="boxdaten wert"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price,'###.###,00','decimal')"/></div>
+                </div>
+                <div class="boxzeile">
+                  <div class="boxdaten legende ">Anzahl der Einheit:</div>
+                  <div title="BT-149" class="boxdaten wert"><xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_base_quantity"/></div>
+                </div>
+                <div class="boxzeile">
+                  <div class="boxdaten legende ">Code der Maßeinheit:</div>
+                  <div title="BT-150" class="boxdaten wert"><xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_base_quantity_unit_of_measure"/></div>
+                </div>
+                <div class="boxzeile">
+                  <div class="boxdaten legende ">Umsatzsteuer:</div>
+                  <div title="BT-151" class="boxdaten wert"><xsl:value-of select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_category_code"/></div>
+                </div>
+                <div class="boxzeile">
+                  <div class="boxdaten legende ">Umsatzsteuersatz in Prozent:</div>
+                  <div title="BT-152" class="boxdaten wert"><xsl:value-of select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate"/>%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="boxtabelle">
+          <div class="boxzeile">
+            <div class="box subBox">
+              <div  title="BG-27" class="boxtitel boxtitelSub">Nachlässe auf Ebene der Rechnungsposition</div>
+              <div class="boxtabelle boxinhalt ">
+                <div class="rechnungsZeile">
+                  <div class="boxdaten detailSp1 color2">Grundbetrag (netto)</div>
+                  <div title="BT-137" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:INVOICE_LINE_ALLOWANCES/xr:Invoice_line_allowance_base_amount,'###.###,00','decimal')"/></div>
+                </div>
+                <div class="rechnungsZeile">
+                  <div class="boxdaten detailSp1 line1Bottom color2">Prozentsatz</div>
+                  <div title="BT-138" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="xr:INVOICE_LINE_ALLOWANCES/xr:Invoice_line_allowance_percentage"/>%</div>
+                </div>
+                <div class="rechnungsZeile">
+                  <div class="boxdaten detailSp1 color2">Nachlass (netto)</div>
+                  <div title="BT-136" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:INVOICE_LINE_ALLOWANCES/xr:Invoice_line_allowance_amount,'###.###,00','decimal')"/></div>
+                </div>
+              </div>
+              <div class="grundDetail">
+                <div class="color2">Grund des Nachlasses: <span title="BT-139" class="bold"><xsl:value-of select="xr:INVOICE_LINE_ALLOWANCES/xr:Invoice_line_allowance_reason"/></span></div>
+                <div class="color2">Code für den Nachlassgrund: <span title="BT-140" class="bold"><xsl:value-of select="xr:INVOICE_LINE_ALLOWANCES/xr:Invoice_line_allowance_reason_code"/></span></div>
+              </div>
+            </div>
+            <div class="box subBox">
+              <div title="BG-28" class="boxtitel boxtitelSub">Zuschläge auf Ebene der Rechnungsposition</div>
+              <div class="boxtabelle boxinhalt ">
+                <div class="rechnungsZeile">
+                  <div class="boxdaten detailSp1 color2">Grundbetrag (netto)</div>
+                  <div title="BT-142" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:INVOICE_LINE_CHARGES/xr:Invoice_line_charge_base_amount,'###.###,00','decimal')"/></div>
+                </div>
+                <div class="rechnungsZeile">
+                  <div class="boxdaten detailSp1 line1Bottom color2">Prozentsatz</div>
+                  <div title="BT-143" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="xr:INVOICE_LINE_CHARGES/xr:Invoice_line_charge_percentage"/>%</div>
+                </div>
+                <div class="rechnungsZeile">
+                  <div class="boxdaten detailSp1 color2">Zuschlag (netto)</div>
+                  <div title="BT-141" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:INVOICE_LINE_CHARGES/xr:Invoice_line_charge_amount,'###.###,00','decimal')"/></div>
+                </div>
+              </div>
+              <div class="grundDetail">
+                <div class="color2">Grund des Zuschlags: <span title="BT-144" class="bold"><xsl:value-of select="xr:INVOICE_LINE_CHARGES/xr:Invoice_line_charge_reason"/></span></div>
+                <div class="color2">Code für den Zuschlagsgrund: <span title="BT-145" class="bold"><xsl:value-of select="xr:INVOICE_LINE_CHARGES/xr:Invoice_line_charge_reason_code"/></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="boxtabelle">
+          <div class="boxzeile">
+            <div class="box subBox">
+              <div  title="BG-27" class="boxtitel boxtitelSub">Artikelinformationen</div>
+              <div class="boxtabelle boxinhalt ">
+                <div class="boxzeile">
+                 <div class="boxcell boxZweispaltig">
+                  <div class="boxtabelle borderSpacing">
+                    <div class="boxzeile">
+                      <div class="boxdaten legende ">Bezeichnung:</div>
+                      <div title="BT-153" class="boxdaten wert bold"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_name"/></div>
+                    </div>
+                    <div class="boxzeile">
+                      <div class="boxdaten legende ">Beschreibung:</div>
+                      <div title="BT-154" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_description"/></div>
+                    </div>
+                    <div class="boxzeile">
+                      <div class="boxdaten legende ">Artikelnummer:</div>
+                      <div title="BT-155" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_Sellers_identifier"/></div>
+                    </div>
+                    <div class="boxzeile">
+                      <div class="boxdaten legende ">Artikelkennung des Käufers:</div>
+                      <div title="BT-156" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_Buyers_identifier"/></div>
+                    </div>
+                    <h4 title="BG-32">Eigenschaften des Artikels:</h4>
+        <xsl:apply-templates select="xr:ITEM_INFORMATION/xr:ITEM_ATTRIBUTES" />
+                  </div>
+                </div>
+                <div class="boxabstand"></div>
+                <div class="boxcell boxZweispaltig">
+                 <div class="boxtabelle borderSpacing">
+                  <div class="boxzeile">
+                    <div class="boxdaten legende ">Artikelkennung:</div>
+                    <div title="BT-157" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_standard_identifier"/></div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende ">Schema der Artikelkennung:</div>
+                    <div title="BT-157" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_standard_identifier/@scheme_identifier"/></div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende ">Code der Artikelklassifizierung:</div>
+                    <div title="BT-158" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_classification_identifier"/></div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende ">Kennung zur Bildung des Schemas:</div>
+                    <div title="BT-158" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_identifier"/></div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende ">Version zur Bildung des Schemas:</div>
+                    <div title="BT-158" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_version_identifier"/></div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende ">Code des Herkunftslandes:</div>
+                    <div title="BT-159" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_country_of_origin"/></div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </xsl:template>
+
 
   <xsl:template name="eigenschaft" match="xr:ITEM_ATTRIBUTES">
     <div class="boxzeile">
