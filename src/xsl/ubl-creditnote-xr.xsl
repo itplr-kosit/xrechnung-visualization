@@ -112,7 +112,7 @@
          <xsl:apply-templates mode="BG-22" select="./cac:LegalMonetaryTotal"/>
          <xsl:apply-templates mode="BG-23" select="./cac:TaxTotal/cac:TaxSubtotal"/>
          <xsl:apply-templates mode="BG-24" select="./cac:AdditionalDocumentReference"/>
-         <xsl:apply-templates mode="BG-25" select="./cac:CreditNoteLine"/>
+         <xsl:apply-templates mode="BG-25" select="cac:CreditNoteLine"/>
       </xr:invoice>
    </xsl:template>
    <xsl:template mode="BT-1" match="/CreditNote:CreditNote/cbc:ID">
@@ -496,9 +496,9 @@
                               select="./cac:Party/cac:PartyLegalEntity/cbc:RegistrationName"/>
          <xsl:apply-templates mode="BT-45" select="./cac:Party/cac:PartyName/cbc:Name"/>
          <xsl:apply-templates mode="BT-46" select="./cac:Party/cac:PartyIdentification/cbc:ID"/>
-         <xsl:apply-templates mode="BT-47" select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID"/>
          <xsl:apply-templates mode="BT-47"
                               select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID"/>
+         <xsl:apply-templates mode="BT-47" select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID"/>
          <xsl:apply-templates mode="BT-48"
                               select="./cac:Party/cac:PartyTaxScheme/cbc:CompanyID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']"/>
          <xsl:apply-templates mode="BT-49" select="./cac:Party/cbc:EndpointID"/>
@@ -538,7 +538,7 @@
       </xr:Buyer_identifier>
    </xsl:template>
    <xsl:template mode="BT-47"
-                 match="/CreditNote:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID">
+                 match="/CreditNote:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID">
       <xr:Buyer_legal_registration_identifier>
          <xsl:attribute name="xr:id" select="'BT-47'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -546,7 +546,7 @@
       </xr:Buyer_legal_registration_identifier>
    </xsl:template>
    <xsl:template mode="BT-47"
-                 match="/CreditNote:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID">
+                 match="/CreditNote:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID">
       <xr:Buyer_legal_registration_identifier>
          <xsl:attribute name="xr:id" select="'BT-47'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1069,9 +1069,9 @@
       <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:PaymentMeans/cac:PaymentMandate der Instanz in konkreter Syntax wird auf 3 Objekte der EN 16931 abgebildet. -->
          <xsl:apply-templates mode="BT-89" select="./cbc:ID"/>
          <xsl:apply-templates mode="BT-90"
-                              select="/CreditNote:CreditNote/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID = 'SEPA']"/>
-         <xsl:apply-templates mode="BT-90"
                               select="/CreditNote:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID = 'SEPA']"/>
+         <xsl:apply-templates mode="BT-90"
+                              select="/CreditNote:CreditNote/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID = 'SEPA']"/>
          <xsl:apply-templates mode="BT-91" select="./cac:PayerFinancialAccount/cbc:ID"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
@@ -1091,7 +1091,7 @@
       </xr:Mandate_reference_identifier>
    </xsl:template>
    <xsl:template mode="BT-90"
-                 match="/CreditNote:CreditNote/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID = 'SEPA']">
+                 match="/CreditNote:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID = 'SEPA']">
       <xr:Bank_assigned_creditor_identifier>
          <xsl:attribute name="xr:id" select="'BT-90'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1099,7 +1099,7 @@
       </xr:Bank_assigned_creditor_identifier>
    </xsl:template>
    <xsl:template mode="BT-90"
-                 match="/CreditNote:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID = 'SEPA']">
+                 match="/CreditNote:CreditNote/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID = 'SEPA']">
       <xr:Bank_assigned_creditor_identifier>
          <xsl:attribute name="xr:id" select="'BT-90'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1495,17 +1495,17 @@
          <xsl:call-template name="binary_object"/>
       </xr:Attached_document>
    </xsl:template>
-   <xsl:template mode="BG-25" match="/CreditNote:CreditNote/cac:CreditNoteLine">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:CreditNoteLine der Instanz in konkreter Syntax wird auf 15 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-126" select="./cbc:ID"/>
-         <xsl:apply-templates mode="BT-127" select="./cbc:Note"/>
+   <xsl:template mode="BG-25" match="cac:CreditNoteLine">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:CreditNoteLine der Instanz in konkreter Syntax wird auf 15 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-126" select="cbc:ID"/>
+         <xsl:apply-templates mode="BT-127" select="cbc:Note"/>
          <xsl:apply-templates mode="BT-128"
-                              select="./cac:DocumentReference/cbc:ID[following-sibling::cbc:DocumentTypeCode = '130']"/>
-         <xsl:apply-templates mode="BT-129" select="./cbc:CreditedQuantity"/>
-         <xsl:apply-templates mode="BT-130" select="./cbc:CreditedQuantity/@unitCode"/>
-         <xsl:apply-templates mode="BT-131" select="./cbc:LineExtensionAmount"/>
-         <xsl:apply-templates mode="BT-132" select="./cac:OrderLineReference/cbc:LineID"/>
-         <xsl:apply-templates mode="BT-133" select="./cbc:AccountingCost"/>
+                              select="cac:DocumentReference/cbc:ID[following-sibling::cbc:DocumentTypeCode = '130']"/>
+         <xsl:apply-templates mode="BT-129" select="cbc:CreditedQuantity"/>
+         <xsl:apply-templates mode="BT-130" select="cbc:CreditedQuantity/@unitCode"/>
+         <xsl:apply-templates mode="BT-131" select="cbc:LineExtensionAmount"/>
+         <xsl:apply-templates mode="BT-132" select="cac:OrderLineReference/cbc:LineID"/>
+         <xsl:apply-templates mode="BT-133" select="cbc:AccountingCost"/>
          <xsl:apply-templates mode="BG-26" select="./cac:InvoicePeriod"/>
          <xsl:apply-templates mode="BG-27"
                               select="./cac:AllowanceCharge[cbc:ChargeIndicator = 'false']"/>
@@ -1514,7 +1514,7 @@
          <xsl:apply-templates mode="BG-29" select="./cac:Price"/>
          <xsl:apply-templates mode="BG-30" select="./cac:Item/cac:ClassifiedTaxCategory"/>
          <xsl:apply-templates mode="BG-31" select="./cac:Item"/>
-         <xr:warning>Syntaxbinding fehlt für BG-DEX-01: SUB INVOICE LINE</xr:warning>
+         <xsl:apply-templates mode="BG-DEX-01" select="cac:SubCreditNoteLine"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:INVOICE_LINE>
@@ -1524,15 +1524,14 @@
          </xr:INVOICE_LINE>
       </xsl:if>
    </xsl:template>
-   <xsl:template mode="BT-126" match="/CreditNote:CreditNote/cac:CreditNoteLine/cbc:ID">
+   <xsl:template mode="BT-126" match="cbc:ID">
       <xr:Invoice_line_identifier>
          <xsl:attribute name="xr:id" select="'BT-126'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="identifier"/>
       </xr:Invoice_line_identifier>
    </xsl:template>
-   <xsl:template mode="BT-127"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cbc:Note">
+   <xsl:template mode="BT-127" match="cbc:Note">
       <xr:Invoice_line_note>
          <xsl:attribute name="xr:id" select="'BT-127'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1540,58 +1539,52 @@
       </xr:Invoice_line_note>
    </xsl:template>
    <xsl:template mode="BT-128"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:DocumentReference/cbc:ID[following-sibling::cbc:DocumentTypeCode = '130']">
+                 match="cac:DocumentReference/cbc:ID[following-sibling::cbc:DocumentTypeCode = '130']">
       <xr:Invoice_line_object_identifier>
          <xsl:attribute name="xr:id" select="'BT-128'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="identifier-with-scheme"/>
       </xr:Invoice_line_object_identifier>
    </xsl:template>
-   <xsl:template mode="BT-129"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity">
+   <xsl:template mode="BT-129" match="cbc:CreditedQuantity">
       <xr:Invoiced_quantity>
          <xsl:attribute name="xr:id" select="'BT-129'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="quantity"/>
       </xr:Invoiced_quantity>
    </xsl:template>
-   <xsl:template mode="BT-130"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity/@unitCode">
+   <xsl:template mode="BT-130" match="cbc:CreditedQuantity/@unitCode">
       <xr:Invoiced_quantity_unit_of_measure_code>
          <xsl:attribute name="xr:id" select="'BT-130'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="code"/>
       </xr:Invoiced_quantity_unit_of_measure_code>
    </xsl:template>
-   <xsl:template mode="BT-131"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cbc:LineExtensionAmount">
+   <xsl:template mode="BT-131" match="cbc:LineExtensionAmount">
       <xr:Invoice_line_net_amount>
          <xsl:attribute name="xr:id" select="'BT-131'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="amount"/>
       </xr:Invoice_line_net_amount>
    </xsl:template>
-   <xsl:template mode="BT-132"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:OrderLineReference/cbc:LineID">
+   <xsl:template mode="BT-132" match="cac:OrderLineReference/cbc:LineID">
       <xr:Referenced_purchase_order_line_reference>
          <xsl:attribute name="xr:id" select="'BT-132'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="document_reference"/>
       </xr:Referenced_purchase_order_line_reference>
    </xsl:template>
-   <xsl:template mode="BT-133"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cbc:AccountingCost">
+   <xsl:template mode="BT-133" match="cbc:AccountingCost">
       <xr:Invoice_line_Buyer_accounting_reference>
          <xsl:attribute name="xr:id" select="'BT-133'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="text"/>
       </xr:Invoice_line_Buyer_accounting_reference>
    </xsl:template>
-   <xsl:template mode="BG-26"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:InvoicePeriod">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:CreditNoteLine/cac:InvoicePeriod der Instanz in konkreter Syntax wird auf 2 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-134" select="./cbc:StartDate"/>
-         <xsl:apply-templates mode="BT-135" select="./cbc:EndDate"/>
+   <xsl:template mode="BG-26" match="cac:CreditNoteLine/cac:InvoicePeriod">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:CreditNoteLine/cac:InvoicePeriod der Instanz in konkreter Syntax wird auf 2 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-134" select="cac:InvoicePeriod/cbc:StartDate"/>
+         <xsl:apply-templates mode="BT-135" select="cac:InvoicePeriod/cbc:EndDate"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:INVOICE_LINE_PERIOD>
@@ -1601,16 +1594,14 @@
          </xr:INVOICE_LINE_PERIOD>
       </xsl:if>
    </xsl:template>
-   <xsl:template mode="BT-134"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:InvoicePeriod/cbc:StartDate">
+   <xsl:template mode="BT-134" match="cac:InvoicePeriod/cbc:StartDate">
       <xr:Invoice_line_period_start_date>
          <xsl:attribute name="xr:id" select="'BT-134'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="date"/>
       </xr:Invoice_line_period_start_date>
    </xsl:template>
-   <xsl:template mode="BT-135"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:InvoicePeriod/cbc:EndDate">
+   <xsl:template mode="BT-135" match="cac:InvoicePeriod/cbc:EndDate">
       <xr:Invoice_line_period_end_date>
          <xsl:attribute name="xr:id" select="'BT-135'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1618,18 +1609,18 @@
       </xr:Invoice_line_period_end_date>
    </xsl:template>
    <xsl:template mode="BG-27"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'false']">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'false'] der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
+                 match="cac:CreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'false']">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:CreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'false'] der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
          <xsl:apply-templates mode="BT-136"
-                              select="./cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+                              select="cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
          <xsl:apply-templates mode="BT-137"
-                              select="./cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+                              select="cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
          <xsl:apply-templates mode="BT-138"
-                              select="./cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+                              select="cac:AllowanceCharge/cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
          <xsl:apply-templates mode="BT-139"
-                              select="./cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+                              select="cac:AllowanceCharge/cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
          <xsl:apply-templates mode="BT-140"
-                              select="./cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+                              select="cac:AllowanceCharge/cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:INVOICE_LINE_ALLOWANCES>
@@ -1640,7 +1631,7 @@
       </xsl:if>
    </xsl:template>
    <xsl:template mode="BT-136"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']">
+                 match="cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']">
       <xr:Invoice_line_allowance_amount>
          <xsl:attribute name="xr:id" select="'BT-136'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1648,7 +1639,7 @@
       </xr:Invoice_line_allowance_amount>
    </xsl:template>
    <xsl:template mode="BT-137"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']">
+                 match="cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']">
       <xr:Invoice_line_allowance_base_amount>
          <xsl:attribute name="xr:id" select="'BT-137'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1656,7 +1647,7 @@
       </xr:Invoice_line_allowance_base_amount>
    </xsl:template>
    <xsl:template mode="BT-138"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'false']">
+                 match="cac:AllowanceCharge/cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'false']">
       <xr:Invoice_line_allowance_percentage>
          <xsl:attribute name="xr:id" select="'BT-138'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1664,7 +1655,7 @@
       </xr:Invoice_line_allowance_percentage>
    </xsl:template>
    <xsl:template mode="BT-139"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge/cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'false']">
+                 match="cac:AllowanceCharge/cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'false']">
       <xr:Invoice_line_allowance_reason>
          <xsl:attribute name="xr:id" select="'BT-139'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1672,7 +1663,7 @@
       </xr:Invoice_line_allowance_reason>
    </xsl:template>
    <xsl:template mode="BT-140"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'false']">
+                 match="cac:AllowanceCharge/cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'false']">
       <xr:Invoice_line_allowance_reason_code>
          <xsl:attribute name="xr:id" select="'BT-140'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1680,18 +1671,18 @@
       </xr:Invoice_line_allowance_reason_code>
    </xsl:template>
    <xsl:template mode="BG-28"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'true']">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'true'] der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
+                 match="cac:CreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'true']">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:CreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'true'] der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
          <xsl:apply-templates mode="BT-141"
-                              select="./cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
+                              select="cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
          <xsl:apply-templates mode="BT-142"
-                              select="./cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
+                              select="cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
          <xsl:apply-templates mode="BT-143"
-                              select="./cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
+                              select="cac:AllowanceCharge/cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
          <xsl:apply-templates mode="BT-144"
-                              select="./cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
+                              select="cac:AllowanceCharge/cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
          <xsl:apply-templates mode="BT-145"
-                              select="./cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
+                              select="cac:AllowanceCharge/cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:INVOICE_LINE_CHARGES>
@@ -1702,7 +1693,7 @@
       </xsl:if>
    </xsl:template>
    <xsl:template mode="BT-141"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'true']">
+                 match="cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'true']">
       <xr:Invoice_line_charge_amount>
          <xsl:attribute name="xr:id" select="'BT-141'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1710,7 +1701,7 @@
       </xr:Invoice_line_charge_amount>
    </xsl:template>
    <xsl:template mode="BT-142"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'true']">
+                 match="cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'true']">
       <xr:Invoice_line_charge_base_amount>
          <xsl:attribute name="xr:id" select="'BT-142'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1718,7 +1709,7 @@
       </xr:Invoice_line_charge_base_amount>
    </xsl:template>
    <xsl:template mode="BT-143"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'true']">
+                 match="cac:AllowanceCharge/cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'true']">
       <xr:Invoice_line_charge_percentage>
          <xsl:attribute name="xr:id" select="'BT-143'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1726,7 +1717,7 @@
       </xr:Invoice_line_charge_percentage>
    </xsl:template>
    <xsl:template mode="BT-144"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge/cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'true']">
+                 match="cac:AllowanceCharge/cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'true']">
       <xr:Invoice_line_charge_reason>
          <xsl:attribute name="xr:id" select="'BT-144'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1734,23 +1725,22 @@
       </xr:Invoice_line_charge_reason>
    </xsl:template>
    <xsl:template mode="BT-145"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'true']">
+                 match="cac:AllowanceCharge/cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'true']">
       <xr:Invoice_line_charge_reason_code>
          <xsl:attribute name="xr:id" select="'BT-145'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="code"/>
       </xr:Invoice_line_charge_reason_code>
    </xsl:template>
-   <xsl:template mode="BG-29"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Price">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:CreditNoteLine/cac:Price der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-146" select="./cbc:PriceAmount"/>
+   <xsl:template mode="BG-29" match="cac:CreditNoteLine/cac:Price">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:CreditNoteLine/cac:Price der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-146" select="cac:Price/cbc:PriceAmount"/>
          <xsl:apply-templates mode="BT-147"
-                              select="./cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+                              select="cac:Price/cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
          <xsl:apply-templates mode="BT-148"
-                              select="./cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
-         <xsl:apply-templates mode="BT-149" select="./cbc:BaseQuantity"/>
-         <xsl:apply-templates mode="BT-150" select="./cbc:BaseQuantity/@unitCode"/>
+                              select="cac:Price/cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+         <xsl:apply-templates mode="BT-149" select="cac:Price/cbc:BaseQuantity"/>
+         <xsl:apply-templates mode="BT-150" select="cac:Price/cbc:BaseQuantity/@unitCode"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:PRICE_DETAILS>
@@ -1760,8 +1750,7 @@
          </xr:PRICE_DETAILS>
       </xsl:if>
    </xsl:template>
-   <xsl:template mode="BT-146"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Price/cbc:PriceAmount">
+   <xsl:template mode="BT-146" match="cac:Price/cbc:PriceAmount">
       <xr:Item_net_price>
          <xsl:attribute name="xr:id" select="'BT-146'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1769,7 +1758,7 @@
       </xr:Item_net_price>
    </xsl:template>
    <xsl:template mode="BT-147"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']">
+                 match="cac:Price/cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']">
       <xr:Item_price_discount>
          <xsl:attribute name="xr:id" select="'BT-147'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1777,23 +1766,21 @@
       </xr:Item_price_discount>
    </xsl:template>
    <xsl:template mode="BT-148"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']">
+                 match="cac:Price/cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']">
       <xr:Item_gross_price>
          <xsl:attribute name="xr:id" select="'BT-148'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="unit_price_amount"/>
       </xr:Item_gross_price>
    </xsl:template>
-   <xsl:template mode="BT-149"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Price/cbc:BaseQuantity">
+   <xsl:template mode="BT-149" match="cac:Price/cbc:BaseQuantity">
       <xr:Item_price_base_quantity>
          <xsl:attribute name="xr:id" select="'BT-149'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="quantity"/>
       </xr:Item_price_base_quantity>
    </xsl:template>
-   <xsl:template mode="BT-150"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Price/cbc:BaseQuantity/@unitCode">
+   <xsl:template mode="BT-150" match="cac:Price/cbc:BaseQuantity/@unitCode">
       <xr:Item_price_base_quantity_unit_of_measure>
          <xsl:attribute name="xr:id" select="'BT-150'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1801,11 +1788,11 @@
       </xr:Item_price_base_quantity_unit_of_measure>
    </xsl:template>
    <xsl:template mode="BG-30"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory der Instanz in konkreter Syntax wird auf 2 Objekte der EN 16931 abgebildet. -->
+                 match="cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory der Instanz in konkreter Syntax wird auf 2 Objekte der EN 16931 abgebildet. -->
          <xsl:apply-templates mode="BT-151"
-                              select="./cbc:ID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']"/>
-         <xsl:apply-templates mode="BT-152" select="./cbc:Percent"/>
+                              select="cac:ClassifiedTaxCategory/cbc:ID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']"/>
+         <xsl:apply-templates mode="BT-152" select="cac:ClassifiedTaxCategory/cbc:Percent"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:LINE_VAT_INFORMATION>
@@ -1816,31 +1803,30 @@
       </xsl:if>
    </xsl:template>
    <xsl:template mode="BT-151"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']">
+                 match="cac:ClassifiedTaxCategory/cbc:ID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']">
       <xr:Invoiced_item_VAT_category_code>
          <xsl:attribute name="xr:id" select="'BT-151'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="code"/>
       </xr:Invoiced_item_VAT_category_code>
    </xsl:template>
-   <xsl:template mode="BT-152"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent">
+   <xsl:template mode="BT-152" match="cac:ClassifiedTaxCategory/cbc:Percent">
       <xr:Invoiced_item_VAT_rate>
          <xsl:attribute name="xr:id" select="'BT-152'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="percentage"/>
       </xr:Invoiced_item_VAT_rate>
    </xsl:template>
-   <xsl:template mode="BG-31" match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:CreditNoteLine/cac:Item der Instanz in konkreter Syntax wird auf 8 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-153" select="./cbc:Name"/>
-         <xsl:apply-templates mode="BT-154" select="./cbc:Description"/>
-         <xsl:apply-templates mode="BT-155" select="./cac:SellersItemIdentification/cbc:ID"/>
-         <xsl:apply-templates mode="BT-156" select="./cac:BuyersItemIdentification/cbc:ID"/>
-         <xsl:apply-templates mode="BT-157" select="./cac:StandardItemIdentification/cbc:ID"/>
+   <xsl:template mode="BG-31" match="cac:CreditNoteLine/cac:Item">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:CreditNoteLine/cac:Item der Instanz in konkreter Syntax wird auf 8 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-153" select="cbc:Name"/>
+         <xsl:apply-templates mode="BT-154" select="cbc:Description"/>
+         <xsl:apply-templates mode="BT-155" select="cac:SellersItemIdentification/cbc:ID"/>
+         <xsl:apply-templates mode="BT-156" select="cac:BuyersItemIdentification/cbc:ID"/>
+         <xsl:apply-templates mode="BT-157" select="cac:StandardItemIdentification/cbc:ID"/>
          <xsl:apply-templates mode="BT-158"
-                              select="./cac:CommodityClassification/cbc:ItemClassificationCode"/>
-         <xsl:apply-templates mode="BT-159" select="./cac:OriginCountry/cbc:IdentificationCode"/>
+                              select="cac:CommodityClassification/cbc:ItemClassificationCode"/>
+         <xsl:apply-templates mode="BT-159" select="cac:OriginCountry/cbc:IdentificationCode"/>
          <xsl:apply-templates mode="BG-32" select="./cac:AdditionalItemProperty"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
@@ -1851,40 +1837,35 @@
          </xr:ITEM_INFORMATION>
       </xsl:if>
    </xsl:template>
-   <xsl:template mode="BT-153"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Name">
+   <xsl:template mode="BT-153" match="cbc:Name">
       <xr:Item_name>
          <xsl:attribute name="xr:id" select="'BT-153'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="text"/>
       </xr:Item_name>
    </xsl:template>
-   <xsl:template mode="BT-154"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Description">
+   <xsl:template mode="BT-154" match="cbc:Description">
       <xr:Item_description>
          <xsl:attribute name="xr:id" select="'BT-154'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="text"/>
       </xr:Item_description>
    </xsl:template>
-   <xsl:template mode="BT-155"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:SellersItemIdentification/cbc:ID">
+   <xsl:template mode="BT-155" match="cac:SellersItemIdentification/cbc:ID">
       <xr:Item_Sellers_identifier>
          <xsl:attribute name="xr:id" select="'BT-155'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="identifier"/>
       </xr:Item_Sellers_identifier>
    </xsl:template>
-   <xsl:template mode="BT-156"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:BuyersItemIdentification/cbc:ID">
+   <xsl:template mode="BT-156" match="cac:BuyersItemIdentification/cbc:ID">
       <xr:Item_Buyers_identifier>
          <xsl:attribute name="xr:id" select="'BT-156'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="identifier"/>
       </xr:Item_Buyers_identifier>
    </xsl:template>
-   <xsl:template mode="BT-157"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:StandardItemIdentification/cbc:ID">
+   <xsl:template mode="BT-157" match="cac:StandardItemIdentification/cbc:ID">
       <xr:Item_standard_identifier>
          <xsl:attribute name="xr:id" select="'BT-157'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1892,15 +1873,14 @@
       </xr:Item_standard_identifier>
    </xsl:template>
    <xsl:template mode="BT-158"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode">
+                 match="cac:CommodityClassification/cbc:ItemClassificationCode">
       <xr:Item_classification_identifier>
          <xsl:attribute name="xr:id" select="'BT-158'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="identifier-with-scheme-and-version"/>
       </xr:Item_classification_identifier>
    </xsl:template>
-   <xsl:template mode="BT-159"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:OriginCountry/cbc:IdentificationCode">
+   <xsl:template mode="BT-159" match="cac:OriginCountry/cbc:IdentificationCode">
       <xr:Item_country_of_origin>
          <xsl:attribute name="xr:id" select="'BT-159'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1908,10 +1888,10 @@
       </xr:Item_country_of_origin>
    </xsl:template>
    <xsl:template mode="BG-32"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:AdditionalItemProperty">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:AdditionalItemProperty der Instanz in konkreter Syntax wird auf 2 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-160" select="./cbc:Name"/>
-         <xsl:apply-templates mode="BT-161" select="./cbc:Value"/>
+                 match="cac:CreditNoteLine/cac:Item/cac:AdditionalItemProperty">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:CreditNoteLine/cac:Item/cac:AdditionalItemProperty der Instanz in konkreter Syntax wird auf 2 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-160" select="cac:AdditionalItemProperty/cbc:Name"/>
+         <xsl:apply-templates mode="BT-161" select="cac:AdditionalItemProperty/cbc:Value"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:ITEM_ATTRIBUTES>
@@ -1921,21 +1901,439 @@
          </xr:ITEM_ATTRIBUTES>
       </xsl:if>
    </xsl:template>
-   <xsl:template mode="BT-160"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:AdditionalItemProperty/cbc:Name">
+   <xsl:template mode="BT-160" match="cac:AdditionalItemProperty/cbc:Name">
       <xr:Item_attribute_name>
          <xsl:attribute name="xr:id" select="'BT-160'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="text"/>
       </xr:Item_attribute_name>
    </xsl:template>
-   <xsl:template mode="BT-161"
-                 match="/CreditNote:CreditNote/cac:CreditNoteLine/cac:Item/cac:AdditionalItemProperty/cbc:Value">
+   <xsl:template mode="BT-161" match="cac:AdditionalItemProperty/cbc:Value">
       <xr:Item_attribute_value>
          <xsl:attribute name="xr:id" select="'BT-161'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="text"/>
       </xr:Item_attribute_value>
+   </xsl:template>
+   <xsl:template mode="BG-DEX-01" match="cac:SubCreditNoteLine">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:SubCreditNoteLine der Instanz in konkreter Syntax wird auf 14 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-126" select="cbc:ID"/>
+         <xsl:apply-templates mode="BT-127" select="cbc:Note"/>
+         <xsl:apply-templates mode="BT-128"
+                              select="cac:DocumentReference/cbc:ID[following-sibling::cbc:DocumentTypeCode = '130']"/>
+         <xsl:apply-templates mode="BT-129" select="cbc:CreditedQuantity"/>
+         <xsl:apply-templates mode="BT-130" select="cbc:CreditedQuantity/@unitCode"/>
+         <xsl:apply-templates mode="BT-131" select="cbc:LineExtensionAmount"/>
+         <xsl:apply-templates mode="BT-132" select="cac:OrderLineReference/cbc:LineID"/>
+         <xsl:apply-templates mode="BT-133" select="cbc:AccountingCost"/>
+         <xsl:apply-templates mode="BG-DEX-02" select="./cac:Item"/>
+         <xsl:apply-templates mode="BG-DEX-03"
+                              select="./cac:AllowanceCharge[cbc:ChargeIndicator = 'false']"/>
+         <xsl:apply-templates mode="BG-DEX-04"
+                              select="./cac:AllowanceCharge[cbc:ChargeIndicator = 'true']"/>
+         <xsl:apply-templates mode="BG-DEX-05" select="./cac:InvoicePeriod"/>
+         <xsl:apply-templates mode="BG-DEX-06" select="./cac:ClassifiedTaxCategory"/>
+         <xsl:apply-templates mode="BG-DEX-07" select="./cac:Price"/>
+         <xsl:apply-templates mode="BG-DEX-01" select="cac:SubCreditNoteLine"/>
+      </xsl:variable>
+      <xsl:if test="$bg-contents">
+         <xr:SUB_INVOICE_LINE>
+            <xsl:attribute name="xr:id" select="'BG-DEX-01'"/>
+            <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+            <xsl:sequence select="$bg-contents"/>
+         </xr:SUB_INVOICE_LINE>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BT-126" match="cbc:ID">
+      <xr:Invoice_line_identifier>
+         <xsl:attribute name="xr:id" select="'BT-126'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="identifier"/>
+      </xr:Invoice_line_identifier>
+   </xsl:template>
+   <xsl:template mode="BT-127" match="cbc:Note">
+      <xr:Invoice_line_note>
+         <xsl:attribute name="xr:id" select="'BT-127'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Invoice_line_note>
+   </xsl:template>
+   <xsl:template mode="BT-128"
+                 match="cac:DocumentReference/cbc:ID[following-sibling::cbc:DocumentTypeCode = '130']">
+      <xr:Invoice_line_object_identifier>
+         <xsl:attribute name="xr:id" select="'BT-128'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="identifier-with-scheme"/>
+      </xr:Invoice_line_object_identifier>
+   </xsl:template>
+   <xsl:template mode="BT-129" match="cbc:CreditedQuantity">
+      <xr:Invoiced_quantity>
+         <xsl:attribute name="xr:id" select="'BT-129'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="quantity"/>
+      </xr:Invoiced_quantity>
+   </xsl:template>
+   <xsl:template mode="BT-130" match="cbc:CreditedQuantity/@unitCode">
+      <xr:Invoiced_quantity_unit_of_measure_code>
+         <xsl:attribute name="xr:id" select="'BT-130'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="code"/>
+      </xr:Invoiced_quantity_unit_of_measure_code>
+   </xsl:template>
+   <xsl:template mode="BT-131" match="cbc:LineExtensionAmount">
+      <xr:Invoice_line_net_amount>
+         <xsl:attribute name="xr:id" select="'BT-131'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="amount"/>
+      </xr:Invoice_line_net_amount>
+   </xsl:template>
+   <xsl:template mode="BT-132" match="cac:OrderLineReference/cbc:LineID">
+      <xr:Referenced_purchase_order_line_reference>
+         <xsl:attribute name="xr:id" select="'BT-132'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="document_reference"/>
+      </xr:Referenced_purchase_order_line_reference>
+   </xsl:template>
+   <xsl:template mode="BT-133" match="cbc:AccountingCost">
+      <xr:Invoice_line_Buyer_accounting_reference>
+         <xsl:attribute name="xr:id" select="'BT-133'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Invoice_line_Buyer_accounting_reference>
+   </xsl:template>
+   <xsl:template mode="BG-DEX-02" match="cac:SubCreditNoteLine/cac:Item">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:SubCreditNoteLine/cac:Item der Instanz in konkreter Syntax wird auf 8 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-153" select="cbc:Name"/>
+         <xsl:apply-templates mode="BT-154" select="cbc:Description"/>
+         <xsl:apply-templates mode="BT-155" select="cac:SellersItemIdentification/cbc:ID"/>
+         <xsl:apply-templates mode="BT-156" select="cac:BuyersItemIdentification/cbc:ID"/>
+         <xsl:apply-templates mode="BT-157" select="cac:StandardItemIdentification/cbc:ID"/>
+         <xsl:apply-templates mode="BT-158"
+                              select="cac:CommodityClassification/cbc:ItemClassificationCode"/>
+         <xsl:apply-templates mode="BT-159" select="cac:OriginCountry/cbc:IdentificationCode"/>
+         <xsl:apply-templates mode="BG-DEX-08" select="./cac:AdditionalItemProperty"/>
+      </xsl:variable>
+      <xsl:if test="$bg-contents">
+         <xr:SUB_INVOICE_ITEM_INFORMATION>
+            <xsl:attribute name="xr:id" select="'BG-DEX-02'"/>
+            <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+            <xsl:sequence select="$bg-contents"/>
+         </xr:SUB_INVOICE_ITEM_INFORMATION>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BT-153" match="cbc:Name">
+      <xr:Item_name>
+         <xsl:attribute name="xr:id" select="'BT-153'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Item_name>
+   </xsl:template>
+   <xsl:template mode="BT-154" match="cbc:Description">
+      <xr:Item_description>
+         <xsl:attribute name="xr:id" select="'BT-154'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Item_description>
+   </xsl:template>
+   <xsl:template mode="BT-155" match="cac:SellersItemIdentification/cbc:ID">
+      <xr:Item_Sellers_identifier>
+         <xsl:attribute name="xr:id" select="'BT-155'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="identifier"/>
+      </xr:Item_Sellers_identifier>
+   </xsl:template>
+   <xsl:template mode="BT-156" match="cac:BuyersItemIdentification/cbc:ID">
+      <xr:Item_Buyers_identifier>
+         <xsl:attribute name="xr:id" select="'BT-156'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="identifier"/>
+      </xr:Item_Buyers_identifier>
+   </xsl:template>
+   <xsl:template mode="BT-157" match="cac:StandardItemIdentification/cbc:ID">
+      <xr:Item_standard_identifier>
+         <xsl:attribute name="xr:id" select="'BT-157'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="identifier-with-scheme"/>
+      </xr:Item_standard_identifier>
+   </xsl:template>
+   <xsl:template mode="BT-158"
+                 match="cac:CommodityClassification/cbc:ItemClassificationCode">
+      <xr:Item_classification_identifier>
+         <xsl:attribute name="xr:id" select="'BT-158'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="identifier-with-scheme-and-version"/>
+      </xr:Item_classification_identifier>
+   </xsl:template>
+   <xsl:template mode="BT-159" match="cac:OriginCountry/cbc:IdentificationCode">
+      <xr:Item_country_of_origin>
+         <xsl:attribute name="xr:id" select="'BT-159'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="code"/>
+      </xr:Item_country_of_origin>
+   </xsl:template>
+   <xsl:template mode="BG-DEX-08"
+                 match="cac:SubCreditNoteLine/cac:Item/cac:AdditionalItemProperty">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:SubCreditNoteLine/cac:Item/cac:AdditionalItemProperty der Instanz in konkreter Syntax wird auf 2 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-160" select="cac:AdditionalItemProperty/cbc:Name"/>
+         <xsl:apply-templates mode="BT-161" select="cac:AdditionalItemProperty/cbc:Value"/>
+      </xsl:variable>
+      <xsl:if test="$bg-contents">
+         <xr:SUB_INVOICE_ITEM_ATTRIBUTES>
+            <xsl:attribute name="xr:id" select="'BG-DEX-08'"/>
+            <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+            <xsl:sequence select="$bg-contents"/>
+         </xr:SUB_INVOICE_ITEM_ATTRIBUTES>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BT-160" match="cac:AdditionalItemProperty/cbc:Name">
+      <xr:Item_attribute_name>
+         <xsl:attribute name="xr:id" select="'BT-160'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Item_attribute_name>
+   </xsl:template>
+   <xsl:template mode="BT-161" match="cac:AdditionalItemProperty/cbc:Value">
+      <xr:Item_attribute_value>
+         <xsl:attribute name="xr:id" select="'BT-161'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Item_attribute_value>
+   </xsl:template>
+   <xsl:template mode="BG-DEX-03"
+                 match="cac:SubCreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'false']">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:SubCreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'false'] der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-136"
+                              select="cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+         <xsl:apply-templates mode="BT-137"
+                              select="cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+         <xsl:apply-templates mode="BT-138"
+                              select="cac:AllowanceCharge/cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+         <xsl:apply-templates mode="BT-139"
+                              select="cac:AllowanceCharge/cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+         <xsl:apply-templates mode="BT-140"
+                              select="cac:AllowanceCharge/cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+      </xsl:variable>
+      <xsl:if test="$bg-contents">
+         <xr:SUB_INVOICE_LINE_ALLOWANCES>
+            <xsl:attribute name="xr:id" select="'BG-DEX-03'"/>
+            <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+            <xsl:sequence select="$bg-contents"/>
+         </xr:SUB_INVOICE_LINE_ALLOWANCES>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BT-136"
+                 match="cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']">
+      <xr:Invoice_line_allowance_amount>
+         <xsl:attribute name="xr:id" select="'BT-136'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="amount"/>
+      </xr:Invoice_line_allowance_amount>
+   </xsl:template>
+   <xsl:template mode="BT-137"
+                 match="cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']">
+      <xr:Invoice_line_allowance_base_amount>
+         <xsl:attribute name="xr:id" select="'BT-137'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="amount"/>
+      </xr:Invoice_line_allowance_base_amount>
+   </xsl:template>
+   <xsl:template mode="BT-138"
+                 match="cac:AllowanceCharge/cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'false']">
+      <xr:Invoice_line_allowance_percentage>
+         <xsl:attribute name="xr:id" select="'BT-138'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="percentage"/>
+      </xr:Invoice_line_allowance_percentage>
+   </xsl:template>
+   <xsl:template mode="BT-139"
+                 match="cac:AllowanceCharge/cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'false']">
+      <xr:Invoice_line_allowance_reason>
+         <xsl:attribute name="xr:id" select="'BT-139'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Invoice_line_allowance_reason>
+   </xsl:template>
+   <xsl:template mode="BT-140"
+                 match="cac:AllowanceCharge/cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'false']">
+      <xr:Invoice_line_allowance_reason_code>
+         <xsl:attribute name="xr:id" select="'BT-140'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="code"/>
+      </xr:Invoice_line_allowance_reason_code>
+   </xsl:template>
+   <xsl:template mode="BG-DEX-04"
+                 match="cac:SubCreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'true']">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:SubCreditNoteLine/cac:AllowanceCharge[cbc:ChargeIndicator = 'true'] der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-141"
+                              select="cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
+         <xsl:apply-templates mode="BT-142"
+                              select="cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
+         <xsl:apply-templates mode="BT-143"
+                              select="cac:AllowanceCharge/cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
+         <xsl:apply-templates mode="BT-144"
+                              select="cac:AllowanceCharge/cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
+         <xsl:apply-templates mode="BT-145"
+                              select="cac:AllowanceCharge/cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'true']"/>
+      </xsl:variable>
+      <xsl:if test="$bg-contents">
+         <xr:SUB_INVOICE_LINE_CHARGES>
+            <xsl:attribute name="xr:id" select="'BG-DEX-04'"/>
+            <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+            <xsl:sequence select="$bg-contents"/>
+         </xr:SUB_INVOICE_LINE_CHARGES>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BT-141"
+                 match="cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'true']">
+      <xr:Invoice_line_charge_amount>
+         <xsl:attribute name="xr:id" select="'BT-141'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="amount"/>
+      </xr:Invoice_line_charge_amount>
+   </xsl:template>
+   <xsl:template mode="BT-142"
+                 match="cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'true']">
+      <xr:Invoice_line_charge_base_amount>
+         <xsl:attribute name="xr:id" select="'BT-142'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="amount"/>
+      </xr:Invoice_line_charge_base_amount>
+   </xsl:template>
+   <xsl:template mode="BT-143"
+                 match="cac:AllowanceCharge/cbc:MultiplierFactorNumeric[preceding-sibling::cbc:ChargeIndicator = 'true']">
+      <xr:Invoice_line_charge_percentage>
+         <xsl:attribute name="xr:id" select="'BT-143'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="percentage"/>
+      </xr:Invoice_line_charge_percentage>
+   </xsl:template>
+   <xsl:template mode="BT-144"
+                 match="cac:AllowanceCharge/cbc:AllowanceChargeReason[preceding-sibling::cbc:ChargeIndicator = 'true']">
+      <xr:Invoice_line_charge_reason>
+         <xsl:attribute name="xr:id" select="'BT-144'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Invoice_line_charge_reason>
+   </xsl:template>
+   <xsl:template mode="BT-145"
+                 match="cac:AllowanceCharge/cbc:AllowanceChargeReasonCode[preceding-sibling::cbc:ChargeIndicator = 'true']">
+      <xr:Invoice_line_charge_reason_code>
+         <xsl:attribute name="xr:id" select="'BT-145'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="code"/>
+      </xr:Invoice_line_charge_reason_code>
+   </xsl:template>
+   <xsl:template mode="BG-DEX-05" match="cac:SubCreditNoteLine/cac:InvoicePeriod">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:SubCreditNoteLine/cac:InvoicePeriod der Instanz in konkreter Syntax wird auf 2 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-134" select="cac:InvoicePeriod/cbc:StartDate"/>
+         <xsl:apply-templates mode="BT-135" select="cac:InvoicePeriod/cbc:EndDate"/>
+      </xsl:variable>
+      <xsl:if test="$bg-contents">
+         <xr:SUB_INVOICE_LINE_PERIOD>
+            <xsl:attribute name="xr:id" select="'BG-DEX-05'"/>
+            <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+            <xsl:sequence select="$bg-contents"/>
+         </xr:SUB_INVOICE_LINE_PERIOD>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BT-134" match="cac:InvoicePeriod/cbc:StartDate">
+      <xr:Invoice_line_period_start_date>
+         <xsl:attribute name="xr:id" select="'BT-134'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="date"/>
+      </xr:Invoice_line_period_start_date>
+   </xsl:template>
+   <xsl:template mode="BT-135" match="cac:InvoicePeriod/cbc:EndDate">
+      <xr:Invoice_line_period_end_date>
+         <xsl:attribute name="xr:id" select="'BT-135'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="date"/>
+      </xr:Invoice_line_period_end_date>
+   </xsl:template>
+   <xsl:template mode="BG-DEX-06"
+                 match="cac:SubCreditNoteLine/cac:ClassifiedTaxCategory">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:SubCreditNoteLine/cac:ClassifiedTaxCategory der Instanz in konkreter Syntax wird auf 2 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-151"
+                              select="cac:ClassifiedTaxCategory/cbc:ID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']"/>
+         <xsl:apply-templates mode="BT-152" select="cac:ClassifiedTaxCategory/cbc:Percent"/>
+      </xsl:variable>
+      <xsl:if test="$bg-contents">
+         <xr:SUB_INVOICE_LINE_VAT_INFORMATION>
+            <xsl:attribute name="xr:id" select="'BG-DEX-06'"/>
+            <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+            <xsl:sequence select="$bg-contents"/>
+         </xr:SUB_INVOICE_LINE_VAT_INFORMATION>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BT-151"
+                 match="cac:ClassifiedTaxCategory/cbc:ID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']">
+      <xr:Invoiced_item_VAT_category_code>
+         <xsl:attribute name="xr:id" select="'BT-151'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="code"/>
+      </xr:Invoiced_item_VAT_category_code>
+   </xsl:template>
+   <xsl:template mode="BT-152" match="cac:ClassifiedTaxCategory/cbc:Percent">
+      <xr:Invoiced_item_VAT_rate>
+         <xsl:attribute name="xr:id" select="'BT-152'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="percentage"/>
+      </xr:Invoiced_item_VAT_rate>
+   </xsl:template>
+   <xsl:template mode="BG-DEX-07" match="cac:SubCreditNoteLine/cac:Price">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad cac:SubCreditNoteLine/cac:Price der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-146" select="cac:Price/cbc:PriceAmount"/>
+         <xsl:apply-templates mode="BT-147"
+                              select="cac:Price/cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+         <xsl:apply-templates mode="BT-148"
+                              select="cac:Price/cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+         <xsl:apply-templates mode="BT-149" select="cac:Price/cbc:BaseQuantity"/>
+         <xsl:apply-templates mode="BT-150" select="cac:Price/cbc:BaseQuantity/@unitCode"/>
+      </xsl:variable>
+      <xsl:if test="$bg-contents">
+         <xr:SUB_INVOICE_PRICE_DETAILS>
+            <xsl:attribute name="xr:id" select="'BG-DEX-07'"/>
+            <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+            <xsl:sequence select="$bg-contents"/>
+         </xr:SUB_INVOICE_PRICE_DETAILS>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BT-146" match="cac:Price/cbc:PriceAmount">
+      <xr:Item_net_price>
+         <xsl:attribute name="xr:id" select="'BT-146'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="unit_price_amount"/>
+      </xr:Item_net_price>
+   </xsl:template>
+   <xsl:template mode="BT-147"
+                 match="cac:Price/cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']">
+      <xr:Item_price_discount>
+         <xsl:attribute name="xr:id" select="'BT-147'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="unit_price_amount"/>
+      </xr:Item_price_discount>
+   </xsl:template>
+   <xsl:template mode="BT-148"
+                 match="cac:Price/cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']">
+      <xr:Item_gross_price>
+         <xsl:attribute name="xr:id" select="'BT-148'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="unit_price_amount"/>
+      </xr:Item_gross_price>
+   </xsl:template>
+   <xsl:template mode="BT-149" match="cac:Price/cbc:BaseQuantity">
+      <xr:Item_price_base_quantity>
+         <xsl:attribute name="xr:id" select="'BT-149'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="quantity"/>
+      </xr:Item_price_base_quantity>
+   </xsl:template>
+   <xsl:template mode="BT-150" match="cac:Price/cbc:BaseQuantity/@unitCode">
+      <xr:Item_price_base_quantity_unit_of_measure>
+         <xsl:attribute name="xr:id" select="'BT-150'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="code"/>
+      </xr:Item_price_base_quantity_unit_of_measure>
    </xsl:template>
    <xsl:template name="text">
       <xsl:value-of select="."/>

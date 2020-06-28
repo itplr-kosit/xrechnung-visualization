@@ -736,8 +736,8 @@
    <xsl:template mode="BG-9"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact">
       <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact der Instanz in konkreter Syntax wird auf 3 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-56" select="./ram:DepartmentName"/>
          <xsl:apply-templates mode="BT-56" select="./ram:PersonName"/>
+         <xsl:apply-templates mode="BT-56" select="./ram:DepartmentName"/>
          <xsl:apply-templates mode="BT-57"
                               select="./ram:TelephoneUniversalCommunication/ram:CompleteNumber"/>
          <xsl:apply-templates mode="BT-58" select="./ram:EmailURIUniversalCommunication/ram:URIID"/>
@@ -751,7 +751,7 @@
       </xsl:if>
    </xsl:template>
    <xsl:template mode="BT-56"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact/ram:DepartmentName">
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact/ram:PersonName">
       <xr:Buyer_contact_point>
          <xsl:attribute name="xr:id" select="'BT-56'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -759,7 +759,7 @@
       </xr:Buyer_contact_point>
    </xsl:template>
    <xsl:template mode="BT-56"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact/ram:PersonName">
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact/ram:DepartmentName">
       <xr:Buyer_contact_point>
          <xsl:attribute name="xr:id" select="'BT-56'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -789,8 +789,8 @@
          <xsl:apply-templates mode="BT-60" select="./ram:GlobalID[exists(@schemeID)]"/>
          <xsl:apply-templates mode="BT-60"
                               select="./ram:ID[empty(following-sibling::ram:GlobalID/@schemeID)]"/>
-         <xsl:apply-templates mode="BT-61" select="./ram:SpecifiedLegalOrganization/ram:ID"/>
          <xsl:apply-templates mode="BT-61" select="./ram:SpecifiedLegalOrganization/ram:ID/@schemeID"/>
+         <xsl:apply-templates mode="BT-61" select="./ram:SpecifiedLegalOrganization/ram:ID"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:PAYEE>
@@ -825,19 +825,19 @@
       </xr:Payee_identifier>
    </xsl:template>
    <xsl:template mode="BT-61"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedLegalOrganization/ram:ID">
-      <xr:Payee_legal_registration_identifier>
-         <xsl:attribute name="xr:id" select="'BT-61'"/>
-         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier"/>
-      </xr:Payee_legal_registration_identifier>
-   </xsl:template>
-   <xsl:template mode="BT-61"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedLegalOrganization/ram:ID/@schemeID">
       <xr:Payee_legal_registration_identifier>
          <xsl:attribute name="xr:id" select="'BT-61'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="identifier-with-scheme"/>
+      </xr:Payee_legal_registration_identifier>
+   </xsl:template>
+   <xsl:template mode="BT-61"
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedLegalOrganization/ram:ID">
+      <xr:Payee_legal_registration_identifier>
+         <xsl:attribute name="xr:id" select="'BT-61'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="identifier"/>
       </xr:Payee_legal_registration_identifier>
    </xsl:template>
    <xsl:template mode="BG-11"
