@@ -130,18 +130,18 @@
         
     </target>
     <target name="transform-ubl-creditnote-to-xr" depends="prepare-testsuite, prepare-saxon">
-        <!--<xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}" style="${src.dir}/xsl/ubl-creditnote-xr.xsl" includes="**/maxRechnung-creditnote.xml">
+        <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}" style="${src.dir}/xsl/ubl-creditnote-xr.xsl" includes="**/maxRechnung-creditnote.xml">
             <classpath location="${lib.dir}/${saxon.jar}" />
             <factory name="net.sf.saxon.TransformerFactoryImpl" />
             <mapper type="glob" from="*.xml" to="*-xr.xml" />
-        </xslt>-->
+        </xslt>
     </target>
     <target name="transform-cii-to-xr" depends="prepare-testsuite, prepare-saxon">
-        <!--<xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}" style="${src.dir}/xsl/cii-xr.xsl" includes="**/*uncefact.xml">
+        <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}" style="${src.dir}/xsl/cii-xr.xsl" includes="**/*uncefact.xml">
             <classpath location="${lib.dir}/${saxon.jar}" />
             <factory name="net.sf.saxon.TransformerFactoryImpl" />
             <mapper type="glob" from="*.xml" to="*-xr.xml" />
-        </xslt>-->
+        </xslt>
     </target>
     <target name="transform-ubl-to-xr" description="Transforms UBl Invoice and
         CreditNote to XRechnung Semantic Model" depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr">

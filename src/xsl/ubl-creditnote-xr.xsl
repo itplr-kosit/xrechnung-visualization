@@ -14,7 +14,7 @@
       <xd:desc>
          <xd:p>
             <xd:b>Author:</xd:b> KoSIT Bremen (kosit@finanzen.bremen.de)</xd:p>
-         <xd:b>Fassung vom: 2020-06-20+02:00</xd:b>
+         <xd:b>Fassung vom: 2020-06-28+02:00</xd:b>
          <xd:p>Überführt eine zur EN 16931 konforme elektronische Rechnung in der konkreten Syntax UBL.2_1.CreditNote in eine Instanz gemäß des Schemas für den Namensraum urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1.</xd:p>
          <xd:p>Das Skript setzt voraus, dass das zu verarbeitende Dokument valide bzgl. des XML Schemas und der Schematron-Regeln der Quelle ist. Für nicht valide Dokumente ist das Ergebnis nicht definiert.</xd:p>
       </xd:desc>
@@ -496,9 +496,9 @@
                               select="./cac:Party/cac:PartyLegalEntity/cbc:RegistrationName"/>
          <xsl:apply-templates mode="BT-45" select="./cac:Party/cac:PartyName/cbc:Name"/>
          <xsl:apply-templates mode="BT-46" select="./cac:Party/cac:PartyIdentification/cbc:ID"/>
+         <xsl:apply-templates mode="BT-47" select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID"/>
          <xsl:apply-templates mode="BT-47"
                               select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID"/>
-         <xsl:apply-templates mode="BT-47" select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID"/>
          <xsl:apply-templates mode="BT-48"
                               select="./cac:Party/cac:PartyTaxScheme/cbc:CompanyID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']"/>
          <xsl:apply-templates mode="BT-49" select="./cac:Party/cbc:EndpointID"/>
@@ -538,7 +538,7 @@
       </xr:Buyer_identifier>
    </xsl:template>
    <xsl:template mode="BT-47"
-                 match="/CreditNote:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID">
+                 match="/CreditNote:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID">
       <xr:Buyer_legal_registration_identifier>
          <xsl:attribute name="xr:id" select="'BT-47'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -546,7 +546,7 @@
       </xr:Buyer_legal_registration_identifier>
    </xsl:template>
    <xsl:template mode="BT-47"
-                 match="/CreditNote:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID">
+                 match="/CreditNote:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID">
       <xr:Buyer_legal_registration_identifier>
          <xsl:attribute name="xr:id" select="'BT-47'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>

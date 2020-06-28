@@ -332,7 +332,7 @@ Prozentzahlen sind ohne Vorzeichen sowie mit Punkt getrennt von zwei Nachkommast
                         maxOccurs="unbounded">
                <xs:annotation>
                   <xs:appinfo>BG-24</xs:appinfo>
-                  <xs:documentation>Eine Gruppe von Informationselementen mit Informationen über rechnungsbegründende Unterlagen, die Belege für die in der Rechnung gestellten Ansprüche enthalten. Anmerkung: 
+                  <xs:documentation>Eine Gruppe von Informationselementen mit Informationen über rechnungsbegründende Unterlagen, die Belege für die in der Rechnung gestellten Ansprüche enthalten. Dateinamen rechnungsbegründender Unterlagen müssen innerhalb einer Rechnung eindeutig sein (nicht case-sensitiv). Die Dateinamenserweiterung (extension), in der meist der Typ der Datei angegeben wird, ist dabei Teil des Dateinamens und wird bei der Bestimmung der Eindeutigkeit einbezogen. Anmerkung: 
 Die Gruppe kann verwendet werden, um auf eine dem Erwerber bekannte Dokumentennummer oder ein externes Dokument (referenziert über eine URL als separat herunterladbare Ressource) oder ein eingebettetes Dokument (wie z. B. ein Leistungsnachweis als pdf) zu referenzieren. Von der Möglichkeit der Trennung von Rechnung und rechnungsbegründenden Unterlagen kann insbesondere im Fall großer Anlagen oder sensibler Daten Gebrauch gemacht werden.</xs:documentation>
                </xs:annotation>
             </xs:element>
@@ -1656,7 +1656,7 @@ Anhangsdokument.</xs:documentation>
                      maxOccurs="unbounded">
             <xs:annotation>
                <xs:appinfo>BG-28</xs:appinfo>
-               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über Kosten, Zuschläge, und Steuern ndash; ausgenommen die Umsatzsteuer ndash;  enthalten, die für die jeweilige Rechnungsposition gelten. Anmerkung: Es wird davon ausgegangen, dass alle Kosten und Zuschläge dem gleichen Umsatzsteuersatz unterliegen, wie die Rechnungsposition.</xs:documentation>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über Kosten, Zuschläge, und Steuern ndash; ausgenommen die Umsatzsteuer ndash;  enthalten, die für die jeweilige Rechnungsposition gelten. Anmerkung: Es wird davon ausgegangen, dass alle Kosten und Zuschläge dem gleichen Umsatzsteuersatz unterliegen wie die Rechnungsposition.</xs:documentation>
             </xs:annotation>
          </xs:element>
          <xs:element name="PRICE_DETAILS"
@@ -2075,13 +2075,13 @@ M (Tax for production, services and importation in Ceuta and Melilla)
                <xs:documentation>Ein Textwert, der angibt, an welcher Stelle die betreffenden Daten in den Finanzkonten des Erwerbers zu buchen sind. Anmerkung: Wenn die Angabe genutzt werden soll, muss der Erwerber dem Verkäufer diese Referenz vor der Rechnungserstellung mitteilen.</xs:documentation>
             </xs:annotation>
          </xs:element>
-         <xs:element name="SUB_INVOICE_LINE_PERIOD"
-                     type="xr:SUB_INVOICE_LINE_PERIODType"
-                     minOccurs="0"
+         <xs:element name="SUB_INVOICE_ITEM_INFORMATION"
+                     type="xr:SUB_INVOICE_ITEM_INFORMATIONType"
+                     minOccurs="1"
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BG-DEX-02</xs:appinfo>
-               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den für die Rechnungsposition maßgeblichen Rechnungszeitraum liefern.</xs:documentation>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über die in Rechnung gestellten Waren und Dienstleistungen liefern.</xs:documentation>
             </xs:annotation>
          </xs:element>
          <xs:element name="SUB_INVOICE_LINE_ALLOWANCES"
@@ -2099,16 +2099,16 @@ M (Tax for production, services and importation in Ceuta and Melilla)
                      maxOccurs="unbounded">
             <xs:annotation>
                <xs:appinfo>BG-DEX-04</xs:appinfo>
-               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über Kosten, Zuschläge, und Steuern ndash; ausgenommen die Umsatzsteuer ndash;  enthalten, die für die jeweilige Rechnungsposition gelten. Anmerkung: Es wird davon ausgegangen, dass alle Kosten und Zuschläge dem gleichen Umsatzsteuersatz unterliegen, wie die Rechnungsposition.</xs:documentation>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über Kosten, Zuschläge, und Steuern ndash; ausgenommen die Umsatzsteuer ndash;  enthalten, die für die jeweilige Rechnungsposition gelten. Anmerkung: Es wird davon ausgegangen, dass alle Kosten und Zuschläge dem gleichen Umsatzsteuersatz unterliegen wie die Rechnungsposition.</xs:documentation>
             </xs:annotation>
          </xs:element>
-         <xs:element name="SUB_INVOICE_PRICE_DETAILS"
-                     type="xr:SUB_INVOICE_PRICE_DETAILSType"
-                     minOccurs="1"
+         <xs:element name="SUB_INVOICE_LINE_PERIOD"
+                     type="xr:SUB_INVOICE_LINE_PERIODType"
+                     minOccurs="0"
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BG-DEX-05</xs:appinfo>
-               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den Preis für die in der betreffenden Rechnungsposition in Rechnung gestellten Waren und Dienstleistungen liefern.</xs:documentation>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den für die Rechnungsposition maßgeblichen Rechnungszeitraum liefern.</xs:documentation>
             </xs:annotation>
          </xs:element>
          <xs:element name="SUB_INVOICE_LINE_VAT_INFORMATION"
@@ -2120,27 +2120,110 @@ M (Tax for production, services and importation in Ceuta and Melilla)
                <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über die Umsatzsteuer liefern, die für die in der betreffenden Zeile in Rechnung gestellten Waren und Dienstleistungen gilt.</xs:documentation>
             </xs:annotation>
          </xs:element>
+         <xs:element name="SUB_INVOICE_PRICE_DETAILS"
+                     type="xr:SUB_INVOICE_PRICE_DETAILSType"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BG-DEX-07</xs:appinfo>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den Preis für die in der betreffenden Rechnungsposition in Rechnung gestellten Waren und Dienstleistungen liefern.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
       </xs:sequence>
       <xs:attributeGroup ref="xr:xr-attributes"/>
    </xs:complexType>
-   <xs:complexType name="SUB_INVOICE_LINE_PERIODType">
+   <xs:complexType name="SUB_INVOICE_ITEM_INFORMATIONType">
       <xs:sequence>
-         <xs:element name="Invoice_line_period_start_date"
-                     type="xr:date"
-                     minOccurs="0"
-                     maxOccurs="1">
+         <xs:element name="Item_name" type="xr:text" minOccurs="1" maxOccurs="1">
             <xs:annotation>
-               <xs:appinfo>BT-134</xs:appinfo>
-               <xs:documentation>Das Datum, an dem der Rechnungszeitraum der betreffenden Rechnungsposition beginnt.</xs:documentation>
+               <xs:appinfo>BT-153</xs:appinfo>
+               <xs:documentation>Ein Name des Postens.</xs:documentation>
             </xs:annotation>
          </xs:element>
-         <xs:element name="Invoice_line_period_end_date"
-                     type="xr:date"
+         <xs:element name="Item_description"
+                     type="xr:text"
                      minOccurs="0"
                      maxOccurs="1">
             <xs:annotation>
-               <xs:appinfo>BT-135</xs:appinfo>
-               <xs:documentation>Das Datum, an dem der Rechnungszeitraum der betreffenden Rechnungsposition endet.</xs:documentation>
+               <xs:appinfo>BT-154</xs:appinfo>
+               <xs:documentation>Eine Beschreibung des Postens. Anmerkung: Hier kann der Posten detaillierter beschrieben werden als im Namen.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Item_Sellers_identifier"
+                     type="xr:identifier"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-155</xs:appinfo>
+               <xs:documentation>Eine dem Posten vom Verkäufer zugewiesene Kennung.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Item_Buyers_identifier"
+                     type="xr:identifier"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-156</xs:appinfo>
+               <xs:documentation>Eine dem Posten vom Erwerber zugewiesene Kennung.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Item_standard_identifier"
+                     type="xr:identifier"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-157</xs:appinfo>
+               <xs:documentation>Eine auf einem registrierten Schema basierende Postenkennung.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Item_classification_identifier"
+                     type="xr:identifier"
+                     minOccurs="0"
+                     maxOccurs="unbounded">
+            <xs:annotation>
+               <xs:appinfo>BT-158</xs:appinfo>
+               <xs:documentation>Ein Code für die Klassifizierung des Postens nach Typ bzw. Art oder Wesen bzw. Beschaffenheit. Anmerkung: Klassifizierungscodes werden verwendet, um die Zusammenfassung gleichartiger Posten für unterschiedliche Zwecke zu ermöglichen.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Item_country_of_origin"
+                     type="xr:code"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-159</xs:appinfo>
+               <xs:documentation>Der Ländercode, der das Land angibt, aus dem die Ware stammt oder in dem die Dienstleistung erbracht wird. Anmerkung: Die Liste der zulässigen Länder ist bei der ISO 3166-1 «Codes for the representation of names of countries and their subdivisions» erhältlich. Nur die Alpha-2-Darstellung darf verwendet werden.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="SUB_INVOICE_ITEM_ATTRIBUTES"
+                     type="xr:SUB_INVOICE_ITEM_ATTRIBUTESType"
+                     minOccurs="0"
+                     maxOccurs="unbounded">
+            <xs:annotation>
+               <xs:appinfo>BG-DEX-08</xs:appinfo>
+               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über die Eigenschaften der in Rechnung gestellten Waren und Dienstleistungen liefern.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
+   </xs:complexType>
+   <xs:complexType name="SUB_INVOICE_ITEM_ATTRIBUTESType">
+      <xs:sequence>
+         <xs:element name="Item_attribute_name"
+                     type="xr:text"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-160</xs:appinfo>
+               <xs:documentation>Der Name der Eigenschaft des Postens, wie z. B. «Farbe».</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Item_attribute_value"
+                     type="xr:text"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-161</xs:appinfo>
+               <xs:documentation>Der Wert der Eigenschaft des Postens, wie z. B. «rot».</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -2246,6 +2329,62 @@ M (Tax for production, services and importation in Ceuta and Melilla)
       </xs:sequence>
       <xs:attributeGroup ref="xr:xr-attributes"/>
    </xs:complexType>
+   <xs:complexType name="SUB_INVOICE_LINE_PERIODType">
+      <xs:sequence>
+         <xs:element name="Invoice_line_period_start_date"
+                     type="xr:date"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-134</xs:appinfo>
+               <xs:documentation>Das Datum, an dem der Rechnungszeitraum der betreffenden Rechnungsposition beginnt.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoice_line_period_end_date"
+                     type="xr:date"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-135</xs:appinfo>
+               <xs:documentation>Das Datum, an dem der Rechnungszeitraum der betreffenden Rechnungsposition endet.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
+   </xs:complexType>
+   <xs:complexType name="SUB_INVOICE_LINE_VAT_INFORMATIONType">
+      <xs:sequence>
+         <xs:element name="Invoiced_item_VAT_category_code"
+                     type="xr:code"
+                     minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-151</xs:appinfo>
+               <xs:documentation>Der Code der für den in Rechnung gestellten Posten geltenden Umsatzsteuerkategorie. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 müssen verwendet werden: 
+S (Standard rate)
+Z (Zero rated goods)
+E (Exempt from tax)
+AE (VAT Reverse Charge)
+K (VAT exempt for EEA intra-community supply of goods and services)
+G (Free export item, tax not charged)
+O (Services outside scope of tax)
+L (Canary Islands general indirect tax)
+M (Tax for production, services and importation in Ceuta and Melilla)
+</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Invoiced_item_VAT_rate"
+                     type="xr:percentage"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-152</xs:appinfo>
+               <xs:documentation>Der für den in Rechnung gestellten Posten geltende und als Prozentsatz angegebene Umsatzsteuersatz. Anmerkung: Ein Umsatzsteuersatz von 0 Prozent wird für Kalkulationszwecke auch dann angewandt, wenn der Posten außerhalb der Reichweite der Umsatzsteuer ist.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
+   </xs:complexType>
    <xs:complexType name="SUB_INVOICE_PRICE_DETAILSType">
       <xs:sequence>
          <xs:element name="Item_net_price"
@@ -2291,39 +2430,6 @@ M (Tax for production, services and importation in Ceuta and Melilla)
             <xs:annotation>
                <xs:appinfo>BT-150</xs:appinfo>
                <xs:documentation>Der Code der zu Grunde gelegten Maßeinheit. Die Maßeinheit der Item price base quantity unit of measure sollte gleich der Maßeinheit der in Rechnung gestellten Menge (BT-130) sein.</xs:documentation>
-            </xs:annotation>
-         </xs:element>
-      </xs:sequence>
-      <xs:attributeGroup ref="xr:xr-attributes"/>
-   </xs:complexType>
-   <xs:complexType name="SUB_INVOICE_LINE_VAT_INFORMATIONType">
-      <xs:sequence>
-         <xs:element name="Invoiced_item_VAT_category_code"
-                     type="xr:code"
-                     minOccurs="1"
-                     maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>BT-151</xs:appinfo>
-               <xs:documentation>Der Code der für den in Rechnung gestellten Posten geltenden Umsatzsteuerkategorie. Anmerkung: Folgende Codes aus der Codeliste UNTDID 5305 müssen verwendet werden: 
-S (Standard rate)
-Z (Zero rated goods)
-E (Exempt from tax)
-AE (VAT Reverse Charge)
-K (VAT exempt for EEA intra-community supply of goods and services)
-G (Free export item, tax not charged)
-O (Services outside scope of tax)
-L (Canary Islands general indirect tax)
-M (Tax for production, services and importation in Ceuta and Melilla)
-</xs:documentation>
-            </xs:annotation>
-         </xs:element>
-         <xs:element name="Invoiced_item_VAT_rate"
-                     type="xr:percentage"
-                     minOccurs="0"
-                     maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>BT-152</xs:appinfo>
-               <xs:documentation>Der für den in Rechnung gestellten Posten geltende und als Prozentsatz angegebene Umsatzsteuersatz. Anmerkung: Ein Umsatzsteuersatz von 0 Prozent wird für Kalkulationszwecke auch dann angewandt, wenn der Posten außerhalb der Reichweite der Umsatzsteuer ist.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
