@@ -1921,6 +1921,7 @@
          <xsl:apply-templates mode="BG-DEX-05" select="./cac:InvoicePeriod"/>
          <xsl:apply-templates mode="BG-DEX-06" select="./cac:ClassifiedTaxCategory"/>
          <xsl:apply-templates mode="BG-DEX-07" select="./cac:Price"/>
+         <xsl:apply-templates mode="BG-DEX-01" select="cac:SubInvoiceLine"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:SUB_INVOICE_LINE>
