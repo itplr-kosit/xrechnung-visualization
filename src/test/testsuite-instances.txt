@@ -27,9 +27,6 @@
 01.14a-INVOICE_ubl.xml
 01.14a-INVOICE_uncefact.xml
 01.15a-INVOICE_ubl.xml
-01.15a-INVOICE_uncefact.xml
-02.01a-INVOICE_uncefact.xml
-02.02a-INVOICE_uncefact.xml
 03.01a-INVOICE_ubl.xml
 03.01a-INVOICE_uncefact.xml
 03.02a-INVOICE_ubl.xml
