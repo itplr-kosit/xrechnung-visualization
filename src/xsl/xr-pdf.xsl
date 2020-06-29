@@ -23,7 +23,15 @@
 
   <xsl:output method="xml" version="1.0" encoding="utf-8" /> 
 
-
+  <!-- FO engine used can be specified. Specific extensions will be then enabled. 
+       Supported values are: 
+            axf - Antenna House XSL Formatter
+            fop - Apache FOP
+       -->
+  <xsl:param name="foengine"/>
+  
+  <xsl:param name="axf.extensions" select="if ($foengine eq 'axf') then true() else false()"/>
+  <xsl:param name="fop.extensions" select="if ($foengine eq 'fop') then true() else false()"/>
 
   <!-- ==========================================================================
        == Grundaufbau

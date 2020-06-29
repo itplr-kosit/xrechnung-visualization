@@ -12,7 +12,9 @@
                              page-width="210mm">
                              
         <fo:region-body   region-name="xrBody"
-                          margin="30mm 10mm 20mm 20mm"/>
+                          margin="20mm 10mm 20mm 20mm"
+                          column-count="2"
+                          column-gap="8mm"/>
                              
         <fo:region-before region-name="header" 
                           extent="20mm"/>

@@ -6,4 +6,4 @@
 *.xpr
 .ant-targets-build.xml
 /xslt
-*.zip
+*.zipost

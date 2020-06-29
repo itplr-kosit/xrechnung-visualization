@@ -45,8 +45,7 @@
     <xsl:attribute name="margin-bottom">4mm</xsl:attribute>
     <xsl:attribute name="hyphenate">false</xsl:attribute>
     <xsl:attribute name="span">all</xsl:attribute>
-    <xsl:attribute name="keep-with-next.within-page">always</xsl:attribute>
-    <xsl:attribute name="axf:pdftag">h1</xsl:attribute>
+    <xsl:attribute name="keep-with-next.within-page">always</xsl:attribute>    
   </xsl:attribute-set>
   
   <!-- H2-Container -->
@@ -55,8 +54,7 @@
     <xsl:attribute name="padding-top">2.5pt</xsl:attribute>
     <xsl:attribute name="span">all</xsl:attribute>
     <xsl:attribute name="margin-bottom">4mm</xsl:attribute>
-    <xsl:attribute name="keep-with-next.within-page">always</xsl:attribute>
-    <xsl:attribute name="axf:pdftag">h2</xsl:attribute>
+    <xsl:attribute name="keep-with-next.within-page">always</xsl:attribute>    
   </xsl:attribute-set>
   
   <!-- H2 -->
@@ -93,16 +91,14 @@
   
   <!-- Wert-Felder -->
   <xsl:variable name="wertHG">#eeeeee</xsl:variable>
-  <xsl:variable name="wert-legende-breite">28mm</xsl:variable>
+  <xsl:variable name="wert-legende-breite">28</xsl:variable>
    
   <xsl:attribute-set name="wert-legende">
     <xsl:attribute name="font-size">7pt</xsl:attribute>
-    <xsl:attribute name="line-height">7pt</xsl:attribute>
-    <xsl:attribute name="min-height">5mm</xsl:attribute>
-    <xsl:attribute name="display-align">center</xsl:attribute>
-    <xsl:attribute name="padding-top">0mm</xsl:attribute>
-    <xsl:attribute name="padding-bottom">0mm</xsl:attribute>
-    <xsl:attribute name="padding-left">2mm</xsl:attribute>
+    <xsl:attribute name="line-height">10pt</xsl:attribute>        
+    <xsl:attribute name="padding-top">1mm</xsl:attribute>
+    <xsl:attribute name="padding-bottom">1mm</xsl:attribute>
+    <xsl:attribute name="margin-left">2mm</xsl:attribute>
     <xsl:attribute name="padding-right">1mm</xsl:attribute>
   </xsl:attribute-set>
   
@@ -114,8 +110,6 @@
     <xsl:attribute name="padding-bottom">1mm</xsl:attribute>
     <xsl:attribute name="padding-left">2mm</xsl:attribute>
     <xsl:attribute name="padding-right">2mm</xsl:attribute>
-    <xsl:attribute name="display-align">center</xsl:attribute>
-    <xsl:attribute name="width">100% - <xsl:value-of select="$wert-legende-breite"/> - 4mm</xsl:attribute>
     <xsl:attribute name="keep-together.within-column">always</xsl:attribute>
   </xsl:attribute-set>
    
@@ -189,22 +183,17 @@
   
   <!-- Box-Container -->
   <xsl:attribute-set name="box-container-kapitel">
-    <xsl:attribute name="axf:column-fill">balance</xsl:attribute>
-    <xsl:attribute name="column-gap">8mm</xsl:attribute>
     <xsl:attribute name="margin-bottom">10mm</xsl:attribute>
   </xsl:attribute-set>
    
-  <xsl:attribute-set name="box-container-bereich">
-    <xsl:attribute name="axf:column-fill">balance</xsl:attribute>
-    <xsl:attribute name="column-gap">8mm</xsl:attribute>
+  <xsl:attribute-set name="box-container-bereich">    
     <xsl:attribute name="margin-bottom">2mm</xsl:attribute>
     <xsl:attribute name="keep-together.within-page">always</xsl:attribute>
+    <xsl:attribute name="span">all</xsl:attribute>
   </xsl:attribute-set>
   
   <xsl:attribute-set name="box-container-inner">
-    <xsl:attribute name="axf:column-fill">balance</xsl:attribute>
-    <xsl:attribute name="column-gap">8mm</xsl:attribute>
-    <xsl:attribute name="margin-bottom">2mm</xsl:attribute>
+    <xsl:attribute name="margin-bottom">2mm</xsl:attribute>    
   </xsl:attribute-set>
   
 </xsl:stylesheet>
