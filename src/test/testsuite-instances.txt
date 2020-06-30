@@ -1,2 +1,1 @@
-04.01a-INVOICE_ubl.xml
-04.02a-INVOICE_ubl.xml
+01.01a-INVOICE_ubl.xml
