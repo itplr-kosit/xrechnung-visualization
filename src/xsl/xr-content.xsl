@@ -408,6 +408,7 @@
       <fo:block xsl:use-attribute-sets="separator" span="all"/>
     </xsl:if>
   </xsl:template>
+  
 
   <xsl:template name="detailsPositionAbrechnungszeitraum">
     <xsl:variable name="content">

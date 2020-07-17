@@ -1589,7 +1589,7 @@ Anhangsdokument.</xs:documentation>
          </xs:element>
          <xs:element name="Invoiced_quantity"
                      type="xr:quantity"
-                     minOccurs="1"
+                     minOccurs="0"
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-129</xs:appinfo>
@@ -1598,7 +1598,7 @@ Anhangsdokument.</xs:documentation>
          </xs:element>
          <xs:element name="Invoiced_quantity_unit_of_measure_code"
                      type="xr:code"
-                     minOccurs="1"
+                     minOccurs="0"
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-130</xs:appinfo>
@@ -1661,7 +1661,7 @@ Anhangsdokument.</xs:documentation>
          </xs:element>
          <xs:element name="PRICE_DETAILS"
                      type="xr:PRICE_DETAILSType"
-                     minOccurs="1"
+                     minOccurs="0"
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BG-29</xs:appinfo>
@@ -1670,8 +1670,8 @@ Anhangsdokument.</xs:documentation>
          </xs:element>
          <xs:element name="LINE_VAT_INFORMATION"
                      type="xr:LINE_VAT_INFORMATIONType"
-                     minOccurs="1"
-                     maxOccurs="1">
+                     minOccurs="0"
+                     maxOccurs="unbounded">
             <xs:annotation>
                <xs:appinfo>BG-30</xs:appinfo>
                <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über die Umsatzsteuer liefern, die für die in der betreffenden Zeile in Rechnung gestellten Waren und Dienstleistungen gilt.</xs:documentation>
@@ -1687,7 +1687,7 @@ Anhangsdokument.</xs:documentation>
             </xs:annotation>
          </xs:element>
          <xs:element name="SUB_INVOICE_LINE"
-                     type="xr:SUB_INVOICE_LINEType"
+                     type="xr:INVOICE_LINEType"
                      minOccurs="0"
                      maxOccurs="unbounded">
             <xs:annotation>

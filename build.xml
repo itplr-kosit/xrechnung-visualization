@@ -36,12 +36,13 @@
     <property name="vnu.version" value="18.11.5" />
     <property name="vnu.zip" value="${vnu.jar}_${vnu.version}.zip" />
     <property name="vnu.download.url" value="https://github.com/validator/validator/releases/download/${vnu.version}/${vnu.zip}" />
-    <property name="xr.testsuite.docs.download.url.base" value="https://raw.githubusercontent.com/itplr-kosit/xrechnung-testsuite/master/src/test/business-cases/standard" />
+    <property name="xr.testsuite.docs.download.url.base" value="https://raw.githubusercontent.com/itplr-kosit/xrechnung-testsuite/master/src/test/business-cases" />
     <property name="test.src.dir" location="${src.dir}/test" />
     <property name="test.build.dir" location="${build.dir}/test" />
     <property name="test.docs.dir" location="${test.build.dir}/instances" />
     <property name="test.transformed.dir" location="${test.build.dir}/transformed" />
     <property name="test.transformed.html.dir" location="${test.build.dir}/html" />
+    <property name="test.transformed.pdf.dir" location="${test.build.dir}/pdf" />
     <property name="test.reports.dir" location="${test.build.dir}/reports" />
 
     <property name="xrechnung.xsd.ns" value="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1" />
