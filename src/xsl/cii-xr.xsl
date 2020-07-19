@@ -15,7 +15,7 @@
       <xd:desc>
          <xd:p>
             <xd:b>Author:</xd:b> KoSIT Bremen (kosit@finanzen.bremen.de)</xd:p>
-         <xd:b>Fassung vom: 2019-03-18+01:00</xd:b>
+         <xd:b>Fassung vom: 2020-06-30+02:00</xd:b>
          <xd:p>Überführt eine zur EN 16931 konforme elektronische Rechnung in der konkreten Syntax UNCEFACT.CII.D16B in eine Instanz gemäß des Schemas für den Namensraum urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1.</xd:p>
          <xd:p>Das Skript setzt voraus, dass das zu verarbeitende Dokument valide bzgl. des XML Schemas und der Schematron-Regeln der Quelle ist. Für nicht valide Dokumente ist das Ergebnis nicht definiert.</xd:p>
       </xd:desc>
@@ -361,9 +361,9 @@
          <xsl:apply-templates mode="BT-27" select="./ram:Name"/>
          <xsl:apply-templates mode="BT-28"
                               select="./ram:SpecifiedLegalOrganization/ram:TradingBusinessName"/>
-         <xsl:apply-templates mode="BT-29" select="./ram:GlobalID[exists(@schemeID)]"/>
          <xsl:apply-templates mode="BT-29"
                               select="./ram:ID[empty(following-sibling::ram:GlobalID/@schemeID)]"/>
+         <xsl:apply-templates mode="BT-29" select="./ram:GlobalID[exists(@schemeID)]"/>
          <xsl:apply-templates mode="BT-30" select="./ram:SpecifiedLegalOrganization/ram:ID"/>
          <xsl:apply-templates mode="BT-31"
                               select="./ram:SpecifiedTaxRegistration/ram:ID[@schemeID=('VA', 'VAT')]"/>
@@ -399,7 +399,7 @@
       </xr:Seller_trading_name>
    </xsl:template>
    <xsl:template mode="BT-29"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:GlobalID[exists(@schemeID)]">
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID[empty(following-sibling::ram:GlobalID/@schemeID)]">
       <xr:Seller_identifier>
          <xsl:attribute name="xr:id" select="'BT-29'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -407,7 +407,7 @@
       </xr:Seller_identifier>
    </xsl:template>
    <xsl:template mode="BT-29"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID[empty(following-sibling::ram:GlobalID/@schemeID)]">
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:GlobalID[exists(@schemeID)]">
       <xr:Seller_identifier>
          <xsl:attribute name="xr:id" select="'BT-29'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -950,9 +950,9 @@
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty">
       <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
          <xsl:apply-templates mode="BT-70" select="./ram:Name"/>
-         <xsl:apply-templates mode="BT-71" select="./ram:GlobalID[exists(@schemeID)]"/>
          <xsl:apply-templates mode="BT-71"
                               select="./ram:ID[empty(following-sibling::ram:GlobalID/@schemeID)]"/>
+         <xsl:apply-templates mode="BT-71" select="./ram:GlobalID[exists(@schemeID)]"/>
          <xsl:apply-templates mode="BT-72"
                               select="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString[@format = '102']"/>
          <xsl:apply-templates mode="BG-14"
@@ -976,7 +976,7 @@
       </xr:Deliver_to_party_name>
    </xsl:template>
    <xsl:template mode="BT-71"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID[exists(@schemeID)]">
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:ID[empty(following-sibling::ram:GlobalID/@schemeID)]">
       <xr:Deliver_to_location_identifier>
          <xsl:attribute name="xr:id" select="'BT-71'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -984,7 +984,7 @@
       </xr:Deliver_to_location_identifier>
    </xsl:template>
    <xsl:template mode="BT-71"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:ID[empty(following-sibling::ram:GlobalID/@schemeID)]">
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID[exists(@schemeID)]">
       <xr:Deliver_to_location_identifier>
          <xsl:attribute name="xr:id" select="'BT-71'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -1651,7 +1651,7 @@
    </xsl:template>
    <xsl:template mode="BG-25"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem der Instanz in konkreter Syntax wird auf 14 Objekte der EN 16931 abgebildet. -->
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem der Instanz in konkreter Syntax wird auf 15 Objekte der EN 16931 abgebildet. -->
          <xsl:apply-templates mode="BT-126" select="./ram:AssociatedDocumentLineDocument/ram:LineID"/>
          <xsl:apply-templates mode="BT-127"
                               select="./ram:AssociatedDocumentLineDocument/ram:IncludedNote/ram:Content"/>
@@ -1676,7 +1676,7 @@
          <xsl:apply-templates mode="BG-29" select="./ram:SpecifiedLineTradeAgreement"/>
          <xsl:apply-templates mode="BG-30"
                               select="./ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax"/>
-         <xsl:apply-templates mode="BG-31" select="./ram:SpecifiedTradeProduct"/>
+         <xsl:apply-templates mode="BG-31" select="./ram:SpecifiedTradeProduct"/>         
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:INVOICE_LINE>

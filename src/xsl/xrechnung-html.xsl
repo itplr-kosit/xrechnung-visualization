@@ -601,7 +601,7 @@
   </xsl:template>
 
 
-  <xsl:template match="xr:INVOICE_LINE">
+  <xsl:template match="xr:INVOICE_LINE | xr:SUB_INVOICE_LINE">
         <div class="boxtabelle boxabstandtop boxtabelleZweispaltig first">
           <div class="boxzeile">
             <div class="box subBox">
@@ -795,10 +795,17 @@
           </div>
         </div>
       </div>
+      <xsl:apply-templates select="xr:SUB_INVOICE_LINE"/>
   </xsl:template>
 
-
   <xsl:template name="eigenschaft" match="xr:ITEM_ATTRIBUTES">
+    <div class="boxzeile">
+      <div title="BT-160" class="boxdaten legende "><xsl:value-of select="xr:Item_attribute_name"/></div>
+      <div title="BT-161" class="boxdaten wert"><xsl:value-of select="xr:Item_attribute_value"/></div>
+    </div>
+  </xsl:template>
+
+  <xsl:template name="sub_invoice_eigenschaft" match="xr:SUB_INVOICE_ITEM_ATTRIBUTES">
     <div class="boxzeile">
       <div title="BT-160" class="boxdaten legende "><xsl:value-of select="xr:Item_attribute_name"/></div>
       <div title="BT-161" class="boxdaten wert"><xsl:value-of select="xr:Item_attribute_value"/></div>

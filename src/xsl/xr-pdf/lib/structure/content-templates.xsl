@@ -362,7 +362,26 @@
     <xsl:for-each select="$content/*">
       <xsl:copy-of select="."/>
     </xsl:for-each>
+    <xsl:apply-templates select="xr:SUB_INVOICE_LINE"/>
     
+    <fo:block xsl:use-attribute-sets="box-container-bereich"/>      
+  </xsl:template>
+  
+  <xsl:template match="xr:SUB_INVOICE_LINE">
+    <xsl:variable name="identifier" select="xr:Invoice_line_identifier"/>
+    
+    <xsl:call-template name="h2">
+      <xsl:with-param name="titel" select="$identifier"/>
+    </xsl:call-template>
+    
+    <xsl:variable name="content">
+      <xsl:call-template name="detailsPosition"/>
+    </xsl:variable>
+    
+    <xsl:for-each select="$content/*">
+      <xsl:copy-of select="."/>
+    </xsl:for-each>
+    <xsl:apply-templates select="xr:SUB_INVOICE_LINE"/>
     <fo:block xsl:use-attribute-sets="box-container-bereich"/>      
   </xsl:template>
 
