@@ -1676,8 +1676,7 @@
          <xsl:apply-templates mode="BG-29" select="./ram:SpecifiedLineTradeAgreement"/>
          <xsl:apply-templates mode="BG-30"
                               select="./ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax"/>
-         <xsl:apply-templates mode="BG-31" select="./ram:SpecifiedTradeProduct"/>
-         <xr:warning>Syntaxbinding fehlt für BG-DEX-01: SUB INVOICE LINE</xr:warning>
+         <xsl:apply-templates mode="BG-31" select="./ram:SpecifiedTradeProduct"/>         
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:INVOICE_LINE>

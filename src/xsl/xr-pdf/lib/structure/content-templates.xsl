@@ -381,7 +381,7 @@
     <xsl:for-each select="$content/*">
       <xsl:copy-of select="."/>
     </xsl:for-each>
-    
+    <xsl:apply-templates select="xr:SUB_INVOICE_LINE"/>
     <fo:block xsl:use-attribute-sets="box-container-bereich"/>      
   </xsl:template>
 
