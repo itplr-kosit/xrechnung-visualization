@@ -317,52 +317,52 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Summe aller Positionen</div>
                     <div class="boxdaten rechnungSp2 color2">netto</div>
-                    <div title="BT-106" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_Invoice_line_net_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-106" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_Invoice_line_net_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Summe Nachlässe</div>
                     <div class="boxdaten rechnungSp2 color2">netto</div>
-                    <div title="BT-107" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level,'###.###,00','decimal')"/></div>
+                    <div title="BT-107" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingBottom line1Bottom">Summe Zuschläge</div>
                     <div class="boxdaten rechnungSp2 paddingBottom line1Bottom color2">netto</div>
-                    <div title="BT-108" class="boxdaten rechnungSp3 paddingBottom line1Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_charges_on_document_level,'###.###,00','decimal')"/></div>
+                    <div title="BT-108" class="boxdaten rechnungSp3 paddingBottom line1Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_charges_on_document_level,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingTop">Gesamtsumme</div>
                     <div class="boxdaten rechnungSp2 paddingTop color2">netto</div>
-                    <div title="BT-109" class="boxdaten rechnungSp3 paddingTop"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_without_VAT,'###.###,00','decimal')"/></div>
+                    <div title="BT-109" class="boxdaten rechnungSp3 paddingTop"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_without_VAT,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Summe Umsatzsteuer</div>
                     <div class="boxdaten rechnungSp2 color2"></div>
-                    <div title="BT-110" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-110" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingBottom line1Bottom">Summe Umsatzsteuer in Abrechnungswährung</div>
                     <div class="boxdaten rechnungSp2 paddingBottom line1Bottom color2"></div>
-                    <div title="BT-111" class="boxdaten rechnungSp3 paddingBottom line1Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount_in_accounting_currency,'###.###,00','decimal')"/></div>
+                    <div title="BT-111" class="boxdaten rechnungSp3 paddingBottom line1Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount_in_accounting_currency,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingTop">Gesamtsumme</div>
                     <div class="boxdaten rechnungSp2 paddingTop color2">brutto</div>
-                    <div title="BT-112" class="boxdaten rechnungSp3 paddingTop"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_with_VAT,'###.###,00','decimal')"/></div>
+                    <div title="BT-112" class="boxdaten rechnungSp3 paddingTop"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_with_VAT,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Gezahlter Betrag</div>
                     <div class="boxdaten rechnungSp2 color2">brutto</div>
-                    <div title="BT-113" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Paid_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-113" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Paid_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingBottom line2Bottom">Rundungsbetrag</div>
                     <div class="boxdaten rechnungSp2 paddingBottom line2Bottom color2">brutto</div>
-                    <div title="BT-114" class="boxdaten rechnungSp3 paddingBottom line2Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Rounding_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-114" class="boxdaten rechnungSp3 paddingBottom line2Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Rounding_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingTop bold">Fälliger Betrag</div>
                     <div class="boxdaten rechnungSp2 paddingTop color2">brutto</div>
-                    <div title="BT-115" class="boxdaten rechnungSp3 paddingTop bold"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment,'###.###,00','decimal')"/></div>
+                    <div title="BT-115" class="boxdaten rechnungSp3 paddingTop bold"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment,'###.##0,00','decimal')"/></div>
                   </div>
               </div>
             </div>
@@ -383,7 +383,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Gesamtsumme</div>
                     <div class="boxdaten rechnungSp2 color2">netto</div>
-                    <div title="BT-116" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:VAT_category_taxable_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-116" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:VAT_category_taxable_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 line1Bottom">Umsatzsteuersatz</div>
@@ -393,7 +393,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Umsatzsteuerbetrag</div>
                     <div class="boxdaten rechnungSp2 color2"></div>
-                    <div title="BT-117" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:VAT_category_tax_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-117" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:VAT_category_tax_amount,'###.##0,00','decimal')"/></div>
                   </div>
               </div>
 
@@ -419,7 +419,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Grundbetrag</div>
                     <div class="boxdaten rechnungSp2 color2">netto</div>
-                    <div title="BT-93" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:Document_level_allowance_base_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-93" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:Document_level_allowance_base_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 line1Bottom">Prozentsatz</div>
@@ -429,7 +429,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Nachlass</div>
                     <div class="boxdaten rechnungSp2 color2">netto</div>
-                    <div title="BT-92" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:Document_level_allowance_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-92" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:Document_level_allowance_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Umsatzsteuersatz des Nachlasses</div>
@@ -460,7 +460,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Grundbetrag</div>
                     <div class="boxdaten rechnungSp2 color2">netto</div>
-                    <div title="BT-100" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:Document_level_charge_base_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-100" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:Document_level_charge_base_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 line1Bottom">Prozentsatz</div>
@@ -470,7 +470,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Zuschlag</div>
                     <div class="boxdaten rechnungSp2 color2">netto</div>
-                    <div title="BT-99" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:Document_level_charge_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-99" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:Document_level_charge_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Umsatzsteuersatz des Zuschlages</div>
@@ -651,21 +651,21 @@
                 </div>
                 <div class="rechnungsZeile">
                   <div class="boxdaten detailSp1 line1Bottom color2">Preis pro Einheit (netto)</div>
-                  <div title="BT-146" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_net_price,'###.###,00','decimal')"/></div>
+                  <div title="BT-146" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_net_price,'###.##0,00','decimal')"/></div>
                 </div>
                 <div class="rechnungsZeile">
                   <div class="boxdaten detailSp1 color2">Gesamtpreis (netto)</div>
-                  <div title="BT-131" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_net_amount,'###.###,00','decimal')"/></div>
+                  <div title="BT-131" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_net_amount,'###.##0,00','decimal')"/></div>
                 </div>
               </div>
               <div class="boxtabelle boxinhalt noPaddingTop borderSpacing">
                 <div class="boxzeile">
                   <div class="boxdaten legende ">Rabatt (netto):</div>
-                  <div title="BT-147" class="boxdaten wert"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount,'###.###,00','decimal')"/></div>
+                  <div title="BT-147" class="boxdaten wert"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount,'###.##0,00','decimal')"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende ">Listenpreis (netto):</div>
-                  <div title="BT-148" class="boxdaten wert"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price,'###.###,00','decimal')"/></div>
+                  <div title="BT-148" class="boxdaten wert"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price,'###.##0,00','decimal')"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende ">Anzahl der Einheit:</div>
@@ -681,7 +681,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende ">Umsatzsteuersatz in Prozent:</div>
-                  <div title="BT-152" class="boxdaten wert"><xsl:value-of select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate"/>%</div>
+                  <div title="BT-152" class="boxdaten wert"><xsl:value-of select="format-number(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,'##0,##','decimal')"/>%</div>
                 </div>
               </div>
             </div>
@@ -695,15 +695,15 @@
                 <div class="boxtabelle boxinhalt ">
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 color2">Grundbetrag (netto)</div>
-                    <div title="BT-137" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:Invoice_line_allowance_base_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-137" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:Invoice_line_allowance_base_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 line1Bottom color2">Prozentsatz</div>
-                    <div title="BT-138" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="xr:Invoice_line_allowance_percentage"/>%</div>
+                    <div title="BT-138" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:Invoice_line_allowance_percentage,'##0,00','decimal')"/>%</div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 color2">Nachlass (netto)</div>
-                    <div title="BT-136" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_allowance_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-136" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_allowance_amount,'###.##0,00','decimal')"/></div>
                   </div>
                 </div>
                 <div class="grundDetail">
@@ -718,15 +718,15 @@
                 <div class="boxtabelle boxinhalt ">
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 color2">Grundbetrag (netto)</div>
-                    <div title="BT-142" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:Invoice_line_charge_base_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-142" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:Invoice_line_charge_base_amount,'###.##0,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 line1Bottom color2">Prozentsatz</div>
-                    <div title="BT-143" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="xr:Invoice_line_charge_percentage"/>%</div>
+                    <div title="BT-143" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:Invoice_line_charge_percentage,'##0,00','decimal')"/>%</div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 color2">Zuschlag (netto)</div>
-                    <div title="BT-141" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_charge_amount,'###.###,00','decimal')"/></div>
+                    <div title="BT-141" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_charge_amount,'###.##0,00','decimal')"/></div>
                   </div>
                 </div>
                 <div class="grundDetail">

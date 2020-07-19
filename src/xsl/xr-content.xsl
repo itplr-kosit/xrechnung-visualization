@@ -233,7 +233,7 @@
                     <xsl:with-param name="value" select="format-number(xr:Document_level_allowance_base_amount,'###.##0,00','decimal')"/>
                   </xsl:apply-templates>
                   <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_percentage">
-                    <xsl:with-param name="value" select="concat(xr:Document_level_allowance_percentage, '%')"/>
+                    <xsl:with-param name="value" select="concat(format-number(xr:Document_level_allowance_percentage,'##0,##','decimal'), '%')"/>
                   </xsl:apply-templates>
                   <xsl:apply-templates mode="sum-list-entry" select="xr:Document_level_allowance_amount">
                     <xsl:with-param name="value" select="format-number(xr:Document_level_allowance_amount,'###.##0,00','decimal')"/>
@@ -270,7 +270,7 @@
                       <xsl:with-param name="value" select="format-number(xr:Document_level_charge_base_amount,'###.##0,00','decimal')"/>
                     </xsl:apply-templates>
                     <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_charge_percentage">
-                      <xsl:with-param name="value" select="concat(xr:Document_level_charge_percentage, '%')"/>
+                      <xsl:with-param name="value" select="concat(format-number(xr:Document_level_charge_percentage,'##0,##','decimal'), '%')"/>
                     </xsl:apply-templates>
                     <xsl:apply-templates mode="sum-list-entry" select="xr:Document_level_charge_amount">
                       <xsl:with-param name="value" select="format-number(xr:Document_level_charge_amount,'###.##0,00','decimal')"/>
@@ -456,7 +456,9 @@
             <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_base_quantity"/>
             <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_base_quantity_unit_of_measure"/>
             <xsl:apply-templates mode="list-entry" select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_category_code"/>
-            <xsl:apply-templates mode="list-entry" select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate"/>
+            <xsl:apply-templates mode="list-entry" select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate">
+            <xsl:with-param name="value" select="format-number(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,'##0,##','decimal')"/>
+            </xsl:apply-templates>
           </xsl:with-param>
         </xsl:call-template>
       </xsl:with-param>
