@@ -1157,9 +1157,7 @@
          <xsl:apply-templates mode="BT-84" select="./ram:IBANID"/>
          <xsl:apply-templates mode="BT-85" select="./ram:AccountName"/>
          <xsl:apply-templates mode="BT-86"
-                              select="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID"/>
-         <xsl:apply-templates mode="BT-86"
-                              select="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID"/>
+                              select="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID"/>         
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:CREDIT_TRANSFER>
@@ -1192,14 +1190,6 @@
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="text"/>
       </xr:Payment_account_name>
-   </xsl:template>
-   <xsl:template mode="BT-86"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID">
-      <xr:Payment_service_provider_identifier>
-         <xsl:attribute name="xr:id" select="'BT-86'"/>
-         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier"/>
-      </xr:Payment_service_provider_identifier>
    </xsl:template>
    <xsl:template mode="BT-86"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID">
