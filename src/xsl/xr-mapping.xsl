@@ -836,7 +836,7 @@
       </xsl:when>
       <xsl:when test="$identifier = 'detailsPositionArtikelinformationen'">
         <label>Artikelinformationen</label>
-        <nummer>BG-27</nummer>
+        <nummer>BG-31</nummer>
       </xsl:when>
       <xsl:when test="$identifier = 'detailsPositionArtikeleigenschaften'">
         <label>Eigenschaften des Artikels</label>

@@ -322,7 +322,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">Summe Nachlässe</div>
                     <div class="boxdaten rechnungSp2 color2">netto</div>
-                    <div title="BT-107" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:Sum_of_allowances_on_document_level,'###.###,00','decimal')"/></div>
+                    <div title="BT-107" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level,'###.###,00','decimal')"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingBottom line1Bottom">Summe Zuschläge</div>
@@ -691,52 +691,56 @@
           <div class="boxzeile">
             <div class="box subBox">
               <div  title="BG-27" class="boxtitel boxtitelSub">Nachlässe auf Ebene der Rechnungsposition</div>
-              <div class="boxtabelle boxinhalt ">
-                <div class="rechnungsZeile">
-                  <div class="boxdaten detailSp1 color2">Grundbetrag (netto)</div>
-                  <div title="BT-137" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:INVOICE_LINE_ALLOWANCES/xr:Invoice_line_allowance_base_amount,'###.###,00','decimal')"/></div>
+              <xsl:for-each select = "xr:INVOICE_LINE_ALLOWANCES">
+                <div class="boxtabelle boxinhalt ">
+                  <div class="rechnungsZeile">
+                    <div class="boxdaten detailSp1 color2">Grundbetrag (netto)</div>
+                    <div title="BT-137" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:Invoice_line_allowance_base_amount,'###.###,00','decimal')"/></div>
+                  </div>
+                  <div class="rechnungsZeile">
+                    <div class="boxdaten detailSp1 line1Bottom color2">Prozentsatz</div>
+                    <div title="BT-138" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="xr:Invoice_line_allowance_percentage"/>%</div>
+                  </div>
+                  <div class="rechnungsZeile">
+                    <div class="boxdaten detailSp1 color2">Nachlass (netto)</div>
+                    <div title="BT-136" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_allowance_amount,'###.###,00','decimal')"/></div>
+                  </div>
                 </div>
-                <div class="rechnungsZeile">
-                  <div class="boxdaten detailSp1 line1Bottom color2">Prozentsatz</div>
-                  <div title="BT-138" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="xr:INVOICE_LINE_ALLOWANCES/xr:Invoice_line_allowance_percentage"/>%</div>
+                <div class="grundDetail">
+                  <div class="color2">Grund des Nachlasses: <span title="BT-139" class="bold"><xsl:value-of select="xr:Invoice_line_allowance_reason"/></span></div>
+                  <div class="color2">Code für den Nachlassgrund: <span title="BT-140" class="bold"><xsl:value-of select="xr:Invoice_line_allowance_reason_code"/></span></div>
                 </div>
-                <div class="rechnungsZeile">
-                  <div class="boxdaten detailSp1 color2">Nachlass (netto)</div>
-                  <div title="BT-136" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:INVOICE_LINE_ALLOWANCES/xr:Invoice_line_allowance_amount,'###.###,00','decimal')"/></div>
-                </div>
-              </div>
-              <div class="grundDetail">
-                <div class="color2">Grund des Nachlasses: <span title="BT-139" class="bold"><xsl:value-of select="xr:INVOICE_LINE_ALLOWANCES/xr:Invoice_line_allowance_reason"/></span></div>
-                <div class="color2">Code für den Nachlassgrund: <span title="BT-140" class="bold"><xsl:value-of select="xr:INVOICE_LINE_ALLOWANCES/xr:Invoice_line_allowance_reason_code"/></span></div>
-              </div>
+              </xsl:for-each>
             </div>
             <div class="box subBox">
               <div title="BG-28" class="boxtitel boxtitelSub">Zuschläge auf Ebene der Rechnungsposition</div>
-              <div class="boxtabelle boxinhalt ">
-                <div class="rechnungsZeile">
-                  <div class="boxdaten detailSp1 color2">Grundbetrag (netto)</div>
-                  <div title="BT-142" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:INVOICE_LINE_CHARGES/xr:Invoice_line_charge_base_amount,'###.###,00','decimal')"/></div>
+              <xsl:for-each select = "xr:INVOICE_LINE_CHARGES">
+                <div class="boxtabelle boxinhalt ">
+                  <div class="rechnungsZeile">
+                    <div class="boxdaten detailSp1 color2">Grundbetrag (netto)</div>
+                    <div title="BT-142" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:Invoice_line_charge_base_amount,'###.###,00','decimal')"/></div>
+                  </div>
+                  <div class="rechnungsZeile">
+                    <div class="boxdaten detailSp1 line1Bottom color2">Prozentsatz</div>
+                    <div title="BT-143" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="xr:Invoice_line_charge_percentage"/>%</div>
+                  </div>
+                  <div class="rechnungsZeile">
+                    <div class="boxdaten detailSp1 color2">Zuschlag (netto)</div>
+                    <div title="BT-141" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_charge_amount,'###.###,00','decimal')"/></div>
+                  </div>
                 </div>
-                <div class="rechnungsZeile">
-                  <div class="boxdaten detailSp1 line1Bottom color2">Prozentsatz</div>
-                  <div title="BT-143" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="xr:INVOICE_LINE_CHARGES/xr:Invoice_line_charge_percentage"/>%</div>
+                <div class="grundDetail">
+                  <div class="color2">Grund des Zuschlags: <span title="BT-144" class="bold"><xsl:value-of select="xr:Invoice_line_charge_reason"/></span></div>
+                  <div class="color2">Code für den Zuschlagsgrund: <span title="BT-145" class="bold"><xsl:value-of select="xr:Invoice_line_charge_reason_code"/></span></div>
                 </div>
-                <div class="rechnungsZeile">
-                  <div class="boxdaten detailSp1 color2">Zuschlag (netto)</div>
-                  <div title="BT-141" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:INVOICE_LINE_CHARGES/xr:Invoice_line_charge_amount,'###.###,00','decimal')"/></div>
-                </div>
-              </div>
-              <div class="grundDetail">
-                <div class="color2">Grund des Zuschlags: <span title="BT-144" class="bold"><xsl:value-of select="xr:INVOICE_LINE_CHARGES/xr:Invoice_line_charge_reason"/></span></div>
-                <div class="color2">Code für den Zuschlagsgrund: <span title="BT-145" class="bold"><xsl:value-of select="xr:INVOICE_LINE_CHARGES/xr:Invoice_line_charge_reason_code"/></span></div>
-              </div>
+              </xsl:for-each>
             </div>
           </div>
         </div>
         <div class="boxtabelle">
           <div class="boxzeile">
             <div class="box subBox">
-              <div  title="BG-27" class="boxtitel boxtitelSub">Artikelinformationen</div>
+              <div  title="BG-31" class="boxtitel boxtitelSub">Artikelinformationen</div>
               <div class="boxtabelle boxinhalt ">
                 <div class="boxzeile">
                  <div class="boxcell boxZweispaltig">
