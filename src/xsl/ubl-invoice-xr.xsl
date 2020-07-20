@@ -494,8 +494,8 @@
          <xsl:apply-templates mode="BT-45" select="./cac:Party/cac:PartyName/cbc:Name"/>
          <xsl:apply-templates mode="BT-46" select="./cac:Party/cac:PartyIdentification/cbc:ID"/>
          <xsl:apply-templates mode="BT-47" select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID"/>
-         <xsl:apply-templates mode="BT-47"
-                              select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID"/>
+         <!--<xsl:apply-templates mode="BT-47"
+                              select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID"/>-->
          <xsl:apply-templates mode="BT-48"
                               select="./cac:Party/cac:PartyTaxScheme/cbc:CompanyID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']"/>
          <xsl:apply-templates mode="BT-49" select="./cac:Party/cbc:EndpointID"/>
