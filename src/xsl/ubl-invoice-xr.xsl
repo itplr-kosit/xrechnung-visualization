@@ -237,7 +237,7 @@
       <xr:Invoiced_object_identifier>
          <xsl:attribute name="xr:id" select="'BT-18'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Invoiced_object_identifier>
    </xsl:template>
    <xsl:template mode="BT-19" match="/Invoice:Invoice/cbc:AccountingCost">
@@ -330,7 +330,7 @@
       <xr:Seller_identifier>
          <xsl:attribute name="xr:id" select="'BT-29'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Seller_identifier>
    </xsl:template>
    <xsl:template mode="BT-30"
@@ -338,7 +338,7 @@
       <xr:Seller_legal_registration_identifier>
          <xsl:attribute name="xr:id" select="'BT-30'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Seller_legal_registration_identifier>
    </xsl:template>
    <xsl:template mode="BT-31"
@@ -370,7 +370,7 @@
       <xr:Seller_electronic_address>
          <xsl:attribute name="xr:id" select="'BT-34'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Seller_electronic_address>
    </xsl:template>
    <xsl:template mode="BG-5"
@@ -531,19 +531,11 @@
       <xr:Buyer_identifier>
          <xsl:attribute name="xr:id" select="'BT-46'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Buyer_identifier>
    </xsl:template>
    <xsl:template mode="BT-47"
                  match="/Invoice:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID">
-      <xr:Buyer_legal_registration_identifier>
-         <xsl:attribute name="xr:id" select="'BT-47'"/>
-         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier"/>
-      </xr:Buyer_legal_registration_identifier>
-   </xsl:template>
-   <xsl:template mode="BT-47"
-                 match="/Invoice:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID">
       <xr:Buyer_legal_registration_identifier>
          <xsl:attribute name="xr:id" select="'BT-47'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -563,7 +555,7 @@
       <xr:Buyer_electronic_address>
          <xsl:attribute name="xr:id" select="'BT-49'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Buyer_electronic_address>
    </xsl:template>
    <xsl:template mode="BG-8"
@@ -707,7 +699,7 @@
       <xr:Payee_identifier>
          <xsl:attribute name="xr:id" select="'BT-60'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Payee_identifier>
    </xsl:template>
    <xsl:template mode="BT-61"
@@ -715,7 +707,7 @@
       <xr:Payee_legal_registration_identifier>
          <xsl:attribute name="xr:id" select="'BT-61'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Payee_legal_registration_identifier>
    </xsl:template>
    <xsl:template mode="BG-11" match="/Invoice:Invoice/cac:TaxRepresentativeParty">
@@ -853,7 +845,7 @@
       <xr:Deliver_to_location_identifier>
          <xsl:attribute name="xr:id" select="'BT-71'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Deliver_to_location_identifier>
    </xsl:template>
    <xsl:template mode="BT-72"
@@ -1532,7 +1524,7 @@
       <xr:Invoice_line_object_identifier>
          <xsl:attribute name="xr:id" select="'BT-128'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Invoice_line_object_identifier>
    </xsl:template>
    <xsl:template mode="BT-129"
@@ -1873,7 +1865,7 @@
       <xr:Item_standard_identifier>
          <xsl:attribute name="xr:id" select="'BT-157'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Item_standard_identifier>
    </xsl:template>
    <xsl:template mode="BT-158"
@@ -1881,7 +1873,7 @@
       <xr:Item_classification_identifier>
          <xsl:attribute name="xr:id" select="'BT-158'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme-and-version"/>
+         <xsl:call-template name="identifier"/>
       </xr:Item_classification_identifier>
    </xsl:template>
    <xsl:template mode="BT-159"
@@ -1970,7 +1962,7 @@
       <xr:Invoice_line_object_identifier>
          <xsl:attribute name="xr:id" select="'BT-128'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Invoice_line_object_identifier>
    </xsl:template>
    <xsl:template mode="BT-129"
@@ -2071,7 +2063,7 @@
       <xr:Item_standard_identifier>
          <xsl:attribute name="xr:id" select="'BT-157'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme"/>
+         <xsl:call-template name="identifier"/>
       </xr:Item_standard_identifier>
    </xsl:template>
    <xsl:template mode="BT-158"
@@ -2079,7 +2071,7 @@
       <xr:Item_classification_identifier>
          <xsl:attribute name="xr:id" select="'BT-158'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier-with-scheme-and-version"/>
+         <xsl:call-template name="identifier"/>
       </xr:Item_classification_identifier>
    </xsl:template>
    <xsl:template mode="BT-159"
@@ -2366,25 +2358,15 @@
    <xsl:template name="date">
       <xsl:value-of select="."/>
    </xsl:template>
-   <xsl:template name="identifier-with-scheme-and-version">
-      <xsl:param name="schemeID" as="element()?"/>
+   <xsl:template name="identifier">
+      <!--<xsl:param name="schemeID" as="element()?"/>-->
       <xsl:if test="@listID | @schemeID">
-         <xsl:attribute name="scheme_identifier" select="($schemeID, @listID, @schemeID)[1]"/>
+         <xsl:attribute name="scheme_identifier" select="(@listID, @schemeID)[1]"/>
       </xsl:if>
       <xsl:if test="@schemeVersionID | @listVersionID">
          <xsl:attribute name="scheme_version_identifier"
-                        select="(@listVersionID, @schemeVersionID)[1]"/>
+            select="(@listVersionID, @schemeVersionID)[1]"/>
       </xsl:if>
-      <xsl:value-of select="."/>
-   </xsl:template>
-   <xsl:template name="identifier-with-scheme">
-      <xsl:param name="schemeID" as="element()?"/>
-      <xsl:if test="@schemeID">
-         <xsl:attribute name="scheme_identifier" select="($schemeID, @listID, @schemeID)[1]"/>
-      </xsl:if>
-      <xsl:value-of select="."/>
-   </xsl:template>
-   <xsl:template name="identifier">
       <xsl:value-of select="."/>
    </xsl:template>
    <xsl:template name="code">
