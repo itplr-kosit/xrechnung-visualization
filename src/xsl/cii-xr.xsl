@@ -76,6 +76,8 @@
                               select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty"/>
          <xsl:apply-templates mode="BG-13"
                               select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty"/>
+         <xsl:apply-templates mode="BG-14"
+            select="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod"/>
          <!--Manuell: angepasst für BG-16-->
          <xsl:for-each-group select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans"
                              group-by="ram:TypeCode">
@@ -955,8 +957,8 @@
          <xsl:apply-templates mode="BT-71" select="./ram:GlobalID[exists(@schemeID)]"/>
          <xsl:apply-templates mode="BT-72"
                               select="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString[@format = '102']"/>
-         <xsl:apply-templates mode="BG-14"
-                              select="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod"/>
+         <!--<xsl:apply-templates mode="BG-14"
+                              select="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod"/>-->
          <xsl:apply-templates mode="BG-15" select="./ram:PostalTradeAddress"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">

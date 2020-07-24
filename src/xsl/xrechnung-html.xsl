@@ -259,11 +259,11 @@
                   <div class="boxtabelle borderSpacing">
                     <div class="boxzeile">
                       <div class="boxdaten legende">von:</div>
-                      <div id="BT-73" title="BT-73" class="boxdaten wert"><xsl:value-of select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,'[D].[M].[Y]')"/></div>
+                      <div id="BT-73" title="BT-73" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,'[D].[M].[Y]')"/></div>
                     </div>
                     <div class="boxzeile">
                       <div class="boxdaten legende">bis:</div>
-                      <div id="BT-74" title="BT-74" class="boxdaten wert"><xsl:value-of select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,'[D].[M].[Y]')"/></div>
+                      <div id="BT-74" title="BT-74" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,'[D].[M].[Y]')"/></div>
                     </div>
                   </div>
                 </div>
