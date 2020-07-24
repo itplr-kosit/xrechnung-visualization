@@ -142,6 +142,10 @@
                   <div id="BT-52" title="BT-52" class="boxdaten wert"><xsl:value-of select="xr:BUYER_POSTAL_ADDRESS/xr:Buyer_city"/></div>
                 </div>
                 <div class="boxzeile">
+                  <div class="boxdaten legende">Bundesland:</div>
+                  <div id="BT-54" title="BT-54" class="boxdaten wert"><xsl:value-of select="xr:BUYER_POSTAL_ADDRESS/xr:Buyer_country_subdivision"/></div>
+                </div>
+                <div class="boxzeile">
                   <div class="boxdaten legende">Land:</div>
                   <div id="BT-55" title="BT-55" class="boxdaten wert"><xsl:value-of select="xr:BUYER_POSTAL_ADDRESS/xr:Buyer_country_code"/></div>
                 </div>
@@ -174,6 +178,10 @@
             <div id="uebersichtVerkaeufer" class="box boxZweispaltig">
               <div id="BG-4" title="BG-4" class="boxtitel">Informationen zum Verkäufer</div>
               <div class="boxtabelle boxinhalt borderSpacing">
+                <div class="boxzeile">
+                  <div class="boxdaten legende"> </div>
+                  <div class="boxdaten wert" style="background-color: white;"> </div>
+                </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Firmenname:</div>
                   <div id="BT-27" title="BT-27" class="boxdaten wert"><xsl:value-of select="xr:Seller_name"/></div>
