@@ -117,11 +117,11 @@
     <xsl:call-template name="list">
       <xsl:with-param name="headingId" select="'uebersichtRechnungAbrechnungszeitraum'"/>
       <xsl:with-param name="content">
-        <xsl:apply-templates select="xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_start_date" mode="list-entry">
-          <xsl:with-param name="value" select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,'[D].[M].[Y]')"/>
+        <xsl:apply-templates select="xr:INVOICING_PERIOD/xr:Invoicing_period_start_date" mode="list-entry">
+          <xsl:with-param name="value" select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,'[D].[M].[Y]')"/>
         </xsl:apply-templates>
-        <xsl:apply-templates select="xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_end_date" mode="list-entry">
-          <xsl:with-param name="value" select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,'[D].[M].[Y]')"/>
+        <xsl:apply-templates select="xr:INVOICING_PERIOD/xr:Invoicing_period_end_date" mode="list-entry">
+          <xsl:with-param name="value" select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,'[D].[M].[Y]')"/>
         </xsl:apply-templates>
       </xsl:with-param>
     </xsl:call-template>

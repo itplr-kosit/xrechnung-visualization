@@ -89,6 +89,7 @@
          <xsl:apply-templates mode="BG-10" select="./cac:PayeeParty"/>
          <xsl:apply-templates mode="BG-11" select="./cac:TaxRepresentativeParty"/>
          <xsl:apply-templates mode="BG-13" select="./cac:Delivery"/>
+         <xsl:apply-templates mode="BG-14" select="/Invoice:Invoice/cac:InvoicePeriod"/>
          <!--Manuell: angepasst für BG-16-->
          <!--PaymentMeansCode ist [1] in UBL und im semantischen Modell, daher kann auf diesem Attribut gruppiert werden-->
          <xsl:for-each-group select="cac:PaymentMeans" group-by="cbc:PaymentMeansCode">
@@ -821,7 +822,7 @@
          <xsl:apply-templates mode="BT-70" select="./cac:DeliveryParty/cac:PartyName/cbc:Name"/>
          <xsl:apply-templates mode="BT-71" select="./cac:DeliveryLocation/cbc:ID"/>
          <xsl:apply-templates mode="BT-72" select="./cbc:ActualDeliveryDate"/>
-         <xsl:apply-templates mode="BG-14" select="/Invoice:Invoice/cac:InvoicePeriod"/>
+         <!--<xsl:apply-templates mode="BG-14" select="/Invoice:Invoice/cac:InvoicePeriod"/>-->
          <xsl:apply-templates mode="BG-15" select="./cac:DeliveryLocation/cac:Address"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">

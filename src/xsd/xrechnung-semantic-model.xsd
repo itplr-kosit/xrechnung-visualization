@@ -281,6 +281,15 @@ Prozentzahlen sind ohne Vorzeichen sowie mit Punkt getrennt von zwei Nachkommast
                   <xs:documentation>Eine Gruppe von Informationselementen, die Informationen darüber liefern, wo und wann die in Rechnung gestellten Waren und Dienstleistungen geliefert bzw. erbracht werden.</xs:documentation>
                </xs:annotation>
             </xs:element>
+            <xs:element name="INVOICING_PERIOD"
+               type="xr:INVOICING_PERIODType"
+               minOccurs="0"
+               maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>BG-14</xs:appinfo>
+                  <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den Rechnungszeitraum liefern.</xs:documentation>
+               </xs:annotation>
+            </xs:element>
             <xs:element name="PAYMENT_INSTRUCTIONS"
                         type="xr:PAYMENT_INSTRUCTIONSType"
                         minOccurs="0"
@@ -934,7 +943,7 @@ von Eigenschaften.</xs:documentation>
                <xs:documentation>Datum, an dem die Lieferung tatsächlich erfolgt bzw. die Dienstleistung tatsächlich erbracht wird.</xs:documentation>
             </xs:annotation>
          </xs:element>
-         <xs:element name="INVOICING_PERIOD"
+         <!--<xs:element name="INVOICING_PERIOD"
                      type="xr:INVOICING_PERIODType"
                      minOccurs="0"
                      maxOccurs="1">
@@ -942,7 +951,7 @@ von Eigenschaften.</xs:documentation>
                <xs:appinfo>BG-14</xs:appinfo>
                <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den Rechnungszeitraum liefern.</xs:documentation>
             </xs:annotation>
-         </xs:element>
+         </xs:element>-->
          <xs:element name="DELIVER_TO_ADDRESS"
                      type="xr:DELIVER_TO_ADDRESSType"
                      minOccurs="0"
