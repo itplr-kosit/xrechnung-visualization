@@ -155,7 +155,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Schema der Kennung:</div>
-                  <div id="BT-46" title="BT-46" class="boxdaten wert"><xsl:value-of select="xr:Buyer_identifier/@scheme_identifier"/></div>
+                  <div id="BT-46-scheme-id" title="BT-46-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Buyer_identifier/@scheme_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Name:</div>
@@ -220,7 +220,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Schema der Kennung:</div>
-                  <div id="BT-29" title="BT-29" class="boxdaten wert"><xsl:value-of select="xr:Seller_identifier/@scheme_identifier"/></div>
+                  <div id="BT-29-scheme-id" title="BT-29-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Seller_identifier/@scheme_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Name:</div>
@@ -625,7 +625,7 @@
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende">Schema der Objektkennung:</div>
-                    <div id="BT-128" title="BT-128" class="boxdaten wert"><xsl:value-of select="xr:Invoice_line_object_identifier/@scheme_identifier"/></div>
+                    <div id="BT-128-scheme-id" title="BT-128-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Invoice_line_object_identifier/@scheme_identifier"/></div>
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende">Nummer der Auftragsposition:</div>
@@ -698,7 +698,7 @@
         <div class="boxtabelle">
           <div class="boxzeile">
             <div class="box subBox">
-              <div id="BG-27"  title="BG-27" class="boxtitel boxtitelSub">Nachlässe auf Ebene der Rechnungsposition</div>
+              <div id="BG-27" title="BG-27" class="boxtitel boxtitelSub">Nachlässe auf Ebene der Rechnungsposition</div>
               <xsl:for-each select = "xr:INVOICE_LINE_ALLOWANCES">
                 <div class="boxtabelle boxinhalt ">
                   <div class="rechnungsZeile">
@@ -782,7 +782,7 @@
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende ">Schema der Artikelkennung:</div>
-                    <div id="BT-157" title="BT-157" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_standard_identifier/@scheme_identifier"/></div>
+                    <div id="BT-157-scheme-id" title="BT-157-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_standard_identifier/@scheme_identifier"/></div>
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende ">Code der Artikelklassifizierung:</div>
@@ -790,11 +790,11 @@
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende ">Kennung zur Bildung des Schemas:</div>
-                    <div id="BT-158" title="BT-158" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_identifier"/></div>
+                    <div id="BT-158-scheme-id" title="BT-158-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_identifier"/></div>
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende ">Version zur Bildung des Schemas:</div>
-                    <div id="BT-158" title="BT-158" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_version_identifier"/></div>
+                    <div id="BT-158-scheme-version-id" title="BT-158-scheme-version-id" class="boxdaten wert"><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_version_identifier"/></div>
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende ">Code des Herkunftslandes:</div>
@@ -871,7 +871,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Schema der elektronischen Adresse:</div>
-                  <div id="BT-34" title="BT-34" class="boxdaten wert"><xsl:value-of select="xr:Seller_electronic_address/@scheme_identifier"/></div>
+                  <div id="BT-34-scheme-id" title="BT-34-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Seller_electronic_address/@scheme_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Register-/Registriernummer:</div>
@@ -887,7 +887,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Schema der Steuernummer:</div>
-                  <div id="BT-32" title="BT-32" class="boxdaten wert"><xsl:value-of select="xr:Seller_tax_registration_identifier/@scheme_identifier"/></div>
+                  <div id="BT-32-scheme" title="BT-32-scheme" class="boxdaten wert"><xsl:value-of select="xr:Seller_tax_registration_identifier/@scheme_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Weitere rechtliche Informationen:</div>
@@ -965,7 +965,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Schema der elektronischen Adresse:</div>
-                  <div id="BT-49" title="BT-49" class="boxdaten wert"><xsl:value-of select="xr:Buyer_electronic_address/@scheme_identifier"/></div>
+                  <div id="BT-49-scheme-id" title="BT-49-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Buyer_electronic_address/@scheme_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Register-/Registriernummer:</div>
@@ -973,7 +973,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Schema der Register-/Registriernummer:</div>
-                  <div id="BT-47" title="BT-47" class="boxdaten wert"><xsl:value-of select="xr:Buyer_legal_registration_identifier/@scheme_identifier"/></div>
+                  <div id="BT-47-scheme-id" title="BT-47-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Buyer_legal_registration_identifier/@scheme_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Umsatzsteuer-ID:</div>
@@ -1006,7 +1006,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Schema der Kennung:</div>
-                  <div id="BT-71" title="BT-71" class="boxdaten wert"><xsl:value-of select="xr:Deliver_to_location_identifier/@scheme_identifier"/></div>
+                  <div id="BT-71-scheme-id" title="BT-71-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Deliver_to_location_identifier/@scheme_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Lieferdatum:</div>
@@ -1079,7 +1079,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Schema der Objektkennung:</div>
-                  <div id="BT-18" title="BT-18" class="boxdaten wert"><xsl:value-of select="xr:Invoiced_object_identifier/@scheme_identifier"/></div>
+                  <div id="BT-18-scheme-id" title="BT-18-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Invoiced_object_identifier/@scheme_identifier"/></div>
                 </div>
               </div>
             </div>
@@ -1100,7 +1100,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Schema der Kennung:</div>
-                  <div id="BT-60" title="BT-60" class="boxdaten wert"><xsl:value-of select="xr:Payee_identifier/@scheme_identifier"/></div>
+                  <div id="BT-60-scheme-id" title="BT-60-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Payee_identifier/@scheme_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Register-/Registriernummer:</div>
@@ -1108,7 +1108,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Schema der Register-/Registriernummer:</div>
-                  <div id="BT-61" title="BT-61" class="boxdaten wert"><xsl:value-of select="xr:Payee_legal_registration_identifier/@scheme_identifier"/></div>
+                  <div id="BT-61-scheme-id" title="BT-61-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Payee_legal_registration_identifier/@scheme_identifier"/></div>
                 </div>
               </div>
             </div>
