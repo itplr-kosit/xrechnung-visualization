@@ -383,8 +383,7 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template name="detailsPosition">
-    <xsl:message>detailsPosition erreicht</xsl:message>
+  <xsl:template name="detailsPosition">    
     <xsl:call-template name="detailsPosition_Content"/>    
     <xsl:call-template name="detailsPositionAbrechnungszeitraum"/>
     <xsl:call-template name="detailsPositionPreiseinzelheiten"/>
