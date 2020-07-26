@@ -384,6 +384,7 @@
   </xsl:template>
 
   <xsl:template name="detailsPosition">
+    <xsl:message>detailsPosition erreicht</xsl:message>
     <xsl:call-template name="detailsPosition_Content"/>    
     <xsl:call-template name="detailsPositionAbrechnungszeitraum"/>
     <xsl:call-template name="detailsPositionPreiseinzelheiten"/>
@@ -465,11 +466,11 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template name="detailsPositionNachlaesse">
-    <xsl:call-template name="section">
+  <xsl:template name="detailsPositionNachlaesse">    
+    <xsl:call-template name="section">      
       <xsl:with-param name="headingId" select="'detailsPositionNachlaesse'"/>
       <xsl:with-param name="content">
-        <xsl:for-each select="INVOICE_LINE_ALLOWANCES">
+        <xsl:for-each select="xr:INVOICE_LINE_ALLOWANCES">          
           <xsl:call-template name="section">
             <xsl:with-param name="layout" select="'einspaltig'"/>
             <xsl:with-param name="content">
@@ -500,7 +501,7 @@
 
   <xsl:template name="detailsPositionZuschlaege">
     <xsl:variable name="content">
-      <xsl:for-each select="INVOICE_LINE_CHARGES">
+      <xsl:for-each select="xr:INVOICE_LINE_CHARGES">
         <xsl:call-template name="section">
           <xsl:with-param name="layout" select="'einspaltig'"/>
           <xsl:with-param name="content">
