@@ -1482,7 +1482,7 @@
          <xsl:apply-templates mode="BT-126" select="./cbc:ID"/>
          <xsl:apply-templates mode="BT-127" select="./cbc:Note"/>
          <xsl:apply-templates mode="BT-128"
-                              select="./cac:DocumentReference/cbc:ID[following-sibling::cbc:DocumentTypeCode = '130']"/>
+            select="./cac:DocumentReference/cbc:ID[following-sibling::cbc:DocumentTypeCode = '130']"/><!-- Code "130" MUST be used to indicate an invoice object reference. Not used for other additional documents -->
          <xsl:apply-templates mode="BT-129" select="./cbc:InvoicedQuantity"/>
          <xsl:apply-templates mode="BT-130" select="./cbc:InvoicedQuantity/@unitCode"/>
          <xsl:apply-templates mode="BT-131" select="./cbc:LineExtensionAmount"/>
