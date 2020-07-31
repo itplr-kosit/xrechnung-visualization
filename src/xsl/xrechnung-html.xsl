@@ -502,15 +502,22 @@
               <div class="boxtabelle boxinhalt borderSpacing">
                 <div class="boxzeile">
                   <div class="boxdaten legende">Skonto; weitere Zahlungsbedingungen:</div>
-                  <div id="BT-20" title="BT-20" class="boxdaten wert"><xsl:value-of select="xr:Payment_terms"/></div>
+                  <div id="BT-20" title="BT-20" class="boxdaten wert">                       
+                    <xsl:for-each select="tokenize(xr:Payment_terms,';')">                      
+                      <xsl:value-of select="."/>
+                      <xsl:if test="position() != last()">
+                        <br/>
+                      </xsl:if>
+                    </xsl:for-each>
+                  </div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Fälligkeitsdatum:</div>
                   <div id="BT-9" title="BT-9" class="boxdaten wert">
-                    <xsl:for-each select="tokenize(xr:Payment_due_date,',')">
+                    <xsl:for-each select="tokenize(xr:Payment_due_date,';')">
                       <xsl:value-of select="format-date(xs:date(.),'[D].[M].[Y]')"/>
                       <xsl:if test="position() != last()">
-                        <xsl:text>,</xsl:text>
+                        <br/>
                       </xsl:if>
                     </xsl:for-each>
                   </div>

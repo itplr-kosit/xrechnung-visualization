@@ -65,12 +65,14 @@
                               select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:IssuerAssignedID[following-sibling::ram:TypeCode='130']"/>
          <xsl:apply-templates mode="BT-19"
                               select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ReceivableSpecifiedTradeAccountingAccount/ram:ID"/>
-         <xr:Payment_terms>
-            <xsl:attribute name="xr:id" select="'BT-20'"/>
-            <xsl:attribute name="xr:src" select="'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description'"/>
-            <xsl:apply-templates mode="BT-20"
-               select="distinct-values(./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description)"/>
-         </xr:Payment_terms>
+         <xsl:if test="count(./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description) > 0">
+            <xr:Payment_terms>
+               <xsl:attribute name="xr:id" select="'BT-20'"/>
+               <xsl:attribute name="xr:src" select="'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description'"/>            
+               <xsl:apply-templates mode="BT-20"
+                  select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description"/>
+            </xr:Payment_terms>
+         </xsl:if>        
          <xsl:apply-templates mode="BG-1" select="./rsm:ExchangedDocument/ram:IncludedNote"/>
          <xsl:apply-templates mode="BG-2" select="./rsm:ExchangedDocumentContext"/>
          <xsl:apply-templates mode="BG-3"
@@ -176,10 +178,10 @@
       </xr:Value_added_tax_point_date_code>
    </xsl:template>
    <xsl:template mode="BT-9"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString[@format = '102']">      
-         <xsl:call-template name="date"/>
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString[@format = '102']">
+      <xsl:call-template name="date"/>
       <xsl:if test="position() != last()">
-         <xsl:text>,</xsl:text>
+         <xsl:text>;</xsl:text>
       </xsl:if>
    </xsl:template>
    <xsl:template mode="BT-10"
@@ -265,10 +267,10 @@
       </xr:Buyer_accounting_reference>
    </xsl:template>
    <xsl:template mode="BT-20"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description">
-      <xsl:call-template name="text"/>
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description">      
+      <xsl:call-template name="text"/>      
       <xsl:if test="position() != last()">
-         <xsl:text>,</xsl:text>
+         <xsl:text>;</xsl:text>
       </xsl:if>
    </xsl:template>
    <xsl:template mode="BG-1"
