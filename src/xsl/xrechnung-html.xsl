@@ -502,11 +502,25 @@
               <div class="boxtabelle boxinhalt borderSpacing">
                 <div class="boxzeile">
                   <div class="boxdaten legende">Skonto; weitere Zahlungsbedingungen:</div>
-                  <div id="BT-20" title="BT-20" class="boxdaten wert"><xsl:value-of select="xr:Payment_terms"/></div>
+                  <div id="BT-20" title="BT-20" class="boxdaten wert">                       
+                    <xsl:for-each select="tokenize(xr:Payment_terms,';')">                      
+                      <xsl:value-of select="."/>
+                      <xsl:if test="position() != last()">
+                        <br/>
+                      </xsl:if>
+                    </xsl:for-each>
+                  </div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Fälligkeitsdatum:</div>
-                  <div id="BT-9" title="BT-9" class="boxdaten wert"><xsl:value-of select="format-date(xr:Payment_due_date,'[D].[M].[Y]')"/></div>
+                  <div id="BT-9" title="BT-9" class="boxdaten wert">
+                    <xsl:for-each select="tokenize(xr:Payment_due_date,';')">
+                      <xsl:value-of select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+                      <xsl:if test="position() != last()">
+                        <br/>
+                      </xsl:if>
+                    </xsl:for-each>
+                  </div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Code für das Zahlungsmittel:</div>
@@ -566,20 +580,22 @@
   <xsl:template name="uebersichtUeberweisung">
             <div id="uebersichtUeberweisung" class="box subBox">
               <div id="BG-17" title="BG-17" class="boxtitel boxtitelSub">Überweisung</div>
+              <xsl:for-each select="xr:PAYMENT_INSTRUCTIONS/xr:CREDIT_TRANSFER">
               <div class="boxtabelle boxinhalt borderSpacing">
                  <div class="boxzeile">
                     <div class="boxdaten legende">Kontoinhaber:</div>
-                    <div id="BT-85" title="BT-85" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:CREDIT_TRANSFER/xr:Payment_account_name"/></div>
+                    <div id="BT-85" title="BT-85" class="boxdaten wert"><xsl:value-of select="xr:Payment_account_name"/></div>
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende">IBAN:</div>
-                    <div id="BT-84" title="BT-84" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:CREDIT_TRANSFER/xr:Payment_account_identifier"/></div>
+                    <div id="BT-84" title="BT-84" class="boxdaten wert"><xsl:value-of select="xr:Payment_account_identifier"/></div>
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende">BIC:</div>
-                    <div id="BT-86" title="BT-86" class="boxdaten wert"><xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:CREDIT_TRANSFER/xr:Payment_service_provider_identifier"/></div>
+                    <div id="BT-86" title="BT-86" class="boxdaten wert"><xsl:value-of select="xr:Payment_service_provider_identifier"/></div>
                   </div>
               </div>
+              </xsl:for-each>
             </div>
   </xsl:template>
 
