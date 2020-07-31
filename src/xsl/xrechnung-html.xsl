@@ -506,7 +506,14 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Fälligkeitsdatum:</div>
-                  <div id="BT-9" title="BT-9" class="boxdaten wert"><xsl:value-of select="format-date(xr:Payment_due_date,'[D].[M].[Y]')"/></div>
+                  <div id="BT-9" title="BT-9" class="boxdaten wert">
+                    <xsl:for-each select="tokenize(xr:Payment_due_date,',')">
+                      <xsl:value-of select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+                      <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                      </xsl:if>
+                    </xsl:for-each>
+                  </div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Code für das Zahlungsmittel:</div>
