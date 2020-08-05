@@ -209,8 +209,7 @@
     </java>
   </target>
 
-  <target name="transform-ubl-invoice-to-xr" depends="test-testsuite,prepare-saxon">
-
+  <target name="transform-ubl-invoice-to-xr" depends="prepare-saxon">
     <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
       style="${src.dir}/xsl/ubl-invoice-xr.xsl"
       includes="**/*ubl.xml,**/maxRechnung.xml">
@@ -221,7 +220,7 @@
   </target>
 
   <target name="transform-ubl-creditnote-to-xr"
-    depends="test-testsuite, prepare-saxon">
+    depends="prepare-saxon">
     <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
       style="${src.dir}/xsl/ubl-creditnote-xr.xsl"
       includes="**/maxRechnung-creditnote.xml">
@@ -231,7 +230,7 @@
     </xslt>
   </target>
 
-  <target name="transform-cii-to-xr" depends="test-testsuite, prepare-saxon">
+  <target name="transform-cii-to-xr" depends="prepare-saxon">
     <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
       style="${src.dir}/xsl/cii-xr.xsl" includes="**/*uncefact.xml">
       <classpath location="${lib.dir}/${saxon.jar}" />
@@ -240,7 +239,7 @@
     </xslt>
   </target>
 
-  <target name="transform-to-xr" depends="test-testsuite,transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr, transform-cii-to-xr" description="Calls transformation from all source formats to XR">
+  <target name="transform-to-xr" depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr, transform-cii-to-xr" description="Calls transformation from all source formats to XR">
     <!-- Just container for all transformations -->
   </target>
 
@@ -255,7 +254,6 @@
   </target>
 
   <target name="transform-xr-to-pdf" depends="transform-to-xr, prepare-fop">
-
     <xslt basedir="${test.transformed.dir}"
       destdir="${test.transformed.pdf.dir}" style="${src.dir}/xsl/xr-pdf.xsl"
       includes="**/*.xml">
@@ -264,7 +262,6 @@
       <param name="fop.extensions" type="STRING" expression="fop" />
       <mapper type="glob" from="*.xml" to="*.fo" />
     </xslt>
-
 
     <fop format="application/pdf" outdir="${test.transformed.pdf.dir}"
       messagelevel="debug">
@@ -295,7 +292,7 @@
 
   </target>
 
-  <target name="test-xr-transformation" depends="test-testsuite,transform-to-xr" description="All XR documents must be valid against XML Schema">
+  <target name="test-xr-transformation" depends="transform-to-xr" description="All XR documents must be valid against XML Schema">
     <schemavalidate fullchecking="yes" failonerror="yes" warn="true"
       lenient="false">
       <schema namespace="${xrechnung.xsd.ns}"
@@ -305,7 +302,7 @@
   </target>
 
   <target name="test-html"
-    depends="prepare-vnu,test-testsuite,transform-xr-to-html"
+    depends="prepare-vnu,transform-xr-to-html"
     description="Tests HTML generation with VNU by W3C">
     <echo>Validating HTML ...</echo>
     <java jar="${lib.dir}/${vnu.jar}" failonerror="false" fork="yes"
@@ -331,7 +328,7 @@
 
 
   <target name="test"
-    depends="test-testsuite, test-xr-transformation, test-html, test-pdf"
+    depends="test-xr-transformation, test-html, test-pdf"
     description="Validates source UBL or CII XML against XRechnung, transforms to XR Sem Model and schema validates results and transforms and test HTML and PDF visualization" />
 
 
