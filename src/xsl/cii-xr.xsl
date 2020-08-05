@@ -168,7 +168,7 @@
          <xsl:call-template name="code"/>
       </xr:VAT_accounting_currency_code>
    </xsl:template>
-   <xsl:template name="distinct-bt-7"     >      
+   <xsl:template name="distinct-bt-7">      
       <xsl:param as="xs:string*" name="date-values"></xsl:param>
       <xsl:for-each select="$date-values">
          <xsl:call-template name="date"/>

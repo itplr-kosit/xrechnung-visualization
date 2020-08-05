@@ -657,9 +657,12 @@
               <xsl:with-param name="field-mapping-identifier" select="'xr:Buyer_legal_registration_identifier/@scheme_identifier'"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:Buyer_VAT_identifier"/>
-            <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:Value_added_tax_point_date">
-              <xsl:with-param name="value" select="format-date(xr:BUYER/xr:Value_added_tax_point_date,'[D].[M].[Y]')"/>
-            </xsl:apply-templates>
+            <xsl:for-each select="tokenize(xr:Value_added_tax_point_date,';')">             
+              <xsl:call-template name="list-entry-bt-7">
+                <xsl:with-param name="value" select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+               <xsl:with-param name="field-mapping-identifier" select="'xr:Value_added_tax_point_date'"/>
+             </xsl:call-template>
+            </xsl:for-each>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:Value_added_tax_point_date_code"/>
             <xsl:apply-templates mode="list-entry" select="xr:Buyer_accounting_reference"/>
           </xsl:with-param>
