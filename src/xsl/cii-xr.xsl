@@ -38,7 +38,7 @@
             <xr:Value_added_tax_point_date>
                <xsl:attribute name="xr:id" select="'BT-7'"/>
                <xsl:attribute name="xr:src" select="'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString'"/>
-               <xsl:call-template name="distinct-bt7">
+               <xsl:call-template name="distinct-bt-7">
                   <xsl:with-param name="date-values" select="distinct-values(./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString[@format = '102'])"/>
                </xsl:call-template>
             </xr:Value_added_tax_point_date>
@@ -168,8 +168,7 @@
          <xsl:call-template name="code"/>
       </xr:VAT_accounting_currency_code>
    </xsl:template>
-   <xsl:template name="distinct-bt7"     >
-      <!--  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString[@format = '102']" -->
+   <xsl:template name="distinct-bt-7"     >      
       <xsl:param as="xs:string*" name="date-values"></xsl:param>
       <xsl:for-each select="$date-values">
          <xsl:call-template name="date"/>
@@ -1178,9 +1177,10 @@
          <xsl:apply-templates mode="BT-85" select="./ram:AccountName"/>
          <xr:Payment_service_provider_identifier>
             <xsl:attribute name="xr:id" select="'BT-86'"/>
-            <xsl:attribute name="xr:src" select="'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID'"/>
-            <xsl:apply-templates mode="BT-86"
-               select="distinct-values(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID)"/>
+            <xsl:attribute name="xr:src" select="'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID'"/>            
+            <xsl:call-template name="distinct-bt-86">
+               <xsl:with-param name="bic-values" select="distinct-values(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID)"/>
+            </xsl:call-template>
          </xr:Payment_service_provider_identifier>
       </xsl:variable>
       <xsl:if test="$bg-contents">
@@ -1214,13 +1214,15 @@
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="text"/>
       </xr:Payment_account_name>
-   </xsl:template>
-   <xsl:template mode="BT-86"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID">
-      <xsl:call-template name="identifier"/>
-      <xsl:if test="position() != last()">
-         <xsl:text>,</xsl:text>
-      </xsl:if>
+   </xsl:template>   
+   <xsl:template name="distinct-bt-86"     >      
+      <xsl:param as="xs:string*" name="bic-values"></xsl:param>
+      <xsl:for-each select="$bic-values">
+         <xsl:call-template name="identifier"/>
+         <xsl:if test="position() != last()">
+            <xsl:text>;</xsl:text>
+         </xsl:if>
+      </xsl:for-each>
    </xsl:template>
    <xsl:template mode="BG-18"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:ApplicableTradeSettlementFinancialCard">
