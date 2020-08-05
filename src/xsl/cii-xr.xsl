@@ -34,8 +34,15 @@
                               select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceCurrencyCode"/>
          <xsl:apply-templates mode="BT-6"
                               select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode"/>
-         <xsl:apply-templates mode="BT-7"
-                              select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString[@format = '102']"/>
+         <xsl:if test="count(./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString[@format = '102']) > 0">
+            <xr:Value_added_tax_point_date>
+               <xsl:attribute name="xr:id" select="'BT-7'"/>
+               <xsl:attribute name="xr:src" select="'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString'"/>
+               <xsl:call-template name="distinct-bt7">
+                  <xsl:with-param name="date-values" select="distinct-values(./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString[@format = '102'])"/>
+               </xsl:call-template>
+            </xr:Value_added_tax_point_date>
+         </xsl:if>   
          <xsl:apply-templates mode="BT-8"
                               select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:DueDateTypeCode"/>
          <xsl:if test="count(./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString[@format = '102']) > 0">
@@ -161,13 +168,15 @@
          <xsl:call-template name="code"/>
       </xr:VAT_accounting_currency_code>
    </xsl:template>
-   <xsl:template mode="BT-7"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString[@format = '102']">
-      <xr:Value_added_tax_point_date>
-         <xsl:attribute name="xr:id" select="'BT-7'"/>
-         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+   <xsl:template name="distinct-bt7"     >
+      <!--  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString[@format = '102']" -->
+      <xsl:param as="xs:string*" name="date-values"></xsl:param>
+      <xsl:for-each select="$date-values">
          <xsl:call-template name="date"/>
-      </xr:Value_added_tax_point_date>
+         <xsl:if test="position() != last()">
+            <xsl:text>;</xsl:text>
+         </xsl:if>
+      </xsl:for-each>
    </xsl:template>
    <xsl:template mode="BT-8"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:DueDateTypeCode">

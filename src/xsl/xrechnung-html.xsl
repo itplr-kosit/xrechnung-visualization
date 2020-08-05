@@ -997,11 +997,18 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Abrechnungsdatum der Umsatzsteuer:</div>
-                  <div id="BT-7" title="BT-7" class="boxdaten wert"><xsl:value-of select="format-date(xr:Value_added_tax_point_date,'[D].[M].[Y]')"/></div>
+                  <div id="BT-7" title="BT-7" class="boxdaten wert">
+                    <xsl:for-each select="tokenize(../xr:Value_added_tax_point_date,';')">                      
+                      <xsl:value-of select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+                      <xsl:if test="position() != last()">
+                        <br/>
+                      </xsl:if>
+                    </xsl:for-each>            
+                  </div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Code des Umsatzsteuer-Abrechnungsdatums:</div>
-                  <div id="BT-8" title="BT-8" class="boxdaten wert"><xsl:value-of select="xr:Value_added_tax_point_date_code"/></div>
+                  <div id="BT-8" title="BT-8" class="boxdaten wert"><xsl:value-of select="../xr:Value_added_tax_point_date_code"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Kontierungsinformation:</div>

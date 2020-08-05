@@ -1270,8 +1270,8 @@
          <xsl:apply-templates mode="BT-107" select="./cbc:AllowanceTotalAmount"/>
          <xsl:apply-templates mode="BT-108" select="./cbc:ChargeTotalAmount"/>
          <xsl:apply-templates mode="BT-109" select="./cbc:TaxExclusiveAmount"/>
-         <xsl:apply-templates mode="BT-110" select="/Invoice:Invoice/cac:TaxTotal/cbc:TaxAmount"/>
-         <xsl:apply-templates mode="BT-111" select="/Invoice:Invoice/cac:TaxTotal/cbc:TaxAmount"/>
+         <xsl:apply-templates mode="BT-110" select="/Invoice:Invoice/cac:TaxTotal/cbc:TaxAmount[/Invoice:Invoice/cbc:DocumentCurrencyCode = @currencyID]"/>
+         <xsl:apply-templates mode="BT-111" select="/Invoice:Invoice/cac:TaxTotal/cbc:TaxAmount[/Invoice:Invoice/cbc:TaxCurrencyCode = @currencyID]"/>
          <xsl:apply-templates mode="BT-112" select="./cbc:TaxInclusiveAmount"/>
          <xsl:apply-templates mode="BT-113" select="./cbc:PrepaidAmount"/>
          <xsl:apply-templates mode="BT-114" select="./cbc:PayableRoundingAmount"/>
@@ -2073,8 +2073,7 @@
    <xsl:template name="date">
       <xsl:value-of select="."/>
    </xsl:template>
-   <xsl:template name="identifier">
-      <!--<xsl:param name="schemeID" as="element()?"/>-->
+   <xsl:template name="identifier">      
       <xsl:if test="@listID | @schemeID">
          <xsl:attribute name="scheme_identifier" select="(@listID, @schemeID)[1]"/>
       </xsl:if>

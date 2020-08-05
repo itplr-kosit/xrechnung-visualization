@@ -28,6 +28,13 @@ standard/01.14a-INVOICE_ubl.xml
 standard/01.14a-INVOICE_uncefact.xml
 standard/01.15a-INVOICE_ubl.xml
 standard/01.15a-INVOICE_uncefact.xml
+standard/02.01a-INVOICE_ubl.xml
+standard/02.01a-INVOICE_uncefact.xml
+standard/02.02a-INVOICE_ubl.xml
+standard/02.03a-INVOICE_uncefact.xml
+standard/02.04a-INVOICE_uncefact.xml
+standard/02.05a-INVOICE_uncefact.xml
+standard/02.06a-INVOICE_uncefact.xml
 standard/03.01a-INVOICE_ubl.xml
 standard/03.01a-INVOICE_uncefact.xml
 standard/03.02a-INVOICE_ubl.xml
