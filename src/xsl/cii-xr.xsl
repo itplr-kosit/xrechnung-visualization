@@ -99,19 +99,19 @@
          <!--Manuell: angepasst für BG-16-->
          <xsl:for-each-group select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans"
                              group-by="ram:TypeCode">
-            <xr:PAYMENT_INSTRUCTIONS>
+            <xr:PAYMENT_INSTRUCTIONS>                              
                <xsl:attribute name="xr:id" select="'BG-16'"/>
-               <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+               <xsl:attribute name="xr:src" select="xr:src-path(.)"/>               
                <xsl:apply-templates mode="BT-81" select="current-group()[1]/ram:TypeCode"/>
                <xsl:apply-templates mode="BT-82" select="./ram:Information"/>
                <xsl:apply-templates mode="BT-83"
-                                    select="current-group()[1]/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PaymentReference"/>
+                                    select="current-group()/../ram:PaymentReference"/>
                <xsl:apply-templates mode="BG-17"
                                     select="current-group()/ram:PayeePartyCreditorFinancialAccount"/>
                <xsl:apply-templates mode="BG-18"
                                     select="current-group()/ram:ApplicableTradeSettlementFinancialCard"/>
                <xsl:apply-templates mode="BG-19"
-                                    select="current-group()/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement"/>
+                                    select="current-group()/../../ram:ApplicableHeaderTradeSettlement"/>
             </xr:PAYMENT_INSTRUCTIONS>
          </xsl:for-each-group>
          <xsl:apply-templates mode="BG-20"
