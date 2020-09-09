@@ -115,9 +115,9 @@
             </xr:PAYMENT_INSTRUCTIONS>
          </xsl:for-each-group>
          <xsl:apply-templates mode="BG-20"
-                              select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:ChargeIndicator[udt:Indicator='false']"/>
+                              select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='false']"/>
          <xsl:apply-templates mode="BG-21"
-                              select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:ChargeIndicator[udt:Indicator='true']"/>
+                              select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='true']"/>
          <xsl:apply-templates mode="BG-22"
                               select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation"/>                     
          <xsl:apply-templates mode="BG-23"
@@ -1296,15 +1296,15 @@
       </xr:Debited_account_identifier>
    </xsl:template>
    <xsl:template mode="BG-20"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:ChargeIndicator[udt:Indicator='false']">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator='false'] der Instanz in konkreter Syntax wird auf 7 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-92" select="../ram:ActualAmount"/>
-         <xsl:apply-templates mode="BT-93" select="../ram:BasisAmount"/>
-         <xsl:apply-templates mode="BT-94" select="../ram:CalculationPercent"/>
-         <xsl:apply-templates mode="BT-95" select="../ram:CategoryTradeTax/ram:CategoryCode"/>
-         <xsl:apply-templates mode="BT-96" select="../ram:CategoryTradeTax/ram:RateApplicablePercent"/>
-         <xsl:apply-templates mode="BT-97" select="../ram:Reason"/>
-         <xsl:apply-templates mode="BT-98" select="../ram:ReasonCode"/>
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='false']">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='false'] der Instanz in konkreter Syntax wird auf 7 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-92" select="./ram:ActualAmount"/>
+         <xsl:apply-templates mode="BT-93" select="./ram:BasisAmount"/>
+         <xsl:apply-templates mode="BT-94" select="./ram:CalculationPercent"/>
+         <xsl:apply-templates mode="BT-95" select="./ram:CategoryTradeTax/ram:CategoryCode"/>
+         <xsl:apply-templates mode="BT-96" select="./ram:CategoryTradeTax/ram:RateApplicablePercent"/>
+         <xsl:apply-templates mode="BT-97" select="./ram:Reason"/>
+         <xsl:apply-templates mode="BT-98" select="./ram:ReasonCode"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:DOCUMENT_LEVEL_ALLOWANCES>
@@ -1371,15 +1371,15 @@
       </xr:Document_level_allowance_reason_code>
    </xsl:template>
    <xsl:template mode="BG-21"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:ChargeIndicator[udt:Indicator='true']">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator='true'] der Instanz in konkreter Syntax wird auf 7 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-99" select="../ram:ActualAmount"/>
-         <xsl:apply-templates mode="BT-100" select="../ram:BasisAmount"/>
-         <xsl:apply-templates mode="BT-101" select="../ram:CalculationPercent"/>
-         <xsl:apply-templates mode="BT-102" select="../ram:CategoryTradeTax/ram:CategoryCode"/>
-         <xsl:apply-templates mode="BT-103" select="../ram:CategoryTradeTax/ram:RateApplicablePercent"/>
-         <xsl:apply-templates mode="BT-104" select="../ram:Reason"/>
-         <xsl:apply-templates mode="BT-105" select="../ram:ReasonCode"/>
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='true']">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='true'] der Instanz in konkreter Syntax wird auf 7 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-99" select="./ram:ActualAmount"/>
+         <xsl:apply-templates mode="BT-100" select="./ram:BasisAmount"/>
+         <xsl:apply-templates mode="BT-101" select="./ram:CalculationPercent"/>
+         <xsl:apply-templates mode="BT-102" select="./ram:CategoryTradeTax/ram:CategoryCode"/>
+         <xsl:apply-templates mode="BT-103" select="./ram:CategoryTradeTax/ram:RateApplicablePercent"/>
+         <xsl:apply-templates mode="BT-104" select="./ram:Reason"/>
+         <xsl:apply-templates mode="BT-105" select="./ram:ReasonCode"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:DOCUMENT_LEVEL_CHARGES>
@@ -1685,9 +1685,9 @@
          <xsl:apply-templates mode="BG-26"
                               select="./ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod"/>
          <xsl:apply-templates mode="BG-27"
-                              select="./ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:ChargeIndicator[udt:Indicator='false']"/>
+                              select="./ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='false']"/>
          <xsl:apply-templates mode="BG-28"
-                              select="./ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:ChargeIndicator[udt:Indicator='true']"/>
+                              select="./ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='true']"/>
          <xsl:apply-templates mode="BG-29" select="./ram:SpecifiedLineTradeAgreement"/>
          <xsl:apply-templates mode="BG-30"
                               select="./ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax"/>
@@ -1800,13 +1800,13 @@
       </xr:Invoice_line_period_end_date>
    </xsl:template>
    <xsl:template mode="BG-27"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:ChargeIndicator[udt:Indicator='false']">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator='false'] der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-136" select="../ram:ActualAmount"/>
-         <xsl:apply-templates mode="BT-137" select="../ram:BasisAmount"/>
-         <xsl:apply-templates mode="BT-138" select="../ram:CalculationPercent"/>
-         <xsl:apply-templates mode="BT-139" select="../ram:Reason"/>
-         <xsl:apply-templates mode="BT-140" select="../ram:ReasonCode"/>
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='false']">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='false'] der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-136" select="./ram:ActualAmount"/>
+         <xsl:apply-templates mode="BT-137" select="./ram:BasisAmount"/>
+         <xsl:apply-templates mode="BT-138" select="./ram:CalculationPercent"/>
+         <xsl:apply-templates mode="BT-139" select="./ram:Reason"/>
+         <xsl:apply-templates mode="BT-140" select="./ram:ReasonCode"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:INVOICE_LINE_ALLOWANCES>
@@ -1857,13 +1857,13 @@
       </xr:Invoice_line_allowance_reason_code>
    </xsl:template>
    <xsl:template mode="BG-28"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:ChargeIndicator[udt:Indicator='true']">
-      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator='true'] der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-141" select="../ram:ActualAmount"/>
-         <xsl:apply-templates mode="BT-142" select="../ram:BasisAmount"/>
-         <xsl:apply-templates mode="BT-143" select="../ram:CalculationPercent"/>
-         <xsl:apply-templates mode="BT-144" select="../ram:Reason"/>
-         <xsl:apply-templates mode="BT-145" select="../ram:ReasonCode"/>
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='true']">
+      <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='true'] der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-141" select="./ram:ActualAmount"/>
+         <xsl:apply-templates mode="BT-142" select="./ram:BasisAmount"/>
+         <xsl:apply-templates mode="BT-143" select="./ram:CalculationPercent"/>
+         <xsl:apply-templates mode="BT-144" select="./ram:Reason"/>
+         <xsl:apply-templates mode="BT-145" select="./ram:ReasonCode"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
          <xr:INVOICE_LINE_CHARGES>
