@@ -8,7 +8,7 @@
 	<cbc:ID>1234567890</cbc:ID>
 	<cbc:IssueDate>2018-10-15</cbc:IssueDate>
 	<!--<cbc:IssueDate>2018-10-29</cbc:IssueDate>-->
-	<cbc:CreditNoteTypeCode>380</cbc:CreditNoteTypeCode>
+	<cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
 	<cbc:Note>Bemerkung zu der Rechnung gibt es nicht, da dies eine Testrechnung
 		ist.</cbc:Note>
 	<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
