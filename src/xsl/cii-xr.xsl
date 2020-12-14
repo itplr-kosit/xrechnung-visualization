@@ -2130,9 +2130,10 @@
       <xsl:value-of select="."/>
    </xsl:template>
    <xsl:template name="date">
-      <xsl:choose>
-         <xsl:when test="matches(normalize-space(.), '^[0-9]{8}$')">
-            <xsl:value-of select="xs:date( concat(substring(.,1,4), '-', substring(.,5,2), '-', substring(.,7,2) ) )"/>
+      <xsl:variable name="normalizeddate" select="normalize-space(replace(., '-', ''))" />      
+      <xsl:choose>         
+         <xsl:when test="matches($normalizeddate, '^[0-9]{8}$')">
+            <xsl:value-of select="xs:date( concat(substring($normalizeddate,1,4), '-', substring($normalizeddate,5,2), '-', substring($normalizeddate,7,2) ) )"/>
          </xsl:when>
          <xsl:otherwise>ILLEGAL DATE FORMAT: &lt;para&gt;Mit diesem Datentyp wird ein kalendarisches Datum abgebildet, wie es in der ISO 8601 Spezifikation &lt;quote&gt;Calendar date complete representation&lt;/quote&gt; beschrieben ist (siehe ISO 8601:2004, Abschnitt 5.2.1.1). Das Datum beinhaltet keine Zeitangabe. Das konkret zu verwendende Format ist abhängig von der genutzten Syntax.&lt;/para&gt;
 &lt;para&gt;Der Datentyp basiert auf dem Typ &lt;quote&gt;Date Time. Type&lt;/quote&gt;, wie in ISO 15000-5:2014 Anhang B definiert.&lt;/para&gt;</xsl:otherwise>

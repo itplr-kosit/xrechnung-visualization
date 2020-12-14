@@ -5,6 +5,10 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2020-12-14
+### Changed
+- cii-xr.xsl tolerates dates with hyphons
+
 ## 2020-09-13
 ### Fixed
 - Fixed visualization of BG-20, BG-21, BG-27, BG-28
