@@ -172,7 +172,6 @@
     <xsl:param name="field-mapping-identifier">
       <xsl:value-of select="name()"/>
     </xsl:param>
-    <xsl:message><xsl:value-of select="$field-mapping-identifier"/>:<xsl:value-of select="."/>,<xsl:value-of select="$value"/></xsl:message>
     <xsl:if test="normalize-space(.)">
       <xsl:variable name="field-mapping">
         <xsl:call-template name="field-mapping">
