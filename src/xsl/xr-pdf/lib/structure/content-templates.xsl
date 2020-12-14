@@ -172,6 +172,7 @@
     <xsl:param name="field-mapping-identifier">
       <xsl:value-of select="name()"/>
     </xsl:param>
+    <xsl:message><xsl:value-of select="$field-mapping-identifier"/>:<xsl:value-of select="."/>,<xsl:value-of select="$value"/></xsl:message>
     <xsl:if test="normalize-space(.)">
       <xsl:variable name="field-mapping">
         <xsl:call-template name="field-mapping">
@@ -191,7 +192,10 @@
                    <xsl:copy-of select="$value"/>
                  </xsl:when>
                  <xsl:otherwise>
-                   <xsl:value-of select="."/>
+                   <xsl:choose>
+                     <xsl:when test="$field-mapping-identifier = 'xr:Payment_due_date'"><xsl:value-of select="format-date(xs:date(.),'[D].[M].[Y]')"/></xsl:when>
+                     <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
+                   </xsl:choose>
                  </xsl:otherwise>
                </xsl:choose>
              </fo:block>
