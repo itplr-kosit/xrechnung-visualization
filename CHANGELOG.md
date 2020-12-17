@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 2020-12-14
 ### Changed
 - cii-xr.xsl tolerates dates with hyphons
+### Fixed
+- Fixed german date format of bt-9 in pdf visualization
 
 ## 2020-09-13
 ### Fixed
