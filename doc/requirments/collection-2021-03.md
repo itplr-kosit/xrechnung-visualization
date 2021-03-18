@@ -1,6 +1,19 @@
 # Requirement Collection 2021-03
 <!-- markdownlint-disable MD003 MD013 -->
 
+
+## Agenda:
+
+1. KoSIT Visualisierungs-Komponente im Vergleich zu vollen Viewer Produkt.
+2. Open Source / Kollaboration
+3. Generelle Anmerkungen zur Entwicklung Zeitlinie
+4. Durchgang durch Requirements
+
+Es existieren Loesungen von
+Paulwitz
+de.NRW
+Bayern hat Barrierefreiheit in PDF
+
 ## Table of Requirements
 
 <table cellspacing="0" border="0">
@@ -26,7 +39,7 @@
     <tr>
         <td>b</td>
         <td>vollwertige PDF-Ausgabe (PDF/A)</td>
-        <td>10 (nicht BY)</td>
+        <td>10</td>
         <td></td>
         <td>-</td>
     </tr>
@@ -42,7 +55,8 @@
         <td>Protokoll-Ausgaben w&auml;hrend der Transformationsschritte</td>
         <td>10</td>
         <td>Fehlerhinweise an Admins; Logging</td>
-        <td>Was ist damit gemeint? Wieso?</td>
+        <td>Was ist damit gemeint? Wieso? Zur Festellung und protokolierung von Warnungen bei der Generierung.
+        </td>
     </tr>
     <tr>
         <td >d</td>
@@ -77,7 +91,7 @@
         <td>Rechnungspositionen sollen tabellarisch dargestellt werden.</td>
         <td></td>
         <td>Hierarchisierung</td>
-        <td>Ist is quasi schon: Standalone CSS. Rechnungszeilen in `ol` statt `div` ?</td>
+        <td>Bezieht sich im wesentlichen auf PDF Darstellung. Soll naeher an dem gewohneten Bild anlehnen. Ist is quasi schon: Standalone CSS. Rechnungszeilen in `ol` statt `div` ?</td>
     </tr>
     <tr>
         <td></td>
