@@ -7,3 +7,5 @@
 .ant-targets-build.xml
 /xslt
 *.zipost
+/.project
+/.settings/
