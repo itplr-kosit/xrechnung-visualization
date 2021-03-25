@@ -154,10 +154,10 @@
   <target name="prepare-fop" depends="init, prepare-saxon"
     description="Download Apache FOP for taskdef stuff">
     <get
-      src="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop/binaries/fop-2.4-bin.zip&amp;action=download"
-      dest="${download.dir}/fop-2.4-bin.zip" verbose="true" skipexisting="true" usetimestamp="true"/>
+      src="https://downloads.apache.org/xmlgraphics/fop/binaries/fop-2.6-bin.zip"
+      dest="${download.dir}/fop-2.6-bin.zip" verbose="true" skipexisting="true" usetimestamp="true"/>
     <fail unless="fop.jar" message="Provide a name for the extracted fop jar"/>
-    <unzip src="${download.dir}/fop-2.4-bin.zip" dest="${fop.home}">
+    <unzip src="${download.dir}/fop-2.6-bin.zip" dest="${fop.home}">
       <patternset>
         <include name="**/build/${fop.jar}"/>
         <include name="**/lib/*.jar"/>
