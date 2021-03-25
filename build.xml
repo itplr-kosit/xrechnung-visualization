@@ -281,6 +281,39 @@
 
   </target>
 
+  <target name="annotate-ubl-invoice" depends="prepare-saxon">
+    <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
+      style="${src.dir}/xsl/annotate-ubl-invoice.xsl" includes="**/*ubl.xml,**/maxRechnung.xml">
+      <classpath location="${lib.dir}/${saxon.jar}"/>
+      <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+      <mapper type="glob" from="*.xml" to="*-anno.xml"/>
+    </xslt>
+  </target>
+
+  <target name="annotate-ubl-creditnote" depends="prepare-saxon">
+    <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
+      style="${src.dir}/xsl/annotate-ubl-creditnote.xsl" includes="**/maxRechnung-creditnote.xml">
+      <classpath location="${lib.dir}/${saxon.jar}"/>
+      <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+      <mapper type="glob" from="*.xml" to="*-anno.xml"/>
+    </xslt>
+  </target>
+
+  <target name="annotate-cii" depends="prepare-saxon">
+    <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
+      style="${src.dir}/xsl/annotate-cii.xsl" includes="**/*uncefact.xml">
+      <classpath location="${lib.dir}/${saxon.jar}"/>
+      <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+      <mapper type="glob" from="*.xml" to="*-anno.xml"/>
+    </xslt>
+  </target>
+
+  <target name="annotate"
+    depends="annotate-ubl-invoice, annotate-ubl-creditnote, annotate-cii"
+    description="Calls transformation from all source formats to annotate invoices">
+    <!-- Just container for all transformations -->
+  </target>
+
   <target name="test-xr-transformation" depends="transform-to-xr"
     description="All XR documents must be valid against XML Schema">
     <schemavalidate fullchecking="yes" failonerror="yes" warn="true" lenient="false">
