@@ -6,61 +6,83 @@
 
     <xsl:output indent="yes"/>
 
+
+
+    <xsl:param name="value-uri" select="'display-labels_de.xml'"/>
+    <xsl:variable name="label-doc" select="document($value-uri)"/>
+    
+    <xsl:key name="label" match="entry" use="@key"/>
+    
+    <xsl:template match="@* | node()">
+        <xsl:copy>
+            <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+    </xsl:template>
+    
     <xsl:template match="/xr:invoice">
-        <xsl:apply-templates select="node()"/>
+        <xsl:element name="sdf">
+            <xsl:apply-templates select="node()"/>
+        </xsl:element>
     </xsl:template>
 
     <xsl:template match="xr:*[starts-with(@xr:id, 'BT')]">
-        <xsl:element name="sem-data">
-            <xsl:element name="type">term</xsl:element>
-            <xsl:call-template name="sem-data-field">
-                <xsl:with-param name="id" select="@xr:id"/>
-                <xsl:with-param name="name" select="local-name()"/>
-                <xsl:with-param name="src" select="./@xr:src"/>
-                <xsl:with-param name="value" select="text()"/>
-            </xsl:call-template>
-            <xsl:element name="pos"><xsl:value-of select="../position()"/></xsl:element>
-            <xsl:apply-templates select="element()"/>
-        </xsl:element>
+        <xsl:call-template name="sem-data-field">
+            <xsl:with-param name="type" select="'term'"/>
+            <xsl:with-param name="id" select="@xr:id"/>
+            <xsl:with-param name="name" select="local-name()"/>
+            <xsl:with-param name="src" select="./@xr:src"/>
+            <xsl:with-param name="value" select="text()"/>
+        </xsl:call-template>
+
     </xsl:template>
 
 
     <xsl:template match="xr:*[starts-with(@xr:id, 'BG')]">
+
+        <xsl:call-template name="sem-data-field">
+            <xsl:with-param name="type" select="'group'" as="xs:string"/>
+            <xsl:with-param name="id" select="@xr:id"/>
+            <xsl:with-param name="name" select="local-name()"/>
+            <xsl:with-param name="src" select="./@xr:src"/>
+            <xsl:with-param name="value" select="''"/>
+        </xsl:call-template>
+        <!--<xsl:apply-templates select="element()"/>-->
+
+    </xsl:template>
+
+    <xsl:template name="sem-data-field">
+        <xsl:param name="type" required="yes" as="xs:string"/>
+        <xsl:param name="name" required="yes" as="xs:string"/>
+        <xsl:param name="id" required="yes" as="xs:string"/>
+        <xsl:param name="src" required="yes" as="xs:string"/>
+        <xsl:param name="value" required="yes" as="xs:string"/>
+        <xsl:param name="data-type" select="'unknown'" as="xs:string"></xsl:param>
         <xsl:element name="sem-data">
-            <xsl:element name="type">group</xsl:element>
-            <xsl:call-template name="sem-data-field">
-                <xsl:with-param name="id" select="@xr:id"/>
-                <xsl:with-param name="name" select="local-name()"/>
-                <xsl:with-param name="src" select="./@xr:src"/>
-                <xsl:with-param name="value" select="''"/>
-            </xsl:call-template>
+            <xsl:element name="structure-type">
+                <xsl:value-of select="$type"/>
+            </xsl:element>
+            <xsl:element name="name">
+                <xsl:value-of select="replace($name, '_', ' ')"/>
+            </xsl:element>
+            <xsl:element name="id">
+                <xsl:value-of select="$id"/>
+            </xsl:element>
+            <xsl:element name="display-label"><xsl:value-of select="key('label', 'bt-1', $label-doc)"/></xsl:element>
+            <xsl:element name="xpath">
+                <xsl:value-of select="$src"/>
+            </xsl:element>
+            <xsl:element name="semantic-data-type">
+                <xsl:value-of select="$data-type"/>
+            </xsl:element>
+            <xsl:element name="value">
+                <xsl:value-of select="$value"/>
+            </xsl:element>
+            <xsl:element name="parent-group">
+                <xsl:value-of select="../@xr:id"/>
+            </xsl:element>
             <xsl:apply-templates select="element()"/>
         </xsl:element>
     </xsl:template>
 
-    <xsl:template name="sem-data-field">
-        <xsl:param name="name" required="yes"/>
-        <xsl:param name="id" required="yes"/>
-        <xsl:param name="src" required="yes"/>
-        <xsl:param name="value" required="yes"/>
-
-        <xsl:element name="name">
-            <xsl:value-of select="$name"/>
-        </xsl:element>
-        <xsl:element name="id">
-            <xsl:value-of select="$id"/>
-        </xsl:element>
-        <xsl:element name="xpath">
-            <xsl:value-of select="$src"/>
-        </xsl:element>
-        <xsl:element name="value">
-            <xsl:value-of select="$value"/>
-        </xsl:element>
-
-    </xsl:template>
-
-    <!--<xsl:template match="element()[starts-with(local-name(@id), 'BG')]">
-    <xsl:value-of select="'group'"/>
-</xsl:template>-->
 
 </xsl:stylesheet>
