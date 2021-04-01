@@ -11,7 +11,7 @@
     <xsl:param name="value-uri" select="'display-labels_de.xml'"/>
     <xsl:variable name="label-doc" select="document($value-uri)"/>
     
-    <xsl:key name="label" match="entry" use="@key"/>
+    <xsl:key name="label" match="entry" use="lower-case(@key)"/>
     
     <xsl:template match="@* | node()">
         <xsl:copy>
@@ -67,7 +67,7 @@
             <xsl:element name="id">
                 <xsl:value-of select="$id"/>
             </xsl:element>
-            <xsl:element name="display-label"><xsl:value-of select="key('label', 'bt-1', $label-doc)"/></xsl:element>
+            <xsl:element name="display-label"><xsl:value-of select="key('label', lower-case($id), $label-doc)"/></xsl:element>
             <xsl:element name="xpath">
                 <xsl:value-of select="$src"/>
             </xsl:element>
