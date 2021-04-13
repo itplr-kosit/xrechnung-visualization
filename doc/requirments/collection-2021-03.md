@@ -9,6 +9,13 @@
 3. Generelle Anmerkungen zur Entwicklung Zeitlinie
 4. Durchgang durch Requirements
 
+
+* Aus NEB Kontext: Umwandler mitliefern
+* Vollwertiges PDF heisst native erstellt (nciht durch Druckversion einer Brwoserdarstellung)
+
+* Hasken: Guter Einwand, die Visualisierung könnte dem Umfang der 
+Rechnung folgen!
+
 Es existieren Loesungen von
 Paulwitz
 de.NRW
@@ -91,7 +98,9 @@ Bayern hat Barrierefreiheit in PDF
         <td>Rechnungspositionen sollen tabellarisch dargestellt werden.</td>
         <td></td>
         <td>Hierarchisierung</td>
-        <td>Bezieht sich im wesentlichen auf PDF Darstellung. Soll naeher an dem gewohneten Bild anlehnen. Ist is quasi schon: Standalone CSS. Rechnungszeilen in `ol` statt `div` ?</td>
+        <td>Bezieht sich im wesentlichen auf PDF Darstellung. Soll naeher an dem gewohneten Bild anlehnen. Ist is quasi schon: Standalone CSS. Rechnungszeilen in `ol` statt `div` ? "Darstellung ist für Baurechnungen leider noch zu raumgreifend > Spalten für Pos. E.P. Menge und Gesamtpreis wäre besser" Notwendige Anforderung: nur eineZeile pro Position!!!
+fuer Baurechnungen (a la Paulwitz)
+        </td>
     </tr>
     <tr>
         <td></td>
@@ -110,6 +119,7 @@ Bayern hat Barrierefreiheit in PDF
     <tr>
         <td>c</td>
         <td>Gliederungsebenen sollen in der Tabelle durch entsprechende Formatierung hervorgehoben werden.</td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
@@ -141,6 +151,7 @@ Bayern hat Barrierefreiheit in PDF
         <td>Seitennummerierung</td>
         <td>10</td>
         <td>Seite 1/4</td>
+        <td></td>
     </tr>
     <tr>
         <td >h</td>
@@ -168,12 +179,11 @@ Bayern hat Barrierefreiheit in PDF
         <td>Die Positionierung der Inhalte soll immer gleichbleibend sein. (Forderung ist vermutlich durch eingesetzte Technologie implizit gew&auml;hrleistet)</td>
         <td>10</td>
         <td></td>
-        <td></td>
         <td>Steht im Widerspruch zur Natur und Sind und Zweck von HTML. Was ist hier genauer gemeint? Screenshots? Zeichnungen? </td>
     </tr>
     <tr>
-        <td    >5.</td>
-        <td   ><b>Vollst&auml;ndigkeitsabsicherung</b></td>
+        <td>5.</td>
+        <td><b>Vollst&auml;ndigkeitsabsicherung</b></td>
         <td></td>
         <td></td>
         <td>Wichtiger Punkt</td>
@@ -211,6 +221,7 @@ Bayern hat Barrierefreiheit in PDF
         <td><b>Darzustellende Inhalte</b></td>
         <td></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
         <td>a</td>
@@ -228,13 +239,13 @@ Bayern hat Barrierefreiheit in PDF
     </tr>
     <tr>
         <td>7.</td>
-        <td>Behandlung von Codelisten-Werten </td>
+        <td><b>Behandlung von Codelisten-Werten</b> </td>
         <td></td>
         <td></td>
         <td></td>
     </tr>
     <tr>
-        <td >a</td>
+        <td>a</td>
         <td>Auf Codelisten basierende Datenwerte werden im Zwischenformat um zus&auml;tzliche, nat&uuml;rlichsprachliche Bezeichnungen erg&auml;nzt.</td>
         <td>10</td>
         <td>Intergration der Codelisten mit &Uuml;bersetzung  (ins Deutsche als Wunsch)</td>
@@ -259,23 +270,26 @@ Bayern hat Barrierefreiheit in PDF
         <td>In der Ausgabe wird sowohl der urspr&uuml;ngliche Code als auch die zugeh&ouml;rige nat&uuml;rlichsprachliche Bezeichnung ausgegeben. Im Ausgabelayout tritt die nat&uuml;rlichsprachliche Bezeichnung in den Vordergrund.</td>
         <td>5</td>
         <td>s.o.</td>
+        <td></td>
     </tr>
     <tr>
         <td>8.</td>
         <td>Warnmeldungen der Schematronpr&uuml;fung</td>
         <td></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
         <td ></td>
         <td>k&ouml;nnten ggf. in der Visualisierung und in Zusammenhang mit den betroffenen Elementen ausgegeben werden. Der Umgang mit Warnungen m&uuml;sste in diesem Zusammenhang allerdings grunds&auml;tzlich betrachtet werden, zumal die eigentlichen Rechnungssachbearbeiter nicht mit technischen Meldungen &uuml;bersch&uuml;ttet werden sollen. </td>
-        <td   sdval="3">3</td>
+        <td>3</td>
         <td></td>
         <td>Das ist nur mit Zusammenlegung von Pruefebricht mit Visu moeglich!!! Aber gerne!</td>
     </tr>
     <tr>
         <td>9.</td>
         <td><b>Weitergehende Markierungen/Hinweise</b></td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
@@ -305,12 +319,14 @@ Bayern hat Barrierefreiheit in PDF
         <td>Gestaltung der Visualisierung soll keine Verwechselungsgefahr mit dem Rechnungsoriginal hervorrufen k&ouml;nnen</td>
         <td>10</td>
         <td>s.o.</td>
+        <td></td>
     </tr>
     <tr>
         <td>c</td>
         <td>Anpassbarer Hinweistext (z. B. Kopfzeile: Alle Angaben stammen vom Sender der Rechnung. Beim zentralen Rechnungseingang findet keine inhaltliche Pr&uuml;fung der gemachten Angaben statt.)</td>
         <td>10</td>
         <td>Quellangaben; individuelle Platzhalter</td>
+        <td></td>
     </tr>
     <tr>
         <td>d</td>
@@ -334,8 +350,9 @@ Bayern hat Barrierefreiheit in PDF
         <td>Frage der Konfigurierbarkeit. Welche sollen das sein?</td>
     </tr>
     <tr>
-        <td    >10.</td>
-        <td   >Betrieb / Plattformunabh&auml;ngigkeit / Kompatibilit&auml;t </td>
+        <td>10.</td>
+        <td>Betrieb / Plattformunabh&auml;ngigkeit / Kompatibilit&auml;t</td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
@@ -347,15 +364,17 @@ Bayern hat Barrierefreiheit in PDF
            <td>Keine KoSIT Frage</td>
     </tr>
     <tr>
-        <td    >11.</td>
-        <td   ><b>Metadaten</b></td>
+        <td>11.</td>
+        <td><b>Metadaten</b></td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
     <tr>
         <td ></td>
         <td>Erg&auml;nzung von Schl&uuml;sselinformationen in allen Ausgabeobjekten zur Gew&auml;hrleistung des Bezugspunkts. Diese sollen umfassen</td>
-        <td   sdval="7">7</td>
+        <td>7</td>
+        <td></td>
         <td></td>
     </tr>
     <tr>
@@ -363,40 +382,47 @@ Bayern hat Barrierefreiheit in PDF
         <td>i. Belegart</td>
         <td></td>
         <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td> ii. Spezifikationskennung</td>
-        <td></td>
         <td></td>
     </tr>
     <tr>
         <td></td>
-        <td> iii. Belegnummer</td>
+        <td>ii. Spezifikationskennung</td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
     <tr>
         <td></td>
-        <td> iv. Belegdatum</td>
+        <td>iii. Belegnummer</td>
         <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td> v. Identit&auml;t des Rechnungsstellers</td>
         <td></td>
         <td></td>
     </tr>
     <tr>
         <td></td>
-        <td> vi. Leitweg-ID</td>
+        <td>iv. Belegdatum</td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
     <tr>
         <td></td>
-        <td> vii. Zeitpunkt der Transformation</td>
+        <td>v. Identit&auml;t des Rechnungsstellers</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>vi. Leitweg-ID</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>vii. Zeitpunkt der Transformation</td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
@@ -405,16 +431,19 @@ Bayern hat Barrierefreiheit in PDF
         <td> viii. Produkt- und Versionskennung der Generierungskomponente</td>
         <td></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
-        <td    >12.</td>
-        <td   >Syntaxvereinheitlichung im Zwischenformat</td>
+        <td >12.</td>
+        <td>Syntaxvereinheitlichung im Zwischenformat</td>
         <td>?</td>
         <td>Aussage zur Nutzbarkeit des Zwischenformats; Pflege gew&auml;hrleisten (Feldbeschreibung, verl&auml;ssliches Vorgehen)</td>
+        <td></td>
     </tr>
     <tr>
         <td>a</td>
         <td>Datumskodierung unabh&auml;ngig von Syntax des Originalbelegs</td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
@@ -423,28 +452,33 @@ Bayern hat Barrierefreiheit in PDF
         <td> Vereinheitlichung von Code-Listen-Werten (Aufl&ouml;sen von Gro&szlig;- und Kleinschreibung, Bereinigung von Leerr&auml;umen)</td>
         <td></td>
         <td>Frage an Validierung</td>
+        <td></td>
     </tr>
     <tr>
-        <td    >13.</td>
-        <td   >Behandlung von Anlagen</td>
+        <td>13.</td>
+        <td>Behandlung von Anlagen</td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
     <tr>
         <td >a</td>
         <td>Download verlinkter Anlagen und Einbettung im Zwischenformat</td>
-        <td   sdval="0">0</td>
+        <td>0</td>
         <td>getrennte Sichtweisen f&uuml;r PDF und XML; gro&szlig;e Dateien nicht darstellbar; keine Darstellung von Anlagen</td>
+        <td></td>
     </tr>
     <tr>
         <td>b</td>
         <td>M&ouml;glichkeit zum Beif&uuml;gen weiterer Anlagen</td>
-        <td   sdval="0">0</td>
+        <td>0</td>
+        <td></td>
         <td></td>
     </tr>
     <tr>
-        <td    >14.</td>
-        <td   >Ausgabeoptimierung f&uuml;r unterschiedliche Medien / Ger&auml;te</td>
+        <td>14.</td>
+        <td>Ausgabeoptimierung f&uuml;r unterschiedliche Medien / Ger&auml;te</td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
@@ -453,29 +487,34 @@ Bayern hat Barrierefreiheit in PDF
         <td>Ausdruck / Papier </td>
         <td>10</td>
         <td>ausdruckbar</td>
+        <td></td>
     </tr>
     <tr>
         <td >b</td>
         <td>PC-Arbeitsplatz (z. B. 24 Zoll-Bildschirm; ggf. bei halbierter Bildbreite wegen gleichzeitiger Nutzung mit anderem Fachverfahren)</td>
         <td>10</td>
         <td>PDF, HTML-responsive </td>
+        <td></td>
     </tr>
     <tr>
-        <td >c</td>
+        <td>c</td>
         <td>Mobile Endger&auml;te (5 Zoll-Bildschirm)</td>
-        <td   sdval="1">1</td>
+        <td>1</td>
         <td>Anforderungen im Wandel und steigern sich wahrscheinlich</td>
-    </tr>
-    <tr>
-        <td     sdval="15">15</td>
-        <td   ><b>Bereitstellung</b></td>
-        <td></td>
         <td></td>
     </tr>
     <tr>
-        <td >a</td>
+        <td>15</td>
+        <td><b>Bereitstellung</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>a</td>
         <td>Testabdeckung der visuellen Darstellung:Es sollte sichergestellt werden, dass die vom Betrachter visuell  erfassbaren Rechnungs-informationen sich nicht dadurch &auml;ndern, dass die Visualisierung einer Rechnung mit einem neuen Release der Visualisierungskomponente erzeugt wurde (Regressionstest). Nat&uuml;rlich haben dabei die Unterschiede au&szlig;er Acht zu bleiben, die vom neuen Release bewusst eingef&uuml;hrt/ge&auml;ndert wurden. </td>
         <td>10</td>
+        <td></td>
         <td></td>
     </tr>
     <tr>
@@ -483,16 +522,19 @@ Bayern hat Barrierefreiheit in PDF
         <td>Support</td>
         <td>10</td>
         <td>n&auml;her zu bestimmen? Analog Validierung? </td>
+        <td></td>
     </tr>
     <tr>
         <td>c</td>
         <td>dauerhafte Pflege, Weiterentwicklung und geeignete Bereitstellung</td>
         <td>10</td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
-        <td     sdval="16">16</td>
-        <td   ><b>Entwicklungspotential</b></td>
+        <td>16</td>
+        <td><b>Entwicklungspotential</b></td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>
@@ -501,5 +543,6 @@ Bayern hat Barrierefreiheit in PDF
         <td>Modifikationsm&ouml;glichkeit f&uuml;r eigene Anpassungen (bereits heute so), um z.B. ZRE spezifische Anpassungen vornehmen zu k&ouml;nnen, vgl. oben. K&uuml;nftig typische Anforderungen m&ouml;glichst durch Belegung von Variablen gestaltbar.</td>
         <td>10</td>
         <td>feste Konfigurationsm&ouml;glichkeiten f&uuml;r die Platzhalter</td>
+        <td></td>
     </tr>
 </table>
