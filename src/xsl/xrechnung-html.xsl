@@ -311,7 +311,7 @@
                     </div>
                     <div class="boxzeile">
                       <div class="boxdaten legende">Rechnungsdatum:</div>
-                      <div id="BT-26" title="BT-26" class="boxdaten wert"><xsl:value-of select="(format-date,xr:Preceding_Invoice_issue_date,'[D].[M].[Y]')"/></div>
+                      <div id="BT-26" title="BT-26" class="boxdaten wert"><xsl:value-of select="format-date(xr:Preceding_Invoice_issue_date,'[D].[M].[Y]')"/></div>
                     </div>
                   </div>
   </xsl:template>
@@ -705,7 +705,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende ">Umsatzsteuersatz in Prozent:</div>
-                  <div id="BT-152" title="BT-152" class="boxdaten wert"><xsl:value-of select="format-number(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,'##0,##','decimal')"/>%</div>
+                  <div id="BT-152" title="BT-152" class="boxdaten wert"><xsl:value-of select="format-number(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,'###,##0,00','decimal')"/>%</div>
                 </div>
               </div>
             </div>
