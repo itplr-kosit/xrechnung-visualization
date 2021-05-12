@@ -6,7 +6,7 @@
   <property name="build.dir" location="${basedir}/build"/>
   <property name="src.dir" location="${basedir}/src"/>
   <property name="download.dir" location="${build.dir}/download"/>
-  <property name="saxon.jar" value="saxon9he.jar"/>
+  <property name="saxon.jar" value="saxon-he-10.5.jar"/>
   <property name="fop.jar" value="fop.jar"/>
   <property name="fop.home" value="${lib.dir}/fop"/>
   <!-- Naming -->
@@ -72,11 +72,11 @@
   <target name="prepare-saxon" depends="init"
     description="Download Saxon-HE and add jar to library directory">
     <get
-      src="https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-8J.zip/download"
-      dest="${download.dir}/SaxonHE9-8-0-8J.zip" verbose="true" skipexisting="true"
+      src="https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Java/SaxonHE10-5J.zip/download"
+      dest="${download.dir}/SaxonHE10-5J.zip" verbose="true" skipexisting="true"
       usetimestamp="true"/>
     <fail unless="saxon.jar" message="Provide a name for the extracted saxon jar"/>
-    <unzip src="${download.dir}/SaxonHE9-8-0-8J.zip" dest="${lib.dir}">
+    <unzip src="${download.dir}/SaxonHE10-5J.zip" dest="${lib.dir}">
       <patternset>
         <include name="**/${saxon.jar}"/>
       </patternset>
