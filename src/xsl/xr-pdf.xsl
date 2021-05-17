@@ -30,6 +30,12 @@
        -->
   <xsl:param name="foengine"/>
   
+  <!-- Layout of invoce lines: 
+            normal - default behaviour
+            tabular - table like
+       -->
+  <xsl:param name="invoiceline-layout">normal</xsl:param>
+  
   <xsl:param name="axf.extensions" select="if ($foengine eq 'axf') then true() else false()"/>
   <xsl:param name="fop.extensions" select="if ($foengine eq 'fop') then true() else false()"/>
 
