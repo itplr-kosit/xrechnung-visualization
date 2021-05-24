@@ -895,4 +895,16 @@
     </xsl:choose>
   </xsl:template>
 
+  <xsl:function name="xr:field-label" as="xs:string">
+    <xsl:param name="identifier"/>
+    
+    <xsl:variable name="label">
+      <xsl:call-template name="field-mapping">
+        <xsl:with-param name="identifier" select="$identifier"/>
+      </xsl:call-template>
+    </xsl:variable>
+    
+    <xsl:sequence select="string($label/label)"/>
+  </xsl:function>
+
 </xsl:stylesheet>
