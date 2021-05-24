@@ -203,8 +203,7 @@
     <xsl:attribute name="padding-left">2pt</xsl:attribute>
     <xsl:attribute name="padding-right">2pt</xsl:attribute>
     <xsl:attribute name="width">100%</xsl:attribute>
-    <xsl:attribute name="table-layout">fixed</xsl:attribute>
-    <!--<xsl:attribute name="font-size">90%</xsl:attribute>-->
+    <xsl:attribute name="table-layout">fixed</xsl:attribute>    
   </xsl:attribute-set>
 
   <xsl:attribute-set name="invoicelines-table-header">
