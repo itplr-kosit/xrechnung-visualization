@@ -516,10 +516,14 @@
   
   <xsl:template match="xr:INVOICE_LINE | xr:SUB_INVOICE_LINE" mode="invoiceline-tabular">
     <fo:table-row>
+      <!-- Nested sub-invoice lines will recursively decrease font-size -->
+      <xsl:if test="self::xr:SUB_INVOICE_LINE">
+        <xsl:attribute name="font-size">90%</xsl:attribute>
+      </xsl:if>
       <fo:table-cell>
         <fo:block><xsl:value-of select="xr:Invoice_line_identifier"/></fo:block>
       </fo:table-cell>
-      <fo:table-cell>
+      <fo:table-cell padding-left="{count(ancestor-or-self::xr:SUB_INVOICE_LINE)}em">        
         <fo:block><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_name"/></fo:block>
       </fo:table-cell>
       <fo:table-cell text-align="center">
