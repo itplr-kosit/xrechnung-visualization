@@ -514,7 +514,7 @@
        == Invoice lines in tabular presentation
        =========================================================================== -->
   
-  <xsl:template match="xr:INVOICE_LINE" mode="invoiceline-tabular">
+  <xsl:template match="xr:INVOICE_LINE | xr:SUB_INVOICE_LINE" mode="invoiceline-tabular">
     <fo:table-row>
       <fo:table-cell>
         <fo:block><xsl:value-of select="xr:Invoice_line_identifier"/></fo:block>
@@ -522,39 +522,35 @@
       <fo:table-cell>
         <fo:block><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_name"/></fo:block>
       </fo:table-cell>
-      <fo:table-cell>
+      <fo:table-cell text-align="center">
         <fo:block>
           <xsl:value-of select="xr:Invoiced_quantity"/>
           <xsl:text> </xsl:text>
           <xsl:value-of select="xr:Invoiced_quantity_unit_of_measure_code"/>
         </fo:block>
       </fo:table-cell>
-      <fo:table-cell>
+      <fo:table-cell text-align="right" padding-right="1em">
         <fo:block><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_net_price, $amount-picture, 'decimal')"/></fo:block>
       </fo:table-cell>
-      <fo:table-cell>
-        <fo:block>Preis Einheit</fo:block>
+      <fo:table-cell text-align="center">
+        <fo:block>
+          <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_base_quantity"/>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_base_quantity_unit_of_measure"/>
+        </fo:block>
       </fo:table-cell>
-      <fo:table-cell>
+      <fo:table-cell text-align="center">
         <fo:block><xsl:value-of select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate"/></fo:block>
       </fo:table-cell>
-      <fo:table-cell>
+      <fo:table-cell text-align="center">
         <fo:block><xsl:value-of select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_category_code"/></fo:block>
       </fo:table-cell>
-      <fo:table-cell>
+      <fo:table-cell text-align="right">
         <fo:block><xsl:value-of select="format-number(xr:Invoice_line_net_amount, $amount-picture, 'decimal')"/></fo:block>
       </fo:table-cell>      
     </fo:table-row>
     <xsl:apply-templates select="xr:SUB_INVOICE_LINE" mode="invoiceline-tabular"/>
   </xsl:template>
-  
-  <xsl:template match="xr:SUB_INVOICE_LINE" mode="invoiceline-tabular">
-    <xsl:variable name="identifier" select="xr:Invoice_line_identifier"/>
-    
-    <xsl:message>TBD</xsl:message>
-    
-  </xsl:template>
-  
   
 
 </xsl:stylesheet>

@@ -390,12 +390,12 @@
               <fo:table xsl:use-attribute-sets="invoicelines-table" span="all">
                 <fo:table-column column-width="proportional-column-width(1)"/>
                 <fo:table-column column-width="proportional-column-width(8)"/>
-                <fo:table-column column-width="proportional-column-width(2)" text-align="center"/>
-                <fo:table-column column-width="proportional-column-width(2)" text-align="right" padding-right="1em"/>
                 <fo:table-column column-width="proportional-column-width(2)"/>
-                <fo:table-column column-width="proportional-column-width(2)" text-align="center"/>
-                <fo:table-column column-width="proportional-column-width(1)" text-align="center"/>
-                <fo:table-column column-width="proportional-column-width(2)" text-align="right"/>
+                <fo:table-column column-width="proportional-column-width(2)"/>
+                <fo:table-column column-width="proportional-column-width(2)"/>
+                <fo:table-column column-width="proportional-column-width(2)"/>
+                <fo:table-column column-width="proportional-column-width(1.3)"/>
+                <fo:table-column column-width="proportional-column-width(2)"/>
                 <fo:table-header xsl:use-attribute-sets="invoicelines-table-header">
                   <fo:table-row>
                     <fo:table-cell>
@@ -404,22 +404,22 @@
                     <fo:table-cell>
                       <fo:block>Beschreibung</fo:block>
                     </fo:table-cell>
-                    <fo:table-cell>
+                    <fo:table-cell text-align="center">
                       <fo:block>Menge</fo:block>
                     </fo:table-cell>
-                    <fo:table-cell>
+                    <fo:table-cell text-align="right" padding-right="1em">
                       <fo:block>Preis</fo:block>
                     </fo:table-cell>
-                    <fo:table-cell>
+                    <fo:table-cell text-align="center">
                       <fo:block>Preis Einheit</fo:block>
                     </fo:table-cell>
-                    <fo:table-cell>
+                    <fo:table-cell text-align="center">
                       <fo:block>MwSt.</fo:block>
                     </fo:table-cell>
-                    <fo:table-cell>
+                    <fo:table-cell text-align="center">
                       <fo:block>St. Code</fo:block>
                     </fo:table-cell>
-                    <fo:table-cell>
+                    <fo:table-cell text-align="right">
                       <fo:block>Gesamt</fo:block>
                     </fo:table-cell>
                   </fo:table-row>
