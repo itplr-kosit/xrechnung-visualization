@@ -210,4 +210,9 @@
     <xsl:attribute name="font-weight">bold</xsl:attribute>
   </xsl:attribute-set>
 
+  <xsl:attribute-set name="invoicelines-table-row">
+    <!-- Nested sub-invoice lines will recursively decrease font-size -->    
+    <xsl:attribute name="font-size" select="if (self::xr:SUB_INVOICE_LINE) then '90%' else '100%'"/>
+  </xsl:attribute-set>
+  
 </xsl:stylesheet>

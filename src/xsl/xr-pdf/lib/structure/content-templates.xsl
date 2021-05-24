@@ -515,11 +515,8 @@
        =========================================================================== -->
   
   <xsl:template match="xr:INVOICE_LINE | xr:SUB_INVOICE_LINE" mode="invoiceline-tabular">
-    <fo:table-row>
-      <!-- Nested sub-invoice lines will recursively decrease font-size -->
-      <xsl:if test="self::xr:SUB_INVOICE_LINE">
-        <xsl:attribute name="font-size">90%</xsl:attribute>
-      </xsl:if>
+    <!-- Process basic information -->
+    <fo:table-row xsl:use-attribute-sets="invoicelines-table-row">
       <fo:table-cell>
         <fo:block><xsl:value-of select="xr:Invoice_line_identifier"/></fo:block>
       </fo:table-cell>
@@ -553,6 +550,60 @@
         <fo:block><xsl:value-of select="format-number(xr:Invoice_line_net_amount, $amount-picture, 'decimal')"/></fo:block>
       </fo:table-cell>      
     </fo:table-row>
+
+    <xsl:if test="xr:ITEM_INFORMATION/xr:Item_description | xr:Invoice_line_note">
+      <fo:table-row xsl:use-attribute-sets="invoicelines-table-row">
+        <fo:table-cell>
+          <fo:block/>
+        </fo:table-cell>
+        <fo:table-cell padding-left="{count(ancestor-or-self::xr:SUB_INVOICE_LINE)}em" number-columns-spanned="6">        
+          <xsl:for-each select="xr:ITEM_INFORMATION/xr:Item_description | xr:Invoice_line_note">
+            <fo:block>
+              <xsl:value-of select="."/>
+            </fo:block>
+          </xsl:for-each>
+        </fo:table-cell>
+        <fo:table-cell>
+          <fo:block/>
+        </fo:table-cell>      
+      </fo:table-row>
+    </xsl:if>
+    
+    <xsl:if test="xr:Referenced_purchase_order_line_reference | xr:Invoice_line_Buyer_accounting_reference">
+      <fo:table-row xsl:use-attribute-sets="invoicelines-table-row">
+        <fo:table-cell>
+          <fo:block/>
+        </fo:table-cell>
+        <fo:table-cell padding-left="{count(ancestor-or-self::xr:SUB_INVOICE_LINE)}em" number-columns-spanned="6">
+          <fo:list-block>
+            <fo:list-item provisional-distance-between-starts="50%">
+              <fo:list-item-label end-indent="label-end()">
+                <fo:block>
+                  <xsl:if test="xr:Referenced_purchase_order_line_reference">
+                    <xsl:value-of select="xr:field-label('xr:Referenced_purchase_order_line_reference')"/>
+                    <xsl:text>: </xsl:text>
+                    <xsl:value-of select="xr:Referenced_purchase_order_line_reference"/>
+                  </xsl:if>
+                </fo:block>
+              </fo:list-item-label>
+              <fo:list-item-body start-indent="body-start()">
+                <fo:block>
+                  <xsl:if test="xr:Invoice_line_Buyer_accounting_reference">
+                    <xsl:value-of select="xr:field-label('xr:Invoice_line_Buyer_accounting_reference')"/>
+                    <xsl:text>: </xsl:text>
+                    <xsl:value-of select="xr:Invoice_line_Buyer_accounting_reference"/>
+                  </xsl:if>
+                </fo:block>
+              </fo:list-item-body>
+            </fo:list-item>
+          </fo:list-block>
+        </fo:table-cell>
+        <fo:table-cell>
+          <fo:block/>
+        </fo:table-cell>      
+      </fo:table-row>
+    </xsl:if>
+
     <xsl:apply-templates select="xr:SUB_INVOICE_LINE" mode="invoiceline-tabular"/>
   </xsl:template>
   
