@@ -5,6 +5,7 @@
                	          xmlns:xr="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
                	          xmlns:xs="http://www.w3.org/2001/XMLSchema"
                	          xmlns:xrv="http://www.example.org/XRechnung-Viewer"
+               	          xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"
 	        version="2.0">
 
 
@@ -570,42 +571,75 @@
     </xsl:if>
     
     <xsl:if test="xr:Referenced_purchase_order_line_reference | xr:Invoice_line_Buyer_accounting_reference">
-      <fo:table-row xsl:use-attribute-sets="invoicelines-table-row">
-        <fo:table-cell>
-          <fo:block/>
-        </fo:table-cell>
-        <fo:table-cell padding-left="{count(ancestor-or-self::xr:SUB_INVOICE_LINE)}em" number-columns-spanned="6">
-          <fo:list-block>
-            <fo:list-item provisional-distance-between-starts="50%">
-              <fo:list-item-label end-indent="label-end()">
-                <fo:block>
-                  <xsl:if test="xr:Referenced_purchase_order_line_reference">
-                    <xsl:value-of select="xr:field-label('xr:Referenced_purchase_order_line_reference')"/>
-                    <xsl:text>: </xsl:text>
-                    <xsl:value-of select="xr:Referenced_purchase_order_line_reference"/>
-                  </xsl:if>
-                </fo:block>
-              </fo:list-item-label>
-              <fo:list-item-body start-indent="body-start()">
-                <fo:block>
-                  <xsl:if test="xr:Invoice_line_Buyer_accounting_reference">
-                    <xsl:value-of select="xr:field-label('xr:Invoice_line_Buyer_accounting_reference')"/>
-                    <xsl:text>: </xsl:text>
-                    <xsl:value-of select="xr:Invoice_line_Buyer_accounting_reference"/>
-                  </xsl:if>
-                </fo:block>
-              </fo:list-item-body>
-            </fo:list-item>
-          </fo:list-block>
-        </fo:table-cell>
-        <fo:table-cell>
-          <fo:block/>
-        </fo:table-cell>      
-      </fo:table-row>
+      <xsl:call-template name="invoiceline-tabular-2-col-info">
+        <xsl:with-param name="col1">
+          <xsl:if test="xr:Referenced_purchase_order_line_reference">
+            <xsl:value-of select="xrf:field-label('xr:Referenced_purchase_order_line_reference')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="xr:Referenced_purchase_order_line_reference"/>
+          </xsl:if>
+        </xsl:with-param>
+        <xsl:with-param name="col2">
+          <xsl:if test="xr:Invoice_line_Buyer_accounting_reference">
+            <xsl:value-of select="xrf:field-label('xr:Invoice_line_Buyer_accounting_reference')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="xr:Invoice_line_Buyer_accounting_reference"/>
+          </xsl:if>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+
+    <xsl:if test="xr:INVOICE_LINE_PERIOD">
+      <xsl:call-template name="invoiceline-tabular-2-col-info">
+        <xsl:with-param name="col1">
+          <xsl:if test="xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date">
+            <xsl:value-of select="xrf:field-label('xr:Invoice_line_period_start_date')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,'[D].[M].[Y]')"/>
+          </xsl:if>
+        </xsl:with-param>
+        <xsl:with-param name="col2">
+          <xsl:if test="xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date">
+            <xsl:value-of select="xrf:field-label('xr:Invoice_line_period_end_date')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,'[D].[M].[Y]')"/>
+          </xsl:if>
+        </xsl:with-param>
+      </xsl:call-template>
     </xsl:if>
 
     <xsl:apply-templates select="xr:SUB_INVOICE_LINE" mode="invoiceline-tabular"/>
   </xsl:template>
-  
+
+  <xsl:template name="invoiceline-tabular-2-col-info">
+    <xsl:param name="col1"/>
+    <xsl:param name="col2"/>
+
+    <fo:table-row xsl:use-attribute-sets="invoicelines-table-row">
+      <fo:table-cell>
+        <fo:block/>
+      </fo:table-cell>
+      <fo:table-cell padding-left="{count(ancestor-or-self::xr:SUB_INVOICE_LINE)}em" number-columns-spanned="6">
+        <fo:list-block>
+          <fo:list-item provisional-distance-between-starts="50%">
+            <fo:list-item-label end-indent="label-end()">
+              <fo:block>
+                <xsl:copy-of select="$col1"/>
+              </fo:block>
+            </fo:list-item-label>
+            <fo:list-item-body start-indent="body-start()">
+              <fo:block>
+                <xsl:copy-of select="$col2"/>
+              </fo:block>                
+            </fo:list-item-body>
+          </fo:list-item>
+        </fo:list-block>
+      </fo:table-cell>
+      <fo:table-cell>
+        <fo:block/>
+      </fo:table-cell>      
+    </fo:table-row>
+    
+  </xsl:template>
 
 </xsl:stylesheet>

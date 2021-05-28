@@ -3,6 +3,7 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xr="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
+                xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"
                 xmlns:xrv="http://www.example.org/XRechnung-Viewer">
 
   <xsl:template name="field-mapping">
@@ -895,7 +896,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:function name="xr:field-label" as="xs:string">
+  <xsl:function name="xrf:field-label" as="xs:string">
     <xsl:param name="identifier"/>
     
     <xsl:variable name="label">
