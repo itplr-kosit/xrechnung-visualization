@@ -214,5 +214,14 @@
     <!-- Nested sub-invoice lines will recursively decrease font-size -->    
     <xsl:attribute name="font-size" select="if (self::xr:SUB_INVOICE_LINE) then '90%' else '100%'"/>
   </xsl:attribute-set>
+
+  <xsl:attribute-set name="invoicelines-allowances-table">
+    <xsl:attribute name="padding-left">2pt</xsl:attribute>
+    <xsl:attribute name="padding-right">2pt</xsl:attribute>
+    <xsl:attribute name="width">100%</xsl:attribute>
+    <xsl:attribute name="table-layout">fixed</xsl:attribute>
+    <xsl:attribute name="font-size">80%</xsl:attribute>
+    <xsl:attribute name="font-style">italic</xsl:attribute>    
+  </xsl:attribute-set>
   
 </xsl:stylesheet>
