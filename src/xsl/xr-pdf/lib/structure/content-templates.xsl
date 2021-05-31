@@ -690,6 +690,88 @@
       </fo:table-row>
     </xsl:if>
 
+    <xsl:if test="xr:INVOICE_LINE_CHARGES">
+      <fo:table-row xsl:use-attribute-sets="invoicelines-table-row">
+        <fo:table-cell>
+          <fo:block/>
+        </fo:table-cell>
+        <fo:table-cell padding-left="{count(ancestor-or-self::xr:SUB_INVOICE_LINE)}em" number-columns-spanned="6">
+          <fo:table xsl:use-attribute-sets="invoicelines-allowances-table">
+            <fo:table-column column-width="proportional-column-width(6)"/>
+            <fo:table-column column-width="proportional-column-width(1)"/>
+            <fo:table-column column-width="proportional-column-width(2)"/>
+            <fo:table-column column-width="proportional-column-width(1)"/>
+            <fo:table-column column-width="proportional-column-width(2)"/>
+            <fo:table-header xsl:use-attribute-sets="invoicelines-table-header">
+              <fo:table-row>
+                <fo:table-cell>
+                  <fo:block>
+                    <xsl:value-of select="xrf:field-label('xr:Invoice_line_charge_reason')"/>
+                  </fo:block>
+                </fo:table-cell>
+                <fo:table-cell>
+                  <fo:block>
+                    <!-- Standard full description is too long -->
+                    <!--<xsl:value-of select="xrf:field-label('xr:Invoice_line_charge_reason_code')"/>-->
+                    Code
+                  </fo:block>
+                </fo:table-cell>
+                <fo:table-cell text-align="right" padding-right="1em">
+                  <fo:block>
+                    <xsl:value-of select="xrf:field-label('xr:Invoice_line_charge_base_amount')"/>
+                  </fo:block>
+                </fo:table-cell>
+                <fo:table-cell text-align="center">
+                  <fo:block>
+                    <xsl:value-of select="xrf:field-label('xr:Invoice_line_charge_percentage')"/>
+                  </fo:block>
+                </fo:table-cell>
+                <fo:table-cell text-align="right">
+                  <fo:block>
+                    <xsl:value-of select="xrf:field-label('xr:Invoice_line_charge_amount')"/>
+                  </fo:block>
+                </fo:table-cell>
+              </fo:table-row>
+            </fo:table-header>
+            <fo:table-body>
+              <xsl:for-each select="xr:INVOICE_LINE_CHARGES">
+                <fo:table-row>
+                  <fo:table-cell>
+                    <fo:block>
+                      <xsl:value-of select="xr:Invoice_line_charge_reason"/>
+                    </fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell>
+                    <fo:block>
+                      <xsl:value-of select="xr:Invoice_line_charge_reason_code"/>
+                    </fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell text-align="right" padding-right="1em">
+                    <fo:block>
+                      <xsl:value-of select="xr:Invoice_line_charge_base_amount"/>
+                    </fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell text-align="center">
+                    <fo:block>
+                      <xsl:value-of select="xr:Invoice_line_charge_percentage"/>
+                    </fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell text-align="right">
+                    <fo:block>
+                      <xsl:value-of select="xr:Invoice_line_charge_amount"/>
+                    </fo:block>
+                  </fo:table-cell>
+                </fo:table-row>
+              </xsl:for-each>
+            </fo:table-body>
+          </fo:table>
+        </fo:table-cell>
+        <fo:table-cell>
+          <fo:block/>
+        </fo:table-cell>      
+      </fo:table-row>
+    </xsl:if>
+
     <xsl:apply-templates select="xr:SUB_INVOICE_LINE" mode="invoiceline-tabular"/>
   </xsl:template>
 
