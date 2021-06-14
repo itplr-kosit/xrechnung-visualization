@@ -589,6 +589,23 @@
       </xsl:call-template>
     </xsl:if>
 
+    <xsl:if test="xr:Invoice_line_object_identifier">
+      <xsl:call-template name="invoiceline-tabular-2-col-info">
+        <xsl:with-param name="col1">
+          <xsl:value-of select="xrf:field-label('xr:Invoice_line_object_identifier')"/>
+          <xsl:text>: </xsl:text>
+          <xsl:value-of select="xr:Invoice_line_object_identifier"/>
+        </xsl:with-param>
+        <xsl:with-param name="col2">
+          <xsl:if test="xr:Invoice_line_object_identifier/@scheme_identifier">
+            <xsl:value-of select="xrf:field-label('xr:Invoice_line_object_identifier/@scheme_identifier')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="xr:Invoice_line_object_identifier/@scheme_identifier"/>
+          </xsl:if>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+    
     <xsl:if test="xr:INVOICE_LINE_PERIOD">
       <xsl:call-template name="invoiceline-tabular-2-col-info">
         <xsl:with-param name="col1">
@@ -607,6 +624,107 @@
         </xsl:with-param>
       </xsl:call-template>
     </xsl:if>
+
+    <xsl:if test="xr:PRICE_DETAILS/xr:Item_price_discount | xr:PRICE_DETAILS/xr:Item_gross_price">
+      <xsl:call-template name="invoiceline-tabular-2-col-info">
+        <xsl:with-param name="col1">
+          <xsl:if test="xr:PRICE_DETAILS/xr:Item_price_discount">
+            <xsl:value-of select="xrf:field-label('xr:Item_price_discount')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_discount"/>
+          </xsl:if>
+        </xsl:with-param>
+        <xsl:with-param name="col2">
+          <xsl:if test="xr:PRICE_DETAILS/xr:Item_gross_price">
+            <xsl:value-of select="xrf:field-label('xr:Item_gross_price')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_gross_price"/>
+          </xsl:if>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+
+    <xsl:if test="xr:ITEM_INFORMATION/xr:Item_Sellers_identifier | xr:ITEM_INFORMATION/xr:Item_Buyers_identifier">
+      <xsl:call-template name="invoiceline-tabular-2-col-info">
+        <xsl:with-param name="col1">
+          <xsl:if test="xr:ITEM_INFORMATION/xr:Item_Sellers_identifier">
+            <xsl:value-of select="xrf:field-label('xr:Item_Sellers_identifier')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_Sellers_identifier"/>
+          </xsl:if>
+        </xsl:with-param>
+        <xsl:with-param name="col2">
+          <xsl:if test="xr:ITEM_INFORMATION/xr:Item_Buyers_identifier">
+            <xsl:value-of select="xrf:field-label('xr:Item_Buyers_identifier')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_Buyers_identifier"/>
+          </xsl:if>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+
+    <xsl:if test="xr:ITEM_INFORMATION/xr:Item_standard_identifier">
+      <xsl:call-template name="invoiceline-tabular-2-col-info">
+        <xsl:with-param name="col1">
+          <xsl:value-of select="xrf:field-label('xr:Item_standard_identifier')"/>
+          <xsl:text>: </xsl:text>
+          <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_standard_identifier"/>
+        </xsl:with-param>
+        <xsl:with-param name="col2">
+          <xsl:if test="xr:ITEM_INFORMATION/xr:Item_standard_identifier/@scheme_identifier">
+            <xsl:value-of select="xrf:field-label('xr:Item_standard_identifier/@scheme_identifier')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_standard_identifier/@scheme_identifier"/>
+          </xsl:if>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+
+    <xsl:if test="xr:ITEM_INFORMATION/xr:Item_country_of_origin">
+      <xsl:call-template name="invoiceline-tabular-2-col-info">
+        <xsl:with-param name="col1">
+          <xsl:value-of select="xrf:field-label('xr:Item_country_of_origin')"/>
+          <xsl:text>: </xsl:text>
+          <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_country_of_origin"/>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+
+    <xsl:for-each select="xr:ITEM_INFORMATION/xr:Item_classification_identifier">
+      <xsl:call-template name="invoiceline-tabular-2-col-info">
+        <xsl:with-param name="col1">
+          <xsl:value-of select="xrf:field-label('xr:Item_classification_identifier')"/>
+          <xsl:text>: </xsl:text>
+          <xsl:value-of select="."/>
+        </xsl:with-param>
+        <xsl:with-param name="col2">
+          <xsl:if test="@scheme_identifier">
+            <xsl:value-of select="xrf:field-label('xr:Item_classification_identifier/@scheme_identifier')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="@scheme_identifier"/>
+          </xsl:if>
+        </xsl:with-param>
+      </xsl:call-template>
+      <xsl:call-template name="invoiceline-tabular-2-col-info">
+        <xsl:with-param name="col2">
+          <xsl:if test="@scheme_version_identifier">
+            <xsl:value-of select="xrf:field-label('xr:Item_classification_identifier/@scheme_version_identifier')"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="@scheme_version_identifier"/>
+          </xsl:if>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:for-each>
+
+    <xsl:for-each select="xr:ITEM_INFORMATION/xr:ITEM_ATTRIBUTES">
+      <xsl:call-template name="invoiceline-tabular-2-col-info">
+        <xsl:with-param name="col1">
+          <xsl:value-of select="xr:Item_attribute_name"/>
+          <xsl:text>: </xsl:text>
+          <xsl:value-of select="xr:Item_attribute_value"/>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:for-each>      
 
     <xsl:if test="xr:INVOICE_LINE_ALLOWANCES">
       <fo:table-row xsl:use-attribute-sets="invoicelines-table-row">
@@ -779,7 +897,7 @@
     <xsl:param name="col1"/>
     <xsl:param name="col2"/>
 
-    <fo:table-row xsl:use-attribute-sets="invoicelines-table-row">
+    <fo:table-row xsl:use-attribute-sets="invoicelines-nested-info">
       <fo:table-cell>
         <fo:block/>
       </fo:table-cell>
