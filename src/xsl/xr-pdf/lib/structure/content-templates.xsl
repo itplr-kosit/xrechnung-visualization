@@ -386,7 +386,18 @@
        =========================================================================== -->
 
   <xsl:template match="xr:INVOICE_LINE">
-    <xsl:variable name="identifier" select="xr:Invoice_line_identifier"/>
+    <xsl:variable name="identifier">
+      <xsl:choose>
+        <xsl:when test="$invoiceline-numbering = 'normal'">
+          <xsl:value-of select="xr:Invoice_line_identifier"/>    
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:number format="{$invoiceline-numbering}" 
+            level="multiple" 
+            count="xr:INVOICE_LINE | xr:SUB_INVOICE_LINE"/>
+        </xsl:otherwise>
+      </xsl:choose>      
+    </xsl:variable>
   
     <xsl:call-template name="h2">
       <xsl:with-param name="titel" select="$identifier"/>
@@ -405,7 +416,18 @@
   </xsl:template>
   
   <xsl:template match="xr:SUB_INVOICE_LINE">
-    <xsl:variable name="identifier" select="xr:Invoice_line_identifier"/>
+    <xsl:variable name="identifier">
+      <xsl:choose>
+        <xsl:when test="$invoiceline-numbering = 'normal'">
+          <xsl:value-of select="xr:Invoice_line_identifier"/>    
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:number format="{$invoiceline-numbering}" 
+            level="multiple" 
+            count="xr:INVOICE_LINE | xr:SUB_INVOICE_LINE"/>
+        </xsl:otherwise>
+      </xsl:choose>      
+    </xsl:variable>
     
     <xsl:call-template name="h2">
       <xsl:with-param name="titel" select="$identifier"/>
@@ -519,7 +541,18 @@
     <!-- Process basic information -->
     <fo:table-row xsl:use-attribute-sets="invoicelines-table-row">
       <fo:table-cell>
-        <fo:block><xsl:value-of select="xr:Invoice_line_identifier"/></fo:block>
+        <fo:block>
+          <xsl:choose>
+            <xsl:when test="$invoiceline-numbering = 'normal'">
+              <xsl:value-of select="xr:Invoice_line_identifier"/>    
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:number format="{$invoiceline-numbering}" 
+                          level="multiple" 
+                          count="xr:INVOICE_LINE | xr:SUB_INVOICE_LINE"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </fo:block>
       </fo:table-cell>
       <fo:table-cell padding-left="{count(ancestor-or-self::xr:SUB_INVOICE_LINE)}em">        
         <fo:block><xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_name"/></fo:block>
