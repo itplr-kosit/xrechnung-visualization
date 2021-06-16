@@ -33,13 +33,27 @@
   <xsl:param name="axf.extensions" select="if ($foengine eq 'axf') then true() else false()"/>
   <xsl:param name="fop.extensions" select="if ($foengine eq 'fop') then true() else false()"/>
 
+
   <!-- ==========================================================================
-       == Grundaufbau
+       == Basic structure
        =========================================================================== -->
   <xsl:template match="xr:invoice">
+
     <fo:root language="de">
       <xsl:call-template name="generiere-layout-master-set"/>
-      <xsl:call-template name="generiere-page-sequence"/>
+      <xsl:call-template name="generiere-page-sequence">
+        <xsl:with-param name="body-content-flow">
+          <fo:flow flow-name="xrBody"
+            xsl:use-attribute-sets="fliesstext">
+            <xsl:call-template name="uebersicht"/>
+            <xsl:call-template name="details"/>
+            <xsl:call-template name="zusaetze"/>
+            <xsl:call-template name="anlagen"/>
+            <xsl:call-template name="laufzettel"/>
+            <fo:block id="seitenzahlLetzteSeite"></fo:block>
+          </fo:flow>
+        </xsl:with-param>
+      </xsl:call-template>
     </fo:root>
   </xsl:template>
   

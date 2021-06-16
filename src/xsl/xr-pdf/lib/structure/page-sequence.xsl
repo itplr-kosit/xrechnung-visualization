@@ -6,6 +6,7 @@
 	              version="2.0">
   
    <xsl:template name="generiere-page-sequence">
+     <xsl:param name="body-content-flow" required="yes" as="node()"/>
     <fo:page-sequence master-reference="xrDokument">
       
       <!-- Header -->
@@ -58,15 +59,8 @@
       </fo:static-content>
       
       <!-- Content -->
-      <fo:flow flow-name="xrBody"
-               xsl:use-attribute-sets="fliesstext">
-        <xsl:call-template name="uebersicht"/>
-        <xsl:call-template name="details"/>
-        <xsl:call-template name="zusaetze"/>
-        <xsl:call-template name="anlagen"/>
-        <xsl:call-template name="laufzettel"/>
-        <fo:block id="seitenzahlLetzteSeite"></fo:block>
-      </fo:flow>
+      <xsl:copy-of select="$body-content-flow"/>
+      
     </fo:page-sequence>
   </xsl:template>
   
