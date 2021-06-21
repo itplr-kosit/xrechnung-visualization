@@ -403,7 +403,7 @@
                       <fo:block>#</fo:block>
                     </fo:table-cell>
                     <fo:table-cell>
-                      <fo:block>Beschreibung</fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('Beschreibung')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="center">
                       <fo:block><xsl:value-of select="xrf:_('xr:Invoiced_quantity')"/></fo:block>

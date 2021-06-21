@@ -55,7 +55,7 @@
   <entry key="xr:VAT_category_tax_amount" id="BT-117">Sales tax amount</entry>
   <entry key="xr:VAT_exemption_reason_text" id="BT-120">Exemption reason</entry>
   <entry key="xr:VAT_exemption_reason_code" id="BT-121">Identifier for the exemption reason</entry>
-  <entry key="xr:Document_level_allowanc e_VAT_category_code" id="BT-95">Sales tax category of
+  <entry key="xr:Document_level_allowance_VAT_category_code" id="BT-95">Sales tax category of
     the estate</entry>
   <entry key="xr:Document_level_allowance_base_amount" id="BT-93">Basic amount</entry>
   <entry key="xr:Document_level_allowance_percentage" id="BT-94%">Percentage</entry>
@@ -68,7 +68,7 @@
     surcharge</entry>
   <entry key="xr:Document_level_charge_base_amount" id="BT-100">Basic amount</entry>
   <entry key="xr:Document_level_charge_percentage" id="BT-101">Percentage</entry>
-  <entry key="xr:Document_level_cha rge_amount" id="BT-99">Surcharge</entry>
+  <entry key="xr:Document_level_charge_amount" id="BT-99">Surcharge</entry>
   <entry key="xr:Document_level_charge_VAT_rate" id="BT-103">Sales tax rate of the surcharge</entry>
   <entry key="xr:Document_level_charge_reason" id="BT-104">Reason for the surcharge</entry>
   <entry key="xr:Document_level_charge_reason_code" id="BT-105">Document level charge reason code</entry>
@@ -84,7 +84,7 @@
   <entry key="xr:Bank_assigned_creditor_identifier" id="BT-90">Creditor ID</entry>
   <entry key="xr:Payment_account_name" id="BT-85">Account holder</entry>
   <entry key="xr:Payment_account_identifier" id="BT-84">IBAN</entry>
-  <entry key="xr : Payment_service_provider_identifier" id="BT-86">BIC</entry>
+  <entry key="xr:Payment_service_provider_identifier" id="BT-86">BIC</entry>
   <entry key="xr:Invoice_note_subject_code" id="BT-21">Subject</entry>
   <entry key="xr:Invoice_note" id="BT-22">Comment</entry>
   <entry key="xr:Seller_trading_name" id="BT-28">Different trade name</entry>
@@ -130,7 +130,7 @@
   <entry key="xr:Deliver_to_address_line_3" id="BT-165">Additional address</entry>
   <entry key="xr:Deliver_to_post_code" id="BT-78">ZIP</entry>
   <entry key="xr:Deliver_to_city" id="BT-77">Location</entry>
-  <entry key="xr:Deliver_to_country_sub division" id="BT-79">State</entry>
+  <entry key="xr:Deliver_to_country_subdivision" id="BT-79">State</entry>
   <entry key="xr:Deliver_to_country_code" id="BT-80">Country</entry>
   <entry key="xr:Tender_or_lot_reference" id="BT -17">Award number</entry>
   <entry key="xr:Receiving_advice_reference" id="BT-15">Identification of the acknowledgment
@@ -143,7 +143,7 @@
     scheme</entry>
   <entry key="xr:Payee_name" id="BT-59">Name</entry>
   <entry key="xr:Payee_identifier" id="BT-60">identifier</entry>
-  <entry key="xr :Payee_identifier/@scheme_identifier" id="BT-60">Identification scheme</entry>
+  <entry key="xr:Payee_identifier/@scheme_identifier" id="BT-60">Identification scheme</entry>
   <entry key="xr:Payee_legal_registration_identifier" id="BT-61">Register / registration
     number</entry>
   <entry key="xr:Payee_legal_registration_identifier/@scheme_identifier" id="BT-61">Scheme
@@ -243,6 +243,7 @@
   <entry key="Gesamt">Total</entry>
   <entry key="Bereiche ohne Inhalte werden nicht dargestellt!">Areas without content are not displayed!</entry>
   <entry key="Seite">Page</entry>
+  <entry key="Beschreibung">Description</entry>
   <entry key="date-format">[Y]-[M,2]-[D,2]</entry>
   <entry key="datetime-format">[Y]-[M,2]-[D,2] [H]:[m]:[s]</entry>
 </properties>
