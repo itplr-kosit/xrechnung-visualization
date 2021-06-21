@@ -4,7 +4,8 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xr="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
                 xmlns:xrv="http://www.example.org/XRechnung-Viewer"
-                xmlns:fo="http://www.w3.org/1999/XSL/Format">
+                xmlns:fo="http://www.w3.org/1999/XSL/Format"
+                xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions">
   
   <xsl:decimal-format name="decimal" decimal-separator="," grouping-separator="." NaN="" />
   
@@ -405,22 +406,22 @@
                       <fo:block>Beschreibung</fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="center">
-                      <fo:block>Menge</fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('xr:Invoiced_quantity')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="right" padding-right="1em">
-                      <fo:block>Preis</fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('Preis')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="center">
-                      <fo:block>Preis Einheit</fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('Preis Einheit')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="center">
-                      <fo:block>MwSt.</fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('MwSt.')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="center">
-                      <fo:block>St. Code</fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('St. Code')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="right">
-                      <fo:block>Gesamt</fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('Gesamt')"/></fo:block>
                     </fo:table-cell>
                   </fo:table-row>
                 </fo:table-header>      

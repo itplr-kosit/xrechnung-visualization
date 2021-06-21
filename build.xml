@@ -273,6 +273,22 @@
         <include name="*.fo"/>
       </fileset>
     </fop>
+
+    <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}-tabular-en"
+      style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
+      <classpath location="${lib.dir}/${saxon.jar}"/>
+      <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+      <param name="fop.extensions" type="STRING" expression="fop"/>
+      <param name="invoiceline-layout" type="STRING" expression="tabular"/>
+      <param name="lang" type="STRING" expression="en"/>
+      <mapper type="glob" from="*.xml" to="*.fo"/>
+    </xslt>
+    
+    <fop format="application/pdf" outdir="${test.transformed.pdf.dir}-tabular-en" messagelevel="debug">
+      <fileset dir="${test.transformed.pdf.dir}-tabular">
+        <include name="*.fo"/>
+      </fileset>
+    </fop>
     
 
     <!--  <java classname="org.apache.fop.cli.Main" failonerror="yes" fork="yes"
