@@ -285,7 +285,7 @@
     </xslt>
     
     <fop format="application/pdf" outdir="${test.transformed.pdf.dir}-tabular-en" messagelevel="debug">
-      <fileset dir="${test.transformed.pdf.dir}-tabular">
+      <fileset dir="${test.transformed.pdf.dir}-tabular-en">
         <include name="*.fo"/>
       </fileset>
     </fop>
