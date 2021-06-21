@@ -193,7 +193,7 @@
                  </xsl:when>
                  <xsl:otherwise>
                    <xsl:choose>
-                     <xsl:when test="$field-mapping-identifier = 'xr:Payment_due_date'"><xsl:value-of select="format-date(xs:date(.),'[D].[M].[Y]')"/></xsl:when>
+                     <xsl:when test="$field-mapping-identifier = 'xr:Payment_due_date'"><xsl:value-of select="format-date(xs:date(.), xrf:_('date-format'))"/></xsl:when>
                      <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
                    </xsl:choose>
                  </xsl:otherwise>
@@ -612,14 +612,14 @@
           <xsl:if test="xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date">
             <xsl:value-of select="xrf:field-label('xr:Invoice_line_period_start_date')"/>
             <xsl:text>: </xsl:text>
-            <xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,'[D].[M].[Y]')"/>
+            <xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date, xrf:_('date-format'))"/>
           </xsl:if>
         </xsl:with-param>
         <xsl:with-param name="col2">
           <xsl:if test="xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date">
             <xsl:value-of select="xrf:field-label('xr:Invoice_line_period_end_date')"/>
             <xsl:text>: </xsl:text>
-            <xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,'[D].[M].[Y]')"/>
+            <xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date, xrf:_('date-format'))"/>
           </xsl:if>
         </xsl:with-param>
       </xsl:call-template>

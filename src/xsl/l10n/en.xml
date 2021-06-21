@@ -241,4 +241,8 @@
   <entry key="MwSt.">VAT</entry>
   <entry key="St. Code">VAT code</entry>
   <entry key="Gesamt">Total</entry>
+  <entry key="Bereiche ohne Inhalte werden nicht dargestellt!">Areas without content are not displayed!</entry>
+  <entry key="Seite">Page</entry>
+  <entry key="date-format">[Y]-[M,2]-[D,2]</entry>
+  <entry key="datetime-format">[Y]-[M,2]-[D,2] [H]:[m]:[s]</entry>
 </properties>

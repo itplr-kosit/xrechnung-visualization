@@ -102,7 +102,7 @@
       <xsl:with-param name="content">
         <xsl:apply-templates select="xr:Invoice_number" mode="list-entry"/>
         <xsl:apply-templates select="xr:Invoice_issue_date" mode="list-entry">
-          <xsl:with-param name="value" select="format-date(xr:Invoice_issue_date,'[D].[M].[Y]')"/>
+          <xsl:with-param name="value" select="format-date(xr:Invoice_issue_date, xrf:_('date-format'))"/>
         </xsl:apply-templates>
         <xsl:apply-templates select="xr:Invoice_type_code" mode="list-entry"/>
         <xsl:apply-templates select="xr:Invoice_currency_code" mode="list-entry"/>
@@ -119,10 +119,10 @@
       <xsl:with-param name="headingId" select="'uebersichtRechnungAbrechnungszeitraum'"/>
       <xsl:with-param name="content">
         <xsl:apply-templates select="xr:INVOICING_PERIOD/xr:Invoicing_period_start_date" mode="list-entry">
-          <xsl:with-param name="value" select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,'[D].[M].[Y]')"/>
+          <xsl:with-param name="value" select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_start_date, xrf:_('date-format'))"/>
         </xsl:apply-templates>
         <xsl:apply-templates select="xr:INVOICING_PERIOD/xr:Invoicing_period_end_date" mode="list-entry">
-          <xsl:with-param name="value" select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,'[D].[M].[Y]')"/>
+          <xsl:with-param name="value" select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_end_date, xrf:_('date-format'))"/>
         </xsl:apply-templates>
       </xsl:with-param>
     </xsl:call-template>
@@ -137,7 +137,7 @@
             <xsl:with-param name="content">
               <xsl:apply-templates select="xr:Preceding_Invoice_reference" mode="list-entry"/>
               <xsl:apply-templates select="xr:Preceding_Invoice_issue_date" mode="list-entry">
-                <xsl:with-param name="value" select="format-date(xr:Preceding_Invoice_issue_date,'[D].[M].[Y]')"/>
+                <xsl:with-param name="value" select="format-date(xr:Preceding_Invoice_issue_date, xrf:_('date-format'))"/>
               </xsl:apply-templates>
             </xsl:with-param>
           </xsl:call-template>
@@ -466,10 +466,10 @@
   <xsl:template name="detailsPositionAbrechnungszeitraum">
     <xsl:variable name="content">
       <xsl:apply-templates mode="list-entry" select="xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date">
-        <xsl:with-param name="value" select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,'[D].[M].[Y]')"/>
+        <xsl:with-param name="value" select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date, xrf:_('date-format'))"/>
       </xsl:apply-templates>
       <xsl:apply-templates mode="list-entry" select="xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date">
-        <xsl:with-param name="value" select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,'[D].[M].[Y]')"/>
+        <xsl:with-param name="value" select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date, xrf:_('date-format'))"/>
       </xsl:apply-templates>
     </xsl:variable>    
     <xsl:call-template name="list">
@@ -705,7 +705,7 @@
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:Buyer_VAT_identifier"/>
             <xsl:for-each select="tokenize(xr:Value_added_tax_point_date,';')">             
               <xsl:call-template name="list-entry-bt-7">
-                <xsl:with-param name="value" select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+                <xsl:with-param name="value" select="format-date(xs:date(.), xrf:_('date-format'))"/>
                <xsl:with-param name="field-mapping-identifier" select="'xr:Value_added_tax_point_date'"/>
              </xsl:call-template>
             </xsl:for-each>
@@ -728,7 +728,7 @@
               <xsl:with-param name="field-mapping-identifier" select="xr:Deliver_to_location_identifier/@scheme_identifier"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:DELIVERY_INFORMATION/xr:Actual_delivery_date">
-              <xsl:with-param name="value" select="format-date(xr:DELIVERY_INFORMATION/xr:Actual_delivery_date,'[D].[M].[Y]')"/>
+              <xsl:with-param name="value" select="format-date(xr:DELIVERY_INFORMATION/xr:Actual_delivery_date, xrf:_('date-format'))"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:DELIVERY_INFORMATION/xr:Deliver_to_party_name"/>
             <xsl:apply-templates mode="list-entry" select="xr:DELIVERY_INFORMATION/xr:DELIVER_TO_ADDRESS/xr:Deliver_to_address_line_1"/>
@@ -856,7 +856,7 @@
                 <xsl:with-param name="layout" select="'einspaltig'"/>
                 <xsl:with-param name="content">
                   <xsl:apply-templates mode="list-entry" select="xrv:zeitstempel">
-                    <xsl:with-param name="value" select="format-dateTime(xrv:zeitstempel,'[D].[M].[Y] [H]:[m]:[s]')"/>
+                    <xsl:with-param name="value" select="format-dateTime(xrv:zeitstempel, xrf:_('datetime-format'))"/>
                   </xsl:apply-templates>
                   <xsl:apply-templates mode="list-entry" select="xrv:betreff"/>
                   <xsl:apply-templates mode="list-entry" select="xrv:text"/>

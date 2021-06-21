@@ -243,4 +243,6 @@
   <entry key="MwSt.">MwSt.</entry>
   <entry key="St. Code">St. Code</entry>
   <entry key="Gesamt">Gesamt</entry>
+  <entry key="date-format">[D].[M].[Y]</entry>
+  <entry key="datetime-format">[D].[M].[Y] [H]:[m]:[s]</entry>
 </properties>
