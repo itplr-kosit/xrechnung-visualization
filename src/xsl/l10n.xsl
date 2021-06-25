@@ -66,5 +66,20 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:function>
+  
+  <!-- We are emulating older tempate for getting labels in order to maintain backward compatability -->
+  <xsl:template name="field-mapping">
+    <xsl:param name="identifier"/>
+    
+    <label><xsl:value-of select="xrf:_($identifier)"/></label>
+    <nummer><xsl:value-of select="xrf:get-id($identifier)"/></nummer>
+  </xsl:template>
+  
+  
+  <xsl:function name="xrf:field-label" as="xs:string">
+    <xsl:param name="identifier"/>
+    
+    <xsl:sequence select="xrf:_($identifier)"></xsl:sequence>
+  </xsl:function>  
 
 </xsl:stylesheet>

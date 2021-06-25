@@ -12,7 +12,6 @@
        == Imports
        =========================================================================== -->
   
-  <xsl:import href="xr-mapping.xsl"/>
   <xsl:import href="xr-content.xsl"/>
 
   <xsl:import href="xr-pdf/lib/konstanten.xsl"/>
