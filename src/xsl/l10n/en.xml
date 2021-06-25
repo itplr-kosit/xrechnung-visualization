@@ -7,7 +7,7 @@
   <entry key="xr:Buyer_address_line_3" id="BT-163">Adress line 3</entry>
   <entry key="xr:Buyer_post_code" id="BT-53">ZIP</entry>
   <entry key="xr:Buyer_city" id="BT-52">Location</entry>
-  <entry key="xr:Buyer_country_code" id="BT-55">country</entry>
+  <entry key="xr:Buyer_country_code" id="BT-55">Country</entry>
   <entry key="xr:Buyer_identifier" id="BT-46">Identifier</entry>
   <entry key="xr:Buyer_identifier/@scheme_identifier" id="BT-46">Identifier scheme</entry>
   <entry key="xr:Buyer_contact_point" id="BT-56">Name</entry>
@@ -34,8 +34,8 @@
   <entry key="xr:Contract_reference" id="BT-12">Contract number</entry>
   <entry key="xr:Purchase_order_reference" id="BT-13">Order number</entry>
   <entry key="xr:Sales_order_reference" id="BT-14">Order number</entry>
-  <entry key="xr:Invoicing_period_start_date" id="BT-73">from</entry>
-  <entry key="xr:Invoicing_period_end_date" id="BT-74">to</entry>
+  <entry key="xr:Invoicing_period_start_date" id="BT-73">From</entry>
+  <entry key="xr:Invoicing_period_end_date" id="BT-74">To</entry>
   <entry key="xr:Preceding_Invoice_reference" id="BT-25">Invoice number</entry>
   <entry key="xr:Preceding_Invoice_issue_date" id="BT-26">Invoice date</entry>
   <entry key="xr:Sum_of_Invoice_line_net_amount" id="BT-106">Sum of all items</entry>
@@ -72,7 +72,7 @@
   <entry key="xr:Document_level_charge_VAT_rate" id="BT-103">Sales tax rate of the surcharge</entry>
   <entry key="xr:Document_level_charge_reason" id="BT-104">Reason for the surcharge</entry>
   <entry key="xr:Document_level_charge_reason_code" id="BT-105">Document level charge reason code</entry>
-  <entry key="xr:Payment_terms" id="BT-20">discount; further payment terms</entry>
+  <entry key="xr:Payment_terms" id="BT-20">Discount; further payment terms</entry>
   <entry key="xr:Payment_due_date" id="BT-9">Due date</entry>
   <entry key="xr:Payment_means_type_code" id="BT-81">Code for the means of payment</entry>
   <entry key="xr:Payment_means_text" id="BT-82">Payment method</entry>
@@ -142,7 +142,7 @@
   <entry key="xr:Invoiced_object_identifier/@scheme_identifier" id="BT-18">Object identifier
     scheme</entry>
   <entry key="xr:Payee_name" id="BT-59">Name</entry>
-  <entry key="xr:Payee_identifier" id="BT-60">identifier</entry>
+  <entry key="xr:Payee_identifier" id="BT-60">Identifier</entry>
   <entry key="xr:Payee_identifier/@scheme_identifier" id="BT-60">Identification scheme</entry>
   <entry key="xr:Payee_legal_registration_identifier" id="BT-61">Register / registration
     number</entry>
@@ -166,8 +166,8 @@
   <entry key="xr:Referenced_purchase_order_line_reference" id="BT-132">Number of the order item</entry>
   <entry key="xr:Invoice_line_Buyer_accounting_reference" id="BT-133">Account assignment
     information</entry>
-  <entry key="xr:Invoice_line_period_start_date" id="BT-134">from</entry>
-  <entry key="xr:Invoice_line_period_end_date" id="BT-135">to</entry>
+  <entry key="xr:Invoice_line_period_start_date" id="BT-134">From</entry>
+  <entry key="xr:Invoice_line_period_end_date" id="BT-135">To</entry>
   <entry key="xr:Invoiced_quantity" id="BT-129">Quantity</entry>
   <entry key="xr:Invoiced_quantity_unit_of_measure_code" id="BT-130">Unit</entry>
   <entry key="xr:Item_net_price" id="BT-146">Price per unit (net)</entry>
@@ -204,23 +204,23 @@
   <entry key="xr:Invoice_line_charge_reason_code" id="BT-145">Code for the reason for the award</entry>
   <entry key="uebersicht">Invoice</entry>
   <entry key="uebersichtKaeufer" id="BG-7">Information about the buyer</entry>
-  <entry key="uebersichtVerkaeufer" id="BG-4">information about the seller</entry>
-  <entry key="uebersichtRechnungsInfo" id="BG-4">invoice data</entry>
-  <entry key="uebersichtRechnungsuebersicht" id="BG-22">total amounts of the invoice</entry>
+  <entry key="uebersichtVerkaeufer" id="BG-4">Information about the seller</entry>
+  <entry key="uebersichtRechnungsInfo" id="BG-4">Invoice data</entry>
+  <entry key="uebersichtRechnungsuebersicht" id="BG-22">Total amounts of the invoice</entry>
   <entry key="uebersichtUmsatzsteuer" id="BG-23">Breakdown of sales tax at the invoice level</entry>
   <entry key="uebersichtNachlass" id="BG-20">Discounts at the invoice level of the invoice</entry>
-  <entry key="uebersichtZuschlaege" id="BG-21">surcharges at the level of the invoice</entry>
-  <entry key="uebersichtRechnungArechnungsperiod">billing period</entry>
+  <entry key="uebersichtZuschlaege" id="BG-21">Surcharges at the level of the invoice</entry>
+  <entry key="uebersichtRechnungAbrechnungszeitraum">Billing period</entry>
   <entry key="uebersichtRechnungPreviousBechungen">Previous invoices</entry>
   <entry key="uebersichtZahlungInfo" id="BG-4">Payment data</entry>
   <entry key="uebersichtZahlungKarte" id="BG-18">Card information</entry>
-  <entry key="uebersichtZahlungLastschrift" id="BG-19">direct debit</entry>
-  <entry key="uebersichtZahlungUeberweisung" id="BG-17">transfer</entry>
+  <entry key="uebersichtZahlungLastschrift" id="BG-19">Direct debit</entry>
+  <entry key="uebersichtZahlungUeberweisung" id="BG-17">Transfer</entry>
   <entry key="uebersichtBemerkungen" id="BG-1">Comments on the invoice</entry>
   <entry key="details">Details</entry>
-  <entry key="detailsPositionAbrechnungszeitraum" id="BG-26">billing period</entry>
+  <entry key="detailsPositionAbrechnungszeitraum" id="BG-26">Billing period</entry>
   <entry key="detailsPositionPreiseinzelheiten" id="BG-29">Price details</entry>
-  <entry key="detailsPositionNachlaesse" id="BG-27">discounts on Invoice item level</entry>
+  <entry key="detailsPositionNachlaesse" id="BG-27">Discounts on Invoice item level</entry>
   <entry key="detailsPositionZuschlaege" id="BG-28">Surcharges at invoice item level</entry>
   <entry key="detailsPositionArtikelinformationen" id="BG-31">Item information</entry>
   <entry key="detailsPositionArtikeleigenschaften" id="BG-32">Properties of the item</entry>
@@ -228,13 +228,13 @@
   <entry key="zusaetzeVerkaeufer" id="BG-4">Information about the seller</entry>
   <entry key="zusaetzeSteuervertreter" id="BG-11">Tax representative of the seller</entry>
   <entry key="zusaetzeKaeufer" id="BG-7">Information about the buyer</entry>
-  <entry key="zusaetzeLieferung" id="BG-13">delivery information</entry>
-  <entry key="zusaetzeVertrag">information about the contract</entry>
+  <entry key="zusaetzeLieferung" id="BG-13">Delivery information</entry>
+  <entry key="zusaetzeVertrag">Information about the contract</entry>
   <entry key="zusaetzeZahlungsempfaenger" id="BG-10">Payment recipient who differs from the
     seller</entry>
-  <entry key="laufzettel">routing slip</entry>
-  <entry key="laufzettelHistorie">processing history</entry>
-  <entry key="anlagen">Anlagen</entry>
+  <entry key="laufzettel">Routing slip</entry>
+  <entry key="laufzettelHistorie">Processing history</entry>
+  <entry key="anlagen">Appendices</entry>
   <entry key="anlagenListe">Documents justifying the invoice</entry>
   <entry key="Preis">Price</entry>
   <entry key="Preis Einheit">Price unit</entry>
