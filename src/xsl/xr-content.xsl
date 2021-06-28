@@ -388,14 +388,9 @@
             <xsl:with-param name="identifier" select="'details'"/>
             <xsl:with-param name="content">
               <fo:table xsl:use-attribute-sets="invoicelines-table" span="all">
-                <fo:table-column column-width="proportional-column-width(2)"/>
-                <fo:table-column column-width="proportional-column-width(7)"/>
-                <fo:table-column column-width="proportional-column-width(2)"/>
-                <fo:table-column column-width="proportional-column-width(2)"/>
-                <fo:table-column column-width="proportional-column-width(2)"/>
-                <fo:table-column column-width="proportional-column-width(2)"/>
-                <fo:table-column column-width="proportional-column-width(1.3)"/>
-                <fo:table-column column-width="proportional-column-width(2)"/>
+                <xsl:for-each select="tokenize($tabular-layout-widths, '\s+')">
+                  <fo:table-column column-width="proportional-column-width({.})"/>
+                </xsl:for-each>
                 <fo:table-header xsl:use-attribute-sets="invoicelines-table-header">
                   <fo:table-row>
                     <fo:table-cell>
