@@ -2446,7 +2446,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
    </xs:complexType>
    <xs:complexType name="amount">
       <xs:simpleContent>
-         <xs:extension base="xs:token">
+         <xs:extension base="xs:decimal">
             <xs:attributeGroup ref="xr:xr-attributes"/>
          </xs:extension>
       </xs:simpleContent>
@@ -2469,7 +2469,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
    </xs:complexType>
    <xs:complexType name="date">
       <xs:simpleContent>
-         <xs:extension base="xs:token">
+         <xs:extension base="xs:date">
             <xs:attributeGroup ref="xr:xr-attributes"/>
          </xs:extension>
       </xs:simpleContent>
@@ -2492,14 +2492,14 @@ M (Tax for production, services and importation in Ceuta and Melilla)
    </xs:complexType>
    <xs:complexType name="percentage">
       <xs:simpleContent>
-         <xs:extension base="xs:token">
+         <xs:extension base="xs:decimal">
             <xs:attributeGroup ref="xr:xr-attributes"/>
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
    <xs:complexType name="quantity">
       <xs:simpleContent>
-         <xs:extension base="xs:token">
+         <xs:extension base="xs:decimal">
             <xs:attributeGroup ref="xr:xr-attributes"/>
          </xs:extension>
       </xs:simpleContent>
@@ -2513,7 +2513,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
    </xs:complexType>
    <xs:complexType name="unit_price_amount">
       <xs:simpleContent>
-         <xs:extension base="xs:token">
+         <xs:extension base="xs:decimal">
             <xs:attributeGroup ref="xr:xr-attributes"/>
          </xs:extension>
       </xs:simpleContent>
