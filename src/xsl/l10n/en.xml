@@ -211,7 +211,7 @@
   <entry key="uebersichtNachlass" id="BG-20">Discounts at the invoice level of the invoice</entry>
   <entry key="uebersichtZuschlaege" id="BG-21">Surcharges at the level of the invoice</entry>
   <entry key="uebersichtRechnungAbrechnungszeitraum">Billing period</entry>
-  <entry key="uebersichtRechnungPreviousBechungen">Previous invoices</entry>
+  <entry key="uebersichtRechnungVorausgegangeneRechnungen">Previous invoices</entry>
   <entry key="uebersichtZahlungInfo" id="BG-4">Payment data</entry>
   <entry key="uebersichtZahlungKarte" id="BG-18">Card information</entry>
   <entry key="uebersichtZahlungLastschrift" id="BG-19">Direct debit</entry>
