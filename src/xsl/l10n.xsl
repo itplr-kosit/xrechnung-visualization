@@ -34,7 +34,7 @@
 
   <!-- Function returning localized string -->
   <xsl:function name="xrf:_" as="xs:string">
-    <xsl:param name="key" as="xs:string"/>
+    <xsl:param name="key" as="xs:string?"/>
     
     <xsl:variable name="localized" select="key('l10n', $key, $l10n-doc)"/>
     
@@ -52,7 +52,7 @@
   <!-- Function returning ID of localized string. 
        ID is holding original BT/BG number from EU norm -->
   <xsl:function name="xrf:get-id" as="xs:string">
-    <xsl:param name="key" as="xs:string"/>
+    <xsl:param name="key" as="xs:string?"/>
     
     <xsl:variable name="localized" select="key('l10n', $key, $l10n-doc)"/>
     
