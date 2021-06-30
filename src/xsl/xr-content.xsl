@@ -373,12 +373,61 @@
   </xsl:template>
 
   <xsl:template name="details">
-    <xsl:call-template name="page">
-      <xsl:with-param name="identifier" select="'details'"/>
-      <xsl:with-param name="content">
-        <xsl:apply-templates select="xr:INVOICE_LINE"/>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:choose>
+      <xsl:when test="$invoiceline-layout = 'normal'">
+        <xsl:call-template name="page">
+          <xsl:with-param name="identifier" select="'details'"/>
+          <xsl:with-param name="content">
+            <xsl:apply-templates select="xr:INVOICE_LINE"/>    
+          </xsl:with-param>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <fo:block span="all">
+          <xsl:call-template name="page">
+            <xsl:with-param name="identifier" select="'details'"/>
+            <xsl:with-param name="content">
+              <fo:table xsl:use-attribute-sets="invoicelines-table" span="all">
+                <xsl:for-each select="tokenize($tabular-layout-widths, '\s+')">
+                  <fo:table-column column-width="proportional-column-width({.})"/>
+                </xsl:for-each>
+                <fo:table-header xsl:use-attribute-sets="invoicelines-table-header">
+                  <fo:table-row>
+                    <fo:table-cell>
+                      <fo:block>#</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell>
+                      <fo:block>Beschreibung</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="center">
+                      <fo:block>Menge</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="right" padding-right="1em">
+                      <fo:block>Preis</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="center">
+                      <fo:block>Preis Einheit</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="center">
+                      <fo:block>MwSt.</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="center">
+                      <fo:block>St. Code</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="right">
+                      <fo:block>Gesamt</fo:block>
+                    </fo:table-cell>
+                  </fo:table-row>
+                </fo:table-header>      
+                <fo:table-body>
+                  <xsl:apply-templates select="xr:INVOICE_LINE" mode="invoiceline-tabular"/>
+                </fo:table-body>
+              </fo:table>
+            </xsl:with-param>
+          </xsl:call-template>
+        </fo:block>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="detailsPosition">    
