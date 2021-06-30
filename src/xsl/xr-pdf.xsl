@@ -36,6 +36,15 @@
        -->
   <xsl:param name="invoiceline-layout">normal</xsl:param>
 
+  <!-- Numbering of invoice line/sub lines 
+            normal - use numbers from invoice
+            1.1    - use multilevel arabic numbering
+            1.i    - use mixture of arabic and roman numbering
+            00001  - use arabic numbering and align them
+                   - any picture string supported by xsl:number instruction can be used
+       -->
+  <xsl:param name="invoiceline-numbering">normal</xsl:param>
+  
   <!-- This parameter can be used when different proportions of table columns
        are needed for tabular layout
        -->
