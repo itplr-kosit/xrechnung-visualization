@@ -45,6 +45,11 @@
        -->
   <xsl:param name="invoiceline-numbering">normal</xsl:param>
   
+  <!-- This parameter can be used when different proportions of table columns
+       are needed for tabular layout
+       -->
+  <xsl:param name="tabular-layout-widths">2 7 2 2 2 2 1.3 2</xsl:param>
+  
   <xsl:param name="axf.extensions" select="if ($foengine eq 'axf') then true() else false()"/>
   <xsl:param name="fop.extensions" select="if ($foengine eq 'fop') then true() else false()"/>
 
