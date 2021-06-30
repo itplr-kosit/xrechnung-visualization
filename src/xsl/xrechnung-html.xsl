@@ -1009,7 +1009,7 @@
                 <div class="boxzeile">
                   <div class="boxdaten legende">Umsatzsteuer-ID:</div>
                   <div id="BT-48" title="BT-48" class="boxdaten wert"><xsl:value-of select="xr:Buyer_VAT_identifier"/></div>
-                </div>                
+                </div>a                
                 <div class="boxzeile">
                   <div class="boxdaten legende">Kontierungsinformation:</div>
                   <div id="BT-19" title="BT-19" class="boxdaten wert"><xsl:value-of select="../xr:Buyer_accounting_reference"/></div>

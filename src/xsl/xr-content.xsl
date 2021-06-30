@@ -105,6 +105,13 @@
         </xsl:apply-templates>
         <xsl:apply-templates select="xr:Invoice_type_code" mode="list-entry"/>
         <xsl:apply-templates select="xr:Invoice_currency_code" mode="list-entry"/>
+        <xsl:for-each select="tokenize(xr:Value_added_tax_point_date,';')">             
+          <xsl:call-template name="list-entry-bt-7">
+            <xsl:with-param name="value" select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+            <xsl:with-param name="field-mapping-identifier" select="'xr:Value_added_tax_point_date'"/>
+          </xsl:call-template>
+        </xsl:for-each>
+        <xsl:apply-templates select="xr:Value_added_tax_point_date_code" mode="list-entry"/>
         <xsl:apply-templates select="xr:Project_reference" mode="list-entry"/>
         <xsl:apply-templates select="xr:Contract_reference" mode="list-entry"/>
         <xsl:apply-templates select="xr:Purchase_order_reference" mode="list-entry"/>
