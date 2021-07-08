@@ -262,6 +262,21 @@
                       <div class="boxdaten legende">Währung:</div>
                       <div id="BT-5" title="BT-5" class="boxdaten wert"><xsl:value-of select="xr:Invoice_currency_code"/></div>
                     </div>
+                    <div class="boxzeile">
+                    <div class="boxdaten legende">Abrechnungsdatum der Umsatzsteuer:</div>
+                    <div id="BT-7" title="BT-7" class="boxdaten wert">
+                      <xsl:for-each select="tokenize(xr:Value_added_tax_point_date,';')">                      
+                        <xsl:value-of select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+                        <xsl:if test="position() != last()">
+                          <br/>
+                        </xsl:if>
+                      </xsl:for-each>            
+                    </div>
+                  </div>
+                  <div class="boxzeile">
+                    <div class="boxdaten legende">Code des Umsatzsteuer-Abrechnungsdatums:</div>
+                    <div id="BT-8" title="BT-8" class="boxdaten wert"><xsl:value-of select="xr:Value_added_tax_point_date_code"/></div>
+                  </div>
                   </div>
                   <h4>Abrechnungszeitraum:</h4>
                   <div class="boxtabelle borderSpacing">
@@ -994,22 +1009,7 @@
                 <div class="boxzeile">
                   <div class="boxdaten legende">Umsatzsteuer-ID:</div>
                   <div id="BT-48" title="BT-48" class="boxdaten wert"><xsl:value-of select="xr:Buyer_VAT_identifier"/></div>
-                </div>
-                <div class="boxzeile">
-                  <div class="boxdaten legende">Abrechnungsdatum der Umsatzsteuer:</div>
-                  <div id="BT-7" title="BT-7" class="boxdaten wert">
-                    <xsl:for-each select="tokenize(../xr:Value_added_tax_point_date,';')">                      
-                      <xsl:value-of select="format-date(xs:date(.),'[D].[M].[Y]')"/>
-                      <xsl:if test="position() != last()">
-                        <br/>
-                      </xsl:if>
-                    </xsl:for-each>            
-                  </div>
-                </div>
-                <div class="boxzeile">
-                  <div class="boxdaten legende">Code des Umsatzsteuer-Abrechnungsdatums:</div>
-                  <div id="BT-8" title="BT-8" class="boxdaten wert"><xsl:value-of select="../xr:Value_added_tax_point_date_code"/></div>
-                </div>
+                </div>a                
                 <div class="boxzeile">
                   <div class="boxdaten legende">Kontierungsinformation:</div>
                   <div id="BT-19" title="BT-19" class="boxdaten wert"><xsl:value-of select="../xr:Buyer_accounting_reference"/></div>
@@ -1090,7 +1090,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Prozesskennung:</div>
-                  <div id="BT-23" title="BT-23" class="boxdaten wert"><xsl:value-of select="xr:PROCESS_CONTROL/xr:Business_process_type"/></div>
+                  <div id="BT-23" title="BT-23" class="boxdaten wert"><xsl:value-of select="xr:PROCESS_CONTROL/xr:Business_process_type_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Spezifikationskennung:</div>

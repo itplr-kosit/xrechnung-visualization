@@ -105,6 +105,13 @@
         </xsl:apply-templates>
         <xsl:apply-templates select="xr:Invoice_type_code" mode="list-entry"/>
         <xsl:apply-templates select="xr:Invoice_currency_code" mode="list-entry"/>
+        <xsl:for-each select="tokenize(xr:Value_added_tax_point_date,';')">             
+          <xsl:call-template name="list-entry-bt-7">
+            <xsl:with-param name="value" select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+            <xsl:with-param name="field-mapping-identifier" select="'xr:Value_added_tax_point_date'"/>
+          </xsl:call-template>
+        </xsl:for-each>
+        <xsl:apply-templates select="xr:Value_added_tax_point_date_code" mode="list-entry"/>
         <xsl:apply-templates select="xr:Project_reference" mode="list-entry"/>
         <xsl:apply-templates select="xr:Contract_reference" mode="list-entry"/>
         <xsl:apply-templates select="xr:Purchase_order_reference" mode="list-entry"/>
@@ -373,12 +380,61 @@
   </xsl:template>
 
   <xsl:template name="details">
-    <xsl:call-template name="page">
-      <xsl:with-param name="identifier" select="'details'"/>
-      <xsl:with-param name="content">
-        <xsl:apply-templates select="xr:INVOICE_LINE"/>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:choose>
+      <xsl:when test="$invoiceline-layout = 'normal'">
+        <xsl:call-template name="page">
+          <xsl:with-param name="identifier" select="'details'"/>
+          <xsl:with-param name="content">
+            <xsl:apply-templates select="xr:INVOICE_LINE"/>    
+          </xsl:with-param>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <fo:block span="all">
+          <xsl:call-template name="page">
+            <xsl:with-param name="identifier" select="'details'"/>
+            <xsl:with-param name="content">
+              <fo:table xsl:use-attribute-sets="invoicelines-table" span="all">
+                <xsl:for-each select="tokenize($tabular-layout-widths, '\s+')">
+                  <fo:table-column column-width="proportional-column-width({.})"/>
+                </xsl:for-each>
+                <fo:table-header xsl:use-attribute-sets="invoicelines-table-header">
+                  <fo:table-row>
+                    <fo:table-cell>
+                      <fo:block>#</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell>
+                      <fo:block>Beschreibung</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="center">
+                      <fo:block>Menge</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="right" padding-right="1em">
+                      <fo:block>Preis</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="center">
+                      <fo:block>Preis Einheit</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="center">
+                      <fo:block>MwSt.</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="center">
+                      <fo:block>St. Code</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell text-align="right">
+                      <fo:block>Gesamt</fo:block>
+                    </fo:table-cell>
+                  </fo:table-row>
+                </fo:table-header>      
+                <fo:table-body>
+                  <xsl:apply-templates select="xr:INVOICE_LINE" mode="invoiceline-tabular"/>
+                </fo:table-body>
+              </fo:table>
+            </xsl:with-param>
+          </xsl:call-template>
+        </fo:block>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="detailsPosition">    
@@ -700,6 +756,7 @@
             <xsl:apply-templates mode="list-entry" select="xr:Despatch_advice_reference"/>
             <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Business_process_type"/>
             <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Specification_identifier"/>
+            <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Business_process_type_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:Invoiced_object_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:Invoiced_object_identifier/@scheme_identifier">
               <xsl:with-param name="field-mapping-identifier" select="'xr:Invoiced_object_identifier/@scheme_identifier'"/>
