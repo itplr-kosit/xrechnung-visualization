@@ -522,7 +522,7 @@
         <label>Kennung der Versandanzeige</label>
         <nummer>BT-16</nummer>
       </xsl:when>
-      <xsl:when test="$identifier = 'xr:Business_process_type'">
+      <xsl:when test="$identifier = 'xr:Business_process_type_identifier'">
         <label>Prozesskennung</label>
         <nummer>BT-23</nummer>
       </xsl:when>

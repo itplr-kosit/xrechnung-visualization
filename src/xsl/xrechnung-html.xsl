@@ -1090,7 +1090,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Prozesskennung:</div>
-                  <div id="BT-23" title="BT-23" class="boxdaten wert"><xsl:value-of select="xr:PROCESS_CONTROL/xr:Business_process_type"/></div>
+                  <div id="BT-23" title="BT-23" class="boxdaten wert"><xsl:value-of select="xr:PROCESS_CONTROL/xr:Business_process_type_identifier"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">Spezifikationskennung:</div>
