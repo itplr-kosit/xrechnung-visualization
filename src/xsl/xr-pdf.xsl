@@ -4,7 +4,7 @@
 	        xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
 	        xmlns:xr="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
 	        xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	        xmlns:xrv="http://www.example.org/XRechnung-Viewer"
+	        xmlns:xrv="http://www.example.org/XRechnung-Viewer"          
 	        version="2.0">
 
 
@@ -59,7 +59,8 @@
        =========================================================================== -->
   <xsl:template match="xr:invoice">
 
-    <fo:root language="de">
+    <fo:root xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf"
+             language="de">
       <xsl:call-template name="generiere-layout-master-set"/>
       <xsl:call-template name="generiere-page-sequence">
         <xsl:with-param name="body-content-flow">
