@@ -253,7 +253,7 @@
       <mapper type="glob" from="*.xml" to="*.fo"/>
     </xslt>
 
-    <fop format="application/pdf" outdir="${test.transformed.pdf.dir}" messagelevel="debug">
+    <fop format="application/pdf" outdir="${test.transformed.pdf.dir}" messagelevel="debug" userconfig="conf/fop.xconf">
       <fileset dir="${test.transformed.pdf.dir}">
         <include name="*.fo"/>
       </fileset>
@@ -268,7 +268,7 @@
       <mapper type="glob" from="*.xml" to="*.fo"/>
     </xslt>
     
-    <fop format="application/pdf" outdir="${test.transformed.pdf.dir}-tabular" messagelevel="debug">
+    <fop format="application/pdf" outdir="${test.transformed.pdf.dir}-tabular" messagelevel="debug" userconfig="conf/fop.xconf">
       <fileset dir="${test.transformed.pdf.dir}-tabular">
         <include name="*.fo"/>
       </fileset>
