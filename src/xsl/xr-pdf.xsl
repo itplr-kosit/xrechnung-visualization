@@ -61,7 +61,12 @@
 
     <fo:root xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf"
              language="de">
-      <xsl:call-template name="generiere-layout-master-set"/>
+     <xsl:call-template name="generiere-layout-master-set"/>
+     <fo:declarations>
+          <xsl:apply-templates mode="binary-declaration" select="xr:ADDITIONAL_SUPPORTING_DOCUMENTS/xr:Attached_document">
+               <xsl:with-param name="identifier" select="xr:Supporting_document_reference"/>
+          </xsl:apply-templates>
+     </fo:declarations>
       <xsl:call-template name="generiere-page-sequence">
         <xsl:with-param name="body-content-flow">
           <fo:flow flow-name="xrBody"
