@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
-  <entry key="xr:Buyer_reference" id="BT-10">Leitweg-ID</entry>
+  <entry key="xr:Buyer_reference" id="BT-10">Käuferreferenz</entry>
   <entry key="xr:Buyer_name" id="BT-44">Name</entry>
   <entry key="xr:Buyer_address_line_1" id="BT-50">Adresszeile 1</entry>
   <entry key="xr:Buyer_address_line_2" id="BT-51">Adresszeile 2</entry>
@@ -16,7 +16,7 @@
   <entry key="xr:Seller_name" id="BT-27">Firmenname</entry>
   <entry key="xr:Seller_address_line_1" id="BT-35">Adresszeile 1</entry>
   <entry key="xr:Seller_address_line_2" id="BT-36">Adresszeile 2</entry>
-  <entry key="xr:Seller_address_line_3">Adresszeile 3</entry>
+  <entry key="xr:Seller_address_line_3" id="BT-162">Adresszeile 3</entry> 
   <entry key="xr:Seller_post_code" id="BT-38">PLZ</entry>
   <entry key="xr:Seller_city" id="BT-37">Ort</entry>
   <entry key="xr:Seller_country_subdivision" id="BT-39">Bundesland</entry>
@@ -34,18 +34,18 @@
   <entry key="xr:Contract_reference" id="BT-12">Vertragsnummer</entry>
   <entry key="xr:Purchase_order_reference" id="BT-13">Bestellnummer</entry>
   <entry key="xr:Sales_order_reference" id="BT-14">Auftragsnummer</entry>
-  <entry key="xr:Invoicing_period_start_date" id="BT-73">von</entry>
-  <entry key="xr:Invoicing_period_end_date" id="BT-74">bis</entry>
+  <entry key="xr:Invoicing_period_start_date" id="BT-73">Start des Abrechnungszeitraums</entry>
+  <entry key="xr:Invoicing_period_end_date" id="BT-74">Ende des Abrechnungszeitraums</entry>
   <entry key="xr:Preceding_Invoice_reference" id="BT-25">Rechnungsnummer</entry>
   <entry key="xr:Preceding_Invoice_issue_date" id="BT-26">Rechnungsdatum</entry>
   <entry key="xr:Sum_of_Invoice_line_net_amount" id="BT-106">Summe aller Positionen</entry>
   <entry key="xr:Sum_of_allowances_on_document_level" id="BT-107">Summe Nachlässe</entry>
   <entry key="xr:Sum_of_charges_on_document_level" id="BT-108">Summe Zuschläge</entry>
-  <entry key="xr:Invoice_total_amount_without_VAT" id="BT-109">Gesamtsumme</entry>
+  <entry key="xr:Invoice_total_amount_without_VAT" id="BT-109">Nettobetrag</entry>
   <entry key="xr:Invoice_total_VAT_amount" id="BT-110">Summe Umsatzsteuer</entry>
   <entry key="xr:Invoice_total_VAT_amount_in_accounting_currency" id="BT-111">Summe Umsatzsteuer in
     Abrechnungswährung</entry>
-  <entry key="xr:Invoice_total_amount_with_VAT" id="BT-112">Gesamtsumme</entry>
+  <entry key="xr:Invoice_total_amount_with_VAT" id="BT-112">Bruttobetrag</entry>
   <entry key="xr:Paid_amount" id="BT-113">Gezahlter Betrag</entry>
   <entry key="xr:Rounding_amount" id="BT-114">Rundungsbetrag</entry>
   <entry key="xr:Amount_due_for_payment" id="BT-115">Fälliger Betrag</entry>
@@ -59,7 +59,7 @@
     Nachlasses</entry>
   <entry key="xr:Document_level_allowance_base_amount" id="BT-93">Grundbetrag</entry>
   <entry key="xr:Document_level_allowance_percentage" id="BT-94%">Prozentsatz</entry>
-  <entry key="xr:Document_level_allowance_amount" id="BT-92">Nachlass</entry>
+  <entry key="xr:Document_level_allowance_amount" id="BT-92">Nachlassbetrag</entry>
   <entry key="xr:Document_level_allowance_VAT_rate" id="BT-96">Umsatzsteuersatz des
     Nachlasses</entry>
   <entry key="xr:Document_level_allowance_reason" id="BT-97">Grund für den Nachlass</entry>
@@ -69,7 +69,7 @@
     Zuschlages</entry>
   <entry key="xr:Document_level_charge_base_amount" id="BT-100">Grundbetrag</entry>
   <entry key="xr:Document_level_charge_percentage" id="BT-101">Prozentsatz</entry>
-  <entry key="xr:Document_level_charge_amount" id="BT-99">Zuschlag</entry>
+  <entry key="xr:Document_level_charge_amount" id="BT-99">Zuschlagsbetrag</entry>
   <entry key="xr:Document_level_charge_VAT_rate" id="BT-103">Umsatzsteuersatz des Zuschlages</entry>
   <entry key="xr:Document_level_charge_reason" id="BT-104">Grund für den Zuschlag</entry>
   <entry key="xr:Document_level_charge_reason_code" id="BT-105">Document level charge reason
@@ -166,20 +166,20 @@
   <entry key="xr:Referenced_purchase_order_line_reference" id="BT-132">Nummer der
     Auftragsposition</entry>
   <entry key="xr:Invoice_line_Buyer_accounting_reference" id="BT-133">Kontierungshinweis</entry>
-  <entry key="xr:Invoice_line_period_start_date" id="BT-134">von</entry>
-  <entry key="xr:Invoice_line_period_end_date" id="BT-135">bis</entry>
+  <entry key="xr:Invoice_line_period_start_date" id="BT-134">Start des Abrechnungszeitraums</entry> 
+  <entry key="xr:Invoice_line_period_end_date" id="BT-135">Ende des Abrechnungszeitraums</entry>
   <entry key="xr:Invoiced_quantity" id="BT-129">Menge</entry>
   <entry key="xr:Invoiced_quantity_unit_of_measure_code" id="BT-130">Einheit</entry>
   <entry key="xr:Item_net_price" id="BT-146">Preis pro Einheit (netto)</entry>
-  <entry key="xr:Invoice_line_net_amount" id="BT-131">Gesamtpreis (netto)</entry>
+  <entry key="xr:Invoice_line_net_amount" id="BT-131">Zeilensumme (netto)</entry>
   <entry key="xr:Item_price_discount" id="BT-147">Rabatt (netto)</entry>
   <entry key="xr:Item_gross_price" id="BT-148">Listenpreis (netto)</entry>
   <entry key="xr:Item_price_base_quantity" id="BT-149">Anzahl der Einheit</entry>
   <entry key="xr:Item_price_base_quantity_unit_of_measure" id="BT-150">Code der Maßeinheit</entry>
-  <entry key="xr:Invoiced_item_VAT_category_code" id="BT-151">Umsatzsteuer</entry>
+  <entry key="xr:Invoiced_item_VAT_category_code" id="BT-151">Umsatzsteuercode</entry>
   <entry key="xr:Invoiced_item_VAT_rate" id="BT-152">Umsatzsteuersatz in Prozent</entry>
-  <entry key="xr:Item_name" id="BT-153">Bezeichnung</entry>
-  <entry key="xr:Item_description" id="BT-154">Beschreibung</entry>
+  <entry key="xr:Item_name" id="BT-153">Postenbezeichnung</entry>
+  <entry key="xr:Item_description" id="BT-154">Postenbeschreibung</entry>
   <entry key="xr:Item_Sellers_identifier" id="BT-155">Artikelnummer</entry>
   <entry key="xr:Item_Buyers_identifier" id="BT-156">Artikelkennung des Käufers</entry>
   <entry key="xr:Item_standard_identifier" id="BT-157">Artikelkennung</entry>
@@ -211,7 +211,7 @@
   <entry key="uebersichtNachlass" id="BG-20">Nachlässe auf Ebene der Rechnung</entry>
   <entry key="uebersichtZuschlaege" id="BG-21">Zuschläge auf Ebene der Rechnung</entry>
   <entry key="uebersichtRechnungAbrechnungszeitraum">Abrechnungszeitraum</entry>
-  <entry key="uebersichtRechnungVorausgegangeneRechnungen">Vorausgegangene Rechnungen</entry>
+  <entry key="uebersichtRechnungVorausgegangeneRechnungen" id="BG-3">Vorausgegangene Rechnungen</entry>
   <entry key="uebersichtZahlungInfo" id="BG-4">Zahlungsdaten</entry>
   <entry key="uebersichtZahlungKarte" id="BG-18">Karteninformationen</entry>
   <entry key="uebersichtZahlungLastschrift" id="BG-19">Lastschrift</entry>
