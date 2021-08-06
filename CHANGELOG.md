@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v2021-07-31
+
+### Added
+
+* Configuration option for customizable line numbering of invoice lines
+* Configuration option for tabular display of line items for PDF generation
+
+### Changed
+
+### Fixed
+
+* BT-23 get displayed
+* BT-7 and BT-8 is now displayed in invoice data section
+* Correct translation of BT-86 in cii
+
 ## v2020-12-31
 
 ### Changed
