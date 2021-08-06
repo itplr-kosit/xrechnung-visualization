@@ -12,8 +12,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Configuration option for customizable line numbering of invoice lines
 * Configuration option for tabular display of line items for PDF generation
 
-### Changed
-
 ### Fixed
 
 * BT-23 get displayed
