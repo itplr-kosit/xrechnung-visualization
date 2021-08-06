@@ -10,11 +10,11 @@
   <property name="fop.jar" value="fop.jar"/>
   <property name="fop.home" value="${lib.dir}/fop"/>
   <!-- Naming -->
-  <property name="xr-visualization.version.full" value="2020-12-31"/>
+  <property name="xr-visualization.version.full" value="2021-07-31"/>
 
   <!-- Test resources -->
   <property name="validator.jar" value="validationtool-1.0.1-standalone.jar"/>
-  <property name="xrechnung.version.major.minor" value="2.0"/>
+  <property name="xrechnung.version.major.minor" value="2.1"/>
   <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.1"/>
   <property name="github.group.url" value="https://github.com/itplr-kosit"/>
   <property name="validator.download.url"
@@ -336,7 +336,7 @@
   <target name="dist" depends="test">
     <zip
       destfile="${dist.dir}/xrechnung-${xrechnung.version.full}-${ant.project.name}-${xr-visualization.version.full}.zip"
-      basedir="${src.dir}" excludes="download/**,test/**"/>
+      basedir="${src.dir}" excludes="README.md" includes="../README.md"/>
   </target>
 
   <target name="clean">
