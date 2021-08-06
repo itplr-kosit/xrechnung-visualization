@@ -16,7 +16,7 @@
   <entry key="xr:Seller_name" id="BT-27">Firmenname</entry>
   <entry key="xr:Seller_address_line_1" id="BT-35">Adresszeile 1</entry>
   <entry key="xr:Seller_address_line_2" id="BT-36">Adresszeile 2</entry>
-  <entry key="xr:Seller_address_line_3" id="BT-162">Adresszeile 3</entry> 
+  <entry key="xr:Seller_address_line_3" id="BT-162">Adresszeile 3</entry>
   <entry key="xr:Seller_post_code" id="BT-38">PLZ</entry>
   <entry key="xr:Seller_city" id="BT-37">Ort</entry>
   <entry key="xr:Seller_country_subdivision" id="BT-39">Bundesland</entry>
@@ -166,7 +166,7 @@
   <entry key="xr:Referenced_purchase_order_line_reference" id="BT-132">Nummer der
     Auftragsposition</entry>
   <entry key="xr:Invoice_line_Buyer_accounting_reference" id="BT-133">Kontierungshinweis</entry>
-  <entry key="xr:Invoice_line_period_start_date" id="BT-134">Start des Abrechnungszeitraums</entry> 
+  <entry key="xr:Invoice_line_period_start_date" id="BT-134">Start des Abrechnungszeitraums</entry>
   <entry key="xr:Invoice_line_period_end_date" id="BT-135">Ende des Abrechnungszeitraums</entry>
   <entry key="xr:Invoiced_quantity" id="BT-129">Menge</entry>
   <entry key="xr:Invoiced_quantity_unit_of_measure_code" id="BT-130">Einheit</entry>
