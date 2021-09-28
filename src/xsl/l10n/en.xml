@@ -1,6 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <properties>
-  <entry key="xr:Buyer_reference" id="BT-10">Route ID</entry>
+  <entry key="xr:Buyer_reference" id="BT-10">Buyer reference</entry>
   <entry key="xr:Buyer_name" id="BT-44">Name</entry>
   <entry key="xr:Buyer_address_line_1" id="BT-50">Address line 1</entry>
   <entry key="xr:Buyer_address_line_2" id="BT-51">Address line 2</entry>
@@ -9,10 +9,10 @@
   <entry key="xr:Buyer_city" id="BT-52">Location</entry>
   <entry key="xr:Buyer_country_code" id="BT-55">Country</entry>
   <entry key="xr:Buyer_identifier" id="BT-46">Identifier</entry>
-  <entry key="xr:Buyer_identifier/@scheme_identifier" id="BT-46">Identifier scheme</entry>
-  <entry key="xr:Buyer_contact_point" id="BT-56">Name</entry>
-  <entry key="xr:Buyer_contact_telephone_number" id="BT-57">Telephone</entry>
-  <entry key="xr:Buyer_contact_email_address" id="BT-58">E -Mail address</entry>
+  <entry key="xr:Buyer_identifier/@scheme_identifier" id="BT-46">Scheme identifier</entry>
+  <entry key="xr:Buyer_contact_point" id="BT-56">Contact point</entry>
+  <entry key="xr:Buyer_contact_telephone_number" id="BT-57">Contact point phone</entry>
+  <entry key="xr:Buyer_contact_email_address" id="BT-58">Contact point email</entry>
   <entry key="xr:Seller_name" id="BT-27">Company name</entry>
   <entry key="xr:Seller_address_line_1" id="BT-35">Adress line 1</entry>
   <entry key="xr:Seller_address_line_2" id="BT-36">Adress line 2</entry>
@@ -22,18 +22,18 @@
   <entry key="xr:Seller_country_subdivision" id="BT-39">State</entry>
   <entry key="xr:Seller_country_code" id="BT-40">Country code</entry>
   <entry key="xr:Seller_identifier" id="BT-29">Identifier</entry>
-  <entry key="xr:Seller_identifier/@scheme_identifier" id="BT-29">Scheme of the identifier</entry>
-  <entry key="xr:Seller_contact_point" id="BT-41">Name</entry>
-  <entry key="xr:Seller_contact_telephone_number" id="BT-42">Telephone</entry>
-  <entry key="xr:Seller_contact_email_address" id="BT-43">Email address</entry>
+  <entry key="xr:Seller_identifier/@scheme_identifier" id="BT-29">Scheme identifier</entry>
+  <entry key="xr:Seller_contact_point" id="BT-41">Contact point</entry>
+  <entry key="xr:Seller_contact_telephone_number" id="BT-42">Contact point phone</entry>
+  <entry key="xr:Seller_contact_email_address" id="BT-43">Contact point email</entry>
   <entry key="xr:Invoice_number" id="BT-1">Invoice number</entry>
   <entry key="xr:Invoice_issue_date" id="BT-2">Invoice date</entry>
   <entry key="xr:Invoice_type_code" id="BT-3">Invoice type</entry>
   <entry key="xr:Invoice_currency_code" id="BT-5">Currency</entry>
-  <entry key="xr:Project_reference" id="BT-11">Project number</entry>
-  <entry key="xr:Contract_reference" id="BT-12">Contract number</entry>
-  <entry key="xr:Purchase_order_reference" id="BT-13">Order number</entry>
-  <entry key="xr:Sales_order_reference" id="BT-14">Order number</entry>
+  <entry key="xr:Project_reference" id="BT-11">Project reference</entry>
+  <entry key="xr:Contract_reference" id="BT-12">Contract reference</entry>
+  <entry key="xr:Purchase_order_reference" id="BT-13">Order reference</entry>
+  <entry key="xr:Sales_order_reference" id="BT-14">Order reference</entry>
   <entry key="xr:Invoicing_period_start_date" id="BT-73">From</entry>
   <entry key="xr:Invoicing_period_end_date" id="BT-74">To</entry>
   <entry key="xr:Preceding_Invoice_reference" id="BT-25">Invoice number</entry>
@@ -97,7 +97,7 @@
   <entry key="xr:Seller_tax_registration_identifier/@scheme_identifier" id="BT-32">Tax
     number scheme</entry>
   <entry key="xr:Seller_additional_legal_information" id="BT-33">Further legal information</entry>
-  <entry key="xr:VAT_accounting_currency_code" id="BT-6">Code of the sales tax currency</entry>
+  <entry key="xr:VAT_accounting_currency_code" id="BT-6">VAT accounting currency code</entry>
   <entry key="xr:Seller_tax_representative_name" id="BT-62">Name</entry>
   <entry key="xr:Tax_representative_address_line_1" id="BT-64">Street / house number</entry>
   <entry key="xr:Tax_representative_address_line_2" id="BT-65">Postfach</entry>
