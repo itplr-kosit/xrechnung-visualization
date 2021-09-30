@@ -34,6 +34,7 @@
   <entry key="xr:Contract_reference" id="BT-12">Contract reference</entry>
   <entry key="xr:Purchase_order_reference" id="BT-13">Order reference</entry>
   <entry key="xr:Sales_order_reference" id="BT-14">Order reference</entry>
+  <!-- Be aware that these are for the whole invoice -->
   <entry key="xr:Invoicing_period_start_date" id="BT-73">From</entry>
   <entry key="xr:Invoicing_period_end_date" id="BT-74">To</entry>
   <entry key="xr:Preceding_Invoice_reference" id="BT-25">Invoice number</entry>
