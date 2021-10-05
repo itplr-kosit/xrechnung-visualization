@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project basedir="." name="xrechnung-visualization" default="test">
   <!-- project directory structure -->
-<<<<<<< HEAD
   <property name="dist.dir" location="${basedir}/dist"/>
   <property name="lib.dir" location="${basedir}/lib"/>
   <property name="build.dir" location="${basedir}/build"/>
@@ -17,16 +16,6 @@
   <!-- the name of the JAR file in the downloaded ZIP file -->
   <property name="saxon.jar" value="saxon-he-10.5.jar" />
 
-=======
-  <property name="dist.dir" location="${basedir}/dist" />
-  <property name="lib.dir" location="${basedir}/lib" />
-  <property name="build.dir" location="${basedir}/build" />
-  <property name="src.dir" location="${basedir}/src" />
-  <property name="download.dir" location="${build.dir}/download" />
-  <property name="saxon.jar" value="saxon9he.jar" />
-  <property name="fop.jar" value="fop.jar" />
-  <property name="fop.home" value="${lib.dir}/fop" />
->>>>>>> master
   <!-- Naming -->
   <property name="xr-visualization.version.full" value="2021-07-31" />
 
@@ -90,19 +79,11 @@
   <target name="prepare-saxon" depends="init"
     description="Download Saxon-HE and add jar to library directory">
     <get
-<<<<<<< HEAD
       src="https://sourceforge.net/projects/saxon/files/Saxon-HE/${saxon.url.version}/Java/SaxonHE${saxon.file.version}.zip/download"
       dest="${download.dir}/SaxonHE${saxon.file.version}.zip" verbose="true" skipexisting="true"
       usetimestamp="true"/>
     <fail unless="saxon.jar" message="Provide a name for the extracted saxon jar"/>
     <unzip src="${download.dir}/SaxonHE${saxon.file.version}.zip" dest="${lib.dir}">
-=======
-      src="https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-8J.zip/download"
-      dest="${download.dir}/SaxonHE9-8-0-8J.zip" verbose="true" skipexisting="true"
-      usetimestamp="true" />
-    <fail unless="saxon.jar" message="Provide a name for the extracted saxon jar" />
-    <unzip src="${download.dir}/SaxonHE9-8-0-8J.zip" dest="${lib.dir}">
->>>>>>> master
       <patternset>
         <include name="**/${saxon.jar}" />
       </patternset>
