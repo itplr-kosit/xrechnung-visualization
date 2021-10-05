@@ -83,7 +83,7 @@
       dest="${download.dir}/SaxonHE${saxon.file.version}.zip" verbose="true" skipexisting="true"
       usetimestamp="true" />
     <fail unless="saxon.jar" message="Provide a name for the extracted saxon jar" />
-    <unzip src="${download.dir}/SaxonHE${saxon.file.version}" dest="${lib.dir}">
+    <unzip src="${download.dir}/SaxonHE${saxon.file.version}.zip" dest="${lib.dir}">
       <patternset>
         <include name="**/${saxon.jar}" />
       </patternset>
