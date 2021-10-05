@@ -13,7 +13,9 @@
 
   <xsl:variable name="fontSans">BundesSans</xsl:variable>
   <xsl:variable name="fontSerif">BundesSerif</xsl:variable>
-  
+
+  <xsl:variable name="amount-picture" select="'###.##0,00'"/>
+
   
   <!-- ==========================================================================
   == Attribute-Sets
@@ -194,6 +196,38 @@
   
   <xsl:attribute-set name="box-container-inner">
     <xsl:attribute name="margin-bottom">2mm</xsl:attribute>    
+  </xsl:attribute-set>
+  
+  <!-- Tabular invoice lines -->
+  <xsl:attribute-set name="invoicelines-table">
+    <xsl:attribute name="padding-left">2pt</xsl:attribute>
+    <xsl:attribute name="padding-right">2pt</xsl:attribute>
+    <xsl:attribute name="width">100%</xsl:attribute>
+    <xsl:attribute name="table-layout">fixed</xsl:attribute>
+    <xsl:attribute name="margin-bottom">2mm</xsl:attribute>
+  </xsl:attribute-set>
+
+  <xsl:attribute-set name="invoicelines-table-header">
+    <xsl:attribute name="font-weight">bold</xsl:attribute>
+  </xsl:attribute-set>
+
+  <xsl:attribute-set name="invoicelines-table-row">
+    <!-- Nested sub-invoice lines will recursively decrease font-size -->    
+    <xsl:attribute name="font-size" select="if (self::xr:SUB_INVOICE_LINE) then '90%' else '100%'"/>
+  </xsl:attribute-set>
+
+  <xsl:attribute-set name="invoicelines-nested-info">
+    <xsl:attribute name="font-size">80%</xsl:attribute>
+    <xsl:attribute name="font-style">italic</xsl:attribute>    
+  </xsl:attribute-set>  
+
+  <xsl:attribute-set name="invoicelines-allowances-table">
+    <xsl:attribute name="padding-left">2pt</xsl:attribute>
+    <xsl:attribute name="padding-right">2pt</xsl:attribute>
+    <xsl:attribute name="width">100%</xsl:attribute>
+    <xsl:attribute name="table-layout">fixed</xsl:attribute>
+    <xsl:attribute name="font-size">80%</xsl:attribute>
+    <xsl:attribute name="font-style">italic</xsl:attribute>    
   </xsl:attribute-set>
   
 </xsl:stylesheet>
