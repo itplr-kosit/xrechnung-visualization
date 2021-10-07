@@ -39,64 +39,63 @@
   <entry key="xr:Invoicing_period_end_date" id="BT-74">To</entry>
   <entry key="xr:Preceding_Invoice_reference" id="BT-25">Invoice number</entry>
   <entry key="xr:Preceding_Invoice_issue_date" id="BT-26">Invoice date</entry>
-  <entry key="xr:Sum_of_Invoice_line_net_amount" id="BT-106">Sum of all items</entry>
-  <entry key="xr:Sum_of_allowances_on_document_level" id="BT-107">Sum of discounts</entry>
-  <entry key="xr:Sum_of_charges_on_document_level" id="BT-108">Total surcharges</entry>
+  <entry key="xr:Sum_of_Invoice_line_net_amount" id="BT-106">Total invoice line net amounts</entry>
+  <entry key="xr:Sum_of_allowances_on_document_level" id="BT-107">Total allowances</entry>
+  <entry key="xr:Sum_of_charges_on_document_level" id="BT-108">Total charges</entry>
   <entry key="xr:Invoice_total_amount_without_VAT" id="BT-109">Total amount</entry>
-  <entry key="xr:Invoice_total_VAT_amount" id="BT-110">Total sales tax</entry>
-  <entry key="xr:Invoice_total_VAT_amount_in_accounting_currency" id="BT-111">Total sales tax in
-    accounting currency</entry>
+  <entry key="xr:Invoice_total_VAT_amount" id="BT-110">Total VAT</entry>
+  <entry key="xr:Invoice_total_VAT_amount_in_accounting_currency" id="BT-111">Total VAT in accounting currency</entry>
   <entry key="xr:Invoice_total_amount_with_VAT" id="BT-112">Total amount</entry>
-  <entry key="xr:Paid_amount" id="BT-113">Amount paid</entry>
+  <entry key="xr:Paid_amount" id="BT-113">Already paid</entry>
   <entry key="xr:Rounding_amount" id="BT-114">Rounding amount</entry>
   <entry key="xr:Amount_due_for_payment" id="BT-115">Amount due</entry>
-  <entry key="xr:VAT_category_code" id="BT-118">Sales tax category</entry>
+  <entry key="xr:VAT_category_code" id="BT-118">VAT category</entry>
   <entry key="xr:VAT_category_taxable_amount" id="BT- 116">Total</entry>
-  <entry key="xr:VAT_category_rate" id="BT-119">Sales tax rate</entry>
-  <entry key="xr:VAT_category_tax_amount" id="BT-117">Sales tax amount</entry>
+  <entry key="xr:VAT_category_rate" id="BT-119">VAT rate</entry>
+  <entry key="xr:VAT_category_tax_amount" id="BT-117">VAT amount</entry>
   <entry key="xr:VAT_exemption_reason_text" id="BT-120">Exemption reason</entry>
-  <entry key="xr:VAT_exemption_reason_code" id="BT-121">Identifier for the exemption reason</entry>
-  <entry key="xr:Document_level_allowance_VAT_category_code" id="BT-95">Sales tax category of
-    the estate</entry>
-  <entry key="xr:Document_level_allowance_base_amount" id="BT-93">Basic amount</entry>
-  <entry key="xr:Document_level_allowance_percentage" id="BT-94%">Percentage</entry>
-  <entry key="xr:Document_level_allowance_amount" id="BT-92">Discount</entry>
-  <entry key="xr:Document_level_allowance_VAT_rate" id="BT-96">Sales tax rate of the estate</entry>
-  <entry key="xr:Document_level_allowance_reason" id="BT-97">Reason for the estate</entry>
-  <entry key="xr:Document_level_allowance_reason_code" id="BT-98">Document level allowance reason
-    code</entry>
-  <entry key="xr:Document_level_charge_VAT_category_code" id="BT-102">Sales tax category of the
-    surcharge</entry>
-  <entry key="xr:Document_level_charge_base_amount" id="BT-100">Basic amount</entry>
+  <entry key="xr:VAT_exemption_reason_code" id="BT-121">Exemption reason code</entry>
+  <!-- Allowances -->
+  <entry key="xr:Document_level_allowance_VAT_category_code" id="BT-95">Allowance VAT category code</entry>
+  <entry key="xr:Document_level_allowance_base_amount" id="BT-93">Base amount</entry>
+  <entry key="xr:Document_level_allowance_percentage" id="BT-94">Percentage</entry>
+  <entry key="xr:Document_level_allowance_amount" id="BT-92">Amount</entry>
+  <entry key="xr:Document_level_allowance_VAT_rate" id="BT-96">Allowance VAT rate</entry>
+  <entry key="xr:Document_level_allowance_reason" id="BT-97">Allowance reason</entry>
+  <entry key="xr:Document_level_allowance_reason_code" id="BT-98">Allowance reason code</entry>
+  <!-- Charges -->
+  <entry key="xr:Document_level_charge_VAT_category_code" id="BT-102">Charge VAT category code</entry>
+  <entry key="xr:Document_level_charge_base_amount" id="BT-100">Base amount</entry>
   <entry key="xr:Document_level_charge_percentage" id="BT-101">Percentage</entry>
-  <entry key="xr:Document_level_charge_amount" id="BT-99">Surcharge</entry>
-  <entry key="xr:Document_level_charge_VAT_rate" id="BT-103">Sales tax rate of the surcharge</entry>
-  <entry key="xr:Document_level_charge_reason" id="BT-104">Reason for the surcharge</entry>
-  <entry key="xr:Document_level_charge_reason_code" id="BT-105">Document level charge reason code</entry>
-  <entry key="xr:Payment_terms" id="BT-20">Discount; further payment terms</entry>
+  <entry key="xr:Document_level_charge_amount" id="BT-99">Amount</entry>
+  <entry key="xr:Document_level_charge_VAT_rate" id="BT-103">VAT rate</entry>
+  <entry key="xr:Document_level_charge_reason" id="BT-104">Charge Reason</entry>
+  <entry key="xr:Document_level_charge_reason_code" id="BT-105">Charge reason code</entry>
+  <entry key="xr:Payment_terms" id="BT-20">Payment terms</entry>
   <entry key="xr:Payment_due_date" id="BT-9">Due date</entry>
-  <entry key="xr:Payment_means_type_code" id="BT-81">Code for the means of payment</entry>
-  <entry key="xr:Payment_means_text" id="BT-82">Payment method</entry>
-  <entry key="xr:Remittance_information" id="BT-83">Purpose</entry>
+  <entry key="xr:Payment_means_type_code" id="BT-81">Payment means type code</entry>
+  <entry key="xr:Payment_means_text" id="BT-82">Payment means</entry>
+  <entry key="xr:Remittance_information" id="BT-83">Remittance information</entry>
   <entry key="xr:Payment_card_primary_account_number" id="BT-87">Card number</entry>
-  <entry key="xr:Payment_card_holder_name" id="BT-88">Cardholder</entry>
+  <entry key="xr:Payment_card_holder_name" id="BT-88">Card holder</entry>
+  <!-- BG-19 Direct Debit -->
   <entry key="xr:Mandate_reference_identifier" id="BT-89">Mandate reference no.</entry>
-  <entry key="xr:Debited_account_identifier" id="BT-91">IBAN</entry>
+  <entry key="xr:Debited_account_identifier" id="BT-91">Debited account identifier</entry>
   <entry key="xr:Bank_assigned_creditor_identifier" id="BT-90">Creditor ID</entry>
+  <!-- BG-17 Credit Transfer-->
   <entry key="xr:Payment_account_name" id="BT-85">Account holder</entry>
-  <entry key="xr:Payment_account_identifier" id="BT-84">IBAN</entry>
+  <entry key="xr:Payment_account_identifier" id="BT-84">Account identifier</entry>
   <entry key="xr:Payment_service_provider_identifier" id="BT-86">BIC</entry>
-  <entry key="xr:Invoice_note_subject_code" id="BT-21">Subject</entry>
-  <entry key="xr:Invoice_note" id="BT-22">Comment</entry>
-  <entry key="xr:Seller_trading_name" id="BT-28">Different trade name</entry>
+  <entry key="xr:Invoice_note_subject_code" id="BT-21">Subject code</entry>
+  <entry key="xr:Invoice_note" id="BT-22">Note</entry>
+  <!-- BG-4 Seller and others -->
+  <entry key="xr:Seller_trading_name" id="BT-28">Different trading name</entry>
   <entry key="xr:Seller_electronic_address" id="BT-34">Electronic address</entry>
   <entry key="xr:Seller_electronic_address/@scheme_identifier" id="BT-34">Electronic address
     scheme</entry>
-  <entry key="xr:Seller_legal_registration_identifier" id="BT-30">Register / registration number</entry>
-  <entry key="xr:Seller_VAT_identifier" id="BT-31">Sales tax ID</entry>
+  <entry key="xr:Seller_legal_registration_identifier" id="BT-30">Legal registration identifier</entry>
+  <entry key="xr:Seller_VAT_identifier" id="BT-31">VAT ID</entry>
   <entry key="xr:Seller_tax_registration_identifier" id="BT-32">Tax number</entry>
-  <entry key="xr:Seller_tax_registration_identifier/@scheme_identifier" id="BT-32">Tax
-    number scheme</entry>
   <entry key="xr:Seller_additional_legal_information" id="BT-33">Further legal information</entry>
   <entry key="xr:VAT_accounting_currency_code" id="BT-6">VAT accounting currency code</entry>
   <entry key="xr:Seller_tax_representative_name" id="BT-62">Name</entry>
@@ -107,7 +106,7 @@
   <entry key="xr:Tax_representative_city" id="BT-66">Location</entry>
   <entry key="xr:Tax_representative_country_subdivision" id="BT-68">State</entry>
   <entry key="xr:Tax_representative_country_code" id="BT-69">Country code</entry>
-  <entry key="xr:Seller_tax_representative_VAT_identifier" id="BT-63">Sales tax ID</entry>
+  <entry key="xr:Seller_tax_representative_VAT_identifier" id="BT-63">VAT ID</entry>
   <entry key="xr:Buyer_trading_name" id="BT-45">Different trade name</entry>
   <entry key="xr:Buyer_country_subdivision" id="BT-54">State</entry>
   <entry key="xr:Buyer_electronic_address" id="BT-49">Electronic address</entry>
@@ -116,8 +115,8 @@
   <entry key="xr:Buyer_legal_registration_identifier" id="BT-47">Register / registration number</entry>
   <entry key="xr:Buyer_legal_registration_identifier/@scheme_identifier" id="BT-47">Scheme of
     the register / registration number</entry>
-  <entry key="xr:Buyer_VAT_identifier" id="BT-48">Sales tax ID</entry>
-  <entry key="xr:Value_added_tax_point_date" id="BT-7">Billing date of the sales tax your</entry>
+  <entry key="xr:Buyer_VAT_identifier" id="BT-48">VAT ID</entry>
+  <entry key="xr:Value_added_tax_point_date" id="BT-7">Billing date of the VAT your</entry>
   <entry key="xr:Value_added_tax_point_date_code" id="BT-8">Code of the VAT accounting date</entry>
   <entry key="xr:Buyer_accounting_reference" id="BT-19">Account assignment information</entry>
   <entry key="xr:Deliver_to_location_identifier" id="BT-71">Identification of the delivery
@@ -177,8 +176,8 @@
   <entry key="xr:Item_gross_price" id="BT-148">List price (net)</entry>
   <entry key="xr:Item_price_base_quantity" id="BT-149">Number of units</entry>
   <entry key="xr:Item_price_base_quantity_unit_of_measure" id="BT-150">Unit code</entry>
-  <entry key="xr:Invoiced_item_VAT_category_code" id="BT-151">Sales tax</entry>
-  <entry key="xr:Invoiced_item_VAT_rate" id="BT-152">Sales tax rate in percent</entry>
+  <entry key="xr:Invoiced_item_VAT_category_code" id="BT-151">VAT</entry>
+  <entry key="xr:Invoiced_item_VAT_rate" id="BT-152">VAT rate in percent</entry>
   <entry key="xr:Item_name" id="BT-153">Description</entry>
   <entry key="xr:Item_description" id="BT-154">Description</entry>
   <entry key="xr:Item_Sellers_identifier" id="BT-155">Item number</entry>
@@ -208,7 +207,7 @@
   <entry key="uebersichtVerkaeufer" id="BG-4">Information about the seller</entry>
   <entry key="uebersichtRechnungsInfo" id="BG-4">Invoice data</entry>
   <entry key="uebersichtRechnungsuebersicht" id="BG-22">Total amounts of the invoice</entry>
-  <entry key="uebersichtUmsatzsteuer" id="BG-23">Breakdown of sales tax at the invoice level</entry>
+  <entry key="uebersichtUmsatzsteuer" id="BG-23">Breakdown of VAT at the invoice level</entry>
   <entry key="uebersichtNachlass" id="BG-20">Discounts at the invoice level of the invoice</entry>
   <entry key="uebersichtZuschlaege" id="BG-21">Surcharges at the level of the invoice</entry>
   <entry key="uebersichtRechnungAbrechnungszeitraum">Billing period</entry>
