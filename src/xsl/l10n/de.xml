@@ -249,4 +249,6 @@
   <entry key="Beschreibung">Beschreibung</entry>
   <entry key="date-format">[D].[M].[Y]</entry>
   <entry key="datetime-format">[D].[M].[Y] [H]:[m]:[s]</entry>
+  <entry key="amount-format">###.##0,00</entry>
+  <entry key="percentage-format">##0,##</entry>
 </properties>
