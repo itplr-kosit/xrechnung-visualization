@@ -658,7 +658,6 @@
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_legal_registration_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_VAT_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_tax_registration_identifier"/>
-            <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_tax_registration_identifier/@scheme_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_additional_legal_information"/>
             <xsl:apply-templates mode="list-entry" select="xr:VAT_accounting_currency_code"/>
           </xsl:with-param>

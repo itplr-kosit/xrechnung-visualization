@@ -917,10 +917,6 @@
                   <div id="BT-32" title="BT-32" class="boxdaten wert"><xsl:value-of select="xr:Seller_tax_registration_identifier"/></div>
                 </div>
                 <div class="boxzeile">
-                  <div class="boxdaten legende">Schema der Steuernummer:</div>
-                  <div id="BT-32-scheme" title="BT-32-scheme" class="boxdaten wert"><xsl:value-of select="xr:Seller_tax_registration_identifier/@scheme_identifier"/></div>
-                </div>
-                <div class="boxzeile">
                   <div class="boxdaten legende">Weitere rechtliche Informationen:</div>
                   <div id="BT-33" title="BT-33" class="boxdaten wert"><xsl:value-of select="xr:Seller_additional_legal_information"/></div>
                 </div>
