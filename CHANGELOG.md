@@ -30,6 +30,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * BT-7 and BT-8 is now displayed in invoice data section
 * Correct translation of BT-86 in cii
 
+## v2020-10-31
+
+### Changed
+
+* Saxon version is configurable with properties (thanks to gihub user ...).
+* Default saxon version is set to he-10.5. 
+
 ## v2020-12-31
 
 ### Changed
