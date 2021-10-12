@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## v2021-10-31
+
+### Changed
+
+* Saxon version is configurable with properties (thanks to gihub user ...).
+* Default saxon version is set to he-10.5. 
+
 ## v2021-07-31
 
 ### Added
