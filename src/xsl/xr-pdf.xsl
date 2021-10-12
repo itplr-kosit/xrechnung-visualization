@@ -59,7 +59,7 @@
        =========================================================================== -->
   <xsl:template match="xr:invoice">
 
-    <fo:root language="de">
+    <fo:root language="{$lang}">
       <xsl:call-template name="generiere-layout-master-set"/>
       <xsl:call-template name="generiere-page-sequence">
         <xsl:with-param name="body-content-flow">
