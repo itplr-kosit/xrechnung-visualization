@@ -23,3 +23,55 @@ The main `ant` targets for developing are:
 ## Distribution
 
 The `ant` target `dist` creates the distribution zip Archive for releases.
+
+## Release
+
+### Checklist
+
+* Are all issues scheduled for the release solved?
+* Is everything merged to master branch?
+* Do Schematron files include correct version of XRechnung Specification? 
+* Make sure that CHANGELOG.md is up to date
+
+
+### Prepare
+
+* Make sure you committed and pushed everything 
+ ## Release
+
+### Checklist
+
+* Are all issues scheduled for the release solved?
+* Is everything merged to master branch?
+* Do Schematron files include correct version of XRechnung Specification? 
+* Make sure that CHANGELOG.md is up to date
+
+
+### Prepare
+
+* Make sure you committed and pushed everything 
+* Create the distribution 
+ 
+   * Use the `clean` target to build and test all from scratch
+
+```
+ant clean dist
+```
+
+* Tag the last commit according to the following naming rule: `v${xr-visu.version.full}` e.g.
+  `git tag v2021-07-31 && git push origin v2021-07-31` 
+
+### Publish
+
+* Draft a new release at https://github.com/itplr-kosit/xrechnung-visualization/releases/new
+  * Choose the git tag you just created
+* Add release title of the following scheme: `XRechnung Visualization ${xr-visu.version.full} compatible with XRechnung ${xrechnung.version}`
+* Copy & paste the high quality changelog entries for this release from CHANGELOG.md.
+* Upload distribution zip and tick mark this release as a `pre-release`.
+* If **all** released componentes are checked to be okay, then uncheck pre-release.
+
+### Post-Release
+
+* Change the version of XRechnung Schematron in `build.xml` to the next release and commit
+
+You are done :smile:
