@@ -13,7 +13,12 @@
 
   <xsl:output indent="yes" method="html" encoding="UTF-8" />
 
-  <xsl:decimal-format name="decimal" decimal-separator="," grouping-separator="." NaN="" />
+  <xsl:decimal-format name="de" decimal-separator="," grouping-separator="." NaN="" />
+  <xsl:decimal-format name="en" decimal-separator="." grouping-separator="," NaN="" />
+
+  <xsl:variable name="amount-picture" select="xrf:_('amount-format')"/>
+  <xsl:variable name="percentage-picture" select="xrf:_('percentage-format')"/>
+  
 
   <!-- MAIN HTML -->
   <xsl:template match="/xr:invoice">
@@ -257,7 +262,7 @@
                     </div>
                     <div class="boxzeile">
                       <div class="boxdaten legende">{ xrf:_('Rechnungsdatum') }:</div>
-                      <div id="BT-2" title="BT-2" class="boxdaten wert"><xsl:value-of select="format-date(xr:Invoice_issue_date,'[D].[M].[Y]')"/></div>
+                      <div id="BT-2" title="BT-2" class="boxdaten wert"><xsl:value-of select="format-date(xr:Invoice_issue_date,xrf:_('date-format'))"/></div>
                     </div>
                     <div class="boxzeile">
                       <div class="boxdaten legende">{ xrf:_('Rechnungsart') }:</div>
@@ -271,7 +276,7 @@
                       <div class="boxdaten legende">{ xrf:_('Abrechnungsdatum der Umsatzsteuer') }:</div>
                     <div id="BT-7" title="BT-7" class="boxdaten wert">
                       <xsl:for-each select="tokenize(xr:Value_added_tax_point_date,';')">                      
-                        <xsl:value-of select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+                        <xsl:value-of select="format-date(xs:date(.),xrf:_('date-format'))"/>
                         <xsl:if test="position() != last()">
                           <br/>
                         </xsl:if>
@@ -287,11 +292,11 @@
                   <div class="boxtabelle borderSpacing">
                     <div class="boxzeile">
                       <div class="boxdaten legende">{ xrf:_('von') }:</div>
-                      <div id="BT-73" title="BT-73" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,'[D].[M].[Y]')"/></div>
+                      <div id="BT-73" title="BT-73" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,xrf:_('date-format'))"/></div>
                     </div>
                     <div class="boxzeile">
                       <div class="boxdaten legende">{ xrf:_('bis') }:</div>
-                      <div id="BT-74" title="BT-74" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,'[D].[M].[Y]')"/></div>
+                      <div id="BT-74" title="BT-74" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,xrf:_('date-format'))"/></div>
                     </div>
                   </div>
                 </div>
@@ -331,7 +336,7 @@
                     </div>
                     <div class="boxzeile">
                       <div class="boxdaten legende">{ xrf:_('Rechnungsdatum') }:</div>
-                      <div id="BT-26" title="BT-26" class="boxdaten wert"><xsl:value-of select="(format-date,xr:Preceding_Invoice_issue_date,'[D].[M].[Y]')"/></div>
+                      <div id="BT-26" title="BT-26" class="boxdaten wert"><xsl:value-of select="(format-date,xr:Preceding_Invoice_issue_date,xrf:_('date-format'))"/></div>
                     </div>
                   </div>
   </xsl:template>
@@ -345,52 +350,52 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Summe aller Positionen') }</div>
                     <div class="boxdaten rechnungSp2 color2">{ xrf:_('netto') }</div>
-                    <div id="BT-106" title="BT-106" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_Invoice_line_net_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-106" title="BT-106" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_Invoice_line_net_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Summe Nachlässe') }</div>
                     <div class="boxdaten rechnungSp2 color2">{ xrf:_('netto') }</div>
-                    <div id="BT-107" title="BT-107" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level,'###.##0,00','decimal')"/></div>
+                    <div id="BT-107" title="BT-107" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingBottom line1Bottom">{ xrf:_('Summe Zuschläge') }</div>
                     <div class="boxdaten rechnungSp2 paddingBottom line1Bottom color2">{ xrf:_('netto') }</div>
-                    <div id="BT-108" title="BT-108" class="boxdaten rechnungSp3 paddingBottom line1Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_charges_on_document_level,'###.##0,00','decimal')"/></div>
+                    <div id="BT-108" title="BT-108" class="boxdaten rechnungSp3 paddingBottom line1Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_charges_on_document_level,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingTop">{ xrf:_('Gesamtsumme') }</div>
                     <div class="boxdaten rechnungSp2 paddingTop color2">{ xrf:_('netto') }</div>
-                    <div id="BT-109" title="BT-109" class="boxdaten rechnungSp3 paddingTop"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_without_VAT,'###.##0,00','decimal')"/></div>
+                    <div id="BT-109" title="BT-109" class="boxdaten rechnungSp3 paddingTop"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_without_VAT,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Summe Umsatzsteuer') }</div>
                     <div class="boxdaten rechnungSp2 color2"></div>
-                    <div id="BT-110" title="BT-110" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-110" title="BT-110" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingBottom line1Bottom">{ xrf:_('Summe Umsatzsteuer in Abrechnungswährung') }</div>
                     <div class="boxdaten rechnungSp2 paddingBottom line1Bottom color2"></div>
-                    <div id="BT-111" title="BT-111" class="boxdaten rechnungSp3 paddingBottom line1Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount_in_accounting_currency,'###.##0,00','decimal')"/></div>
+                    <div id="BT-111" title="BT-111" class="boxdaten rechnungSp3 paddingBottom line1Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount_in_accounting_currency,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingTop">{ xrf:_('Gesamtsumme') }</div>
                     <div class="boxdaten rechnungSp2 paddingTop color2">{ xrf:_('brutto') }</div>
-                    <div id="BT-112" title="BT-112" class="boxdaten rechnungSp3 paddingTop"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_with_VAT,'###.##0,00','decimal')"/></div>
+                    <div id="BT-112" title="BT-112" class="boxdaten rechnungSp3 paddingTop"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_with_VAT,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Gezahlter Betrag') }</div>
                     <div class="boxdaten rechnungSp2 color2">{ xrf:_('brutto') }</div>
-                    <div id="BT-113" title="BT-113" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Paid_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-113" title="BT-113" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Paid_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingBottom line2Bottom">{ xrf:_('Rundungsbetrag') }</div>
                     <div class="boxdaten rechnungSp2 paddingBottom line2Bottom color2">{ xrf:_('brutto') }</div>
-                    <div id="BT-114" title="BT-114" class="boxdaten rechnungSp3 paddingBottom line2Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Rounding_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-114" title="BT-114" class="boxdaten rechnungSp3 paddingBottom line2Bottom"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Rounding_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 paddingTop bold">{ xrf:_('Fälliger Betrag') }</div>
                     <div class="boxdaten rechnungSp2 paddingTop color2">{ xrf:_('brutto') }</div>
-                    <div id="BT-115" title="BT-115" class="boxdaten rechnungSp3 paddingTop bold"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment,'###.##0,00','decimal')"/></div>
+                    <div id="BT-115" title="BT-115" class="boxdaten rechnungSp3 paddingTop bold"><xsl:value-of select="format-number(xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment,$amount-picture,$lang)"/></div>
                   </div>
               </div>
             </div>
@@ -411,7 +416,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Gesamtsumme') }</div>
                     <div class="boxdaten rechnungSp2 color2">{ xrf:_('netto') }</div>
-                    <div id="BT-116" title="BT-116" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:VAT_category_taxable_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-116" title="BT-116" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:VAT_category_taxable_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 line1Bottom">{ xrf:_('Umsatzsteuersatz') }</div>
@@ -421,7 +426,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Umsatzsteuerbetrag') }</div>
                     <div class="boxdaten rechnungSp2 color2"></div>
-                    <div id="BT-117" title="BT-117" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:VAT_category_tax_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-117" title="BT-117" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:VAT_category_tax_amount,$amount-picture,$lang)"/></div>
                   </div>
               </div>
 
@@ -447,7 +452,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Grundbetrag') }</div>
                     <div class="boxdaten rechnungSp2 color2">{ xrf:_('netto') }</div>
-                    <div id="BT-93" title="BT-93" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:Document_level_allowance_base_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-93" title="BT-93" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:Document_level_allowance_base_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 line1Bottom">{ xrf:_('Prozentsatz') }</div>
@@ -457,7 +462,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Nachlass') }</div>
                     <div class="boxdaten rechnungSp2 color2">{ xrf:_('netto') }</div>
-                    <div id="BT-92" title="BT-92" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:Document_level_allowance_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-92" title="BT-92" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:Document_level_allowance_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Umsatzsteuersatz des Nachlasses') }</div>
@@ -488,7 +493,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Grundbetrag') }</div>
                     <div class="boxdaten rechnungSp2 color2">{ xrf:_('netto') }</div>
-                    <div id="BT-100" title="BT-100" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:Document_level_charge_base_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-100" title="BT-100" class="boxdaten rechnungSp3"><xsl:value-of select="format-number(xr:Document_level_charge_base_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1 line1Bottom">{ xrf:_('Prozentsatz') }</div>
@@ -498,7 +503,7 @@
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Zuschlag') }</div>
                     <div class="boxdaten rechnungSp2 color2">{ xrf:_('netto') }</div>
-                    <div id="BT-99" title="BT-99" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:Document_level_charge_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-99" title="BT-99" class="boxdaten rechnungSp3 bold"><xsl:value-of select="format-number(xr:Document_level_charge_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten rechnungSp1">{ xrf:_('Umsatzsteuersatz des Zuschlages') }</div>
@@ -535,7 +540,7 @@
                   <div class="boxdaten legende">{ xrf:_('Fälligkeitsdatum') }:</div>
                   <div id="BT-9" title="BT-9" class="boxdaten wert">
                     <xsl:for-each select="tokenize(xr:Payment_due_date,';')">
-                      <xsl:value-of select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+                      <xsl:value-of select="format-date(xs:date(.),xrf:_('date-format'))"/>
                       <xsl:if test="position() != last()">
                         <br/>
                       </xsl:if>
@@ -674,11 +679,11 @@
                 <h4 id="BG-26" title="BG-26">{ xrf:_('Abrechnungszeitraum') }:</h4>
                   <div class="boxzeile">
                     <div class="boxdaten legende">{ xrf:_('von') }:</div>
-                    <div id="BT-134" title="BT-134" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,'[D].[M].[Y]')"/></div>
+                    <div id="BT-134" title="BT-134" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,xrf:_('date-format'))"/></div>
                   </div>
                   <div class="boxzeile">
                     <div class="boxdaten legende">{ xrf:_('bis') }:</div>
-                    <div id="BT-135" title="BT-135" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,'[D].[M].[Y]')"/></div>
+                    <div id="BT-135" title="BT-135" class="boxdaten wert"><xsl:value-of select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,xrf:_('date-format'))"/></div>
                   </div>
               </div>
             </div>
@@ -695,21 +700,21 @@
                 </div>
                 <div class="rechnungsZeile">
                   <div class="boxdaten detailSp1 line1Bottom color2">{ xrf:_('Preis pro Einheit (netto)') }</div>
-                  <div id="BT-146" title="BT-146" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_net_price,'###.##0,00','decimal')"/></div>
+                  <div id="BT-146" title="BT-146" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_net_price,$amount-picture,$lang)"/></div>
                 </div>
                 <div class="rechnungsZeile">
                   <div class="boxdaten detailSp1 color2">{ xrf:_('Gesamtpreis (netto)') }</div>
-                  <div id="BT-131" title="BT-131" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_net_amount,'###.##0,00','decimal')"/></div>
+                  <div id="BT-131" title="BT-131" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_net_amount,$amount-picture,$lang)"/></div>
                 </div>
               </div>
               <div class="boxtabelle boxinhalt noPaddingTop borderSpacing">
                 <div class="boxzeile">
                   <div class="boxdaten legende ">{ xrf:_('Rabatt (netto)') }:</div>
-                  <div id="BT-147" title="BT-147" class="boxdaten wert"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount,'###.##0,00','decimal')"/></div>
+                  <div id="BT-147" title="BT-147" class="boxdaten wert"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount,$amount-picture,$lang)"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende ">{ xrf:_('Listenpreis (netto)') }:</div>
-                  <div id="BT-148" title="BT-148" class="boxdaten wert"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price,'###.##0,00','decimal')"/></div>
+                  <div id="BT-148" title="BT-148" class="boxdaten wert"><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price,$amount-picture,$lang)"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende ">{ xrf:_('Anzahl der Einheit') }:</div>
@@ -725,7 +730,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende ">{ xrf:_('Umsatzsteuersatz in Prozent') }:</div>
-                  <div id="BT-152" title="BT-152" class="boxdaten wert"><xsl:value-of select="format-number(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,'##0,##','decimal')"/>%</div>
+                  <div id="BT-152" title="BT-152" class="boxdaten wert"><xsl:value-of select="format-number(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,$percentage-picture,$lang)"/>%</div>
                 </div>
               </div>
             </div>
@@ -739,15 +744,15 @@
                 <div class="boxtabelle boxinhalt ">
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 color2">{ xrf:_('Grundbetrag (netto)') }</div>
-                    <div id="BT-137" title="BT-137" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:Invoice_line_allowance_base_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-137" title="BT-137" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:Invoice_line_allowance_base_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 line1Bottom color2">{ xrf:_('Prozentsatz') }</div>
-                    <div id="BT-138" title="BT-138" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:Invoice_line_allowance_percentage,'##0,00','decimal')"/>%</div>
+                    <div id="BT-138" title="BT-138" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:Invoice_line_allowance_percentage,$percentage-picture,$lang)"/>%</div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 color2">{ xrf:_('Nachlass (netto)') }</div>
-                    <div id="BT-136" title="BT-136" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_allowance_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-136" title="BT-136" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_allowance_amount,$amount-picture,$lang)"/></div>
                   </div>
                 </div>
                 <div class="grundDetail">
@@ -762,15 +767,15 @@
                 <div class="boxtabelle boxinhalt ">
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 color2">{ xrf:_('Grundbetrag (netto)') }</div>
-                    <div id="BT-142" title="BT-142" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:Invoice_line_charge_base_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-142" title="BT-142" class="boxdaten detailSp2"><xsl:value-of select="format-number(xr:Invoice_line_charge_base_amount,$amount-picture,$lang)"/></div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 line1Bottom color2">{ xrf:_('Prozentsatz') }</div>
-                    <div id="BT-143" title="BT-143" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:Invoice_line_charge_percentage,'##0,00','decimal')"/>%</div>
+                    <div id="BT-143" title="BT-143" class="boxdaten detailSp2 line1Bottom"><xsl:value-of select="format-number(xr:Invoice_line_charge_percentage,$percentage-picture,$lang)"/>%</div>
                   </div>
                   <div class="rechnungsZeile">
                     <div class="boxdaten detailSp1 color2">{ xrf:_('Zuschlag (netto)') }</div>
-                    <div id="BT-141" title="BT-141" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_charge_amount,'###.##0,00','decimal')"/></div>
+                    <div id="BT-141" title="BT-141" class="boxdaten detailSp2 bold"><xsl:value-of select="format-number(xr:Invoice_line_charge_amount,$amount-picture,$lang)"/></div>
                   </div>
                 </div>
                 <div class="grundDetail">
@@ -1034,7 +1039,7 @@
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">{ xrf:_('Lieferdatum') }:</div>
-                  <div id="BT-72" title="BT-72" class="boxdaten wert"><xsl:value-of select="format-date(xr:Actual_delivery_date,'[D].[M].[Y]')"/></div>
+                  <div id="BT-72" title="BT-72" class="boxdaten wert"><xsl:value-of select="format-date(xr:Actual_delivery_date,xrf:_('date-format'))"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">{ xrf:_('Name des Empfängers') }:</div>
@@ -1211,7 +1216,7 @@
               <div class="boxtabelle boxinhalt borderSpacing">
                 <div class="boxzeile">
                   <div class="boxdaten legende">{ xrf:_('Datum/Uhrzeit') }:</div>
-                  <div class="boxdaten wert"><xsl:value-of select="format-dateTime(xrv:zeitstempel,'[D].[M].[Y] [H]:[m]:[s]')"/></div>
+                  <div class="boxdaten wert"><xsl:value-of select="format-dateTime(xrv:zeitstempel,xrf:_('datetime-format'))"/></div>
                 </div>
                 <div class="boxzeile">
                   <div class="boxdaten legende">{ xrf:_('Betreff') }:</div>
