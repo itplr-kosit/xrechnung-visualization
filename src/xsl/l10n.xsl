@@ -75,6 +75,7 @@
           </xsl:when>
           <xsl:otherwise>
             <xsl:sequence select="$key"/>
+            <!--<xsl:message>Unable to find localization for {$key}.</xsl:message>-->
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>      
