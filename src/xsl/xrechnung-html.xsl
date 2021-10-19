@@ -599,7 +599,7 @@
 
   <xsl:template name="uebersichtUeberweisung">
             <div id="uebersichtUeberweisung" class="box subBox">
-              <div id="BG-17" title="BG-17" class="boxtitel boxtitelSub">Überweisung</div>
+              <div id="BG-17" title="BG-17" class="boxtitel boxtitelSub">{ xrf:_('Überweisung') }</div>
               <xsl:for-each select="xr:PAYMENT_INSTRUCTIONS/xr:CREDIT_TRANSFER">
               <div class="boxtabelle boxinhalt borderSpacing">
                  <div class="boxzeile">
