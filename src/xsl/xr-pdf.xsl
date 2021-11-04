@@ -12,7 +12,6 @@
        == Imports
        =========================================================================== -->
   
-  <xsl:import href="xr-mapping.xsl"/>
   <xsl:import href="xr-content.xsl"/>
 
   <xsl:import href="xr-pdf/lib/konstanten.xsl"/>
@@ -20,6 +19,7 @@
   <xsl:import href="xr-pdf/lib/structure/content-templates.xsl"/>
   <xsl:import href="xr-pdf/lib/structure/page-sequence.xsl"/>
 
+  <xsl:include href="l10n.xsl"/>
 
   <xsl:output method="xml" version="1.0" encoding="utf-8" /> 
 
@@ -59,14 +59,10 @@
        =========================================================================== -->
   <xsl:template match="xr:invoice">
 
+
     <fo:root xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf"
-             language="de">
-     <xsl:call-template name="generiere-layout-master-set"/>
-     <fo:declarations>
-          <xsl:apply-templates mode="binary-declaration" select="xr:ADDITIONAL_SUPPORTING_DOCUMENTS/xr:Attached_document">
-               <xsl:with-param name="identifier" select="xr:Supporting_document_reference"/>
-          </xsl:apply-templates>
-     </fo:declarations>
+      language="{$lang}">
+      <xsl:call-template name="generiere-layout-master-set"/>
       <xsl:call-template name="generiere-page-sequence">
         <xsl:with-param name="body-content-flow">
           <fo:flow flow-name="xrBody"
@@ -80,6 +76,11 @@
           </fo:flow>
         </xsl:with-param>
       </xsl:call-template>
+      <fo:declarations>
+          <xsl:apply-templates mode="binary-declaration" select="xr:ADDITIONAL_SUPPORTING_DOCUMENTS/xr:Attached_document">
+               <xsl:with-param name="identifier" select="xr:Supporting_document_reference"/>
+          </xsl:apply-templates>
+     </fo:declarations>
     </fo:root>
   </xsl:template>
   
