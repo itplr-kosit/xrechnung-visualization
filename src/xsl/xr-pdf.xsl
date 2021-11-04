@@ -12,7 +12,6 @@
        == Imports
        =========================================================================== -->
   
-  <xsl:import href="xr-mapping.xsl"/>
   <xsl:import href="xr-content.xsl"/>
 
   <xsl:import href="xr-pdf/lib/konstanten.xsl"/>
@@ -20,6 +19,7 @@
   <xsl:import href="xr-pdf/lib/structure/content-templates.xsl"/>
   <xsl:import href="xr-pdf/lib/structure/page-sequence.xsl"/>
 
+  <xsl:include href="l10n.xsl"/>
 
   <xsl:output method="xml" version="1.0" encoding="utf-8" /> 
 
@@ -59,7 +59,7 @@
        =========================================================================== -->
   <xsl:template match="xr:invoice">
 
-    <fo:root language="de" font-family="{$fontSans}">
+    <fo:root language="{$lang}" font-family="{$fontSans}">
       <xsl:call-template name="generiere-layout-master-set"/>
       <fo:declarations>
         <x:xmpmeta xmlns:x="adobe:ns:meta/">

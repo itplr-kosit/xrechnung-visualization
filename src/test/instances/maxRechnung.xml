@@ -37,6 +37,11 @@
 		<cbc:ID>Kennung des Objekts</cbc:ID>
 		<cbc:DocumentType>ATS</cbc:DocumentType>
 	</cac:AdditionalDocumentReference>
+	<cac:BillingReference>
+        <cac:InvoiceDocumentReference>
+            <cbc:ID>PRG1502168</cbc:ID>
+        </cac:InvoiceDocumentReference>
+    </cac:BillingReference>
 	<cac:ProjectReference>
 		<cbc:ID>Projektreferenz</cbc:ID>
 	</cac:ProjectReference>

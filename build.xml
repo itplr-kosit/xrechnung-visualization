@@ -1,86 +1,86 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project basedir="." name="xrechnung-visualization" default="test">
   <!-- project directory structure -->
-  <property name="dist.dir" location="${basedir}/dist"/>
-  <property name="lib.dir" location="${basedir}/lib"/>
-  <property name="build.dir" location="${basedir}/build"/>
-  <property name="src.dir" location="${basedir}/src"/>
-  <property name="download.dir" location="${build.dir}/download"/>
-  <property name="saxon.jar" value="saxon9he.jar"/>
-  <property name="fop.jar" value="fop.jar"/>
-  <property name="fop.home" value="${lib.dir}/fop"/>
+  <property name="dist.dir" location="${basedir}/dist" />
+  <property name="lib.dir" location="${basedir}/lib" />
+  <property name="build.dir" location="${basedir}/build" />
+  <property name="src.dir" location="${basedir}/src" />
+  <property name="download.dir" location="${build.dir}/download" />
+  <property name="saxon.jar" value="saxon9he.jar" />
+  <property name="fop.jar" value="fop.jar" />
+  <property name="fop.home" value="${lib.dir}/fop" />
   <!-- Naming -->
-  <property name="xr-visualization.version.full" value="2020-12-31"/>
+  <property name="xr-visualization.version.full" value="2021-07-31" />
 
   <!-- Test resources -->
-  <property name="validator.jar" value="validationtool-1.0.1-standalone.jar"/>
-  <property name="xrechnung.version.major.minor" value="2.0"/>
-  <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.1"/>
-  <property name="github.group.url" value="https://github.com/itplr-kosit"/>
+  <property name="validator.jar" value="validationtool-1.0.1-standalone.jar" />
+  <property name="xrechnung.version.major.minor" value="2.1" />
+  <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.1" />
+  <property name="github.group.url" value="https://github.com/itplr-kosit" />
   <property name="validator.download.url"
-    value="${github.group.url}/validationtool/releases/download/validationtool-1_0_1/validationtool-dist-1.0.1-standalone.zip"/>
+    value="${github.group.url}/validationtool/releases/download/validationtool-1_0_1/validationtool-dist-1.0.1-standalone.zip" />
 
-  <property name="validator.config.proj.name" value="validator-configuration-xrechnung"/>
+  <property name="validator.config.proj.name" value="validator-configuration-xrechnung" />
 
-  <property name="validator.config.release.date" value="2019-12-30"/>
+  <property name="validator.config.release.date" value="2019-12-30" />
   <property name="validator.config.download.url"
-    value="${github.group.url}/${validator.config.proj.name}/releases/download/release-${validator.config.release.date}/${validator.config.proj.name}_${xrechnung.version.full}_${validator.config.release.date}.zip"/>
+    value="${github.group.url}/${validator.config.proj.name}/releases/download/release-${validator.config.release.date}/${validator.config.proj.name}_${xrechnung.version.full}_${validator.config.release.date}.zip" />
 
-  <property name="validator.config.release.version" value="release-${validator.config.release.date}"/>
+  <property name="validator.config.release.version" value="release-${validator.config.release.date}" />
   <property name="validator.config.zip"
-    value="validator-configuration-xrechnung_${xrechnung.version.full}_${validator.config.release.date}.zip"/>
+    value="validator-configuration-xrechnung_${xrechnung.version.full}_${validator.config.release.date}.zip" />
   <property name="validator.repository.dir"
-    location="${build.dir}/xrechnung-configuration-repository"/>
+    location="${build.dir}/xrechnung-configuration-repository" />
   <!-- vnu html validator -->
-  <property name="vnu.jar" value="vnu.jar"/>
-  <property name="vnu.version" value="18.11.5"/>
-  <property name="vnu.zip" value="${vnu.jar}_${vnu.version}.zip"/>
+  <property name="vnu.jar" value="vnu.jar" />
+  <property name="vnu.version" value="18.11.5" />
+  <property name="vnu.zip" value="${vnu.jar}_${vnu.version}.zip" />
   <property name="vnu.download.url"
-    value="https://github.com/validator/validator/releases/download/${vnu.version}/${vnu.zip}"/>
+    value="https://github.com/validator/validator/releases/download/${vnu.version}/${vnu.zip}" />
   <property name="xr.testsuite.docs.download.url.base"
-    value="https://raw.githubusercontent.com/itplr-kosit/xrechnung-testsuite/master/src/test/business-cases"/>
-  <property name="test.src.dir" location="${src.dir}/test"/>
-  <property name="test.build.dir" location="${build.dir}/test"/>
-  <property name="test.docs.dir" location="${test.build.dir}/instances"/>
-  <property name="test.transformed.dir" location="${test.build.dir}/transformed"/>
-  <property name="test.transformed.html.dir" location="${test.build.dir}/html"/>
-  <property name="test.transformed.pdf.dir" location="${test.build.dir}/pdf"/>
-  <property name="test.reports.dir" location="${test.build.dir}/reports"/>
+    value="https://raw.githubusercontent.com/itplr-kosit/xrechnung-testsuite/master/src/test/business-cases" />
+  <property name="test.src.dir" location="${src.dir}/test" />
+  <property name="test.build.dir" location="${build.dir}/test" />
+  <property name="test.docs.dir" location="${test.build.dir}/instances" />
+  <property name="test.transformed.dir" location="${test.build.dir}/transformed" />
+  <property name="test.transformed.html.dir" location="${test.build.dir}/html" />
+  <property name="test.transformed.pdf.dir" location="${test.build.dir}/pdf" />
+  <property name="test.reports.dir" location="${test.build.dir}/reports" />
 
   <property name="xrechnung.xsd.ns"
-    value="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"/>
+    value="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1" />
 
   <target name="init" description="Initializes build directory structure and ISO timestamp">
     <!-- Create timestamps -->
     <tstamp>
-      <format property="build.date" pattern="yyyy-MM-dd"/>
+      <format property="build.date" pattern="yyyy-MM-dd" />
     </tstamp>
     <echo>Build date: ${build.date}</echo>
     <!-- Create the build directory structure used by compile -->
-    <mkdir dir="${build.dir}"/>
-    <mkdir dir="${download.dir}"/>
-    <mkdir dir="${dist.dir}"/>
-    <mkdir dir="${lib.dir}"/>
-    <mkdir dir="${fop.home}"/>
-    <mkdir dir="${test.docs.dir}"/>
-    <mkdir dir="${test.transformed.dir}"/>
-    <mkdir dir="${test.transformed.html.dir}"/>
-    <mkdir dir="${test.transformed.pdf.dir}"/>
-    <mkdir dir="${test.reports.dir}"/>
-    <mkdir dir="${validator.repository.dir}"/>
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${download.dir}" />
+    <mkdir dir="${dist.dir}" />
+    <mkdir dir="${lib.dir}" />
+    <mkdir dir="${fop.home}" />
+    <mkdir dir="${test.docs.dir}" />
+    <mkdir dir="${test.transformed.dir}" />
+    <mkdir dir="${test.transformed.html.dir}" />
+    <mkdir dir="${test.transformed.pdf.dir}" />
+    <mkdir dir="${test.reports.dir}" />
+    <mkdir dir="${validator.repository.dir}" />
   </target>
   <target name="prepare-saxon" depends="init"
     description="Download Saxon-HE and add jar to library directory">
     <get
       src="https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-8J.zip/download"
       dest="${download.dir}/SaxonHE9-8-0-8J.zip" verbose="true" skipexisting="true"
-      usetimestamp="true"/>
-    <fail unless="saxon.jar" message="Provide a name for the extracted saxon jar"/>
+      usetimestamp="true" />
+    <fail unless="saxon.jar" message="Provide a name for the extracted saxon jar" />
     <unzip src="${download.dir}/SaxonHE9-8-0-8J.zip" dest="${lib.dir}">
       <patternset>
-        <include name="**/${saxon.jar}"/>
+        <include name="**/${saxon.jar}" />
       </patternset>
-      <flattenmapper/>
+      <flattenmapper />
     </unzip>
   </target>
 
@@ -88,91 +88,90 @@
     description="Download KoSIT validation tool and add jar to library directory">
     <get
       src="https://github.com/itplr-kosit/validator/releases/download/validationtool-1_0_1/validationtool-dist-1.0.1-standalone.zip"
-      dest="${download.dir}" verbose="true" skipexisting="true" usetimestamp="true"/>
+      dest="${download.dir}" verbose="true" skipexisting="true" usetimestamp="true" />
     <!-- Cause unzip task does not error on missing dest directory -->
     <fail message="Lib directory ${lib.dir} does not exist!">
       <condition>
         <not>
-          <available file="${lib.dir}"/>
+          <available file="${lib.dir}" />
         </not>
       </condition>
     </fail>
-    <fail unless="validator.jar" message="Need to specify property with name 'validator.jar'"/>
+    <fail unless="validator.jar" message="Need to specify property with name 'validator.jar'" />
     <unzip src="${download.dir}/validationtool-dist-1.0.1-standalone.zip" dest="${lib.dir}">
       <patternset>
-        <include name="**/${validator.jar}"/>
+        <include name="**/${validator.jar}" />
       </patternset>
-      <flattenmapper/>
+      <flattenmapper />
     </unzip>
   </target>
 
 
   <target name="prepare-vnu" depends="init" description="Download vNU">
     <get src="${vnu.download.url}" dest="${download.dir}" verbose="true" skipexisting="true"
-      usetimestamp="true"/>
+      usetimestamp="true" />
     <!-- Cause unzip task does not error on missing dest directory -->
     <fail message="Lib directory ${lib.dir} does not exist!">
       <condition>
         <not>
-          <available file="${lib.dir}"/>
+          <available file="${lib.dir}" />
         </not>
       </condition>
     </fail>
-    <fail unless="vnu.jar" message="Need to specify property with name 'vnu.jar'"/>
+    <fail unless="vnu.jar" message="Need to specify property with name 'vnu.jar'" />
     <unzip src="${download.dir}/${vnu.zip}" dest="${lib.dir}">
       <patternset>
-        <include name="**/${vnu.jar}"/>
+        <include name="**/${vnu.jar}" />
       </patternset>
-      <flattenmapper/>
+      <flattenmapper />
     </unzip>
   </target>
 
   <target name="prepare-validator-configuration" depends="prepare-validationtool">
     <get src="${validator.config.download.url}" dest="${download.dir}" verbose="true"
-      skipexisting="true" usetimestamp="true"/>
-    <unzip src="${download.dir}/${validator.config.zip}" dest="${validator.repository.dir}"/>
+      skipexisting="true" usetimestamp="true" />
+    <unzip src="${download.dir}/${validator.config.zip}" dest="${validator.repository.dir}" />
   </target>
 
   <target name="prepare-testsuite" depends="init"
     description="Get data from xrechnung-testsuite for testing visualization">
     <copy todir="${test.build.dir}" verbose="true">
-      <fileset dir="${test.src.dir}" includes="**/*.xml"/>
+      <fileset dir="${test.src.dir}" includes="**/*.xml" />
     </copy>
     <loadfile property="urls" srcFile="${test.src.dir}/testsuite-instances.txt">
       <filterchain>
-        <prefixlines prefix="${xr.testsuite.docs.download.url.base}/"/>
+        <prefixlines prefix="${xr.testsuite.docs.download.url.base}/" />
       </filterchain>
     </loadfile>
-    <echo message="${urls}" file="${test.build.dir}/testsuite-instance-urls.txt"/>
+    <echo message="${urls}" file="${test.build.dir}/testsuite-instance-urls.txt" />
     <get dest="${test.docs.dir}" verbose="true" skipexisting="true" usetimestamp="true">
       <resourcelist>
-        <file name="${test.build.dir}/testsuite-instance-urls.txt"/>
+        <file name="${test.build.dir}/testsuite-instance-urls.txt" />
       </resourcelist>
     </get>
   </target>
 
   <target name="prepare-fop" depends="init, prepare-saxon"
     description="Download Apache FOP for taskdef stuff">
-    <get
-      src="https://downloads.apache.org/xmlgraphics/fop/binaries/fop-2.6-bin.zip"
-      dest="${download.dir}/fop-2.6-bin.zip" verbose="true" skipexisting="true" usetimestamp="true"/>
-    <fail unless="fop.jar" message="Provide a name for the extracted fop jar"/>
+    <get src="https://downloads.apache.org/xmlgraphics/fop/binaries/fop-2.6-bin.zip"
+      dest="${download.dir}/fop-2.6-bin.zip" verbose="true" skipexisting="true" usetimestamp="true" />
+    <fail unless="fop.jar" message="Provide a name for the extracted fop jar" />
     <unzip src="${download.dir}/fop-2.6-bin.zip" dest="${fop.home}">
       <patternset>
-        <include name="**/build/${fop.jar}"/>
-        <include name="**/lib/*.jar"/>
-        <exclude name="**/xalan*.jar"/>
+        <include name="**/build/${fop.jar}" />
+        <include name="**/lib/*.jar" />
+        <exclude name="**/xalan*.jar" />
       </patternset>
-      <flattenmapper/>
+      <flattenmapper />
     </unzip>
 
     <taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop">
       <classpath>
         <fileset dir="${fop.home}">
-          <include name="*.jar"/>
+          <include name="*.jar" />
         </fileset>
         <fileset dir="${lib.dir}">
-          <include name="${saxon.jar}"/>
+          <include name="${saxon.jar}" />
         </fileset>
         <!--
         <fileset dir="${fop.home}/build">
@@ -191,41 +190,41 @@
     description="Testsuite validation with Validator XRechnung Configuration">
     <echo>Creating validation reports ...</echo>
     <java jar="${lib.dir}/${validator.jar}" failonerror="yes" fork="yes" dir="${basedir}">
-      <arg value="-s"/>
-      <arg value="${validator.repository.dir}/scenarios.xml"/>
-      <arg value="-r"/>
-      <arg value="${validator.repository.dir}"/>
-      <arg value="-h"/>
-      <arg value="-o"/>
-      <arg value="${test.reports.dir}"/>
-      <arg value="${test.docs.dir}"/>
+      <arg value="-s" />
+      <arg value="${validator.repository.dir}/scenarios.xml" />
+      <arg value="-r" />
+      <arg value="${validator.repository.dir}" />
+      <arg value="-h" />
+      <arg value="-o" />
+      <arg value="${test.reports.dir}" />
+      <arg value="${test.docs.dir}" />
     </java>
   </target>
 
   <target name="transform-ubl-invoice-to-xr" depends="prepare-saxon">
     <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
       style="${src.dir}/xsl/ubl-invoice-xr.xsl" includes="**/*ubl.xml,**/maxRechnung.xml">
-      <classpath location="${lib.dir}/${saxon.jar}"/>
-      <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-      <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+      <classpath location="${lib.dir}/${saxon.jar}" />
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+      <mapper type="glob" from="*.xml" to="*-xr.xml" />
     </xslt>
   </target>
 
   <target name="transform-ubl-creditnote-to-xr" depends="prepare-saxon">
     <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
       style="${src.dir}/xsl/ubl-creditnote-xr.xsl" includes="**/maxRechnung-creditnote.xml">
-      <classpath location="${lib.dir}/${saxon.jar}"/>
-      <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-      <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+      <classpath location="${lib.dir}/${saxon.jar}" />
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+      <mapper type="glob" from="*.xml" to="*-xr.xml" />
     </xslt>
   </target>
 
   <target name="transform-cii-to-xr" depends="prepare-saxon">
     <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
       style="${src.dir}/xsl/cii-xr.xsl" includes="**/*uncefact.xml">
-      <classpath location="${lib.dir}/${saxon.jar}"/>
-      <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-      <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+      <classpath location="${lib.dir}/${saxon.jar}" />
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+      <mapper type="glob" from="*.xml" to="*-xr.xml" />
     </xslt>
   </target>
 
@@ -238,42 +237,57 @@
   <target name="transform-xr-to-html" depends="transform-to-xr">
     <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.html.dir}"
       style="${src.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml">
-      <classpath location="${lib.dir}/${saxon.jar}"/>
-      <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-      <mapper type="glob" from="*.xml" to="*.html"/>
+      <classpath location="${lib.dir}/${saxon.jar}" />
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+      <mapper type="glob" from="*.xml" to="*.html" />
     </xslt>
   </target>
 
   <target name="transform-xr-to-pdf" depends="transform-to-xr, prepare-fop">
     <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}"
       style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
-      <classpath location="${lib.dir}/${saxon.jar}"/>
-      <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-      <param name="fop.extensions" type="STRING" expression="fop"/>
-      <mapper type="glob" from="*.xml" to="*.fo"/>
+      <classpath location="${lib.dir}/${saxon.jar}" />
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+      <param name="fop.extensions" type="STRING" expression="fop" />
+      <mapper type="glob" from="*.xml" to="*.fo" />
     </xslt>
 
     <fop format="application/pdf" outdir="${test.transformed.pdf.dir}" messagelevel="debug" userconfig="conf/fop.xconf">
       <fileset dir="${test.transformed.pdf.dir}">
-        <include name="*.fo"/>
+        <include name="*.fo" />
       </fileset>
     </fop>
 
     <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}-tabular"
       style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
+      <classpath location="${lib.dir}/${saxon.jar}" />
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+      <param name="fop.extensions" type="STRING" expression="fop" />
+      <param name="invoiceline-layout" type="STRING" expression="tabular" />
+      <mapper type="glob" from="*.xml" to="*.fo" />
+    </xslt>
+
+    <fop format="application/pdf" outdir="${test.transformed.pdf.dir}-tabular" messagelevel="debug" userconfig="conf/fop.xconf">
+      <fileset dir="${test.transformed.pdf.dir}-tabular">
+        <include name="*.fo" />
+      </fileset>
+    </fop>
+
+    <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}-tabular-en"
+      style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
       <classpath location="${lib.dir}/${saxon.jar}"/>
       <factory name="net.sf.saxon.TransformerFactoryImpl"/>
       <param name="fop.extensions" type="STRING" expression="fop"/>
       <param name="invoiceline-layout" type="STRING" expression="tabular"/>
+      <param name="lang" type="STRING" expression="en"/>
       <mapper type="glob" from="*.xml" to="*.fo"/>
     </xslt>
     
-    <fop format="application/pdf" outdir="${test.transformed.pdf.dir}-tabular" messagelevel="debug" userconfig="conf/fop.xconf">
-      <fileset dir="${test.transformed.pdf.dir}-tabular">
+    <fop format="application/pdf" outdir="${test.transformed.pdf.dir}-tabular-en" messagelevel="debug" userconfig="conf/fop.xconf">
+      <fileset dir="${test.transformed.pdf.dir}-tabular-en">
         <include name="*.fo"/>
       </fileset>
     </fop>
-    
 
     <!--  <java classname="org.apache.fop.cli.Main" failonerror="yes" fork="yes"
       dir="${basedir}"  >
@@ -300,8 +314,8 @@
   <target name="test-xr-transformation" depends="transform-to-xr"
     description="All XR documents must be valid against XML Schema">
     <schemavalidate fullchecking="yes" failonerror="yes" warn="true" lenient="false">
-      <schema namespace="${xrechnung.xsd.ns}" file="${src.dir}/xsd/xrechnung-semantic-model.xsd"/>
-      <fileset dir="${test.transformed.dir}" includes="*.xml"/>
+      <schema namespace="${xrechnung.xsd.ns}" file="${src.dir}/xsd/xrechnung-semantic-model.xsd" />
+      <fileset dir="${test.transformed.dir}" includes="*.xml" />
     </schemavalidate>
   </target>
 
@@ -310,38 +324,43 @@
     <echo>Validating HTML ...</echo>
     <java jar="${lib.dir}/${vnu.jar}" failonerror="false" fork="yes" dir="${basedir}"
       logerror="true">
-      <arg value="--skip-non-html"/>
-      <arg value="${test.transformed.html.dir}"/>
+      <arg value="--skip-non-html" />
+      <arg value="${test.transformed.html.dir}" />
     </java>
   </target>
 
   <target name="test-pdf" depends="transform-xr-to-pdf"
-    description="Currently, does nothing else but call transform-xr-to-pdf"/>
+    description="Currently, does nothing else but call transform-xr-to-pdf" />
 
 
   <!-- Just testing that task schemavalidate works cause it does not emit any
         message on success -->
   <target name="direct-test-transformation">
     <schemavalidate fullchecking="yes" failonerror="yes" warn="true" lenient="false">
-      <fileset dir="${test.transformed.dir}" includes="*.xml"/>
-      <schema namespace="${xrechnung.xsd.ns}" file="${src.dir}/xsd/xrechnung-semantic-model.xsd"/>
+      <fileset dir="${test.transformed.dir}" includes="*.xml" />
+      <schema namespace="${xrechnung.xsd.ns}" file="${src.dir}/xsd/xrechnung-semantic-model.xsd" />
     </schemavalidate>
   </target>
 
 
   <target name="test" depends="prepare-testsuite,test-xr-transformation, test-html, test-pdf"
-    description="Validates source UBL or CII XML against XRechnung, transforms to XR Sem Model and schema validates results and transforms and test HTML and PDF visualization"/>
+    description="Validates source UBL or CII XML against XRechnung, transforms to XR Sem Model and schema validates results and transforms and test HTML and PDF visualization" />
 
-
-  <target name="dist" depends="test">
+  <target name="dist-only">
     <zip
-      destfile="${dist.dir}/xrechnung-${xrechnung.version.full}-${ant.project.name}-${xr-visualization.version.full}.zip"
-      basedir="${src.dir}" excludes="download/**,test/**"/>
+      destfile="${dist.dir}/xrechnung-${xrechnung.version.full}-${ant.project.name}-${xr-visualization.version.full}.zip">
+      <zipfileset dir="${src.dir}" excludes="README.md"/>
+      <zipfileset dir="." includes="README.md" />
+
+    </zip>
   </target>
+
+
+  <target name="dist" depends="test,dist-only"> </target>
 
   <target name="clean">
     <!-- Delete the ${build} and ${dist} directory trees -->
-    <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true"/>
-    <delete dir="${dist.dir}"/>
+    <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true" />
+    <delete dir="${dist.dir}" />
   </target>
 </project>
