@@ -657,6 +657,9 @@
               <xsl:with-param name="field-mapping-identifier" select="'xr:Seller_electronic_address/@scheme_identifier'"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_legal_registration_identifier"/>
+            <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_legal_registration_identifier/@scheme_identifier">
+              <xsl:with-param name="field-mapping-identifier" select="'xr:Seller_legal_registration_identifier/@scheme_identifier'"/>
+            </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_VAT_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_tax_registration_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_additional_legal_information"/>

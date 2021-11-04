@@ -94,6 +94,7 @@
   <entry key="xr:Seller_electronic_address/@scheme_identifier" id="BT-34">Electronic address
     scheme</entry>
   <entry key="xr:Seller_legal_registration_identifier" id="BT-30">Legal registration identifier</entry>
+  <entry key="xr:Seller_legal_registration_identifier/@scheme_identifier" id="BT-30">Legal registration identifier scheme</entry>
   <entry key="xr:Seller_VAT_identifier" id="BT-31">VAT ID</entry>
   <entry key="xr:Seller_tax_registration_identifier" id="BT-32">Tax number</entry>
   <entry key="xr:Seller_additional_legal_information" id="BT-33">Further legal information</entry>

@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * Added support for localization -- English and German output is supported 
 
+### Fixed
+
+* BT-30-Scheme-ID visualized
+
 ## v2021-07-31
 
 ### Added

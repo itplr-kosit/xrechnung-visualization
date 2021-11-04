@@ -909,6 +909,10 @@
                   <div id="BT-30" title="BT-30" class="boxdaten wert"><xsl:value-of select="xr:Seller_legal_registration_identifier"/></div>
                 </div>
                 <div class="boxzeile">
+                  <div class="boxdaten legende">Schema der Register-/Registriernummer:</div>
+                  <div id="BT-30-scheme-id" title="BT-30-scheme-id" class="boxdaten wert"><xsl:value-of select="xr:Seller_legal_registration_identifier/@scheme_identifier"/></div>
+                </div>
+                <div class="boxzeile">
                   <div class="boxdaten legende">Umsatzsteuer-ID:</div>
                   <div id="BT-31" title="BT-31" class="boxdaten wert"><xsl:value-of select="xr:Seller_VAT_identifier"/></div>
                 </div>
