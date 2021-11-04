@@ -11,8 +11,8 @@
   == Schriften
   =========================================================================== -->
 
-  <xsl:variable name="fontSans">BundesSans</xsl:variable>
-  <xsl:variable name="fontSerif">BundesSerif</xsl:variable>
+  <xsl:variable name="fontSans">SourceSerifPro</xsl:variable>
+  <xsl:variable name="fontSerif">SourceSerifPro</xsl:variable>
 
   <xsl:variable name="amount-picture" select="'###.##0,00'"/>
 

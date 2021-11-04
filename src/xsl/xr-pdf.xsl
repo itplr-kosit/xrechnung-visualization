@@ -59,7 +59,7 @@
        =========================================================================== -->
   <xsl:template match="xr:invoice">
 
-    <fo:root language="de">
+    <fo:root language="de" font-family="{$fontSans}">
       <xsl:call-template name="generiere-layout-master-set"/>
       <fo:declarations>
         <x:xmpmeta xmlns:x="adobe:ns:meta/">
