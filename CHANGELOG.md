@@ -16,6 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * Fixed format-date of BT-26 in xrechnung-html.xsl (thanks to github user @knoxyz).
 
+### Fixed
+
+* BT-30-Scheme-ID visualized
+
 ## v2021-07-31
 
 ### Added
