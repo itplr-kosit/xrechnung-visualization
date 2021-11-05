@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 * Added support for localization -- English and German output is supported 
+* Added BT-26 to maxRechnung.xml
 
 ## v2021-07-31
 
