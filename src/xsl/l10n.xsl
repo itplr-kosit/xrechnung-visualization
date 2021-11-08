@@ -4,8 +4,7 @@
   xmlns:math="http://www.w3.org/2005/xpath-functions/math"
   xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"  
   exclude-result-prefixes="xs math xrf"
-  expand-text="yes"
-  version="3.0">
+  version="2.0">
   
   <!-- Language of output -->
   <xsl:param name="lang" select="'de'"/>
