@@ -96,6 +96,7 @@
   <entry key="xr:Seller_electronic_address" id="BT-34">Elektronische Adresse</entry>
   <entry key="xr:Seller_electronic_address/@scheme_identifier" id="BT-34">Schema der elektronischen Adresse</entry>
   <entry key="xr:Seller_legal_registration_identifier" id="BT-30">Registernummer</entry>
+  <entry key="xr:Seller_legal_registration_identifier/@scheme_identifier" id="BT-30">Schema der Registernummer</entry>
   <entry key="xr:Seller_VAT_identifier" id="BT-31">Umsatzsteuer-ID</entry>
   <entry key="xr:Seller_tax_registration_identifier" id="BT-32">Steuernummer</entry>
   <entry key="xr:Seller_additional_legal_information" id="BT-33">Weitere rechtliche Informationen</entry>
