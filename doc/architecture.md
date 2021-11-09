@@ -24,7 +24,7 @@ Reihenfolge und Bezeichnung der Bestandteile einer Rechnung unterstützen.
 *Abbildung 1* zeigt einen konzeptionellen Ansatz zur Erzeugung der Visualisierung von 
 XRechnungen unter Berücksichtigung der genannten Anforderungen.
 
-![Grundkonzept der Visualisierung von XRechnung](../img/visualization-concept.jpg)
+![Grundkonzept der Visualisierung von XRechnung](../img/visualization-concept.png)
 <figcaption align="center" style="width:80%;"><em>Abbildung 1: Grundkonzept der Visualisierung von XRechnung</em></figcaption>
 
 *Schritt 1* beinhaltet die Rechnungen im Format der durch die Norm geforderten technischen 
