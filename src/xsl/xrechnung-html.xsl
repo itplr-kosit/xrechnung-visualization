@@ -1127,6 +1127,7 @@
               </div>
               <div id="BT-128" data-title="BT-128" class="boxdaten wert">
                 <xsl:value-of select="xr:Invoice_line_object_identifier" />
+              </div>  
             </div>
             <div class="boxzeile" role="listitem">
               <div class="boxdaten legende">
