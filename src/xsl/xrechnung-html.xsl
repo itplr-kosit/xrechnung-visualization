@@ -463,7 +463,7 @@
                     <div id="BT-73" data-title="BT-73" class="boxdaten wert">
                       <!-- TODO added xr:DELIVERY_INFORMATION ? -->
                       <xsl:value-of
-                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,'[D].[M].[Y]')" />
+                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,xrf:_('date-format'))" />
                     </div>
                   </div>
                   <div class="boxzeile" role="listitem">
@@ -473,7 +473,7 @@
                     <div id="BT-74" data-title="BT-74" class="boxdaten wert">
                       <!-- TODO added xr:DELIVERY_INFORMATION ? -->
                       <xsl:value-of
-                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,'[D].[M].[Y]')" />
+                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,xrf:_('date-format'))" />
                     </div>
                   </div>
                 </div>
@@ -542,7 +542,7 @@
             <xsl:value-of select="xrf:_('Rechnungsdatum')" />:
           </div>
           <div id="BT-26" data-title="BT-26" class="boxdaten wert">
-            <xsl:value-of select="(format-date,xr:Preceding_Invoice_issue_date,xrf:_('date-format'))" />
+            <xsl:value-of select="format-date(xr:Preceding_Invoice_issue_date,xrf:_('date-format'))" />
           </div>
         </div>
       </div>
@@ -1163,7 +1163,7 @@
                   </div>
                   <div id="BT-134" data-title="BT-134" class="boxdaten wert">
                     <xsl:value-of
-                      select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,'[D].[M].[Y]')" />
+                      select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,xrf:_('date-format'))" />
                   </div>
                 </div>
                 <div class="boxzeile" role="listitem">
@@ -1172,7 +1172,7 @@
                   </div>
                   <div id="BT-135" data-title="BT-135" class="boxdaten wert">
                     <xsl:value-of
-                      select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,'[D].[M].[Y]')" />
+                      select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,xrf:_('date-format'))" />
                   </div>
                 </div>
               </div>
