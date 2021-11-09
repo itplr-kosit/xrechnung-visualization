@@ -433,8 +433,7 @@
                   <xsl:value-of select="xrf:_('Abrechnungsdatum der Umsatzsteuer')" />:
                 </div>
                 <div id="BT-7" data-title="BT-7" class="boxdaten wert">
-                  <!-- TODO ".." or not ".." -->
-                  <xsl:for-each select="tokenize(../xr:Value_added_tax_point_date,';')">
+                  <xsl:for-each select="tokenize(xr:Value_added_tax_point_date,';')">
                     <xsl:value-of select="format-date(xs:date(.),xrf:_('date-format'))" />
                     <xsl:if test="position() != last()">
                       <br />
@@ -447,8 +446,7 @@
                   <xsl:value-of select="xrf:_('Code des Umsatzsteuer-Abrechnungsdatums')" />:
                 </div>
                 <div id="BT-8" data-title="BT-8" class="boxdaten wert">
-                  <!-- TODO ".." or not ".." -->
-                  <xsl:value-of select="../xr:Value_added_tax_point_date_code" />
+                  <xsl:value-of select="xr:Value_added_tax_point_date_code" />
                 </div>
               </div>
               <div role="listitem">
@@ -461,7 +459,6 @@
                       <xsl:value-of select="xrf:_('von')" />:
                     </div>
                     <div id="BT-73" data-title="BT-73" class="boxdaten wert">
-                      <!-- TODO added xr:DELIVERY_INFORMATION ? -->
                       <xsl:value-of
                         select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,xrf:_('date-format'))" />
                     </div>
@@ -471,7 +468,6 @@
                       <xsl:value-of select="xrf:_('bis')" />:
                     </div>
                     <div id="BT-74" data-title="BT-74" class="boxdaten wert">
-                      <!-- TODO added xr:DELIVERY_INFORMATION ? -->
                       <xsl:value-of
                         select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,xrf:_('date-format'))" />
                     </div>
@@ -1610,7 +1606,6 @@
         </div>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <!-- TODO translation is missing -->
             <xsl:value-of select="xrf:_('Schema der Steuernummer')" />:
           </div>
           <div id="BT-32-scheme" data-title="BT-32-scheme" class="boxdaten wert">
