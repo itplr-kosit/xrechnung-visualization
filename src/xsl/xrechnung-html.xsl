@@ -742,7 +742,7 @@
 
     <xsl:template name="uebersichtZahlungsinformationen">
         <div id="uebersichtZahlungsinformationen" class="box subBox">
-            <div title="" class="boxtitel" role="heading" aria-level="2">Zahlungsdaten</div>
+            <div data-title="" class="boxtitel" role="heading" aria-level="2">Zahlungsdaten</div>
             <div class="boxtabelle boxinhalt borderSpacing" role="list">
                 <div class="boxzeile" role="listitem">
                     <div class="boxdaten legende">Skonto; weitere Zahlungsbedingungen:</div>
