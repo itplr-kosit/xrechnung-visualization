@@ -4,8 +4,7 @@
 	              xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
 	              xmlns:xr="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
 	              xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"  	              
-	              expand-text="yes"
-	              version="3.0">
+	              version="2.0">
   
    <xsl:template name="generiere-page-sequence">
      <xsl:param name="body-content-flow" required="yes" as="node()"/>
@@ -23,7 +22,7 @@
                 <fo:table-row>
                   <fo:table-cell>
                     <fo:block font-weight="bold">
-                      {xrf:_('Bereiche ohne Inhalte werden nicht dargestellt!')}
+                      <xsl:value-of select="xrf:_('Bereiche ohne Inhalte werden nicht dargestellt!')"/>
                     </fo:block>
                   </fo:table-cell>
                   <fo:table-cell white-space="nowrap"
@@ -55,7 +54,7 @@
           <fo:block font-family="{$fontSans}" 
                     font-size="9pt"
                     text-align="center">
-            <fo:block>{xrf:_('Seite')} <fo:page-number/> / <fo:page-number-citation ref-id="seitenzahlLetzteSeite"/></fo:block>
+            <fo:block><xsl:value-of select="xrf:_('Seite')"/><xsl:text> </xsl:text><fo:page-number/> / <fo:page-number-citation ref-id="seitenzahlLetzteSeite"/></fo:block>
           </fo:block>
         </fo:block-container>
       </fo:static-content>
