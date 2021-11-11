@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xr="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
-  xmlns:xrv="http://www.example.org/XRechnung-Viewer"
-  xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions">
-
-  <xsl:import href="l10n.xsl" />
-
-  <xsl:param name="l10n-nl-lookup" select="true()" />
+<xsl:stylesheet version="2.0" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xr="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
+  xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"
+  xmlns:xrv="http://www.example.org/XRechnung-Viewer">
 
   <xsl:output indent="yes" method="html" encoding="UTF-8" />
 
+  <xsl:import href="functions.xsl" />
+
+  <xsl:param name="l10n-nl-lookup" select="true()" />
+
   <xsl:decimal-format name="de" decimal-separator="," grouping-separator="." NaN="" />
   <xsl:decimal-format name="en" decimal-separator="." grouping-separator="," NaN="" />
-
-  <xsl:variable name="amount-picture" select="xrf:_('amount-format')" />
-  <xsl:variable name="percentage-picture" select="xrf:_('percentage-format')" />
-  
 
     <!-- MAIN HTML -->
   <xsl:template match="/xr:invoice">
@@ -561,7 +559,7 @@
             </div>
             <div id="BT-106" data-title="BT-106" class="boxdaten rechnungSp3" role="cell">
               <xsl:value-of
-                select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_Invoice_line_net_amount,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Sum_of_Invoice_line_net_amount,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -573,7 +571,7 @@
             </div>
             <div id="BT-107" data-title="BT-107" class="boxdaten rechnungSp3" role="cell">
               <xsl:value-of
-                select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -585,7 +583,7 @@
             </div>
             <div id="BT-108" data-title="BT-108" class="boxdaten rechnungSp3 paddingBottom line1Bottom" role="cell">
               <xsl:value-of
-                select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_charges_on_document_level,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Sum_of_charges_on_document_level,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -597,7 +595,7 @@
             </div>
             <div id="BT-109" data-title="BT-109" class="boxdaten rechnungSp3 paddingTop" role="cell">
               <xsl:value-of
-                select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_without_VAT,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_without_VAT,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -607,7 +605,7 @@
             <div class="boxdaten rechnungSp2 color2" role="cell"></div>
             <div id="BT-110" data-title="BT-110" class="boxdaten rechnungSp3" role="cell">
               <xsl:value-of
-                select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -617,7 +615,7 @@
             <div class="boxdaten rechnungSp2 paddingBottom line1Bottom color2" role="cell"></div>
             <div id="BT-111" data-title="BT-111" class="boxdaten rechnungSp3 paddingBottom line1Bottom" role="cell">
               <xsl:value-of
-                select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount_in_accounting_currency,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount_in_accounting_currency,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -629,7 +627,7 @@
             </div>
             <div id="BT-112" data-title="BT-112" class="boxdaten rechnungSp3 paddingTop" role="cell">
               <xsl:value-of
-                select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_with_VAT,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_with_VAT,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -641,7 +639,7 @@
             </div>
             <div id="BT-113" data-title="BT-113" class="boxdaten rechnungSp3" role="cell">
               <xsl:value-of
-                select="format-number(xr:DOCUMENT_TOTALS/xr:Paid_amount,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Paid_amount,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -653,7 +651,7 @@
             </div>
             <div id="BT-114" data-title="BT-114" class="boxdaten rechnungSp3 paddingBottom line2Bottom" role="cell">
               <xsl:value-of
-                select="format-number(xr:DOCUMENT_TOTALS/xr:Rounding_amount,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Rounding_amount,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -665,7 +663,7 @@
             </div>
             <div id="BT-115" data-title="BT-115" class="boxdaten rechnungSp3 paddingTop bold" role="cell">
               <xsl:value-of
-                select="format-number(xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment,$lang)" />
             </div>
           </div>
         </div>
@@ -699,7 +697,7 @@
               <xsl:value-of select="xrf:_('netto')" />
             </div>
             <div id="BT-116" data-title="BT-116" class="boxdaten rechnungSp3" role="cell">
-              <xsl:value-of select="format-number(xr:VAT_category_taxable_amount,$amount-picture,$lang)" />
+              <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:VAT_category_taxable_amount,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -717,7 +715,7 @@
             </div>
             <div class="boxdaten rechnungSp2 color2" role="cell"></div>
             <div id="BT-117" data-title="BT-117" class="boxdaten rechnungSp3 bold" role="cell">
-              <xsl:value-of select="format-number(xr:VAT_category_tax_amount,$amount-picture,$lang)" />
+              <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:VAT_category_tax_amount,$lang)" />
             </div>
           </div>
         </div>
@@ -767,7 +765,7 @@
             </div>
             <div id="BT-93" data-title="BT-93" class="boxdaten rechnungSp3" role="cell">
               <xsl:value-of
-                select="format-number(xr:Document_level_allowance_base_amount,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:Document_level_allowance_base_amount,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -788,7 +786,7 @@
             </div>
             <div id="BT-92" data-title="BT-92" class="boxdaten rechnungSp3 bold" role="cell">
               <xsl:value-of
-                select="format-number(xr:Document_level_allowance_amount,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:Document_level_allowance_amount,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -847,7 +845,7 @@
             </div>
             <div id="BT-100" data-title="BT-100" class="boxdaten rechnungSp3" role="cell">
               <xsl:value-of
-                select="format-number(xr:Document_level_charge_base_amount,$amount-picture,$lang)" />
+                select="xrf:format-with-at-least-two-digits(xr:Document_level_charge_base_amount,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -867,7 +865,7 @@
               <xsl:value-of select="xrf:_('netto')" />
             </div>
             <div id="BT-99" data-title="BT-99" class="boxdaten rechnungSp3 bold" role="cell">
-              <xsl:value-of select="format-number(xr:Document_level_charge_amount,$amount-picture,$lang)" />
+              <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:Document_level_charge_amount,$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -1203,7 +1201,7 @@
               </div>
               <div id="BT-146" data-title="BT-146" class="boxdaten detailSp2 line1Bottom" role="cell">
                 <xsl:value-of
-                  select="format-number(xr:PRICE_DETAILS/xr:Item_net_price,$amount-picture,$lang)" />
+                  select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_net_price,$lang)" />
               </div>
             </div>
             <div class="rechnungsZeile" role="row">
@@ -1211,7 +1209,7 @@
                 <xsl:value-of select="xrf:_('Gesamtpreis (netto)')" />
               </div>
               <div id="BT-131" data-title="BT-131" class="boxdaten detailSp2 bold" role="cell">
-                <xsl:value-of select="format-number(xr:Invoice_line_net_amount,$amount-picture,$lang)" />
+                <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:Invoice_line_net_amount,$lang)" />
               </div>
             </div>
           </div>
@@ -1222,7 +1220,7 @@
               </div>
               <div id="BT-147" data-title="BT-147" class="boxdaten wert">
                 <xsl:value-of
-                  select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount,$amount-picture,$lang)" />
+                  select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_price_discount,$lang)" />
               </div>
             </div>
             <div class="boxzeile" role="listitem">
@@ -1231,7 +1229,7 @@
               </div>
               <div id="BT-148" data-title="BT-148" class="boxdaten wert">
                 <xsl:value-of
-                  select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price,$amount-picture,$lang)" />
+                  select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_gross_price,$lang)" />
               </div>
             </div>
             <div class="boxzeile" role="listitem">
@@ -1264,7 +1262,7 @@
               </div>
               <div id="BT-152" data-title="BT-152" class="boxdaten wert">
                 <xsl:value-of
-                  select="format-number(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,$percentage-picture,$lang)" /> %
+                  select="xrf:format-with-at-least-two-digits(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,$lang)" /> %
               </div>
             </div>
           </div>
@@ -1285,7 +1283,7 @@
                 </div>
                 <div id="BT-137" data-title="BT-137" class="boxdaten detailSp2" role="cell">
                   <xsl:value-of
-                    select="format-number(xr:Invoice_line_allowance_base_amount,$amount-picture,$lang)" />
+                    select="xrf:format-with-at-least-two-digits(xr:Invoice_line_allowance_base_amount,$lang)" />
                 </div>
               </div>
               <div class="rechnungsZeile" role="row">
@@ -1294,7 +1292,7 @@
                 </div>
                 <div id="BT-138" data-title="BT-138" class="boxdaten detailSp2 line1Bottom" role="cell">
                   <xsl:value-of
-                    select="format-number(xr:Invoice_line_allowance_percentage,$percentage-picture,$lang)" /> %
+                    select="xrf:format-with-at-least-two-digits(xr:Invoice_line_allowance_percentage,$lang)" /> %
                 </div>
               </div>
               <div class="rechnungsZeile" role="row">
@@ -1303,7 +1301,7 @@
                 </div>
                 <div id="BT-136" data-title="BT-136" class="boxdaten detailSp2 bold" role="cell">
                   <xsl:value-of
-                    select="format-number(xr:Invoice_line_allowance_amount,$amount-picture,$lang)" />
+                    select="xrf:format-with-at-least-two-digits(xr:Invoice_line_allowance_amount,$lang)" />
                 </div>
               </div>
             </div>
@@ -1335,7 +1333,7 @@
                 </div>
                 <div id="BT-142" data-title="BT-142" class="boxdaten detailSp2" role="cell">
                   <xsl:value-of
-                    select="format-number(xr:Invoice_line_charge_base_amount,$amount-picture,$lang)" />
+                    select="xrf:format-with-at-least-two-digits(xr:Invoice_line_charge_base_amount,$lang)" />
                 </div>
               </div>
               <div class="rechnungsZeile" role="row">
@@ -1344,7 +1342,7 @@
                 </div>
                 <div id="BT-143" data-title="BT-143" class="boxdaten detailSp2 line1Bottom" role="cell">
                   <xsl:value-of
-                    select="format-number(xr:Invoice_line_charge_percentage,$percentage-picture,$lang)" /> %
+                    select="xrf:format-with-at-least-two-digits(xr:Invoice_line_charge_percentage,$lang)" /> %
                 </div>
               </div>
               <div class="rechnungsZeile" role="row">
@@ -1353,7 +1351,7 @@
                 </div>
                 <div id="BT-141" data-title="BT-141" class="boxdaten detailSp2 bold" role="cell">
                   <xsl:value-of
-                    select="format-number(xr:Invoice_line_charge_amount,$amount-picture,$lang)" />
+                    select="xrf:format-with-at-least-two-digits(xr:Invoice_line_charge_amount,$lang)" />
                 </div>
               </div>
             </div>

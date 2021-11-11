@@ -240,4 +240,5 @@
   <entry key="datetime-format">[D].[M].[Y] [H]:[m]:[s]</entry>
   <entry key="amount-format">###.##0,00</entry>
   <entry key="percentage-format">##0,##</entry>
+  <entry key="at-least-two-format">###.##0,#################</entry>
 </properties>
