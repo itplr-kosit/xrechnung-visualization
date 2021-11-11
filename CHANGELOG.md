@@ -4,11 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## v2021-10-31
+
+## Unreleased
 
 ### Added
 
 * Added support for localization -- English and German output is supported 
+* Added BT-26 to maxRechnung.xml
+
+### Fixed
+
+* Fixed format-date of BT-26 in xrechnung-html.xsl (thanks to github user @knoxyz).
+* BT-30-Scheme-ID visualized
 
 ## v2021-07-31
 

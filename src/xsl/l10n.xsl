@@ -4,14 +4,19 @@
   xmlns:math="http://www.w3.org/2005/xpath-functions/math"
   xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"  
   exclude-result-prefixes="xs math xrf"
-  expand-text="yes"
-  version="3.0">
+  version="2.0">
   
   <!-- Language of output -->
   <xsl:param name="lang" select="'de'"/>
+  
+  <!-- Enable fallback lookup based on natural string in German --> 
+  <xsl:param name="l10n-nl-lookup" select="false()"/>
 
   <!-- Filename with language file -->
   <xsl:variable name="l10n-filename" select="'l10n/' || $lang || '.xml'"/>
+
+  <!-- Master localization file is German, it is used when key uses natural text in German to lookup proper key -->
+  <xsl:variable name="l10n-master-filename" select="'l10n/de.xml'"/>
   
   <!-- Variable holding contents of l10n file -->
   <xsl:variable name="l10n-doc">
@@ -19,8 +24,8 @@
       <xsl:when test="doc-available($l10n-filename)">
         <xsl:sequence select="doc($l10n-filename)"/>
       </xsl:when>
-      <xsl:when test="doc-available('l10n/de.xml')">
-        <xsl:sequence select="doc('l10n/de.xml')"/>
+      <xsl:when test="doc-available($l10n-master-filename)">
+        <xsl:sequence select="doc($l10n-master-filename)"/>
         <!--<xsl:message>Unable to find localization for {$lang}. Using default from de.xml.</xsl:message>-->
       </xsl:when>
       <xsl:otherwise>
@@ -29,8 +34,24 @@
     </xsl:choose>
   </xsl:variable>
 
+  <!-- Variable holding contents of master l10n file -->
+  <xsl:variable name="l10n-master-doc">
+    <xsl:choose>
+      <xsl:when test="doc-available($l10n-master-filename)">
+        <xsl:sequence select="doc($l10n-master-filename)"/>
+        <!--<xsl:message>Unable to find localization for {$lang}. Using default from de.xml.</xsl:message>-->
+      </xsl:when>
+      <xsl:otherwise>
+        <!--<xsl:message>Unable to find localization for {$lang}. Can't load default from de.xml. Using empty localization.</xsl:message>-->
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  
   <!-- Key for quicker lookups of localized strings -->
   <xsl:key name="l10n" match="entry" use="@key"/>
+
+  <!-- Key for quicker lookups of key for string -->
+  <xsl:key name="l10n-key" match="entry" use="normalize-space(.)"/>  
 
   <!-- Function returning localized string -->
   <xsl:function name="xrf:_" as="xs:string">
@@ -42,6 +63,21 @@
       <xsl:when test="$localized">
         <xsl:sequence select="string($localized)"/>
       </xsl:when>
+      <xsl:when test="$l10n-nl-lookup">
+        <!-- Some transformations use natural text in German as translation keys -->
+        <xsl:variable name="key2" select="(key('l10n-key', $key, $l10n-master-doc)/@key)[1]"/>
+        <xsl:variable name="localized2" select="key('l10n', $key2, $l10n-doc)"/>
+        
+        <xsl:choose>
+          <xsl:when test="$localized2">
+            <xsl:sequence select="string($localized2)"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:sequence select="$key"/>
+            <!--<xsl:message>Unable to find localization for {$key}.</xsl:message>-->
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>      
       <xsl:otherwise>
         <xsl:sequence select="'???' || $key || '???'"/>
         <!--<xsl:message>Unable to find localization for {$key}.</xsl:message>-->
@@ -81,5 +117,19 @@
     
     <xsl:sequence select="xrf:_($identifier)"></xsl:sequence>
   </xsl:function>  
+
+  <xsl:function name="xrf:format-with-at-least-two-digits" as="xs:string">
+      <xsl:param name="input-number"/>    
+      <xsl:param name="lang"/>    
+          
+      <xsl:choose>
+          <xsl:when test="string-length(substring-after(xs:string($input-number), '.'))>2">
+              <xsl:sequence select="format-number($input-number,'###.##0,#################',$lang)"></xsl:sequence>
+          </xsl:when>
+          <xsl:otherwise>                
+              <xsl:sequence select="format-number($input-number,'###.##0,00',$lang)"></xsl:sequence>
+          </xsl:otherwise>
+      </xsl:choose>                   
+  </xsl:function>
 
 </xsl:stylesheet>

@@ -109,7 +109,7 @@
         <xsl:apply-templates select="xr:Invoice_currency_code" mode="list-entry"/>
         <xsl:for-each select="tokenize(xr:Value_added_tax_point_date,';')">             
           <xsl:call-template name="list-entry-bt-7">
-            <xsl:with-param name="value" select="format-date(xs:date(.),'[D].[M].[Y]')"/>
+            <xsl:with-param name="value" select="format-date(xs:date(.),xrf:_('date-format'))"/>
             <xsl:with-param name="field-mapping-identifier" select="'xr:Value_added_tax_point_date'"/>
           </xsl:call-template>
         </xsl:for-each>
@@ -657,6 +657,9 @@
               <xsl:with-param name="field-mapping-identifier" select="'xr:Seller_electronic_address/@scheme_identifier'"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_legal_registration_identifier"/>
+            <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_legal_registration_identifier/@scheme_identifier">
+              <xsl:with-param name="field-mapping-identifier" select="'xr:Seller_legal_registration_identifier/@scheme_identifier'"/>
+            </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_VAT_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_tax_registration_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:Seller_additional_legal_information"/>

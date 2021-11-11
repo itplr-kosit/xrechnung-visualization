@@ -40,6 +40,7 @@
 	<cac:BillingReference>
         <cac:InvoiceDocumentReference>
             <cbc:ID>PRG1502168</cbc:ID>
+			<cbc:IssueDate>2018-10-23</cbc:IssueDate>
         </cac:InvoiceDocumentReference>
     </cac:BillingReference>
 	<cac:ProjectReference>
