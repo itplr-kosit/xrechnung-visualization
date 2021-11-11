@@ -12,9 +12,9 @@
   <!-- Part of the download path -->
   <property name="saxon.url.version" value="10" />
   <!-- Part of the download path -->
-  <property name="saxon.file.version" value="10-5J" />
+  <property name="saxon.file.version" value="10-6J" />
   <!-- the name of the JAR file in the downloaded ZIP file -->
-  <property name="saxon.jar" value="saxon-he-10.5.jar" />
+  <property name="saxon.jar" value="saxon-he-10.6.jar" />
 
   <!-- Naming -->
   <property name="xr-visualization.version.full" value="2021-07-31" />

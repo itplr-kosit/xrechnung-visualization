@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 * Saxon version is configurable with properties (thanks to gihub user ...).
-* Default saxon version is set to he-10.5. 
+* Default saxon version is set to HE-10.6
 
 ### Fixed
 
