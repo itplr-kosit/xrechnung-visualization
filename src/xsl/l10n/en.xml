@@ -239,6 +239,7 @@
   <entry key="datetime-format">[Y]-[M,2]-[D,2] [H]:[m]:[s]</entry>
   <entry key="amount-format">###,##0.00</entry>
   <entry key="percentage-format">##0.##</entry>
+  <entry key="at-least-two-format">###,##0.#################</entry>
   <!-- New entries needed for HTML localization -->
   <entry key="Adresszusatz">Additional address</entry>
   <entry key="Anzahl der Einheit">Number of units</entry>

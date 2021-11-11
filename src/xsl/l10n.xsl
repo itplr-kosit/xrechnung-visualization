@@ -118,16 +118,19 @@
     <xsl:sequence select="xrf:_($identifier)"></xsl:sequence>
   </xsl:function>  
 
+  <xsl:variable name="amount-picture" select="xrf:_('amount-format')" />
+  <xsl:variable name="at-least-two-picture" select="xrf:_('at-least-two-format')" />
+
   <xsl:function name="xrf:format-with-at-least-two-digits" as="xs:string">
       <xsl:param name="input-number"/>    
       <xsl:param name="lang"/>    
           
       <xsl:choose>
           <xsl:when test="string-length(substring-after(xs:string($input-number), '.'))>2">
-              <xsl:sequence select="format-number($input-number,'###.##0,#################',$lang)"></xsl:sequence>
+              <xsl:sequence select="format-number($input-number,$at-least-two-picture,$lang)"></xsl:sequence>
           </xsl:when>
           <xsl:otherwise>                
-              <xsl:sequence select="format-number($input-number,'###.##0,00',$lang)"></xsl:sequence>
+              <xsl:sequence select="format-number($input-number,$amount-picture,$lang)"></xsl:sequence>
           </xsl:otherwise>
       </xsl:choose>                   
   </xsl:function>
