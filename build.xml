@@ -33,7 +33,7 @@
 
   <property name="validator.config.proj.name" value="validator-configuration-xrechnung" />
 
-  <property name="validator.config.release.date" value="2019-12-30" />
+  <property name="validator.config.release.date" value="2021-07-31" />
   <property name="validator.config.download.url"
     value="${github.group.url}/${validator.config.proj.name}/releases/download/release-${validator.config.release.date}/${validator.config.proj.name}_${xrechnung.version.full}_${validator.config.release.date}.zip" />
 
@@ -44,7 +44,7 @@
     location="${build.dir}/xrechnung-configuration-repository" />
   <!-- vnu html validator -->
   <property name="vnu.jar" value="vnu.jar" />
-  <property name="vnu.version" value="18.11.5" />
+  <property name="vnu.version" value="20.6.30" />
   <property name="vnu.zip" value="${vnu.jar}_${vnu.version}.zip" />
   <property name="vnu.download.url"
     value="https://github.com/validator/validator/releases/download/${vnu.version}/${vnu.zip}" />
