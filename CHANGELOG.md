@@ -4,11 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## v2021-10-31
+## Unreleased
 
 ### Added
 
 * Added support for localization -- English and German output is supported 
+* Added BT-26 to maxRechnung.xml
+
+### Changed
+
+* Saxon version is configurable with properties (thanks to gihub user ...).
+* Default saxon version is set to HE-10.6
+* PDF output is now accessible (PDF/UA level), fonts are embedded into PDF
+
+### Fixed
+
+* Fixed format-date of BT-26 in xrechnung-html.xsl (thanks to github user @knoxyz).
+* BT-30-Scheme-ID visualized
 
 ## v2021-07-31
 
@@ -22,12 +34,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * BT-23 get displayed
 * BT-7 and BT-8 is now displayed in invoice data section
 * Correct translation of BT-86 in cii
-
-## v2021-11-04
-
-### Changed
-
-* PDF output is now accessible (PDF/UA level), fonts are embedded into PDF
 
 ## v2020-12-31
 

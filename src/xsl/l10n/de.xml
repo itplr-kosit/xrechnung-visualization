@@ -96,8 +96,10 @@
   <entry key="xr:Seller_electronic_address" id="BT-34">Elektronische Adresse</entry>
   <entry key="xr:Seller_electronic_address/@scheme_identifier" id="BT-34">Schema der elektronischen Adresse</entry>
   <entry key="xr:Seller_legal_registration_identifier" id="BT-30">Registernummer</entry>
+  <entry key="xr:Seller_legal_registration_identifier/@scheme_identifier" id="BT-30">Schema der Registernummer</entry>
   <entry key="xr:Seller_VAT_identifier" id="BT-31">Umsatzsteuer-ID</entry>
   <entry key="xr:Seller_tax_registration_identifier" id="BT-32">Steuernummer</entry>
+  <entry key="xr:Seller_tax_registration_identifier/@scheme_identifier" id="BT-32">Schema der Steuernummer</entry>
   <entry key="xr:Seller_additional_legal_information" id="BT-33">Weitere rechtliche Informationen</entry>
   <entry key="xr:VAT_accounting_currency_code" id="BT-6">Umsatzsteuerabrechnungswährung</entry>
   <!-- BG 12 and 11 Tax Representative party -->
@@ -238,4 +240,5 @@
   <entry key="datetime-format">[D].[M].[Y] [H]:[m]:[s]</entry>
   <entry key="amount-format">###.##0,00</entry>
   <entry key="percentage-format">##0,##</entry>
+  <entry key="at-least-two-format">###.##0,#################</entry>
 </properties>

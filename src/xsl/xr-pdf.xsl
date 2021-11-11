@@ -19,7 +19,7 @@
   <xsl:import href="xr-pdf/lib/structure/content-templates.xsl"/>
   <xsl:import href="xr-pdf/lib/structure/page-sequence.xsl"/>
 
-  <xsl:include href="l10n.xsl"/>
+  <xsl:include href="functions.xsl"/>
 
   <xsl:output method="xml" version="1.0" encoding="utf-8" /> 
 

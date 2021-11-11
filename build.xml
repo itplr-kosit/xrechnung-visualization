@@ -6,9 +6,16 @@
   <property name="build.dir" location="${basedir}/build" />
   <property name="src.dir" location="${basedir}/src" />
   <property name="download.dir" location="${build.dir}/download" />
-  <property name="saxon.jar" value="saxon9he.jar" />
   <property name="fop.jar" value="fop.jar" />
   <property name="fop.home" value="${lib.dir}/fop" />
+  
+  <!-- Part of the download path -->
+  <property name="saxon.url.version" value="10" />
+  <!-- Part of the download path -->
+  <property name="saxon.file.version" value="10-6J" />
+  <!-- the name of the JAR file in the downloaded ZIP file -->
+  <property name="saxon.jar" value="saxon-he-10.6.jar" />
+
   <!-- Naming -->
   <property name="xr-visualization.version.full" value="2021-07-31" />
 
@@ -72,11 +79,11 @@
   <target name="prepare-saxon" depends="init"
     description="Download Saxon-HE and add jar to library directory">
     <get
-      src="https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-8J.zip/download"
-      dest="${download.dir}/SaxonHE9-8-0-8J.zip" verbose="true" skipexisting="true"
+      src="https://sourceforge.net/projects/saxon/files/Saxon-HE/${saxon.url.version}/Java/SaxonHE${saxon.file.version}.zip/download"
+      dest="${download.dir}/SaxonHE${saxon.file.version}.zip" verbose="true" skipexisting="true"
       usetimestamp="true" />
     <fail unless="saxon.jar" message="Provide a name for the extracted saxon jar" />
-    <unzip src="${download.dir}/SaxonHE9-8-0-8J.zip" dest="${lib.dir}">
+    <unzip src="${download.dir}/SaxonHE${saxon.file.version}.zip" dest="${lib.dir}">
       <patternset>
         <include name="**/${saxon.jar}" />
       </patternset>
@@ -239,6 +246,14 @@
       style="${src.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml">
       <classpath location="${lib.dir}/${saxon.jar}" />
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
+      <mapper type="glob" from="*.xml" to="*.html" />
+    </xslt>
+
+    <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.html.dir}-en"
+      style="${src.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml">
+      <classpath location="${lib.dir}/${saxon.jar}" />
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+      <param name="lang" type="STRING" expression="en"/>
       <mapper type="glob" from="*.xml" to="*.html" />
     </xslt>
   </target>
