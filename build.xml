@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project basedir="." name="xrechnung-visualization" default="test">
   <!-- project directory structure -->
-<<<<<<< Upstream, based on origin/master
   <property name="dist.dir" location="${basedir}/dist" />
   <property name="lib.dir" location="${basedir}/lib" />
   <property name="build.dir" location="${basedir}/build" />
@@ -9,15 +8,6 @@
   <property name="download.dir" location="${build.dir}/download" />
   <property name="fop.jar" value="fop.jar" />
   <property name="fop.home" value="${lib.dir}/fop" />
-=======
-  <property name="dist.dir" location="${basedir}/dist"/>
-  <property name="lib.dir" location="${basedir}/lib"/>
-  <property name="build.dir" location="${basedir}/build"/>
-  <property name="src.dir" location="${basedir}/src"/>
-  <property name="download.dir" location="${build.dir}/download"/>
-  <property name="fop.jar" value="fop.jar"/>
-  <property name="fop.home" value="${lib.dir}/fop"/>
->>>>>>> 5634f3c merge master
   
   <!-- Part of the download path -->
   <property name="saxon.url.version" value="10" />
@@ -91,13 +81,8 @@
     <get
       src="https://sourceforge.net/projects/saxon/files/Saxon-HE/${saxon.url.version}/Java/SaxonHE${saxon.file.version}.zip/download"
       dest="${download.dir}/SaxonHE${saxon.file.version}.zip" verbose="true" skipexisting="true"
-<<<<<<< Upstream, based on origin/master
       usetimestamp="true" />
     <fail unless="saxon.jar" message="Provide a name for the extracted saxon jar" />
-=======
-      usetimestamp="true"/>
-    <fail unless="saxon.jar" message="Provide a name for the extracted saxon jar"/>
->>>>>>> 5634f3c merge master
     <unzip src="${download.dir}/SaxonHE${saxon.file.version}.zip" dest="${lib.dir}">
       <patternset>
         <include name="**/${saxon.jar}" />
