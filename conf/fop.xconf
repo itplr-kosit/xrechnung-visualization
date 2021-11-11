@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fop version="1.0">
+  <accessibility>true</accessibility>
+  <renderers>
+    <renderer mime="application/pdf">
+      <pdf-ua-mode>PDF/UA-1</pdf-ua-mode>
+      <pdf-a-mode>PDF/A-1a</pdf-a-mode>
+      
+      <fonts>
+        <font kerning="yes" embed-url="fonts/SourceSerifPro-Light.ttf" embedding-mode="subset">
+          <font-triplet name="SourceSerifPro" style="normal" weight="normal"/>
+        </font>
+        <font kerning="yes" embed-url="fonts/SourceSerifPro-SemiBold.ttf" embedding-mode="subset">
+          <font-triplet name="SourceSerifPro" style="normal" weight="bold"/>
+        </font>
+        <font kerning="yes" embed-url="fonts/SourceSerifPro-LightItalic.ttf" embedding-mode="subset">
+          <font-triplet name="SourceSerifPro" style="italic" weight="normal"/>
+        </font>
+        <font kerning="yes" embed-url="fonts/SourceSerifPro-SemiBoldItalic.ttf" embedding-mode="subset">
+          <font-triplet name="SourceSerifPro" style="italic" weight="bold"/>
+        </font>
+      </fonts>
+    </renderer>
+  </renderers>
+</fop>

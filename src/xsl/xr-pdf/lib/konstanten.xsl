@@ -12,8 +12,8 @@
   == Schriften
   =========================================================================== -->
 
-  <xsl:variable name="fontSans">BundesSans</xsl:variable>
-  <xsl:variable name="fontSerif">BundesSerif</xsl:variable>
+  <xsl:variable name="fontSans">SourceSerifPro</xsl:variable>
+  <xsl:variable name="fontSerif">SourceSerifPro</xsl:variable>
 
   <xsl:variable name="amount-picture" select="xrf:_('amount-format')"/>
   <xsl:variable name="percentage-picture" select="xrf:_('percentage-format')"/>
