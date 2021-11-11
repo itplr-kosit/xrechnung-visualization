@@ -1,6 +1,7 @@
 # README
 
 ## Path through pdf generation
+
 ```
 xr-pdf.xsl
   template match "xr-invoice"
@@ -38,20 +39,23 @@ xr-pdf.xsl
                 call-template zusaetze
                 call-template anlagen
                 call-template laufzettel
-```      
+```
 
-##discussion
+## discussion
 
 ### goal
+
 * possible configuration of layout (e.g. compact as parameter)
 * seperation of nomenclatur content and data entries
   * data.xml, data-field.xml and data-value.xml
 * only push or pull data
 
 ### critism
+
 * pull of sementic data (e.g. uebersichtKaeufer)
 * beginning from call-template uebersichtKaefer the process is not structured by the layout but by the data.
 * xr-mapping.xsl maps informations already exists in xr
 
 ### notes
+
 * layout of group
