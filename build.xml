@@ -17,15 +17,19 @@
   <property name="saxon.jar" value="saxon-he-10.6.jar" />
 
   <!-- Naming -->
-  <property name="xr-visualization.version.full" value="2021-07-31" />
+  <property name="xr-visualization.version.full" value="2021-11-15" />
 
   <!-- Test resources -->
-  <property name="validator.jar" value="validationtool-1.0.1-standalone.jar" />
   <property name="xrechnung.version.major.minor" value="2.1" />
   <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.1" />
+
   <property name="github.group.url" value="https://github.com/itplr-kosit" />
+
+  <property name="validator.version" value="1.4.2" />
+  <property name="validator.jar" value="validationtool-${validator.version}-standalone.jar" />
+  <property name="validator.download.zip" value="validator-${validator.version}-distribution.zip" />
   <property name="validator.download.url"
-    value="${github.group.url}/validationtool/releases/download/validationtool-1_0_1/validationtool-dist-1.0.1-standalone.zip" />
+    value="${github.group.url}/validator/releases/download/v${validator.version}/${validator.download.zip}" />
 
   <property name="validator.config.proj.name" value="validator-configuration-xrechnung" />
 
@@ -93,9 +97,7 @@
 
   <target name="prepare-validationtool" depends="init"
     description="Download KoSIT validation tool and add jar to library directory">
-    <get
-      src="https://github.com/itplr-kosit/validator/releases/download/validationtool-1_0_1/validationtool-dist-1.0.1-standalone.zip"
-      dest="${download.dir}" verbose="true" skipexisting="true" usetimestamp="true" />
+    <get src="${validator.download.url}" dest="${download.dir}" verbose="true" skipexisting="true" usetimestamp="true" />
     <!-- Cause unzip task does not error on missing dest directory -->
     <fail message="Lib directory ${lib.dir} does not exist!">
       <condition>
@@ -105,7 +107,7 @@
       </condition>
     </fail>
     <fail unless="validator.jar" message="Need to specify property with name 'validator.jar'" />
-    <unzip src="${download.dir}/validationtool-dist-1.0.1-standalone.zip" dest="${lib.dir}">
+    <unzip src="${download.dir}/${validator.download.zip}" dest="${lib.dir}">
       <patternset>
         <include name="**/${validator.jar}" />
       </patternset>
