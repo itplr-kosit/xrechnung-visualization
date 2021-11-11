@@ -6,11 +6,11 @@
   xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"
   xmlns:xrv="http://www.example.org/XRechnung-Viewer">
 
-  <xsl:import href="l10n.xsl" />
+  <xsl:output indent="yes" method="html" encoding="UTF-8" />
+
+  <xsl:import href="functions.xsl" />
 
   <xsl:param name="l10n-nl-lookup" select="true()" />
-
-  <xsl:output indent="yes" method="html" encoding="UTF-8" />
 
   <xsl:decimal-format name="de" decimal-separator="," grouping-separator="." NaN="" />
   <xsl:decimal-format name="en" decimal-separator="." grouping-separator="," NaN="" />
