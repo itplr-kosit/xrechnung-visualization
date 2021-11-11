@@ -13,13 +13,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-* Saxon version is configurable with properties (thanks to gihub user ...).
+* Saxon version is configurable with properties (thanks to GitHub user @knoxyz).
 * Default saxon version is set to HE-10.6
 * PDF output is now accessible (PDF/UA level), fonts are embedded into PDF
 
 ### Fixed
 
-* Fixed format-date of BT-26 in xrechnung-html.xsl (thanks to github user @knoxyz).
+* Fixed format-date of BT-26 in xrechnung-html.xsl (thanks to GitHub user @knoxyz).
 * BT-30-Scheme-ID visualized
 
 ## v2021-07-31
