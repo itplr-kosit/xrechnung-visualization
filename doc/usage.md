@@ -2,36 +2,42 @@
 
 There are various configuration options for the XSLT transformations.
 
-
-## PDF 
+## PDF Transformation
 
 ### Choice of FO engine 
 
-The FO engine used can be specified. Specific extensions will be then enabled. 
+The FO engine used can be specified. Engine specific extensions will then be enabled. 
+
+```xml
+<xsl:param name="foengine"/>
+```
 
 Supported values are: 
 * axf - Antenna House XSL Formatter
 * fop - Apache FOP
 
-```
-  <xsl:param name="foengine"/>
-```
+### Layout options
 
-### Choice of Language
+Configuration of the general layout of the invoice. 
 
-German (de) is default and an English tranlsation is also shipped.
+```xml
+<xsl:param name="invoiceline-layout">normal</xsl:param>
+```
+Supported values are: 
+* normal - Similar to HTML layout incl. box layout of invoice lines 
+* tabular - Tabular layout of invoice lines
 
-```
-<xsl:param name="lang" select="'de'"/>
-```
-If one wants to add different language then an XML Properties file and/or change the existing translation
-  
-  <!-- Layout of invoce lines: 
-            normal - default behaviour
-            tabular - table like
+
+  Configuration of table clumn width 
+  <!-- This parameter can be used when different proportions of table columns
+       are needed for tabular layout
        -->
-  <xsl:param name="invoiceline-layout">normal</xsl:param>
+  <xsl:param name="tabular-layout-widths">2 7 2 2 2 2 1.3 2</xsl:param>
 
+
+
+
+Configuration of the numbering scheme of invoice lines. 
   <!-- Numbering of invoice line/sub lines 
             normal - use numbers from invoice
             1.1    - use multilevel arabic numbering
@@ -41,22 +47,19 @@ If one wants to add different language then an XML Properties file and/or change
        -->
   <xsl:param name="invoiceline-numbering">normal</xsl:param>
   
-  <!-- This parameter can be used when different proportions of table columns
-       are needed for tabular layout
-       -->
-  <xsl:param name="tabular-layout-widths">2 7 2 2 2 2 1.3 2</xsl:param>
-  
-  <xsl:param name="axf.extensions" select="if ($foengine eq 'axf') then true() else false()"/>
-  <xsl:param name="fop.extensions" select="if ($foengine eq 'fop') then true() else false()"/>
 
+### Choice of Language for HTML and PDF
 
-## HTML
-### Localization 
-
-Some transformations use natural text in German as translation keys
+German (de) is default and an English (en) translation is also shipped.
 
 ```
-<xsl:param name="l10n-nl-lookup" select="true()" />
+<xsl:param name="lang" select="'de'"/>
 ```
 
-<$l10n-nl-lookup> set <true> ensures that strings will be normalized for correct translation output.
+The translation files are located in [l10n subdirectory](../src/xsl/l10n/)
+
+The format is according to Java Properties in XML (see https://docs.oracle.com/javase/7/docs/api/java/util/Properties.html for details).
+
+The translation files can be changed to local needs.
+
+If one wants to add an additional  language then an XML Properties file can be added to the above directory. By default it ahs to be named by theISO two letter language code (e.g. `fr.xml` for french).
