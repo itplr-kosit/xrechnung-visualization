@@ -31,6 +31,7 @@ The `ant` target `dist` creates the distribution zip Archive for releases.
 * Are all issues scheduled for the release solved?
 * Is everything merged to master branch?
 * Make sure that CHANGELOG.md is up to date
+* Make sure all external contributors are mentioned
 
 
 ### Prepare
