@@ -30,20 +30,6 @@ The `ant` target `dist` creates the distribution zip Archive for releases.
 
 * Are all issues scheduled for the release solved?
 * Is everything merged to master branch?
-* Do Schematron files include correct version of XRechnung Specification? 
-* Make sure that CHANGELOG.md is up to date
-
-
-### Prepare
-
-* Make sure you committed and pushed everything 
- ## Release
-
-### Checklist
-
-* Are all issues scheduled for the release solved?
-* Is everything merged to master branch?
-* Do Schematron files include correct version of XRechnung Specification? 
 * Make sure that CHANGELOG.md is up to date
 
 
