@@ -8,18 +8,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+* Added documentation about [architecture](doc/architecture.md) and [usage](doc/usage.md)
 * Added support for localization -- English and German output is supported. This was done for HTML and PDF output.
 * Added BT-26 to maxRechnung.xml
 
 ### Changed
 
-* Saxon version is configurable with properties (thanks to GitHub user @knoxyz).
-* Default saxon version is set to HE-10.6.
+* Enhanced accessibility of HTML output 
 * PDF output is now accessible (PDF/UA level), fonts are embedded into PDF
+* Saxon version is configurable with properties (thanks to GitHub user @knoxyz)
+* Default saxon version is set to HE-10.6
+* Rewrote README.md for more details and added links to documentation
 
 ### Fixed
 
-* Fixed format-date of BT-26 in xrechnung-html.xsl (thanks to GitHub user @knoxyz).
+* Fixed format-date of BT-26 in xrechnung-html.xsl (thanks to GitHub user @knoxyz)
 * BT-30-Scheme-ID visualized
 
 ## v2021-07-31
