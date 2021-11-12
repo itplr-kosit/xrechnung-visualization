@@ -48,3 +48,15 @@ If one wants to add different language then an XML Properties file and/or change
   
   <xsl:param name="axf.extensions" select="if ($foengine eq 'axf') then true() else false()"/>
   <xsl:param name="fop.extensions" select="if ($foengine eq 'fop') then true() else false()"/>
+
+
+## HTML
+### Localization 
+
+Some transformations use natural text in German as translation keys
+
+```
+<xsl:param name="l10n-nl-lookup" select="true()" />
+```
+
+<$l10n-nl-lookup> set <true> ensures that strings will be normalized for correct translation output.
