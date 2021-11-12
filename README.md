@@ -6,11 +6,16 @@ The source documents have to be in either UBL Invoice/CreditNote XML and CII XML
 
 The transformations have to happen in two steps:
 
-1. Either of UBL Invoice/CreditNote XML and CII XML have to be transformed to an intermediate XML valid to a proprietary simple [XML Schema](src/xsd/xrechnung-semantic-model.xsd)
-2. Then you can use the [xrechnung-html.xsl](src/xsl/xrechnung-html.xsl) to render an HTML document
+1. Either UBL Invoice/CreditNote XML or CII XML have to be transformed to an intermediate XML which has to be valid to a proprietary simple [XML Schema](src/xsd/xrechnung-semantic-model.xsd)
+2. Then you can use either 
+  1. [xrechnung-html.xsl](src/xsl/xrechnung-html.xsl) to render an HTML document or
+  1. [xr-pdf.xsl](src/xsl/xr-pdf.xsl) to render an PDF document
+
+See our [architecture documentation](doc/architecture.md) (in German) for a general overview.
+Here you can find more details on [configuration and usage options](doc/usage.md)
 
 You can find an example use of these transformations in the [ant build script](build.xml). It also includes some technical tests.
 
-This GitHub repository is only a mirror of a GitLab project repository.
+This GitHub repository is only a mirror of our [GitLab project repository](https://projekte.kosit.org/xrechnung/xrechnung-visualization).
 
-For questions please contact KoSIT.
+For questions please contact [KoSIT](https://www.xoev.de/xrechnung-16828).

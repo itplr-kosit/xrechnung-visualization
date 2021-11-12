@@ -18,7 +18,7 @@ Supported values are:
 
 ### Layout options
 
-**Configuration of the general layout of the invoice**
+**Configuration of the general invoice layout **
 
 ```xml
 <xsl:param name="invoiceline-layout">normal</xsl:param>
@@ -35,18 +35,18 @@ Supported values are:
 
 Change column proportions according to your tabular layout.
 
-**Configuration of the numbering scheme of invoice lines.**
+**Configuration of the invoice line numbering scheme**
 
 ```xml
 <xsl:param name="invoiceline-numbering">normal</xsl:param>
 ```
 
 Supported values are: 
-* normal - use numbers from invoice 
+* normal - use numbers as in original invoice 
 * 1.1    - use multilevel arabic numbering
 * 1.i    - use mixture of arabic and roman numbering
-* 00001  - use arabic numbering and align them
-* *other* - any picture string supported by xsl:number instruction can be used
+* 00001  - use aligned arabic numbering 
+* *other* - any picture string supported by [xsl:number](https://developer.mozilla.org/en-US/docs/Web/XSLT/Element/number) instruction can be used
 
 ### Choice of Language for HTML and PDF
 
@@ -59,4 +59,4 @@ Default language is German (de), an English (en) translation is also provided.
 Translation files are located in the [l10n subdirectory](../src/xsl/l10n/) and can be customized according to specific local needs.
 
 Translation files are formatted according to Java Properties in XML (see https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Properties.html for details).
-Additional languages can be included by adding XML Properties files to the [l10n directory](../src/xsl/l10n/). Per default, files have to be named according to ISO 639-1 two letter language codes (e.g. `fr.xml` for French).
+Additional languages can be included by adding XML Properties files to the [l10n directory](../src/xsl/l10n/). By default, files have to be named according to ISO 639-1 two letter language codes (e.g. `fr.xml` for French).
