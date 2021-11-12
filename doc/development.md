@@ -55,10 +55,12 @@ ant clean dist
 * Add release title of the following scheme: `XRechnung Visualization ${xr-visu.version.full} compatible with XRechnung ${xrechnung.version}`
 * Copy & paste the high quality changelog entries for this release from CHANGELOG.md.
 * Upload distribution zip and tick mark this release as a `pre-release`.
-* If **all** released componentes are checked to be okay, then uncheck pre-release.
+* If **all** released components are checked to be okay, then uncheck pre-release.
 
 ### Post-Release
 
-* Change the version of XRechnung Schematron in `build.xml` to the next release and commit
+* Change the version of this component in `build.xml` to the next release and commit
+* bump version
+* update CHANGELOG.md
 
 You are done :smile:
