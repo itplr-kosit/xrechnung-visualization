@@ -17,7 +17,7 @@
   <property name="saxon.jar" value="saxon-he-10.6.jar" />
 
   <!-- Naming -->
-  <property name="xr-visualization.version.full" value="2021-01-31" />
+  <property name="xr-visualization.version.full" value="2022-01-31-SNAPSHOT" />
 
   <!-- Test resources -->
   <property name="xrechnung.version.major.minor" value="2.1" />
