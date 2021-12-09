@@ -156,6 +156,7 @@
   <entry key="xrv:subject">Subject</entry>
   <entry key="xrv:text">Text</entry>
   <entry key="xrv:details">Details</entry>
+  <entry key="xr:Invoice_line_identifier" id="BT-126">Identifier</entry>
   <entry key="xr:Invoice_line_note" id="BT-127">Free text</entry>
   <entry key="xr:Invoice_line_object_identifier" id="BT-128_identifier">Object identifier</entry>
   <entry key="xr:Invoice_line_object_identifier/@scheme_identifier" id="BT-128_scheme">Object identifier scheme</entry>
