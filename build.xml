@@ -141,7 +141,9 @@
       skipexisting="true" usetimestamp="true" />
     <unzip src="${download.dir}/${validator.config.zip}" dest="${validator.repository.dir}" />
   </target>
+<!-- here onlz testsuoie instances from a defined list are downloaded.
 
+It needs be changed to NOT maintain a list but check against all-->
   <target name="prepare-testsuite" depends="init"
     description="Get data from xrechnung-testsuite for testing visualization">
     <copy todir="${test.build.dir}" verbose="true">
