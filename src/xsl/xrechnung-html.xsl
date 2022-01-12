@@ -1103,8 +1103,7 @@
       <div class="boxzeile">
         <div class="box subBox">
           <div id="BT-126" data-title="BT-126" class="boxtitel" role="heading" aria-level="2">
-            <xsl:value-of select="xrf:_('Position')" />
-            <xsl:value-of select="xr:Invoice_line_identifier" />
+            <xsl:value-of select="concat( xrf:_('xr:Invoice_line_identifier') , ': ', xr:Invoice_line_identifier)" />
           </div>
           <div class="boxtabelle boxinhalt borderSpacing" role="list">
             <div class="boxzeile" role="listitem">
