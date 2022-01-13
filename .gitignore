@@ -2,6 +2,7 @@
 /build
 /lib
 /reports
+development.build.properties
 .vscode
 *.xpr
 .ant-targets-build.xml
