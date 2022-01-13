@@ -150,6 +150,21 @@
     <unzip src="${download.dir}/${validator.config.zip}" dest="${validator.repository.dir}" />
   </target>
   
+  
+  <target name="retrieve-xr-testsuite-from-local-build" depends="init"
+    if="develop.local.xr.testsuite">
+    <get src="${xr.testsuite.download.url.prefix}/${xr.testsuite.zip}" dest="${download.dir}"
+      verbose="true" skipexisting="false" usetimestamp="false" httpusecaches="false" />
+  </target>
+  
+  <target name="retrieve-xr-testsuite-from-github-release" depends="init"
+    unless="develop.local.xr.testsuite">
+    
+    <get
+      src="${xr.testsuite.download.url.prefix}/release-${xr.testsuite.version}/${xr.testsuite.zip}"
+      dest="${download.dir}" verbose="true" skipexisting="true" usetimestamp="true" />
+  </target>
+  
   <target name="retrieve-xr-testsuite"
     depends="retrieve-xr-testsuite-from-local-build, retrieve-xr-testsuite-from-github-release">
     
@@ -177,21 +192,6 @@
       <flattenmapper />
     </unzip>
     
-  </target>
-  
-  
-  <target name="retrieve-xr-testsuite-from-local-build" depends="init"
-    if="develop.local.xr.testsuite">
-    <get src="${xr.testsuite.download.url.prefix}/${xr.testsuite.zip}" dest="${download.dir}"
-      verbose="true" skipexisting="false" usetimestamp="false" httpusecaches="false" />
-  </target>
-  
-  <target name="retrieve-xr-testsuite-from-github-release" depends="init"
-    unless="develop.local.xr.testsuite">
-    
-    <get
-      src="${xr.testsuite.download.url.prefix}/release-${xr.testsuite.version}/${xr.testsuite.zip}"
-      dest="${download.dir}" verbose="true" skipexisting="true" usetimestamp="true" />
   </target>
 
 
