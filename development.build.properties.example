@@ -1,0 +1,33 @@
+###
+# XRECHNUNG VISUALISATION properties
+#
+# Customize these properties to develop with local dependencies.
+##
+
+##
+# This value has to be same as ant basedir because basedir is not set in this context
+#
+# Please set this value first and with an absolute path.
+##
+#work.dir=/mnt/c/data/git-repos/xrechnung-visualisation
+
+##
+# Designates the specification version for which this visualisation is valid
+##
+#xrechnung.version.full=2.2.0
+
+
+
+##
+# Set this property in order to activate targets for local development
+# Be aware the presence of this property determines some of the behavior independent of the value
+##
+#develop.local.xr.testsuite=true
+###
+# Get latest XRechnung Testsuite distribution from your local git project
+# Example is relative to this project directory in local file system
+##
+#xr.testsuite.download.url.prefix=file://${work.dir}/../xrechnung-testsuite/dist
+
+#xr.testsuite.version=2022-01-31-SNAPSHOT
+
