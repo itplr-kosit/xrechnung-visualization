@@ -152,7 +152,15 @@
   
   <target name="retrieve-xr-testsuite"
     depends="retrieve-xr-testsuite-from-local-build, retrieve-xr-testsuite-from-github-release">
-    <!-- add check something was downloaded -->
+    
+    <fail message="${xr.testsuite.zip} does not exist in download files">
+      <condition>
+        <not>
+          <available file="${download.dir}/${xr.testsuite.zip}"/>
+        </not>
+      </condition>
+    </fail>
+    
   </target>
   
   <target name="prepare-testsuite" depends="init, retrieve-xr-testsuite"
