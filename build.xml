@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project basedir="." name="xrechnung-visualization" default="test">
+  
   <!-- project directory structure -->
   <property name="dist.dir" location="${basedir}/dist" />
   <property name="lib.dir" location="${basedir}/lib" />
@@ -57,6 +58,13 @@
   <property name="test.transformed.html.dir" location="${test.build.dir}/html" />
   <property name="test.transformed.pdf.dir" location="${test.build.dir}/pdf" />
   <property name="test.reports.dir" location="${test.build.dir}/reports" />
+  
+  <!-- testsuite -->
+  <property name="xr.testsuite.version" value="2021-11-15" />
+  <property name="xr.testsuite.download.url.prefix"
+    value="https://github.com/itplr-kosit/xrechnung-testsuite/releases/download" />
+  <property name="xr.testsuite.zip"
+    value="xrechnung-${xrechnung.version.full}-testsuite-${xr.testsuite.version}.zip" />
 
   <property name="xrechnung.xsd.ns"
     value="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1" />
@@ -141,24 +149,51 @@
       skipexisting="true" usetimestamp="true" />
     <unzip src="${download.dir}/${validator.config.zip}" dest="${validator.repository.dir}" />
   </target>
-
-  <target name="prepare-testsuite" depends="init"
+  
+  
+  <target name="retrieve-xr-testsuite-from-local-build" depends="init"
+    if="develop.local.xr.testsuite">
+    <get src="${xr.testsuite.download.url.prefix}/${xr.testsuite.zip}" dest="${download.dir}"
+      verbose="true" skipexisting="false" usetimestamp="false" httpusecaches="false" />
+  </target>
+  
+  <target name="retrieve-xr-testsuite-from-github-release" depends="init"
+    unless="develop.local.xr.testsuite">
+    
+    <get
+      src="${xr.testsuite.download.url.prefix}/release-${xr.testsuite.version}/${xr.testsuite.zip}"
+      dest="${download.dir}" verbose="true" skipexisting="true" usetimestamp="true" />
+  </target>
+  
+  <target name="retrieve-xr-testsuite"
+    depends="retrieve-xr-testsuite-from-local-build, retrieve-xr-testsuite-from-github-release">
+    
+    <fail message="${xr.testsuite.zip} does not exist in download files">
+      <condition>
+        <not>
+          <available file="${download.dir}/${xr.testsuite.zip}"/>
+        </not>
+      </condition>
+    </fail>
+    
+  </target>
+  
+  <target name="prepare-testsuite" depends="init, retrieve-xr-testsuite"
     description="Get data from xrechnung-testsuite for testing visualization">
+
     <copy todir="${test.build.dir}" verbose="true">
       <fileset dir="${test.src.dir}" includes="**/*.xml" />
     </copy>
-    <loadfile property="urls" srcFile="${test.src.dir}/testsuite-instances.txt">
-      <filterchain>
-        <prefixlines prefix="${xr.testsuite.docs.download.url.base}/" />
-      </filterchain>
-    </loadfile>
-    <echo message="${urls}" file="${test.build.dir}/testsuite-instance-urls.txt" />
-    <get dest="${test.docs.dir}" verbose="true" skipexisting="true" usetimestamp="true">
-      <resourcelist>
-        <file name="${test.build.dir}/testsuite-instance-urls.txt" />
-      </resourcelist>
-    </get>
+    
+    <unzip src="${download.dir}/${xr.testsuite.zip}" dest="${test.docs.dir}">
+      <patternset>
+        <include name="**/*.xml" />
+      </patternset>
+      <flattenmapper />
+    </unzip>
+    
   </target>
+
 
   <target name="prepare-fop" depends="init, prepare-saxon"
     description="Download Apache FOP for taskdef stuff">
@@ -191,7 +226,6 @@
     </taskdef>
 
   </target>
-
 
   <!-- Check that data from xrechnung-testsuite is valid -->
   <target name="test-testsuite"
