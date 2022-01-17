@@ -286,7 +286,7 @@
         </div>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('Straße / Hausnummer')" />:
+            <xsl:value-of select="xrf:_('xr:Seller_address_line_1')" />:
           </div>
           <div id="BT-35" data-title="BT-35" class="boxdaten wert">
             <xsl:value-of select="xr:SELLER_POSTAL_ADDRESS/xr:Seller_address_line_1" />
@@ -294,7 +294,7 @@
         </div>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('Postfach')" />:
+            <xsl:value-of select="xrf:_('xr:Seller_address_line_2')" />:
           </div>
           <div id="BT-36" data-title="BT-36" class="boxdaten wert">
             <xsl:value-of select="xr:SELLER_POSTAL_ADDRESS/xr:Seller_address_line_2" />
@@ -302,7 +302,7 @@
         </div>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('Adresszusatz')" />:
+            <xsl:value-of select="xrf:_('xr:Seller_address_line_3')" />:
           </div>
           <div id="BT-162" data-title="BT-162" class="boxdaten wert">
             <xsl:value-of select="xr:SELLER_POSTAL_ADDRESS/xr:Seller_address_line_3" />
