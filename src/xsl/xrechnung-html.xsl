@@ -741,7 +741,7 @@
 
   <xsl:template name="uebersichtNachlass" match="xr:DOCUMENT_LEVEL_ALLOWANCES">
     <div class="boxzeile">
-      <div id="uebersichtNachlass" class="box">
+      <div class="uebersichtNachlass box">
         <div data-title="BG-20" class="BG-20 boxtitel" role="heading" aria-level="2">
           <xsl:value-of select="xrf:_('Nachlass auf Ebene der Rechnung')" />
         </div>
