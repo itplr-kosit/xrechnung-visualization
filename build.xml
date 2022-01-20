@@ -21,8 +21,8 @@
   <property name="xr-visualization.version.full" value="2022-01-31-SNAPSHOT" />
 
   <!-- Test resources -->
-  <property name="xrechnung.version.major.minor" value="2.1" />
-  <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.1" />
+  <property name="xrechnung.version.major.minor" value="2.2" />
+  <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.0" />
 
   <property name="github.group.url" value="https://github.com/itplr-kosit" />
 
@@ -197,7 +197,7 @@
 
   <target name="prepare-fop" depends="init, prepare-saxon"
     description="Download Apache FOP for taskdef stuff">
-    <get src="https://downloads.apache.org/xmlgraphics/fop/binaries/fop-2.6-bin.zip"
+    <get src="https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-2.6-bin.zip"
       dest="${download.dir}/fop-2.6-bin.zip" verbose="true" skipexisting="true" usetimestamp="true" />
     <fail unless="fop.jar" message="Provide a name for the extracted fop jar" />
     <unzip src="${download.dir}/fop-2.6-bin.zip" dest="${fop.home}">
