@@ -4,9 +4,9 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
   xmlns:xr="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
   xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"
-  xmlns:xrv="http://www.example.org/XRechnung-Viewer">
+  xmlns:xrv="http://www.example.org/XRechnung-Viewer" exclude-result-prefixes="#all">
 
-  <xsl:output indent="yes" method="html" encoding="UTF-8" />
+    <xsl:output indent="yes" method="html" encoding="UTF-8" include-content-type="no" media-type="text/html" undeclare-prefixes="yes"/>
 
   <xsl:import href="functions.xsl" />
 
@@ -17,7 +17,7 @@
 
     <!-- MAIN HTML -->
   <xsl:template match="/xr:invoice">
-
+     <!-- <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>-->
     <html lang="{$lang}">
       <head>
         <meta charset="UTF-8" />
@@ -26,6 +26,10 @@
         <style>
           <xsl:value-of select="unparsed-text('xrechnung-viewer.css')" />
         </style>
+          <!-- according to https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup -->
+          <script>
+              <xsl:value-of select="unparsed-text('xrechnung-viewer.js')" />
+          </script>          
       </head>
       <body>
         <div role="main">
@@ -75,10 +79,8 @@
             </div>
           </div>
         </div>
+
       </body>
-      <script>
-        <xsl:value-of select="unparsed-text('xrechnung-viewer.js')" />
-      </script>
     </html>
   </xsl:template>
 
@@ -518,7 +520,7 @@
   </xsl:template>
 
   <xsl:template match="xr:PRECEDING_INVOICE_REFERENCE">
-    <div role="listitem">
+    <div role="list">
       <strong>
         <xsl:value-of select="xrf:_('Vorausgegangene Rechnungen')" />:
       </strong>
@@ -878,14 +880,14 @@
             </div>
           </div>
         </div>
-        <div class="grund" role="listitem">
-          <div>
+        <div class="grund" role="list">
+            <div role="listitem">
             <xsl:value-of select="xrf:_('Grund für den Zuschlag')" />:
-            <span data-title="BT-104" class="BT-104 bold">
+              <span data-title="BT-104" class="BT-104 bold" >
               <xsl:value-of select="xr:Document_level_charge_reason" />
             </span>
           </div>
-          <div>
+            <div role="listitem">
             <xsl:value-of select="xrf:_('Document level charge reason code')" />:
             <span data-title="BT-105" class="BT-105 bold">
               <xsl:value-of select="xr:Document_level_charge_reason_code" />
@@ -2063,11 +2065,11 @@
           <xsl:value-of select="xrf:_('Anhangsdokument')" />:
         </div>
         <div data-title="BT-125" class="BT-125 boxdaten wert">
-          <a href="#" onClick="downloadData('{xr:Supporting_document_reference}')">
+          <a href="#" onClick="downloadData('{translate(xr:Supporting_document_reference, ' ', '-')}')">
             <xsl:value-of select="xrf:_('Öffnen')" />
           </a>
         </div>
-        <div id="{xr:Supporting_document_reference}" data-mimetype="{xr:Attached_document/@mime_code}"
+          <div id="{translate(xr:Supporting_document_reference, ' ', '-')}" data-mimetype="{xr:Attached_document/@mime_code}"
           data-filename="{xr:Attached_document/@filename}" style="display:none;">
           <xsl:value-of select="xr:Attached_document" />
         </div>
