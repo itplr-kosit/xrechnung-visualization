@@ -60,7 +60,7 @@
   <property name="test.reports.dir" location="${test.build.dir}/reports" />
   
   <!-- testsuite -->
-  <property name="xr.testsuite.version" value="2021-11-15" />
+  <property name="xr.testsuite.version" value="2022-01-31" />
   <property name="xr.testsuite.download.url.prefix"
     value="https://github.com/itplr-kosit/xrechnung-testsuite/releases/download" />
   <property name="xr.testsuite.zip"
@@ -272,7 +272,7 @@
   </target>
 
   <target name="transform-to-xr"
-    depends="transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr, transform-cii-to-xr"
+    depends="prepare-testsuite, transform-ubl-invoice-to-xr, transform-ubl-creditnote-to-xr, transform-cii-to-xr"
     description="Calls transformation from all source formats to XR">
     <!-- Just container for all transformations -->
   </target>
