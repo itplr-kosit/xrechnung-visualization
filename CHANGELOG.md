@@ -14,9 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
-* any HTML error VNU The Nu Html Checker (v.Nu) 
+* HTML errors except "stray start tag script" as VNU The Nu Html Checker (v.Nu) reports
 * Translation key for BT-126 (Invoice Line Identifier)
-* Address Labels in HTML for Buyer Address (BT-50, BT-51, BT-163), Seller Address (BT-35, BT-36, BT-162), Tax representative Address (BT-64, BT-65, BT-164), and Deliver To Address (BT-75, BT-76, BT-165)
+* Address Labels in HTML for:
+  * Buyer Address (BT-50, BT-51, BT-163), 
+  * Seller Address (BT-35, BT-36, BT-162), 
+  * Tax representative Address (BT-64, BT-65, BT-164), and 
+  * Deliver To Address (BT-75, BT-76, BT-165)
+* Display of BT-72 (Actual Delivery Date)
 
 
 ## v2021-11-15
