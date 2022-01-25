@@ -188,6 +188,7 @@
     <unzip src="${download.dir}/${xr.testsuite.zip}" dest="${test.docs.dir}">
       <patternset>
         <include name="**/*.xml" />
+        <exclude name="**/04.05a-INVOICE_uncefact.xml" />
       </patternset>
       <flattenmapper />
     </unzip>
