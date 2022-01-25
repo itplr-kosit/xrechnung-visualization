@@ -18,7 +18,7 @@
   <property name="saxon.jar" value="saxon-he-10.6.jar" />
 
   <!-- Naming -->
-  <property name="xr-visualization.version.full" value="2022-01-31-SNAPSHOT" />
+  <property name="xr-visualization.version.full" value="2022-01-31" />
 
   <!-- Test resources -->
   <property name="xrechnung.version.major.minor" value="2.2" />
@@ -188,6 +188,7 @@
     <unzip src="${download.dir}/${xr.testsuite.zip}" dest="${test.docs.dir}">
       <patternset>
         <include name="**/*.xml" />
+        <exclude name="**/04.05a-INVOICE_uncefact.xml" />
       </patternset>
       <flattenmapper />
     </unzip>
