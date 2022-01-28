@@ -140,7 +140,7 @@
 	<cac:Delivery>
 		<cbc:ActualDeliveryDate>2018-10-22</cbc:ActualDeliveryDate>
 		<cac:DeliveryLocation>
-			<cbc:ID>AL</cbc:ID>
+			<cbc:ID schemeID="0088">AL</cbc:ID>
 			<cac:Address>
 				<cbc:StreetName>Anderer Leistungsempfänger Straße 1</cbc:StreetName>
 				<cbc:AdditionalStreetName>Anderer Leistungsempfänger erweiterte
