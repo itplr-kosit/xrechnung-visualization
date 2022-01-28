@@ -731,7 +731,7 @@
           <xsl:with-param name="content">            
             <xsl:apply-templates mode="list-entry" select="xr:DELIVERY_INFORMATION/xr:Deliver_to_location_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:DELIVERY_INFORMATION/xr:Deliver_to_location_identifier/@scheme_identifier">
-              <xsl:with-param name="field-mapping-identifier" select="xr:Deliver_to_location_identifier/@scheme_identifier"/>
+              <xsl:with-param name="field-mapping-identifier" select="'xr:Deliver_to_location_identifier/@scheme_identifier'"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:DELIVERY_INFORMATION/xr:Actual_delivery_date">
               <xsl:with-param name="value" select="format-date(xr:DELIVERY_INFORMATION/xr:Actual_delivery_date, xrf:_('date-format'))"/>
