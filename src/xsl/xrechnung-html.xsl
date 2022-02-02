@@ -25,7 +25,11 @@
         <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0" />
         <style>
           <xsl:value-of select="unparsed-text('xrechnung-viewer.css')" />
-        </style>       
+        </style>
+        <!-- according to https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup -->
+        <script>
+          <xsl:value-of select="unparsed-text('xrechnung-viewer.js')" />
+        </script>
       </head>
       <body>
         <div role="main">
@@ -77,10 +81,6 @@
         </div>
 
       </body>
-      <!-- according to https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup -->
-      <script>
-        <xsl:value-of select="unparsed-text('xrechnung-viewer.js')" />
-      </script>   
     </html>
   </xsl:template>
 
