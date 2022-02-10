@@ -118,7 +118,7 @@
   <entry key="xr:Buyer_electronic_address" id="BT-49">Elektronische Adresse</entry>
   <entry key="xr:Buyer_electronic_address/@scheme_identifier" id="BT-49">Schema der elektronischen Adresse</entry>
   <entry key="xr:Buyer_legal_registration_identifier" id="BT-47">Registernummer</entry> <!-- Register-/Registriernummer -->
-  <entry key="xr:Buyer_legal_registration_identifier/@scheme_identifier" id="BT-47">Schema der Registernummer</entry>
+  <entry key="xr:Buyer_legal_registration_identifier/@scheme_identifier" id="BT-47">Schema der Registernummer</entry> <!-- Schema der Register-/Registriernummer -->
   <entry key="xr:Buyer_VAT_identifier" id="BT-48">Umsatzsteuer-ID</entry>
   <entry key="xr:Value_added_tax_point_date" id="BT-7">Abrechnungsdatum der Umsatzsteuer</entry>
   <entry key="xr:Value_added_tax_point_date_code" id="BT-8">Code des Umsatzsteuer-Abrechnungsdatums</entry>
@@ -146,7 +146,7 @@
   <entry key="xr:Payee_identifier" id="BT-60">Kennung</entry>
   <entry key="xr:Payee_identifier/@scheme_identifier" id="BT-60a">Schema der Kennung</entry>
   <entry key="xr:Payee_legal_registration_identifier" id="BT-61">Registernummer</entry> <!-- Register-/Registriernummer -->
-  <entry key="xr:Payee_legal_registration_identifier/@scheme_identifier" id="BT-61">Schema der Registernummer</entry>
+  <entry key="xr:Payee_legal_registration_identifier/@scheme_identifier" id="BT-61">Schema der Registernummer</entry> <!-- Schema der Register-/Registriernummer -->
   <!-- BG 24 Additonal supporting Documents -->
   <entry key="xr:Supporting_document_reference" id="BT-122">Kennung</entry>
   <entry key="xr:Supporting_document_description" id="BT-123">Beschreibung</entry>
@@ -245,9 +245,6 @@
   <entry key="at-least-two-format">###.##0,#################</entry>
   <!-- New entries needed for HTML localization -->
   
-  <entry key="Schema der Register-/Registriernummer">Registry/registrar number scheme</entry>
-  <entry key="Skonto; weitere Zahlungsbedingungen">Discount; other payment terms</entry>
-  <entry key="Straße / Hausnummer">Street / House number</entry>
   <entry key="Summe aller Positionen">Total of all items</entry>
   <entry key="Telefon">Phone</entry>
   <entry key="Umsatzsteuer">Value added tax</entry>
@@ -283,4 +280,6 @@
   <entry key="Karteninformation">Card information</entry>
   <entry key="Position">Position</entry>
   <entry key="Preiseinzelheiten">Price details</entry>
+  <entry key="Skonto; weitere Zahlungsbedingungen">Discount; other payment terms</entry>
+  <entry key="Straße / Hausnummer">Street / House number</entry>
 </properties>

@@ -1769,7 +1769,7 @@
         </div>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('Schema der Register-/Registriernummer')" />:
+            <xsl:value-of select="xrf:_('xr:Buyer_legal_registration_identifier/@scheme_identifier')" />:
           </div>
           <div data-title="BT-47-scheme-id" class="BT-47-scheme-id boxdaten wert">
             <xsl:value-of select="xr:Buyer_legal_registration_identifier/@scheme_identifier" />
@@ -2002,7 +2002,7 @@
         </div>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('Schema der Register-/Registriernummer')" />:
+            <xsl:value-of select="xrf:_('xr:Payee_legal_registration_identifier/@scheme_identifier')" />:
           </div>
           <div data-title="BT-61-scheme-id" class="BT-61-scheme-id boxdaten wert">
             <xsl:value-of select="xr:Payee_legal_registration_identifier/@scheme_identifier" />
