@@ -249,7 +249,7 @@
         </div>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('Telefon')" />:
+            <xsl:value-of select="xrf:_('xr:Buyer_contact_telephone_number')" />:
           </div>
           <div data-title="BT-57" class="BT-57 boxdaten wert">
             <xsl:value-of select="xr:BUYER_CONTACT/xr:Buyer_contact_telephone_number" />
@@ -368,7 +368,7 @@
         </div>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('Telefon')" />:
+            <xsl:value-of select="xrf:_('xr:Seller_contact_telephone_number')" />:
           </div>
           <div data-title="BT-42" class="BT-42 boxdaten wert">
             <xsl:value-of select="xr:SELLER_CONTACT/xr:Seller_contact_telephone_number" />
@@ -489,7 +489,7 @@
               </div>
               <div class="boxzeile" role="listitem">
                 <div class="boxdaten legende">
-                  <xsl:value-of select="xrf:_('Vertragsnummer')" />:
+                  <xsl:value-of select="xrf:_('xr:Contract_reference')" />:
                 </div>
                 <div data-title="BT-12" class="BT-12 boxdaten wert">
                   <xsl:value-of select="xr:Contract_reference" />
@@ -1251,7 +1251,7 @@
             </div>
             <div class="boxzeile" role="listitem">
               <div class="boxdaten legende">
-                <xsl:value-of select="xrf:_('Umsatzsteuer')" />:
+                <xsl:value-of select="xrf:_('xr:Invoiced_item_VAT_category_code')" />:
               </div>
               <div data-title="BT-151" class="BT-151 boxdaten wert">
                 <xsl:value-of select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_category_code" />
@@ -1259,7 +1259,7 @@
             </div>
             <div class="boxzeile" role="listitem">
               <div class="boxdaten legende">
-                <xsl:value-of select="xrf:_('Umsatzsteuersatz in Prozent')" />:
+                <xsl:value-of select="xrf:_('xr:Invoiced_item_VAT_rate')" />:
               </div>
               <div data-title="BT-152" class="BT-152 boxdaten wert">
                 <xsl:value-of
@@ -1463,7 +1463,7 @@
                   </div>
                   <div class="boxzeile" role="listitem">
                     <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('Version zur Bildung des Schemas')" />:
+                      <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_version_identifier')" />:
                     </div>
                     <div data-title="BT-158-scheme-version-id" class="BT-158-scheme-version-id boxdaten wert">
                       <xsl:value-of
@@ -1903,7 +1903,7 @@
       <div class="boxtabelle boxinhalt borderSpacing" role="list">
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('Vergabenummer')" />:
+            <xsl:value-of select="xrf:_('xr:Tender_or_lot_reference')" />:
           </div>
           <div data-title="BT-17" class="BT-17 boxdaten wert">
             <xsl:value-of select="xr:Tender_or_lot_reference" />

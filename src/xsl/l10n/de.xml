@@ -11,7 +11,7 @@
   <entry key="xr:Buyer_identifier" id="BT-46">Kennung</entry>
   <entry key="xr:Buyer_identifier/@scheme_identifier" id="BT-46">Schema der Kennung</entry>
   <entry key="xr:Buyer_contact_point" id="BT-56">Kontaktstelle</entry>
-  <entry key="xr:Buyer_contact_telephone_number" id="BT-57">Kontaktstellen-Telefon</entry>
+  <entry key="xr:Buyer_contact_telephone_number" id="BT-57">Kontaktstellen-Telefon</entry> <!-- Telefon -->
   <entry key="xr:Buyer_contact_email_address" id="BT-58">Kontaktstellen-Email</entry> <!-- E-Mail-Adresse -->
   <entry key="xr:Seller_name" id="BT-27">Firmenname</entry>
   <entry key="xr:Seller_address_line_1" id="BT-35">Adresszeile 1</entry>
@@ -24,14 +24,14 @@
   <entry key="xr:Seller_identifier" id="BT-29">Kennung</entry>
   <entry key="xr:Seller_identifier/@scheme_identifier" id="BT-29">Schema der Kennung</entry>
   <entry key="xr:Seller_contact_point" id="BT-41">Kontaktstelle</entry>
-  <entry key="xr:Seller_contact_telephone_number" id="BT-42">Kontaktstellen-Telefon</entry>
+  <entry key="xr:Seller_contact_telephone_number" id="BT-42">Kontaktstellen-Telefon</entry> <!-- Telefon -->
   <entry key="xr:Seller_contact_email_address" id="BT-43">Kontaktstellen-Email</entry> <!-- E-Mail-Adresse -->
   <entry key="xr:Invoice_number" id="BT-1">Rechnungsnummer</entry>
   <entry key="xr:Invoice_issue_date" id="BT-2">Rechnungsdatum</entry>
   <entry key="xr:Invoice_type_code" id="BT-3">Rechnungsart</entry>
   <entry key="xr:Invoice_currency_code" id="BT-5">Währung</entry>
   <entry key="xr:Project_reference" id="BT-11">Projektreferenz</entry> <!-- Projektnummer -->
-  <entry key="xr:Contract_reference" id="BT-12">Vertragsreferenz</entry>
+  <entry key="xr:Contract_reference" id="BT-12">Vertragsreferenz</entry> <!-- Vertragsnummer -->
   <entry key="xr:Purchase_order_reference" id="BT-13">Bestellreferenz</entry> <!-- Bestellnummer -->
   <entry key="xr:Sales_order_reference" id="BT-14">Auftragsreferenz</entry> <!-- Auftragsnummer -->
   <!-- Be aware that these are for the whole invoice -->
@@ -134,7 +134,7 @@
   <entry key="xr:Deliver_to_city" id="BT-77">Ort</entry>
   <entry key="xr:Deliver_to_country_subdivision" id="BT-79">Bundesland</entry>
   <entry key="xr:Deliver_to_country_code" id="BT-80">Ländercode</entry> <!-- Land -->
-  <entry key="xr:Tender_or_lot_reference" id="BT-17">Vergabekennung</entry>
+  <entry key="xr:Tender_or_lot_reference" id="BT-17">Vergabekennung</entry> <!-- Vergabenummer -->
   <entry key="xr:Receiving_advice_reference" id="BT-15">Kennung der Empfangsbestätigung</entry>
   <entry key="xr:Despatch_advice_reference" id="BT-16">Kennung der Versandanzeige</entry>
   <entry key="xr:Business_process_type" id="BT-23">Prozesskennung</entry>
@@ -174,8 +174,8 @@
   <entry key="xr:Item_gross_price" id="BT-148">Listenpreis (netto)</entry>
   <entry key="xr:Item_price_base_quantity" id="BT-149">Preiseinheit</entry> <!-- Anzahl der Einheit -->
   <entry key="xr:Item_price_base_quantity_unit_of_measure" id="BT-150">Kennung der Maßeinheit</entry> <!-- Code der Maßeinheit -->
-  <entry key="xr:Invoiced_item_VAT_category_code" id="BT-151">Umsatzsteuercode</entry>
-  <entry key="xr:Invoiced_item_VAT_rate" id="BT-152">Umsatzsteuersatz (%)</entry>
+  <entry key="xr:Invoiced_item_VAT_category_code" id="BT-151">Umsatzsteuercode</entry> <!-- Umsatzsteuer -->
+  <entry key="xr:Invoiced_item_VAT_rate" id="BT-152">Umsatzsteuersatz (%)</entry> <!-- Umsatzsteuersatz in Prozent -->
   <entry key="xr:Item_name" id="BT-153">Bezeichnung</entry>
   <entry key="xr:Item_description" id="BT-154">Beschreibung</entry>
   <entry key="xr:Item_Sellers_identifier" id="BT-155">Artikelkennung</entry> <!-- Artikelnummer -->
@@ -185,7 +185,7 @@
   <!-- <entry key="xr:Item_classification_identifier" id="BT-158_identifier">Kennung der Artikelklassifizierung</entry> -->
   <entry key="xr:Item_classification_identifier" id="BT-158">Kennung der Artikelklassifizierung</entry> <!-- Code der Artikelklassifizierung -->
   <entry key="xr:Item_classification_identifier/@scheme_identifier" id="BT-158_scheme">Kennung zur Bildung des Schemas</entry>
-  <entry key="xr:Item_classification_identifier/@scheme_version_identifier" id="BT-158_scheme_version">Version der Kennung zur Bildung des Schemas</entry>
+  <entry key="xr:Item_classification_identifier/@scheme_version_identifier" id="BT-158_scheme_version">Version der Kennung zur Bildung des Schemas</entry> <!-- Version zur Bildung des Schemas -->
   <entry key="xr:Item_country_of_origin" id="BT-159">Herkunftsland bzw. Leistungserbringungsort</entry> <!-- Code des Herkunftslandes -->
   <entry key="xr:Invoice_line_allowance_base_amount" id="BT-137">Grundbetrag (netto)</entry>
   <entry key="xr:Invoice_line_allowance_percentage" id="BT-138">Prozentsatz</entry>
@@ -245,14 +245,6 @@
   <entry key="at-least-two-format">###.##0,#################</entry>
   <!-- New entries needed for HTML localization -->
   
-  <entry key="Summe aller Positionen">Total of all items</entry>
-  <entry key="Telefon">Phone</entry>
-  <entry key="Umsatzsteuer">Value added tax</entry>
-  <entry key="Umsatzsteuersatz in Prozent">VAT rate in percent</entry>
-  <entry key="Vergabenummer">Contract number</entry>
-  <entry key="Version zur Bildung des Schemas">Schema version</entry>
-  <entry key="Vertragsnummer">Contract number</entry>
-  <entry key="Vorausgegangene Rechnungen">Previous invoices</entry>
   <entry key="Wir übernehmen keine Haftung für die Richtigkeit der Daten">Wir übernehmen keine Haftung für die Richtigkeit der Daten</entry>
   <entry key="bis">to</entry>
   <entry key="brutto">gross</entry>
@@ -282,4 +274,6 @@
   <entry key="Preiseinzelheiten">Price details</entry>
   <entry key="Skonto; weitere Zahlungsbedingungen">Discount; other payment terms</entry>
   <entry key="Straße / Hausnummer">Street / House number</entry>
+  <entry key="Summe aller Positionen">Total of all items</entry> <!-- netto in extra Spalte? -->
+  <entry key="Vorausgegangene Rechnungen">Previous invoices</entry>
 </properties>
