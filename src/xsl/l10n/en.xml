@@ -36,7 +36,7 @@
   <entry key="xr:Sales_order_reference" id="BT-14">Sales order reference</entry> <!-- Order number -->
   <!-- Be aware that these are for the whole invoice -->
   <entry key="xr:Invoicing_period_start_date" id="BT-73">From</entry>
-  <entry key="xr:Invoicing_period_end_date" id="BT-74">To</entry>
+  <entry key="xr:Invoicing_period_end_date" id="BT-74">To</entry> <!-- to -->
   <entry key="xr:Preceding_Invoice_reference" id="BT-25">Invoice number</entry>
   <entry key="xr:Preceding_Invoice_issue_date" id="BT-26">Invoice date</entry>
   <entry key="xr:Sum_of_Invoice_line_net_amount" id="BT-106">Total invoice line net amounts</entry>
@@ -45,7 +45,7 @@
   <entry key="xr:Invoice_total_amount_without_VAT" id="BT-109">Total amount</entry>
   <entry key="xr:Invoice_total_VAT_amount" id="BT-110">Total VAT</entry>
   <entry key="xr:Invoice_total_VAT_amount_in_accounting_currency" id="BT-111">Total VAT in accounting currency</entry>
-  <entry key="xr:Invoice_total_amount_with_VAT" id="BT-112">Total amount</entry>
+  <entry key="xr:Invoice_total_amount_with_VAT" id="BT-112">Total amount</entry> 
   <entry key="xr:Paid_amount" id="BT-113">Already paid</entry> <!-- Amount paid -->
   <entry key="xr:Rounding_amount" id="BT-114">Rounding amount</entry>
   <entry key="xr:Amount_due_for_payment" id="BT-115">Amount due</entry>
@@ -150,7 +150,7 @@
   <entry key="xr:Supporting_document_description" id="BT-123">Description</entry>
   <entry key="xr:External_document_location" id="BT-124">Location (e.g. Internet address )</entry>
   <entry key="xr:Attached_document" id="BT-125">Attached document</entry>
-  <entry key="xr:Attached_document/@mime_code" id="BT-125_mime_code">MIME type of the attached document</entry>
+  <entry key="xr:Attached_document/@mime_code" id="BT-125_mime_code">MIME type of the attached document</entry> <!-- Attachment document format -->
   <entry key="xr:Attached_document/@filename" id="BT-125_filename">Name of the attachment document</entry>
   <entry key="xrv:timestamp">Date / time</entry>
   <entry key="xrv:subject">Subject</entry>
@@ -163,7 +163,7 @@
   <entry key="xr:Referenced_purchase_order_line_reference" id="BT-132">Number of the order item</entry> <!-- Order item number -->
   <entry key="xr:Invoice_line_Buyer_accounting_reference" id="BT-133">Buyer accounting reference</entry> <!-- Account assignment note -->
   <entry key="xr:Invoice_line_period_start_date" id="BT-134">From</entry>
-  <entry key="xr:Invoice_line_period_end_date" id="BT-135">To</entry>
+  <entry key="xr:Invoice_line_period_end_date" id="BT-135">To</entry> <!-- to -->
   <entry key="xr:Invoiced_quantity" id="BT-129">Quantity</entry>
   <entry key="xr:Invoiced_quantity_unit_of_measure_code" id="BT-130">Unit</entry>
   <entry key="xr:Item_net_price" id="BT-146">Price per unit (net)</entry>
@@ -243,15 +243,9 @@
   <entry key="at-least-two-format">###,##0.#################</entry>
   <!-- New entries needed for HTML localization -->
   
-  <entry key="Wir übernehmen keine Haftung für die Richtigkeit der Daten">Wir übernehmen keine Haftung für die Richtigkeit der Daten</entry>
-  <entry key="bis">to</entry>
-  <entry key="brutto">gross</entry>
   <entry key="netto">net</entry>
   <entry key="von">from</entry>
-  <entry key="Wir übernehmen keine Haftung für die Richtigkeit der Daten.">We assume no liability for the accuracy of the data.</entry>
   <entry key="Öffnen">Open</entry>  
-  <entry key="Format des Anhangdokuments">Attachment document format</entry>
-  <entry key="Nachlass auf Ebene der Rechnung">Invoice level discount</entry>
   <entry key="Nachlass">Discount</entry>
   <entry key="Grund für den Nachlass">Reason for the discount</entry>
   <entry key="Zuschlag auf Ebene der Rechnung">Invoice level surcharge</entry>
@@ -274,4 +268,6 @@
   <entry key="Straße / Hausnummer">Street / House number</entry>
   <entry key="Summe aller Positionen">Total of all items</entry> <!-- netto in extra Spalte? -->
   <entry key="Vorausgegangene Rechnungen">Previous invoices</entry>
+  <entry key="Wir übernehmen keine Haftung für die Richtigkeit der Daten.">We assume no liability for the accuracy of the data.</entry> <!-- war auch in der dt. Version aufgeführt -->
+  <entry key="Nachlass auf Ebene der Rechnung">Invoice level discount</entry>
 </properties>

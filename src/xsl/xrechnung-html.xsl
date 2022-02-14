@@ -465,7 +465,7 @@
                   </div>
                   <div class="boxzeile" role="listitem">
                     <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('bis')" />:
+                      <xsl:value-of select="xrf:_('xr:Invoicing_period_end_date')" />:
                     </div>
                     <div data-title="BT-74" class="BT-74 boxdaten wert">
                       <xsl:value-of
@@ -1164,7 +1164,7 @@
                 </div>
                 <div class="boxzeile" role="listitem">
                   <div class="boxdaten legende">
-                    <xsl:value-of select="xrf:_('bis')" />:
+                    <xsl:value-of select="xrf:_('xr:Invoice_line_period_end_date')" />:
                   </div>
                   <div data-title="BT-135" class="BT-135 boxdaten wert">
                     <xsl:value-of
@@ -2077,7 +2077,7 @@
       </div>
       <div class="boxzeile" role="listitem">
         <div class="boxdaten legende">
-          <xsl:value-of select="xrf:_('Format des Anhangdokuments')" />:
+          <xsl:value-of select="xrf:_('xr:Attached_document/@mime_code')" />:
         </div>
         <div data-title="BT-125" class="BT-125 boxdaten wert">
           <xsl:value-of select="xr:Attached_document/@mime_code" />
