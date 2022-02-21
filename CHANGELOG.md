@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## UNRELEASED
+
+
 ## v2022-01-31
 
 ### Changed
@@ -20,9 +23,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   * Tax representative Address (BT-64, BT-65, BT-164), and 
   * Deliver To Address (BT-75, BT-76, BT-165)
 * Display of BT-72 (Actual Delivery Date)
-
-
-## UNRELEASED
 
 
 ## v2021-11-15
