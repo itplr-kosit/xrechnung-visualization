@@ -803,7 +803,7 @@
         </div>
         <div class="grund" role="list">
           <div role="listitem">
-            <xsl:value-of select="xrf:_('Grund für den Nachlass')" />:
+            <xsl:value-of select="xrf:_('xr:Document_level_allowance_reason')" />:
             <span data-title="BT-97" class="BT-97 bold">
               <xsl:value-of select="xr:Document_level_allowance_reason" />
             </span>
@@ -1308,7 +1308,7 @@
             </div>
             <div class="grundDetail" role="list">
               <div class="color2" role="listitem">
-                <xsl:value-of select="xrf:_('Grund des Nachlasses')" />:
+                <xsl:value-of select="xrf:_('xr:Invoice_line_allowance_reason')" />:
                 <span data-title="BT-139" class="BT-139 bold">
                   <xsl:value-of select="xr:Invoice_line_allowance_reason" />
                 </span>

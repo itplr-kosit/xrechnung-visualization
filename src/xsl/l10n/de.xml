@@ -63,7 +63,7 @@
   <entry key="xr:Document_level_allowance_amount" id="BT-92">Nachlassbetrag</entry>
   <entry key="xr:Document_level_allowance_VAT_rate" id="BT-96">Umsatzsteuersatz des
     Nachlasses</entry>
-  <entry key="xr:Document_level_allowance_reason" id="BT-97">Nachlassgrund</entry>
+  <entry key="xr:Document_level_allowance_reason" id="BT-97">Nachlassgrund</entry> <!-- Grund für den Nachlass <entry key="Grund für den Nachlass">Reason for the discount</entry>-->
   <entry key="xr:Document_level_allowance_reason_code" id="BT-98">Kennung für den Nachlassgrund</entry>
   <!-- Zuschlaege -->
   <entry key="xr:Document_level_charge_VAT_category_code" id="BT-102">Umsatzsteuerkategorie des
@@ -190,7 +190,7 @@
   <entry key="xr:Invoice_line_allowance_base_amount" id="BT-137">Grundbetrag (netto)</entry>
   <entry key="xr:Invoice_line_allowance_percentage" id="BT-138">Prozentsatz</entry>
   <entry key="xr:Invoice_line_allowance_amount" id="BT-136">Nachlass (netto)</entry>
-  <entry key="xr:Invoice_line_allowance_reason" id="BT-139">Nachlassgrund</entry>
+  <entry key="xr:Invoice_line_allowance_reason" id="BT-139">Nachlassgrund</entry> <!-- <entry key="Grund des Nachlasses">Allowance reason</entry> -->
   <entry key="xr:Invoice_line_allowance_reason_code" id="BT-140">Kennung des Nachlassgrunds</entry>
   <entry key="xr:Invoice_line_charge_base_amount" id="BT-142">Grundbetrag (netto)</entry>
   <entry key="xr:Invoice_line_charge_percentage" id="BT-143">Prozentsatz</entry>
@@ -247,14 +247,11 @@
   
   <entry key="netto">net</entry>
   <entry key="von">from</entry>
-  <entry key="Wir übernehmen keine Haftung für die Richtigkeit der Daten.">We assume no liability for the accuracy of the data.</entry>
   <entry key="Öffnen">Open</entry>  
   <entry key="Nachlass">Discount</entry>
-  <entry key="Grund für den Nachlass">Reason for the discount</entry>
   <entry key="Zuschlag auf Ebene der Rechnung">Invoice level surcharge</entry>
   <entry key="Zuschlag">Surcharge</entry>
   <entry key="Umsatzsteuersatz des Zuschlages">Umsatzsteuersatz des Zuschlages</entry>
-  <entry key="Grund des Nachlasses">Allowance reason</entry>
   <entry key="Code für den Nachlassgrund">Allowance reason code</entry>
   <entry key="Code für den Zuschlagsgrund">Surcharge reason code</entry>
   <entry key="Grund des Zuschlags">Reason for the surcharge</entry>
