@@ -872,7 +872,7 @@
           </div>
           <div class="rechnungsZeile" role="row">
             <div class="boxdaten rechnungSp1" role="rowheader">
-              <xsl:value-of select="xrf:_('Umsatzsteuersatz des Zuschlages')" />
+              <xsl:value-of select="xrf:_('xr:Document_level_charge_VAT_rate')" />
             </div>
             <div class="boxdaten rechnungSp2 color2" role="cell"></div>
             <div data-title="BT-103" class="BT-103 boxdaten rechnungSp3" role="cell">
@@ -1314,7 +1314,7 @@
                 </span>
               </div>
               <div class="color2" role="listitem">
-                <xsl:value-of select="xrf:_('Code für den Nachlassgrund')" />:
+                <xsl:value-of select="xrf:_('xr:Invoice_line_allowance_reason_code')" />:
                 <span data-title="BT-140" class="BT-140 bold">
                   <xsl:value-of select="xr:Invoice_line_allowance_reason_code" />
                 </span>
@@ -1358,13 +1358,13 @@
             </div>
             <div class="grundDetail" role="list">
               <div class="color2" role="listitem">
-                <xsl:value-of select="xrf:_('Grund des Zuschlags')" />:
+                <xsl:value-of select="xrf:_('xr:Invoice_line_charge_reason')" />:
                 <span data-title="BT-144" class="BT-144 bold">
                   <xsl:value-of select="xr:Invoice_line_charge_reason" />
                 </span>
               </div>
               <div class="color2" role="listitem">
-                <xsl:value-of select="xrf:_('Code für den Zuschlagsgrund')" />:
+                <xsl:value-of select="xrf:_('xr:Invoice_line_charge_reason_code')" />:
                 <span data-title="BT-145" class="BT-145 bold">
                   <xsl:value-of select="xr:Invoice_line_charge_reason_code" />
                 </span>

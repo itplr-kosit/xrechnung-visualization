@@ -68,7 +68,7 @@
   <entry key="xr:Document_level_charge_base_amount" id="BT-100">Base amount</entry>
   <entry key="xr:Document_level_charge_percentage" id="BT-101">Percentage</entry>
   <entry key="xr:Document_level_charge_amount" id="BT-99">Amount</entry>
-  <entry key="xr:Document_level_charge_VAT_rate" id="BT-103">VAT rate</entry>
+  <entry key="xr:Document_level_charge_VAT_rate" id="BT-103">VAT rate</entry> <!-- <entry key="Umsatzsteuersatz des Zuschlages">Umsatzsteuersatz des Zuschlages</entry> -->
   <entry key="xr:Document_level_charge_reason" id="BT-104">Charge Reason</entry>
   <entry key="xr:Document_level_charge_reason_code" id="BT-105">Charge reason code</entry>
   <entry key="xr:Payment_terms" id="BT-20">Payment terms</entry>
@@ -189,12 +189,12 @@
   <entry key="xr:Invoice_line_allowance_percentage" id="BT-138">Percentage</entry>
   <entry key="xr:Invoice_line_allowance_amount" id="BT-136">Allowance (net)</entry>
   <entry key="xr:Invoice_line_allowance_reason" id="BT-139">Allowance reason</entry> <!-- Allowance reason -->
-  <entry key="xr:Invoice_line_allowance_reason_code" id="BT-140">Allowance reason code</entry>
+  <entry key="xr:Invoice_line_allowance_reason_code" id="BT-140">Allowance reason code</entry> <!-- <entry key="Code für den Nachlassgrund">Allowance reason code</entry> -->
   <entry key="xr:Invoice_line_charge_base_amount" id="BT-142">Basic amount (net)</entry>
   <entry key="xr:Invoice_line_charge_percentage" id="BT-143">Percentage</entry>
   <entry key="xr:Invoice_line_charge_amount" id="BT-141">Surcharge (net)</entry>
-  <entry key="xr:Invoice_line_charge_reason" id="BT-144">Reason for the surcharge</entry>
-  <entry key="xr:Invoice_line_charge_reason_code" id="BT-145">Code for the reason for the award</entry>
+  <entry key="xr:Invoice_line_charge_reason" id="BT-144">Reason for the surcharge</entry> <!-- <entry key="Grund des Zuschlags">Reason for the surcharge</entry> -->
+  <entry key="xr:Invoice_line_charge_reason_code" id="BT-145">Code for the reason for the award</entry> <!-- <entry key="Code für den Zuschlagsgrund">Surcharge reason code</entry> -->
   <entry key="uebersicht">Overview</entry>
   <entry key="uebersichtKaeufer" id="BG-7">Information about the buyer</entry>
   <entry key="uebersichtVerkaeufer" id="BG-4">Information about the seller</entry>
@@ -242,19 +242,6 @@
   <entry key="percentage-format">##0.##</entry>
   <entry key="at-least-two-format">###,##0.#################</entry>
   <!-- New entries needed for HTML localization -->
-  
-  <entry key="netto">net</entry>
-  <entry key="von">from</entry>
-  <entry key="Öffnen">Open</entry>  
-  <entry key="Nachlass">Discount</entry>
-  <entry key="Zuschlag auf Ebene der Rechnung">Invoice level surcharge</entry>
-  <entry key="Zuschlag">Surcharge</entry>
-  <entry key="Umsatzsteuersatz des Zuschlages">Umsatzsteuersatz des Zuschlages</entry>
-  <entry key="Code für den Nachlassgrund">Allowance reason code</entry>
-  <entry key="Code für den Zuschlagsgrund">Surcharge reason code</entry>
-  <entry key="Grund des Zuschlags">Reason for the surcharge</entry>
-  
-  <!-- specify -->
   <entry key="Aufschlüsselung der Umsatzsteuer auf Ebene der Rechnung">Sales tax breakdown at invoice level</entry>
   <entry key="Bemerkung zur Rechnung">Note on the invoice</entry>
   <entry key="Betreff">Reference</entry>
@@ -268,4 +255,10 @@
   <entry key="Vorausgegangene Rechnungen">Previous invoices</entry>
   <entry key="Wir übernehmen keine Haftung für die Richtigkeit der Daten.">We assume no liability for the accuracy of the data.</entry> <!-- war auch in der dt. Version aufgeführt -->
   <entry key="Nachlass auf Ebene der Rechnung">Invoice level discount</entry>
+  <entry key="Zuschlag auf Ebene der Rechnung">Invoice level surcharge</entry>
+  <entry key="Öffnen">Open</entry>  
+  <entry key="Nachlass">Discount</entry> <!-- xr:Document_level_allowance_amount ? -->
+  <entry key="Zuschlag">Surcharge</entry> <!-- xr:Document_level_charge_amount ? -->
+  <entry key="netto">net</entry>
+  <entry key="von">from</entry>
 </properties>
