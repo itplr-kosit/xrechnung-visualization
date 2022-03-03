@@ -9,7 +9,7 @@
   <entry key="xr:Buyer_city" id="BT-52">Ort</entry>
   <entry key="xr:Buyer_country_code" id="BT-55">Ländercode</entry> <!-- Land -->
   <entry key="xr:Buyer_identifier" id="BT-46">Kennung</entry>
-  <entry key="xr:Buyer_identifier/@scheme_identifier" id="BT-46">Schema der Kennung</entry>
+  <entry key="xr:Buyer_identifier/@scheme_identifier" id="BT-46_scheme">Schema der Kennung</entry>
   <entry key="xr:Buyer_contact_point" id="BT-56">Kontaktstelle</entry> <!-- Name -->
   <entry key="xr:Buyer_contact_telephone_number" id="BT-57">Kontaktstellen-Telefon</entry> <!-- Telefon -->
   <entry key="xr:Buyer_contact_email_address" id="BT-58">Kontaktstellen-Email</entry> <!-- E-Mail-Adresse -->
@@ -22,7 +22,7 @@
   <entry key="xr:Seller_country_subdivision" id="BT-39">Bundesland</entry>
   <entry key="xr:Seller_country_code" id="BT-40">Ländercode</entry>
   <entry key="xr:Seller_identifier" id="BT-29">Kennung</entry>
-  <entry key="xr:Seller_identifier/@scheme_identifier" id="BT-29">Schema der Kennung</entry>
+  <entry key="xr:Seller_identifier/@scheme_identifier" id="BT-29_scheme">Schema der Kennung</entry>
   <entry key="xr:Seller_contact_point" id="BT-41">Kontaktstelle</entry> <!-- Name -->
   <entry key="xr:Seller_contact_telephone_number" id="BT-42">Kontaktstellen-Telefon</entry> <!-- Telefon -->
   <entry key="xr:Seller_contact_email_address" id="BT-43">Kontaktstellen-Email</entry> <!-- E-Mail-Adresse -->
@@ -94,12 +94,12 @@
   <!-- BG-4 Seller and others -->
   <entry key="xr:Seller_trading_name" id="BT-28">Abweichender Handelsname</entry>
   <entry key="xr:Seller_electronic_address" id="BT-34">Elektronische Adresse</entry>
-  <entry key="xr:Seller_electronic_address/@scheme_identifier" id="BT-34">Schema der elektronischen Adresse</entry>
+  <entry key="xr:Seller_electronic_address/@scheme_identifier" id="BT-34_scheme">Schema der elektronischen Adresse</entry>
   <entry key="xr:Seller_legal_registration_identifier" id="BT-30">Registernummer</entry> <!-- Register-/Registriernummer -->
-  <entry key="xr:Seller_legal_registration_identifier/@scheme_identifier" id="BT-30">Schema der Registernummer</entry>
+  <entry key="xr:Seller_legal_registration_identifier/@scheme_identifier" id="BT-30_scheme">Schema der Registernummer</entry>
   <entry key="xr:Seller_VAT_identifier" id="BT-31">Umsatzsteuer-ID</entry>
   <entry key="xr:Seller_tax_registration_identifier" id="BT-32">Steuernummer</entry>
-  <entry key="xr:Seller_tax_registration_identifier/@scheme_identifier" id="BT-32">Schema der Steuernummer</entry>
+  <entry key="xr:Seller_tax_registration_identifier/@scheme_identifier" id="BT-32_scheme">Schema der Steuernummer</entry>
   <entry key="xr:Seller_additional_legal_information" id="BT-33">Weitere rechtliche Informationen</entry>
   <entry key="xr:VAT_accounting_currency_code" id="BT-6">Umsatzsteuerabrechnungswährung</entry> <!-- Code der Umsatzsteuerwährung -->
   <!-- BG 12 and 11 Tax Representative party -->
@@ -116,15 +116,15 @@
   <entry key="xr:Buyer_trading_name" id="BT-45">Abweichender Handelsname</entry>
   <entry key="xr:Buyer_country_subdivision" id="BT-54">Bundesland</entry>
   <entry key="xr:Buyer_electronic_address" id="BT-49">Elektronische Adresse</entry>
-  <entry key="xr:Buyer_electronic_address/@scheme_identifier" id="BT-49">Schema der elektronischen Adresse</entry>
+  <entry key="xr:Buyer_electronic_address/@scheme_identifier" id="BT-49_scheme">Schema der elektronischen Adresse</entry>
   <entry key="xr:Buyer_legal_registration_identifier" id="BT-47">Registernummer</entry> <!-- Register-/Registriernummer -->
-  <entry key="xr:Buyer_legal_registration_identifier/@scheme_identifier" id="BT-47">Schema der Registernummer</entry> <!-- Schema der Register-/Registriernummer -->
+  <entry key="xr:Buyer_legal_registration_identifier/@scheme_identifier" id="BT-47_scheme">Schema der Registernummer</entry> <!-- Schema der Register-/Registriernummer -->
   <entry key="xr:Buyer_VAT_identifier" id="BT-48">Umsatzsteuer-ID</entry>
   <entry key="xr:Value_added_tax_point_date" id="BT-7">Abrechnungsdatum der Umsatzsteuer</entry>
   <entry key="xr:Value_added_tax_point_date_code" id="BT-8">Code des Umsatzsteuer-Abrechnungsdatums</entry>
   <entry key="xr:Buyer_accounting_reference" id="BT-19">Kontierungsinformation</entry>
   <entry key="xr:Deliver_to_location_identifier" id="BT-71">Kennung des Lieferorts</entry>
-  <entry key="xr:Deliver_to_location_identifier/@scheme_identifier" id="BT-71">Schema der Kennung</entry>
+  <entry key="xr:Deliver_to_location_identifier/@scheme_identifier" id="BT-71_scheme">Schema der Kennung</entry>
   <entry key="xr:Actual_delivery_date" id="BT-72">Lieferdatum</entry>
   <entry key="xr:Deliver_to_party_name" id="BT-70">Name des Empfängers</entry>
   <entry key="xr:Deliver_to_address_line_1" id="BT-75">Adresszeile 1</entry>
@@ -140,11 +140,11 @@
   <entry key="xr:Business_process_type" id="BT-23">Prozesskennung</entry>
   <entry key="xr:Specification_identifier" id="BT-24">Spezifikationskennung</entry>
   <entry key="xr:Invoiced_object_identifier" id="BT-18">Objektkennung</entry>
-  <entry key="xr:Invoiced_object_identifier/@scheme_identifier" id="BT-18">Schema der Objektkennung</entry>
+  <entry key="xr:Invoiced_object_identifier/@scheme_identifier" id="BT-18_scheme">Schema der Objektkennung</entry>
   <!-- BG 10 -->
   <entry key="xr:Payee_name" id="BT-59">Name</entry>
   <entry key="xr:Payee_identifier" id="BT-60">Kennung</entry>
-  <entry key="xr:Payee_identifier/@scheme_identifier" id="BT-60a">Schema der Kennung</entry>
+  <entry key="xr:Payee_identifier/@scheme_identifier" id="BT-60_scheme">Schema der Kennung</entry>
   <entry key="xr:Payee_legal_registration_identifier" id="BT-61">Registernummer</entry> <!-- Register-/Registriernummer -->
   <entry key="xr:Payee_legal_registration_identifier/@scheme_identifier" id="BT-61_scheme">Schema der Registernummer</entry> <!-- Schema der Register-/Registriernummer -->
   <!-- BG 24 Additonal supporting Documents -->
