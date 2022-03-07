@@ -569,7 +569,7 @@
               <xsl:value-of select="xrf:_('xr:Sum_of_allowances_on_document_level')" />:
             </div>
             <div class="boxdaten rechnungSp2 color2" role="cell">
-              <xsl:value-of select="xrf:_('_net')" />
+              <xsl:value-of select="xrf:_('net')" />
             </div>
             <div data-title="BT-107" class="BT-107 boxdaten rechnungSp3" role="cell">
               <xsl:value-of
@@ -593,7 +593,7 @@
               <xsl:value-of select="xrf:_('xr:Invoice_total_amount_without_VAT')" />
             </div>
             <div class="boxdaten rechnungSp2 paddingTop color2" role="cell">
-              <xsl:value-of select="xrf:_('_net')" />
+              <xsl:value-of select="xrf:_('net')" />
             </div>
             <div data-title="BT-109" class="BT-109 boxdaten rechnungSp3 paddingTop" role="cell">
               <xsl:value-of
@@ -998,7 +998,7 @@
       <div class="boxtabelle boxinhalt borderSpacing" role="list">
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('xr:Mandate_reference_identifier.')" />:
+            <xsl:value-of select="xrf:_('xr:Mandate_reference_identifier')" />:
           </div>
           <div data-title="BT-89" class="BT-89 boxdaten wert">
             <xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:DIRECT_DEBIT/xr:Mandate_reference_identifier" />

@@ -245,11 +245,7 @@
   <entry key="at-least-two-format">###,##0.#################</entry>
   <!-- New entries needed for HTML localization -->
   <entry key="Position">Position</entry>
-  <entry key="Summe aller Positionen">Total of all items</entry> <!-- netto in extra Spalte? -->  
   
-  <!-- 
-  <entry key="Wir übernehmen keine Haftung für die Richtigkeit der Daten.">We assume no liability for the accuracy of the data.</entry> <!-- war auch in der dt. Version aufgeführt -->
-  -->
   <entry key="_disclaimer">We assume no liability for the accuracy of the data.</entry>
   <entry key="_invoice-note-group">Note on the invoice</entry>
   <entry key="_subject">Subject</entry> <!-- Reference -->
