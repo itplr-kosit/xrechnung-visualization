@@ -456,7 +456,7 @@
                 <div class="boxtabelle borderSpacing" role="list">
                   <div class="boxzeile" role="listitem">
                     <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('_from')" />:
+                      <xsl:value-of select="xrf:_('xr:Invoicing_period_start_date')" />:
                     </div>
                     <div data-title="BT-73" class="BT-73 boxdaten wert">
                       <xsl:value-of
@@ -569,7 +569,7 @@
               <xsl:value-of select="xrf:_('xr:Sum_of_allowances_on_document_level')" />:
             </div>
             <div class="boxdaten rechnungSp2 color2" role="cell">
-              <xsl:value-of select="xrf:_('net')" />
+              <xsl:value-of select="xrf:_('_net')" />
             </div>
             <div data-title="BT-107" class="BT-107 boxdaten rechnungSp3" role="cell">
               <xsl:value-of
@@ -593,7 +593,7 @@
               <xsl:value-of select="xrf:_('xr:Invoice_total_amount_without_VAT')" />
             </div>
             <div class="boxdaten rechnungSp2 paddingTop color2" role="cell">
-              <xsl:value-of select="xrf:_('net')" />
+              <xsl:value-of select="xrf:_('_net')" />
             </div>
             <div data-title="BT-109" class="BT-109 boxdaten rechnungSp3 paddingTop" role="cell">
               <xsl:value-of
@@ -1155,7 +1155,7 @@
               <div class="boxtabelle borderSpacing" role="list">
                 <div class="boxzeile" role="listitem">
                   <div class="boxdaten legende">
-                    <xsl:value-of select="xrf:_('_from')" />:
+                    <xsl:value-of select="xrf:_('xr:Invoice_line_period_start_date')" />:
                   </div>
                   <div data-title="BT-134" class="BT-134 boxdaten wert">
                     <xsl:value-of

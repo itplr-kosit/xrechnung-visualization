@@ -42,10 +42,10 @@
   <entry key="xr:Sum_of_Invoice_line_net_amount" id="BT-106">Summe aller Positionen</entry>
   <entry key="xr:Sum_of_allowances_on_document_level" id="BT-107">Summe Nachlässe</entry>
   <entry key="xr:Sum_of_charges_on_document_level" id="BT-108">Summe Zuschläge</entry>
-  <entry key="xr:Invoice_total_amount_without_VAT" id="BT-109">Nettobetrag</entry>
+  <entry key="xr:Invoice_total_amount_without_VAT" id="BT-109">Gesamtsumme</entry>
   <entry key="xr:Invoice_total_VAT_amount" id="BT-110">Summe Umsatzsteuer</entry>
   <entry key="xr:Invoice_total_VAT_amount_in_accounting_currency" id="BT-111">Summe Umsatzsteuer in Abrechnungswährung</entry>
-  <entry key="xr:Invoice_total_amount_with_VAT" id="BT-112">Bruttobetrag</entry>
+  <entry key="xr:Invoice_total_amount_with_VAT" id="BT-112">Gesamtsumme</entry>
   <entry key="xr:Paid_amount" id="BT-113">Gezahlter Betrag</entry>
   <entry key="xr:Rounding_amount" id="BT-114">Rundungsbetrag</entry>
   <entry key="xr:Amount_due_for_payment" id="BT-115">Fälliger Betrag</entry>
@@ -205,12 +205,12 @@
   <entry key="uebersichtRechnungsInfo" id="invoice-data">Rechnungsdaten</entry>
   <entry key="uebersichtRechnungsuebersicht" id="BG-22">Gesamtbeträge der Rechnung</entry>
   <entry key="uebersichtUmsatzsteuer" id="BG-23">Aufschlüsselung der Umsatzsteuer auf Ebene der Rechnung</entry>
-  <entry key="uebersichtNachlass" id="BG-20">Nachlässe auf Ebene der Rechnung</entry>
+  <entry key="uebersichtNachlass" id="BG-20">Nachlass auf Ebene der Rechnung</entry>
   <entry key="uebersichtZuschlaege" id="BG-21">Zuschlag auf Ebene der Rechnung</entry>
   <entry key="uebersichtRechnungAbrechnungszeitraum">Abrechnungszeitraum</entry>
   <entry key="uebersichtRechnungVorausgegangeneRechnungen" id="BG-3">Vorausgegangene Rechnungen</entry>
   <entry key="uebersichtZahlungInfo" id="BG-4">Zahlungsdaten</entry>
-  <entry key="uebersichtZahlungKarte" id="BG-18">Karteninformationen</entry>
+  <entry key="uebersichtZahlungKarte" id="BG-18">Karteninformation</entry>
   <entry key="uebersichtZahlungLastschrift" id="BG-19">Lastschrift</entry>
   <entry key="uebersichtZahlungUeberweisung" id="BG-17">Überweisung</entry>
   <entry key="uebersichtBemerkungen" id="BG-1">Bemerkungen zur Rechnung</entry>
@@ -253,6 +253,5 @@
   <entry key="_subject">Betreff</entry>
   <entry key="_open">Öffnen</entry>  
   <entry key="_net">netto</entry>
-  <entry key="_from">von</entry>
   <entry key="_gross">brutto</entry> <!-- BT-112 xr:Invoice_total_amount_with_VAT "Gesamtbetrag brutto" -->
 </properties>
