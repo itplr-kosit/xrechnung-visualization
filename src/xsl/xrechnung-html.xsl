@@ -148,7 +148,7 @@
   <xsl:template name="uebersichtKaeufer" match="xr:BUYER">
     <div id="uebersichtKaeufer" class="box boxZweispaltig">
       <div data-title="BG-7" class="BG-7 boxtitel" role="heading" aria-level="2">
-        <xsl:value-of select="xrf:_('Informationen zum Käufer')" /> <!-- TODO -->
+        <xsl:value-of select="xrf:_('uebersichtKaeufer')" />
       </div>
       <div class="boxtabelle boxinhalt borderSpacing" role="list">
         <div class="boxzeile" role="listitem">
@@ -2065,7 +2065,7 @@
           <xsl:value-of select="xrf:_('xr:Attached_document')" />:
         </div>
         <div data-title="BT-125" class="BT-125 boxdaten wert">
-          <a href="#" onClick="downloadData('{translate(xr:Supporting_document_reference, ' ', '-')}')"> <!-- TODO: xr:Attached_document? -->
+          <a href="#" onClick="downloadData('{translate(xr:Supporting_document_reference, ' ', '-')}')">
             <xsl:value-of select="xrf:_('_open')" />
           </a>
         </div>
@@ -2123,7 +2123,7 @@
       </div>
       <div class="boxzeile" role="listitem">
         <div class="boxdaten legende">
-          <xsl:value-of select="xrf:_('_subject')" />:
+          <xsl:value-of select="xrf:_('xrv:betreff')" />:
         </div>
         <div class="boxdaten wert">
           <xsl:value-of select="xrv:betreff" />

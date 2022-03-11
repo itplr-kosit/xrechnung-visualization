@@ -153,9 +153,7 @@
   <entry key="xr:Attached_document/@mime_code" id="BT-125_mime_code">Attachment document format</entry>
   <entry key="xr:Attached_document/@filename" id="BT-125_filename">Name of the attachment document</entry>
   <entry key="xrv:timestamp">Date / time</entry>
-  <!-- 
-    <entry key="xrv:subject">Subject</entry>
-  -->
+  <entry key="xrv:subject">Subject</entry>
   <entry key="xrv:text">Text</entry>
   <entry key="xrv:details">Details</entry>
   <entry key="xr:Invoice_line_identifier" id="BT-126">Identifier</entry>
@@ -234,15 +232,12 @@
   <entry key="amount-format">###,##0.00</entry>
   <entry key="percentage-format">##0.##</entry>
   <entry key="at-least-two-format">###,##0.#################</entry>
-  <!-- New entries needed for HTML localization -->
-  <entry key="Position">Position</entry>
   
   <entry key="_disclaimer">We assume no liability for the accuracy of the data.</entry>
   <entry key="_invoice-note-group">Note on the invoice</entry>
-  <entry key="_subject">Subject</entry> <!-- Reference -->
   <entry key="_open">Open</entry>  
   <entry key="_net">net</entry>
-  <entry key="_gross">gross</entry> <!-- BT-112 xr:Invoice_total_amount_with_VAT "Gesamtbetrag brutto" -->
+  <entry key="_gross">gross</entry>
   <entry key="_no-content">Areas without content are not displayed!</entry>
   <entry key="_description">Description</entry>
   <entry key="_price">Price</entry>

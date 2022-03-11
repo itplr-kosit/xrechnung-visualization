@@ -155,9 +155,7 @@
   <entry key="xr:Attached_document/@mime_code" id="BT-125_mime_code">Format des Anhangdokuments</entry>
   <entry key="xr:Attached_document/@filename" id="BT-125_filename">Name des Anhangsdokuments</entry>
   <entry key="xrv:zeitstempel">Datum/Uhrzeit</entry>
-  <!-- 
-    <entry key="xrv:betreff">Betreff</entry>
-  -->
+  <entry key="xrv:betreff">Betreff</entry>
   <entry key="xrv:text">Text</entry>
   <entry key="xrv:details">Details</entry>
   <entry key="xr:Invoice_line_identifier" id="BT-126">Position</entry>
@@ -184,7 +182,6 @@
   <entry key="xr:Item_Buyers_identifier" id="BT-156">Artikelkennung des Käufers</entry>
   <entry key="xr:Item_standard_identifier" id="BT-157_identifier">Artikelkennung</entry>
   <entry key="xr:Item_standard_identifier/@scheme_identifier" class="BT-157_scheme">Schema der Artikelkennung</entry>
-  <!-- <entry key="xr:Item_classification_identifier" id="BT-158_identifier">Kennung der Artikelklassifizierung</entry> -->
   <entry key="xr:Item_classification_identifier" id="BT-158">Code der Artikelklassifizierung</entry>
   <entry key="xr:Item_classification_identifier/@scheme_identifier" id="BT-158_scheme">Kennung zur Bildung des Schemas</entry>
   <entry key="xr:Item_classification_identifier/@scheme_version_identifier" id="BT-158_scheme_version">Version zur Bildung des Schemas</entry>
@@ -231,21 +228,18 @@
   <entry key="laufzettel">Laufzettel</entry>
   <entry key="laufzettelHistorie">Bearbeitungshistorie</entry>
   <entry key="anlagen">Anlagen</entry>
-  <entry key="anlagenListe">Rechnungsbegründende Unterlagen</entry> <!-- BG-24 -->
+  <entry key="anlagenListe">Rechnungsbegründende Unterlagen</entry>
   <entry key="date-format">[D].[M].[Y]</entry>
   <entry key="datetime-format">[D].[M].[Y] [H]:[m]:[s]</entry>
   <entry key="amount-format">###.##0,00</entry>
   <entry key="percentage-format">##0,##</entry>
   <entry key="at-least-two-format">###.##0,#################</entry>
-  <!-- New entries needed for HTML localization -->
-  <entry key="Position">Position</entry>
   
   <entry key="_disclaimer">Wir übernehmen keine Haftung für die Richtigkeit der Daten.</entry>
   <entry key="_invoice-note-group">Bemerkung zur Rechnung</entry>
-  <entry key="_subject">Betreff</entry>
   <entry key="_open">Öffnen</entry>  
   <entry key="_net">netto</entry>
-  <entry key="_gross">brutto</entry> <!-- BT-112 xr:Invoice_total_amount_with_VAT "Gesamtbetrag brutto" -->
+  <entry key="_gross">brutto</entry>
   <entry key="_no-content">Bereiche ohne Inhalte werden nicht dargestellt!</entry>
   <entry key="_description">Beschreibung</entry>
   <entry key="_price">Preis</entry>
