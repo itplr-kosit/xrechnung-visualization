@@ -229,14 +229,6 @@
   <entry key="laufzettelHistorie">Processing history</entry>
   <entry key="anlagen">Attachments</entry>
   <entry key="anlagenListe">Documents justifying the invoice</entry>
-  <entry key="Preis">Price</entry>
-  <entry key="Preis Einheit">Price unit</entry>
-  <entry key="MwSt.">VAT</entry>
-  <entry key="St. Code">Code</entry>
-  <entry key="Gesamt">Total</entry>
-  <entry key="Bereiche ohne Inhalte werden nicht dargestellt!">Areas without content are not displayed!</entry>
-  <entry key="Seite">Page</entry>
-  <entry key="Beschreibung">Description</entry>
   <entry key="date-format">[Y]-[M,2]-[D,2]</entry>
   <entry key="datetime-format">[Y]-[M,2]-[D,2] [H]:[m]:[s]</entry>
   <entry key="amount-format">###,##0.00</entry>
@@ -251,4 +243,12 @@
   <entry key="_open">Open</entry>  
   <entry key="_net">net</entry>
   <entry key="_gross">gross</entry> <!-- BT-112 xr:Invoice_total_amount_with_VAT "Gesamtbetrag brutto" -->
+  <entry key="_no-content">Areas without content are not displayed!</entry>
+  <entry key="_description">Description</entry>
+  <entry key="_price">Price</entry>
+  <entry key="_price-unit">Price unit</entry>
+  <entry key="_vat">VAT</entry>
+  <entry key="_tax-code">Code</entry>
+  <entry key="_total">Total</entry>
+  <entry key="_page">Page</entry>
 </properties>

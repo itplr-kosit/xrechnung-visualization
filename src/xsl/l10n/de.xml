@@ -232,14 +232,6 @@
   <entry key="laufzettelHistorie">Bearbeitungshistorie</entry>
   <entry key="anlagen">Anlagen</entry>
   <entry key="anlagenListe">Rechnungsbegründende Unterlagen</entry> <!-- BG-24 -->
-  <entry key="Preis">Preis</entry>
-  <entry key="Preis Einheit">Preiseinheit</entry>
-  <entry key="MwSt.">USt. Satz</entry>
-  <entry key="St. Code">Code</entry>
-  <entry key="Gesamt">Gesamt</entry>
-  <entry key="Bereiche ohne Inhalte werden nicht dargestellt!">Bereiche ohne Inhalte werden nicht dargestellt!</entry>
-  <entry key="Seite">Seite</entry>
-  <entry key="Beschreibung">Beschreibung</entry>
   <entry key="date-format">[D].[M].[Y]</entry>
   <entry key="datetime-format">[D].[M].[Y] [H]:[m]:[s]</entry>
   <entry key="amount-format">###.##0,00</entry>
@@ -254,4 +246,12 @@
   <entry key="_open">Öffnen</entry>  
   <entry key="_net">netto</entry>
   <entry key="_gross">brutto</entry> <!-- BT-112 xr:Invoice_total_amount_with_VAT "Gesamtbetrag brutto" -->
+  <entry key="_no-content">Bereiche ohne Inhalte werden nicht dargestellt!</entry>
+  <entry key="_description">Beschreibung</entry>
+  <entry key="_price">Preis</entry>
+  <entry key="_price-unit">Preiseinheit</entry>
+  <entry key="_vat">USt. Satz</entry>
+  <entry key="_tax-code">St. Code</entry>
+  <entry key="_total">Gesamt</entry>
+  <entry key="_page">Seite</entry>
 </properties>
