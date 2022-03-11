@@ -566,7 +566,7 @@
           </div>
           <div class="rechnungsZeile" role="row">
             <div class="boxdaten rechnungSp1" role="rowheader">
-              <xsl:value-of select="xrf:_('xr:Sum_of_allowances_on_document_level')" />:
+              <xsl:value-of select="xrf:_('xr:Sum_of_allowances_on_document_level')" />
             </div>
             <div class="boxdaten rechnungSp2 color2" role="cell">
               <xsl:value-of select="xrf:_('_net')" />
