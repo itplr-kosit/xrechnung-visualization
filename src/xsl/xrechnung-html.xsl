@@ -203,7 +203,7 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('Ort')" />:
           </div>
-          <div id="BT-52" data-title="BT-52" class="boxdaten wert">
+          <div data-title="BT-52" class="BT-52 boxdaten wert">
             <xsl:value-of select="xr:BUYER_POSTAL_ADDRESS/xr:Buyer_city" />
           </div>
         </div>
@@ -1739,7 +1739,7 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('Bundesland')" />:
           </div>
-          <div id="BT-54" data-title="BT-54" class="boxdaten wert">
+          <div data-title="BT-54" class="BT-54 boxdaten wert">
             <xsl:value-of select="xr:BUYER_POSTAL_ADDRESS/xr:Buyer_country_subdivision" />
           </div>
         </div>
