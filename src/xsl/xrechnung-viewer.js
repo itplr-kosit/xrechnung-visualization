@@ -38,6 +38,10 @@ function show(e) {
 window.onload = function () {
     document.getElementById(b[0]).setAttribute("class", "btnAktiv");
     document.getElementById(b[0]).setAttribute("aria-selected", "true");
+    // could be substituted by an xslt solution
+    document.body.querySelectorAll('[data-title]').forEach(function(element, index) {
+    element.setAttribute('title', element.getAttribute('data-title'));
+    });
 }
 
 /* Eingebettete Binaerdaten runterladen   ************************************/
