@@ -406,25 +406,25 @@
                       <fo:block>#</fo:block>
                     </fo:table-cell>
                     <fo:table-cell>
-                      <fo:block><xsl:value-of select="xrf:_('Beschreibung')"/></fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('_description')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="center">
                       <fo:block><xsl:value-of select="xrf:_('xr:Invoiced_quantity')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="right" padding-right="1em">
-                      <fo:block><xsl:value-of select="xrf:_('Preis')"/></fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('_price')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="center">
-                      <fo:block><xsl:value-of select="xrf:_('Preis Einheit')"/></fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('_price-unit')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="center">
-                      <fo:block><xsl:value-of select="xrf:_('MwSt.')"/></fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('_vat')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="center">
-                      <fo:block><xsl:value-of select="xrf:_('St. Code')"/></fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('_tax-code')"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="right">
-                      <fo:block><xsl:value-of select="xrf:_('Gesamt')"/></fo:block>
+                      <fo:block><xsl:value-of select="xrf:_('_total')"/></fo:block>
                     </fo:table-cell>
                   </fo:table-row>
                 </fo:table-header>      
