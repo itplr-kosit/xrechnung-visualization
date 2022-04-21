@@ -172,7 +172,7 @@
   <entry key="xr:Invoice_line_net_amount" id="BT-131">Gesamtpreis (netto)</entry>
   <entry key="xr:Item_price_discount" id="BT-147">Rabatt (netto)</entry>
   <entry key="xr:Item_gross_price" id="BT-148">Listenpreis (netto)</entry>
-  <entry key="xr:Item_price_base_quantity" id="BT-149">Anzahl der Einheit</entry>
+  <entry key="xr:Item_price_base_quantity" id="BT-149">Basismenge zum Artikelpreis</entry>
   <entry key="xr:Item_price_base_quantity_unit_of_measure" id="BT-150">Code der Maßeinheit</entry>
   <entry key="xr:Invoiced_item_VAT_category_code" id="BT-151">Umsatzsteuer</entry>
   <entry key="xr:Invoiced_item_VAT_rate" id="BT-152">Umsatzsteuersatz in Prozent</entry>
@@ -180,7 +180,7 @@
   <entry key="xr:Item_description" id="BT-154">Beschreibung</entry>
   <entry key="xr:Item_Sellers_identifier" id="BT-155">Artikelnummer</entry>
   <entry key="xr:Item_Buyers_identifier" id="BT-156">Artikelkennung des Käufers</entry>
-  <entry key="xr:Item_standard_identifier" id="BT-157_identifier">Artikelkennung</entry>
+  <entry key="xr:Item_standard_identifier" id="BT-157">Artikelkennung</entry>
   <entry key="xr:Item_standard_identifier/@scheme_identifier" class="BT-157_scheme">Schema der Artikelkennung</entry>
   <entry key="xr:Item_classification_identifier" id="BT-158">Code der Artikelklassifizierung</entry>
   <entry key="xr:Item_classification_identifier/@scheme_identifier" id="BT-158_scheme">Kennung zur Bildung des Schemas</entry>
