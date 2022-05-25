@@ -1927,10 +1927,10 @@
         </div>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('xr:Business_process_type')" />:
+            <xsl:value-of select="xrf:_('xr:Business_process_type_identifier')" />:
           </div>
           <div data-title="BT-23" class="BT-23 boxdaten wert">
-            <xsl:value-of select="xr:PROCESS_CONTROL/xr:Business_process_type" />
+            <xsl:value-of select="xr:PROCESS_CONTROL/xr:Business_process_type_identifier" />
           </div>
         </div>
         <div class="boxzeile" role="listitem">
