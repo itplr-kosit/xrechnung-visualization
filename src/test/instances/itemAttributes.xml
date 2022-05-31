@@ -118,8 +118,8 @@
                 </cac:TaxScheme>
             </cac:ClassifiedTaxCategory>
           <cac:AdditionalItemProperty>
-            <cbc:Name>THIS IS THE PROBLEM</cbc:Name>
-            <cbc:Value>BECAUSE IT IS NOT CONTAINED IN THE VISUALIZATION</cbc:Value>
+            <cbc:Name>Property Name</cbc:Name>
+            <cbc:Value>Property value</cbc:Value>
           </cac:AdditionalItemProperty>
         </cac:Item>
         <cac:Price>
