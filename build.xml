@@ -247,7 +247,7 @@
 
   <target name="transform-ubl-invoice-to-xr" depends="prepare-saxon">
     <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
-      style="${src.dir}/xsl/ubl-invoice-xr.xsl" includes="**/*ubl.xml,**/maxRechnung.xml">
+      style="${src.dir}/xsl/ubl-invoice-xr.xsl" includes="**/*ubl.xml,**/maxRechnung.xml, **/itemAttributes.xml">
       <classpath location="${lib.dir}/${saxon.jar}" />
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
       <mapper type="glob" from="*.xml" to="*-xr.xml" />
