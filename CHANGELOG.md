@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## UNRELEASED
 
+### Fixed
+
+* Missing display of BG-32 (thanks to GitHub user @JannickWeisshaupt)
+
 
 ## v2022-01-31
 
