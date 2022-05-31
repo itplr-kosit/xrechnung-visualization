@@ -543,15 +543,7 @@
       <xr:Buyer_legal_registration_identifier>
          <xsl:attribute name="xr:id" select="'BT-47'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier"/>
-      </xr:Buyer_legal_registration_identifier>
-   </xsl:template>
-   <xsl:template mode="BT-47"
-                 match="/CreditNote:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID">
-      <xr:Buyer_legal_registration_identifier>
-         <xsl:attribute name="xr:id" select="'BT-47'"/>
-         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier"/>
+         <xsl:call-template name="identifier-with-scheme"/>
       </xr:Buyer_legal_registration_identifier>
    </xsl:template>
    <xsl:template mode="BT-48"

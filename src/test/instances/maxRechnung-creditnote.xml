@@ -42,8 +42,9 @@
 	</cac:ProjectReference>-->
 	<cac:AccountingSupplierParty>
 		<cac:Party>
+			<cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
 			<cac:PartyIdentification>
-				<cbc:ID>Kennung des Verkäufers</cbc:ID>
+				<cbc:ID schemeID="0013">Kennung des Verkäufers</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PartyName>
 				<cbc:Name>EntServDE</cbc:Name>
@@ -73,6 +74,7 @@
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
 				<cbc:RegistrationName>EntServ Deutschland GmbH</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0198">123456789</cbc:CompanyID>
 				<cbc:CompanyLegalForm>Weitere rechtliche
 					Informationen</cbc:CompanyLegalForm>
 			</cac:PartyLegalEntity>
@@ -85,8 +87,9 @@
 	</cac:AccountingSupplierParty>
 	<cac:AccountingCustomerParty>
 		<cac:Party>
+			<cbc:EndpointID schemeID="EM">rechnungseingang@test.de</cbc:EndpointID>
 			<cac:PartyIdentification>
-				<cbc:ID>DPMA-678</cbc:ID>
+				<cbc:ID schemeID="0094">DPMA-678</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PartyName>
 				<cbc:Name>Abweichender Handelsname Rechnungsempfänger</cbc:Name>
@@ -112,6 +115,7 @@
 			<cac:PartyLegalEntity>
 				<cbc:RegistrationName>Deutsches Patent - und
 					Markenamt</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0094">90000000-03083-12</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
 				<cbc:Name>Kontakt Rechnungsempfänger</cbc:Name>
@@ -122,13 +126,13 @@
 	</cac:AccountingCustomerParty>
 	<cac:PayeeParty>
 		<cac:PartyIdentification>
-			<cbc:ID>AZE</cbc:ID>
+			<cbc:ID schemeID="0118">AZE</cbc:ID>
 		</cac:PartyIdentification>
 		<cac:PartyName>
 			<cbc:Name>Abweichender Zahlungsempfänger</cbc:Name>
 		</cac:PartyName>
 		<cac:PartyLegalEntity>
-			<cbc:CompanyID>AZE-123</cbc:CompanyID>
+			<cbc:CompanyID schemeID="0198">AZE-123</cbc:CompanyID>
 		</cac:PartyLegalEntity>
 	</cac:PayeeParty>
 	<cac:Delivery>
@@ -282,6 +286,9 @@
 		<cac:OrderLineReference>
 			<cbc:LineID>RPB</cbc:LineID>
 		</cac:OrderLineReference>
+		<cac:DocumentReference>
+			<cbc:ID schemeID="AAD">7362789</cbc:ID>
+		</cac:DocumentReference>
 		<cac:AllowanceCharge>
 			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
 			<cbc:AllowanceChargeReason>Grund Nachlass</cbc:AllowanceChargeReason>
@@ -305,6 +312,12 @@
 			<cac:SellersItemIdentification>
 				<cbc:ID>456</cbc:ID>
 			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0088">1234567890128</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="ZZZ" listVersionID="1.0">12344321</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>S</cbc:ID>
 				<cbc:Percent>7</cbc:Percent>
