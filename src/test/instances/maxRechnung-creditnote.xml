@@ -312,6 +312,14 @@
 					<cbc:ID>VAT</cbc:ID>
 				</cac:TaxScheme>
 			</cac:ClassifiedTaxCategory>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Name der Eigenschaft</cbc:Name>
+				<cbc:Value>Wert der Eigenschaft</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Name der Artikeleigenschaft</cbc:Name>
+				<cbc:Value>Wert der Artikeleigenschaft</cbc:Value>
+			</cac:AdditionalItemProperty>
 		</cac:Item>
 		<cac:Price>
 			<cbc:PriceAmount currencyID="EUR">1000</cbc:PriceAmount>
