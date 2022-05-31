@@ -622,7 +622,7 @@
     <xsl:call-template name="list">
       <xsl:with-param name="headingId" select="'detailsPositionArtikeleigenschaften'"/>
       <xsl:with-param name="content">
-        <xsl:apply-templates select="xr:ITEM_ATTRIBUTES"/>
+        <xsl:apply-templates select="xr:ITEM_INFORMATION/xr:ITEM_ATTRIBUTES"/>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
