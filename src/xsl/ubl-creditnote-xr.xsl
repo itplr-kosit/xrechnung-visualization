@@ -22,7 +22,7 @@
 
    <xsl:output method="xml" indent="yes"/>
    
-   <xsl:include href="./ubl-common-xr.xsl"/>
+   <xsl:include href="./common-xr.xsl"/>
 
    <xsl:template match="/CreditNote:CreditNote">
       <xr:invoice>
