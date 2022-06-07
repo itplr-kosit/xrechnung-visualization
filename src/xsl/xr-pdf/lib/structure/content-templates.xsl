@@ -288,7 +288,7 @@
 
 
   <xsl:template match="*|@*" mode="value-list-entry">
-    <xsl:param name="value"/>
+    <xsl:param name="value"/>    
     <xsl:param name="field-mapping-identifier">
       <xsl:value-of select="name()"/>
     </xsl:param>
@@ -307,10 +307,10 @@
               <xsl:when test="$value">
                 <xsl:value-of select="$value"/>
               </xsl:when>
-              <xsl:otherwise>
+              <xsl:otherwise>                
                 <xsl:value-of select="."/>
               </xsl:otherwise>
-            </xsl:choose>
+            </xsl:choose>           
           </fo:block>
         </fo:table-cell>
       </fo:table-row>
