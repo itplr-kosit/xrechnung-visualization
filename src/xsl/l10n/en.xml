@@ -173,7 +173,7 @@
   <entry key="xr:Item_price_base_quantity" id="BT-149">Item price base quantity</entry>
   <entry key="xr:Item_price_base_quantity_unit_of_measure" id="BT-150">Unit code</entry>
   <entry key="xr:Invoiced_item_VAT_category_code" id="BT-151">VAT category</entry>
-  <entry key="xr:Invoiced_item_VAT_rate" id="BT-152">VAT rate (%)</entry>
+  <entry key="xr:Invoiced_item_VAT_rate" id="BT-152">VAT rate</entry>
   <entry key="xr:Item_name" id="BT-153">Name</entry>
   <entry key="xr:Item_description" id="BT-154">Description</entry>
   <entry key="xr:Item_Sellers_identifier" id="BT-155">Item identifier</entry>
