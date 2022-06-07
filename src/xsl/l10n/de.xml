@@ -175,7 +175,7 @@
   <entry key="xr:Item_price_base_quantity" id="BT-149">Basismenge zum Artikelpreis</entry>
   <entry key="xr:Item_price_base_quantity_unit_of_measure" id="BT-150">Code der Maßeinheit</entry>
   <entry key="xr:Invoiced_item_VAT_category_code" id="BT-151">Umsatzsteuer</entry>
-  <entry key="xr:Invoiced_item_VAT_rate" id="BT-152">Umsatzsteuersatz in Prozent</entry>
+  <entry key="xr:Invoiced_item_VAT_rate" id="BT-152">Umsatzsteuersatz</entry>
   <entry key="xr:Item_name" id="BT-153">Bezeichnung</entry>
   <entry key="xr:Item_description" id="BT-154">Beschreibung</entry>
   <entry key="xr:Item_Sellers_identifier" id="BT-155">Artikelnummer</entry>

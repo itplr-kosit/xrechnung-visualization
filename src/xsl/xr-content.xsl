@@ -209,7 +209,9 @@
               <xsl:apply-templates mode="value-list-entry" select="xr:VAT_category_taxable_amount">
                 <xsl:with-param name="value" select="format-number(xr:VAT_category_taxable_amount,$amount-picture,$lang)"/>
               </xsl:apply-templates>
-              <xsl:apply-templates mode="value-list-entry" select="xr:VAT_category_rate"/>
+              <xsl:apply-templates mode="value-list-entry" select="xr:VAT_category_rate">
+                <xsl:with-param name="value" select="concat(format-number(xr:VAT_category_rate,$percentage-picture,$lang), '%')"/>
+              </xsl:apply-templates>
               <xsl:apply-templates mode="sum-list-entry" select="xr:VAT_category_tax_amount">
                 <xsl:with-param name="value" select="format-number(xr:VAT_category_tax_amount,$amount-picture,$lang)"/>
               </xsl:apply-templates>
@@ -514,7 +516,7 @@
             <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_base_quantity_unit_of_measure"/>
             <xsl:apply-templates mode="list-entry" select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_category_code"/>
             <xsl:apply-templates mode="list-entry" select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate">
-            <xsl:with-param name="value" select="format-number(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,$percentage-picture,$lang)"/>
+              <xsl:with-param name="value" select="concat(format-number(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,$percentage-picture,$lang), '%')"/>
             </xsl:apply-templates>
           </xsl:with-param>
         </xsl:call-template>
