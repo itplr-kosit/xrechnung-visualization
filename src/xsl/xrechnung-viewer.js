@@ -56,10 +56,8 @@ function base64_to_binary(data) {
     return new Uint8Array(bytes);
 }
 
-function downloadData(element_id) {
-    var data_element = document.getElementById(element_id);
-    var mimetype = data_element.getAttribute('data-mimeType');
-    var filename = data_element.getAttribute('data-filename');
+function downloadData(element_id, mimetype, filename) {
+    var data_element = document.getElementById(element_id);  
     var text = data_element.innerHTML;
     var binary = base64_to_binary(text);
     var blob = new Blob([binary], {
@@ -70,9 +68,15 @@ function downloadData(element_id) {
         // IE
         window.navigator.msSaveOrOpenBlob(blob, filename);
     } else {
-        // Non-IE
-        var url = window.URL.createObjectURL(blob);
-        window.open(url, "_self");
+        
+        const elem = window.document.createElement('a');
+        elem.href = window.URL.createObjectURL(blob);
+        elem.download = filename;        
+        document.body.appendChild(elem);
+        elem.click();        
+        document.body.removeChild(elem);
+        
+        
     }
 }
 
