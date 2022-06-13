@@ -31,10 +31,8 @@
   <property name="validator.download.zip" value="validator-${validator.version}-distribution.zip" />
   <property name="validator.download.url"
     value="${github.group.url}/validator/releases/download/v${validator.version}/${validator.download.zip}" />
-
   <property name="validator.config.proj.name" value="validator-configuration-xrechnung" />
-
-  <property name="validator.config.release.date" value="2021-07-31" />
+  <property name="validator.config.release.date" value="2022-04-31-SNAPSHOT" />
   <property name="validator.config.download.url"
     value="${github.group.url}/${validator.config.proj.name}/releases/download/release-${validator.config.release.date}/${validator.config.proj.name}_${xrechnung.version.full}_${validator.config.release.date}.zip" />
 
@@ -144,12 +142,17 @@
     </unzip>
   </target>
 
-  <target name="prepare-validator-configuration" depends="prepare-validationtool">
-    <get src="${validator.config.download.url}" dest="${download.dir}" verbose="true"
-      skipexisting="true" usetimestamp="true" />
-    <unzip src="${download.dir}/${validator.config.zip}" dest="${validator.repository.dir}" />
+  <target name="prepare-validator-configuration" depends="retrieve-validator-configuration, prepare-validationtool">
+    <unzip src="${lib.dir}/${validator.config.zip}" dest="${validator.repository.dir}" />
   </target>
   
+  <target name="retrieve-validator-configuration" depends="init" if="validator.config.download.url.prefix">
+    <echo message="retrieving Validator Configuration locally from ${validator.config.download.url.prefix}/dist/${validator.config.zip}" />
+    <fail unless="validator.config.download.url.prefix" message="Property validator.config.download.url.prefix must exist for this target to work "/>
+    <get src="${validator.config.download.url.prefix}/dist/${validator.config.zip}" dest="${lib.dir}/${validator.config.zip}" verbose="true"
+      skipexisting="false" usetimestamp="true" />
+    <unzip src="${lib.dir}/${validator.config.zip}" dest="${validator.repository.dir}" />
+  </target>
   
   <target name="retrieve-xr-testsuite-from-local-build" depends="init"
     if="develop.local.xr.testsuite">
