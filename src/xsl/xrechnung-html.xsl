@@ -26,6 +26,9 @@
         <style>
           <xsl:value-of select="unparsed-text('xrechnung-viewer.css')" />
         </style>
+        <script>
+          <xsl:value-of select="unparsed-text('FileSaver-v2.0.5.js')" />
+        </script>
         <!-- according to https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup -->
         <script>
           <xsl:value-of select="unparsed-text('xrechnung-viewer.js')" />

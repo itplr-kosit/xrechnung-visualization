@@ -1,3 +1,4 @@
+
 /* Tab-Container aufbauen **************************************************/
 
 var a = new Array("uebersicht", "details", "zusaetze", "anlagen", "laufzettel");
@@ -56,7 +57,7 @@ function base64_to_binary(data) {
     return new Uint8Array(bytes);
 }
 
-function downloadData(element_id, mimetype, filename) {
+function downloadData(element_id, mimetype, filename) {    
     var data_element = document.getElementById(element_id);  
     var text = data_element.innerHTML;
     var binary = base64_to_binary(text);
@@ -68,15 +69,7 @@ function downloadData(element_id, mimetype, filename) {
         // IE
         window.navigator.msSaveOrOpenBlob(blob, filename);
     } else {
-        
-        const elem = window.document.createElement('a');
-        elem.href = window.URL.createObjectURL(blob);
-        elem.download = filename;        
-        document.body.appendChild(elem);
-        elem.click();        
-        document.body.removeChild(elem);
-        
-        
+        saveAs(blob, filename);       
     }
 }
 
