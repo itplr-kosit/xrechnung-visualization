@@ -20,6 +20,22 @@ The main `ant` targets for developing are:
 * `test` validates source UBL or CII XML against XRechnung, transforms to XR Sem Model and schema validates results and transforms and test HTML and PDF visualization
 * and `dist` (creating the distribution artefact)
 
+### Validator Configuration XRechnung
+
+Currently, you need to manually download the Validator Configuration for XRechnung and store it locally.
+You have to set the ant property `validator.config.download.url.prefix` to the URL of directory (full path) like e.g. `validator.config.download.url.prefix=file:/mnt/c/data/git-repos/validator-configuration-xrechnung` (Linux). 
+To execute the `test` target, for example, call
+
+```shell
+ant -Dvalidator.config.download.url.prefix=file:/home/renzo/projects/validator-configuration-xrechnung test
+```
+
+For Windows users:
+
+```shell
+ant "-Dvalidator.config.download.url.prefix=file:/c:/dev/git/xml-mutate/target" test
+```
+
 ## Distribution
 
 The `ant` target `dist` creates the distribution zip Archive for releases.
