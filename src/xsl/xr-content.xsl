@@ -103,7 +103,16 @@
       <xsl:with-param name="content">
         <xsl:apply-templates select="xr:Invoice_number" mode="list-entry"/>
         <xsl:apply-templates select="xr:Invoice_issue_date" mode="list-entry">
-          <xsl:with-param name="value" select="format-date(xr:Invoice_issue_date, xrf:_('date-format'))"/>
+          <xsl:with-param name="value" select="if (matches(
+            normalize-space(
+            replace(xr:Invoice_issue_date, '-', '')
+            ),
+            $datepattern)
+            )
+            then
+            format-date(xr:Invoice_issue_date, xrf:_('date-format'))
+            else
+            xr:Invoice_issue_date/text()"/>
         </xsl:apply-templates>
         <xsl:apply-templates select="xr:Invoice_type_code" mode="list-entry"/>
         <xsl:apply-templates select="xr:Invoice_currency_code" mode="list-entry"/>
