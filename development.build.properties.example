@@ -16,7 +16,13 @@
 ##
 #xrechnung.version.full=2.2.0
 
+##
+#
+# Use local Validator Configuration XRechnung Repository
+#
+##
 
+#validator.repository.dir=${work.dir}/build/xrechnung-configuration-repository
 
 ##
 # Set this property in order to activate targets for local development
@@ -30,4 +36,6 @@
 #xr.testsuite.download.url.prefix=file://${work.dir}/../xrechnung-testsuite/dist
 
 #xr.testsuite.version=2022-01-31-SNAPSHOT
+
+
 
