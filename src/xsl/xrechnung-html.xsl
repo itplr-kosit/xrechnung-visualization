@@ -1539,17 +1539,9 @@
           <div class="boxabstand"></div>
           <xsl:apply-templates select="./xr:PAYEE" />
         </div>
-      </div>
-    </div>
-  </xsl:template>
-
-
-  <xsl:template name="zusaetzeVerkaeufer" match="xr:SELLER" mode="zusaetze">
-    <div id="zusaetzeVerkaeufer" class="box boxZweispaltig">
-      <div data-title="BG-4" class="BG-4 boxtitel" role="heading" aria-level="2">
-        <xsl:value-of select="xrf:_('uebersichtVerkaeufer')" />
-      </div>
-      <div class="boxtabelle boxinhalt borderSpacing" role="list">
+    </xsl:template>
+    
+    <xsl:template name="sub_invoice_eigenschaft" match="xr:SUB_INVOICE_ITEM_ATTRIBUTES">
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Seller_trading_name')" />:
@@ -1750,8 +1742,20 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Buyer_electronic_address')" />:
           </div>
-          <div data-title="BT-49" class="BT-49 boxdaten wert">
-            <xsl:value-of select="xr:Buyer_electronic_address" />
+                    <div data-title="BT-30" class="BT-30 boxdaten wert">
+                        <xsl:value-of select="xr:Seller_legal_registration_identifier" />
+                    </div>
+                </div>
+                <div class="boxzeile" role="listitem">
+                    <div class="boxdaten legende">
+                        <xsl:value-of select="xrf:_('xr:Seller_legal_registration_identifier/@scheme_identifier')"/>: </div>
+                    <div data-title="BT-30-scheme-id" class="BT-30-scheme-id boxdaten wert">
+                        <xsl:value-of select="xr:Seller_legal_registration_identifier/@scheme_identifier"/>
+                    </div>
+                </div>
+                <div class="boxzeile" role="listitem">
+                    <div class="boxdaten legende">
+                        <xsl:value-of select="xrf:_('xr:Seller_VAT_identifier')" />:
           </div>
         </div>
         <div class="boxzeile" role="listitem">

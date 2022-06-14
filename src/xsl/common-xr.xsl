@@ -4,6 +4,8 @@
     xmlns:xr="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"
     exclude-result-prefixes="xs" version="2.0">
 
+    <xsl:include href="functions.xsl"/>
+
     <xsl:variable name="datepattern" as="xs:string" select="'^[0-9]{8}'" />
 
 
@@ -51,9 +53,7 @@
                     select="xs:date(concat($year, '-', format-number($month, '00'), '-', format-number($day, '00')))"
                  />
             </xsl:when>
-            <xsl:otherwise>ILLEGAL DATE FORMAT of <xsl:value-of select="."
-                 />: &lt;para&gt;Mit diesem Datentyp wird ein kalendarisches Datum abgebildet, wie es in der ISO 8601 Spezifikation &lt;quote&gt;Calendar date complete representation&lt;/quote&gt; beschrieben ist (siehe ISO 8601:2004, Abschnitt 5.2.1.1). Das Datum beinhaltet keine Zeitangabe. Das konkret zu verwendende Format ist abhängig von der genutzten Syntax.&lt;/para&gt;
-                &lt;para&gt;Der Datentyp basiert auf dem Typ &lt;quote&gt;Date Time. Type&lt;/quote&gt;, wie in ISO 15000-5:2014 Anhang B definiert.&lt;/para&gt;</xsl:otherwise>
+            <xsl:otherwise>ILLEGAL DATE FORMAT of "<xsl:value-of select="." />".</xsl:otherwise>
         </xsl:choose>
     </xsl:template>
     <xsl:template name="identifier">
