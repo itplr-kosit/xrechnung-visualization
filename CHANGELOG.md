@@ -8,11 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+
 * Add FileSaver.js for better cross-browser attachment download functionality
+* Created ubl-common-xr.xsl for common named templates as a single point of change 
 
 ### Fixed
 
 * Missing display of BG-32 (thanks to GitHub user @JannickWeisshaupt)
+* BT-47 bug in UBL CreditNote
 
 
 ## v2022-01-31
