@@ -2077,7 +2077,7 @@
       <xsl:if test="@listID | @schemeID">
          <xsl:attribute name="scheme_identifier" select="(@listID, @schemeID)[1]"/>
       </xsl:if>
-      <xsl:if test="@schemeVersionID | @listVersionID">
+      <xsl:if test="@listVersionID | @schemeVersionID">
          <xsl:attribute name="scheme_version_identifier"
             select="(@listVersionID, @schemeVersionID)[1]"/>
       </xsl:if>
