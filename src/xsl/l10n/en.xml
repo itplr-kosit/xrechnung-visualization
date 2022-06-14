@@ -235,7 +235,8 @@
   
   <entry key="_disclaimer">We assume no liability for the accuracy of the data.</entry>
   <entry key="_invoice-note-group">Note on the invoice</entry>
-  <entry key="_open">Open</entry>  
+  <entry key="_open">Open</entry>
+    <entry key="no-data">No data available</entry>
   <entry key="_net">net</entry>
   <entry key="_gross">gross</entry>
   <entry key="_no-content">Areas without content are not displayed!</entry>

@@ -26,6 +26,9 @@
         <style>
           <xsl:value-of select="unparsed-text('xrechnung-viewer.css')" />
         </style>
+        <script>
+          <xsl:value-of select="unparsed-text('FileSaver-v2.0.5.js')" />
+        </script>
         <!-- according to https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup -->
         <script>
           <xsl:value-of select="unparsed-text('xrechnung-viewer.js')" />
@@ -2060,21 +2063,31 @@
           </a>
         </div>
       </div>
+        
       <div class="boxzeile" role="listitem">
         <div class="boxdaten legende">
           <xsl:value-of select="xrf:_('xr:Attached_document')" />:
         </div>
+          <xsl:variable name="doc-ref-id" as="xs:string" select="translate(xr:Supporting_document_reference, ' ', '-')"/>
         <div data-title="BT-125" class="BT-125 boxdaten wert">
-          <a href="#" onClick="downloadData('{translate(xr:Supporting_document_reference, ' ', '-')}')">
-            <xsl:value-of select="xrf:_('_open')" />
-          </a>
+        <xsl:choose>
+            <xsl:when test="empty(xr:Attached_document/text())">
+                <xsl:value-of select="xrf:_('no-data')" />
+            </xsl:when>
+            <xsl:otherwise>
+                <a href="#{$doc-ref-id}" onClick="downloadData('{$doc-ref-id}', '{xr:Attached_document/@mime_code}', '{xr:Attached_document/@filename}')">
+                    <xsl:value-of select="xrf:_('_open')" />
+                </a>    
+            </xsl:otherwise>
+        </xsl:choose>    
         </div>
-          <div id="{translate(xr:Supporting_document_reference, ' ', '-')}" data-mimetype="{xr:Attached_document/@mime_code}"
-          data-filename="{xr:Attached_document/@filename}" style="display:none;">
+          <div id="{$doc-ref-id}" style="display:none;">
           <xsl:value-of select="xr:Attached_document" />
         </div>
 
       </div>
+        
+        
       <div class="boxzeile" role="listitem">
         <div class="boxdaten legende">
           <xsl:value-of select="xrf:_('xr:Attached_document/@mime_code')" />:
