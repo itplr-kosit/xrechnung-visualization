@@ -2068,7 +2068,9 @@
         <div class="boxdaten legende">
           <xsl:value-of select="xrf:_('xr:Attached_document')" />:
         </div>
-          <xsl:variable name="doc-ref-id" as="xs:string" select="translate(xr:Supporting_document_reference, ' ', '-')"/>
+        <!-- HTML5 restrictions for id attribute: must contain at least 1 character, can't contain any space characters -->
+        <!-- JS restrictions for param in getElementById(id), in this case $doc-ref-id: case-sensitive string unique within the document -->
+          <xsl:variable name="doc-ref-id" as="xs:string" select="translate(normalize-space(xr:Supporting_document_reference), ' ', '-')"/>
         <div data-title="BT-125" class="BT-125 boxdaten wert">
         <xsl:choose>
             <xsl:when test="empty(xr:Attached_document/text())">
