@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## UNRELEASED
 
+### Changed
+
+* Add FileSaver.js for better cross-browser attachment download functionality
+
 ### Fixed
 
 * Missing display of BG-32 (thanks to GitHub user @JannickWeisshaupt)
