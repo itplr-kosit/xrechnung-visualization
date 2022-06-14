@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ns0:CreditNote
+
+<!-- This is just a technical example it does not reflect any busines case and hence might not reflect anything real -->
+<ns0:Invoice
 	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
 	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
 	xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
-	xmlns:ns0="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+	xmlns:ns0="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
 	<cbc:CustomizationID>urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung_1.1</cbc:CustomizationID>
 	<cbc:ID>1234567890</cbc:ID>
 	<cbc:IssueDate>2018-10-15</cbc:IssueDate>
-	<!--<cbc:IssueDate>2018-10-29</cbc:IssueDate>-->
-	<cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
+	<cbc:DueDate>2018-10-29</cbc:DueDate>
+	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
 	<cbc:Note>Bemerkung zu der Rechnung gibt es nicht, da dies eine Testrechnung
 		ist.</cbc:Note>
 	<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
@@ -21,10 +23,12 @@
 		<cbc:ID>2345678901</cbc:ID>
 		<cbc:SalesOrderID>Auftragsreferenz</cbc:SalesOrderID>
 	</cac:OrderReference>
+	<cac:OriginatorDocumentReference>
+		<cbc:ID>Vergabe-und Losreferenz</cbc:ID>
+	</cac:OriginatorDocumentReference>
 	<cac:ContractDocumentReference>
 		<cbc:ID>Vertragsreferenz</cbc:ID>
 	</cac:ContractDocumentReference>
-
 	<cac:AdditionalDocumentReference>
 		<cbc:ID>Dokument Referenz</cbc:ID>
 		<cbc:DocumentType>Beschreibung der angehängten JPG-Datei</cbc:DocumentType>
@@ -33,17 +37,20 @@
 		<cbc:ID>Kennung des Objekts</cbc:ID>
 		<cbc:DocumentType>ATS</cbc:DocumentType>
 	</cac:AdditionalDocumentReference>
-	<cac:OriginatorDocumentReference>
-		<cbc:ID>Vergabe-und Losreferenz</cbc:ID>
-	</cac:OriginatorDocumentReference>
-	<!--
+	<cac:BillingReference>
+        <cac:InvoiceDocumentReference>
+            <cbc:ID>PRG1502168</cbc:ID>
+			<cbc:IssueDate>2018-10-23</cbc:IssueDate>
+        </cac:InvoiceDocumentReference>
+    </cac:BillingReference>
 	<cac:ProjectReference>
 		<cbc:ID>Projektreferenz</cbc:ID>
-	</cac:ProjectReference>-->
+	</cac:ProjectReference>
 	<cac:AccountingSupplierParty>
 		<cac:Party>
+			<cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
 			<cac:PartyIdentification>
-				<cbc:ID>Kennung des Verkäufers</cbc:ID>
+				<cbc:ID schemeID="0013">987654321</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PartyName>
 				<cbc:Name>EntServDE</cbc:Name>
@@ -73,6 +80,7 @@
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
 				<cbc:RegistrationName>EntServ Deutschland GmbH</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0198">123456789</cbc:CompanyID>
 				<cbc:CompanyLegalForm>Weitere rechtliche
 					Informationen</cbc:CompanyLegalForm>
 			</cac:PartyLegalEntity>
@@ -85,8 +93,9 @@
 	</cac:AccountingSupplierParty>
 	<cac:AccountingCustomerParty>
 		<cac:Party>
+			<cbc:EndpointID schemeID="EM">rechnungseingang@test.de</cbc:EndpointID>
 			<cac:PartyIdentification>
-				<cbc:ID>DPMA-678</cbc:ID>
+				<cbc:ID schemeID="0094">DPMA-678</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PartyName>
 				<cbc:Name>Abweichender Handelsname Rechnungsempfänger</cbc:Name>
@@ -112,6 +121,7 @@
 			<cac:PartyLegalEntity>
 				<cbc:RegistrationName>Deutsches Patent - und
 					Markenamt</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0094">90000000-03083-12</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
 				<cbc:Name>Kontakt Rechnungsempfänger</cbc:Name>
@@ -122,13 +132,13 @@
 	</cac:AccountingCustomerParty>
 	<cac:PayeeParty>
 		<cac:PartyIdentification>
-			<cbc:ID>AZE</cbc:ID>
+			<cbc:ID schemeID="0118">AZE</cbc:ID>
 		</cac:PartyIdentification>
 		<cac:PartyName>
 			<cbc:Name>Abweichender Zahlungsempfänger</cbc:Name>
 		</cac:PartyName>
 		<cac:PartyLegalEntity>
-			<cbc:CompanyID>AZE-123</cbc:CompanyID>
+			<cbc:CompanyID schemeID="0198">AZE-123</cbc:CompanyID>
 		</cac:PartyLegalEntity>
 	</cac:PayeeParty>
 	<cac:Delivery>
@@ -274,14 +284,17 @@
 			>210.00</cbc:PayableRoundingAmount>
 		<cbc:PayableAmount currencyID="EUR">8120.00</cbc:PayableAmount>
 	</cac:LegalMonetaryTotal>
-	<cac:CreditNoteLine>
+	<cac:InvoiceLine>
 		<cbc:ID>123</cbc:ID>
-		<cbc:CreditedQuantity unitCode="LTR">10.00</cbc:CreditedQuantity>
+		<cbc:InvoicedQuantity unitCode="LTR">10.00</cbc:InvoicedQuantity>
 		<cbc:LineExtensionAmount currencyID="EUR">10000.00</cbc:LineExtensionAmount>
 		<cbc:AccountingCost>BRE</cbc:AccountingCost>
 		<cac:OrderLineReference>
 			<cbc:LineID>RPB</cbc:LineID>
 		</cac:OrderLineReference>
+		<cac:DocumentReference>
+			<cbc:ID schemeID="AAD">7362789</cbc:ID>
+		</cac:DocumentReference>
 		<cac:AllowanceCharge>
 			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
 			<cbc:AllowanceChargeReason>Grund Nachlass</cbc:AllowanceChargeReason>
@@ -305,6 +318,12 @@
 			<cac:SellersItemIdentification>
 				<cbc:ID>456</cbc:ID>
 			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0088">1234567890128</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="ZZZ" listVersionID="1.0">12344321</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>S</cbc:ID>
 				<cbc:Percent>7</cbc:Percent>
@@ -312,9 +331,17 @@
 					<cbc:ID>VAT</cbc:ID>
 				</cac:TaxScheme>
 			</cac:ClassifiedTaxCategory>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Name der Eigenschaft</cbc:Name>
+				<cbc:Value>Wert der Eigenschaft</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Name der Artikeleigenschaft</cbc:Name>
+				<cbc:Value>Wert der Artikeleigenschaft</cbc:Value>
+			</cac:AdditionalItemProperty>
 		</cac:Item>
 		<cac:Price>
 			<cbc:PriceAmount currencyID="EUR">1000</cbc:PriceAmount>
 		</cac:Price>
-	</cac:CreditNoteLine>
-</ns0:CreditNote>
+	</cac:InvoiceLine>
+</ns0:Invoice>

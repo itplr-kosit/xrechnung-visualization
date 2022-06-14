@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <project basedir="." name="xrechnung-visualization" default="transform-to-visualization">
 
     <!-- project directory structure -->
@@ -46,10 +47,6 @@
     <property name="validator.repository.dir"
         location="${build.dir}/xrechnung-configuration-repository" />
 
-    <available property="validator.repository.dir.available"
-        file="${validator.repository.dir}/scenarios.xml" />
-
-
 
     <!-- vnu html validator -->
     <property name="vnu.jar" value="vnu.jar" />
@@ -78,11 +75,6 @@
         value="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1" />
 
 
-    <available file="${lib.dir}/${saxon.jar}" property="dep.saxon.available" />
-    <available file="${lib.dir}/${validator.jar}" property="dep.validator.available" />
-    <available file="${fop.home}/${fop.jar}" property="dep.fop.available" />
-    <available file="${lib.dir}/${vnu.jar}" property="dep.vnu.available" />
-
     <target name="init" description="Initializes build directory structure and ISO timestamp">
         <!-- Create timestamps -->
         <tstamp>
@@ -101,6 +93,17 @@
         <mkdir dir="${test.transformed.pdf.dir}" />
         <mkdir dir="${test.reports.dir}" />
         <mkdir dir="${validator.repository.dir}" />
+        
+        <available property="validator.repository.dir.available"
+            file="${validator.repository.dir}/scenarios.xml" />
+        
+        <available file="${lib.dir}/${saxon.jar}" property="dep.saxon.available" />
+        <available file="${lib.dir}/${validator.jar}" property="dep.validator.available" />
+        <available file="${fop.home}/${fop.jar}" property="dep.fop.available" />
+        <available file="${lib.dir}/${vnu.jar}" property="dep.vnu.available" />
+        
+        
+        
     </target>
 
 
@@ -210,7 +213,7 @@
         description="Get data from xrechnung-testsuite for testing visualization">
 
         <copy todir="${test.build.dir}" verbose="true">
-            <fileset dir="${test.src.dir}" includes="**/*.xml" />
+            <fileset dir="${test.src.dir}" includes="**/*.xml" excludes="**/wrong*.xml" />
         </copy>
 
         <unzip src="${download.dir}/${xr.testsuite.zip}" dest="${test.docs.dir}">
@@ -260,7 +263,7 @@
     <target name="test-testsuite" depends="dependency-resolve"
         description="Testsuite validation with Validator XRechnung Configuration">
 
-        <fail unless="validator.repository.dir.available"
+        <fail unless="validator.repository.dir"
             message="You need to set validator.repository.dir=${validator.repository.dir} to a directory with full configuration including a scenarios.xml" />
 
         
