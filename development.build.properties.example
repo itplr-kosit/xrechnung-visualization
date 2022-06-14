@@ -22,7 +22,7 @@
 #
 ##
 
-#validator.repository.dir=${work.dir}/build/xrechnung-configuration-repository
+#validator.repository.dir=${FULL PATH TO}/validator-configuration-xrechnung/build
 
 ##
 # Set this property in order to activate targets for local development
