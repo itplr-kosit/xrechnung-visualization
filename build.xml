@@ -12,8 +12,6 @@
     <property name="fop.jar" value="fop.jar"/>
     <property name="fop.home" value="${lib.dir}/fop"/>
     <property name="fop.config" value="conf/fop.xconf"/>
-    <!-- for embedded documents in pdf use this config file to disable pdf/a1 support -->
-    <!-- <property name="fop.config" value="conf/fop-disable-pdf-a1.xconf" /> -->
 
     <!-- Part of the download path -->
     <property name="saxon.url.version" value="10"/>
@@ -329,6 +327,7 @@
 
 
     <target name="transform-xr-to-pdf" depends="transform-to-xr, dependency-resolve">
+        <echo message="Transforming PDF with profile=${fop.config}" />
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}"
             style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>

@@ -17,6 +17,11 @@
 #xrechnung.version.full=2.2.0
 
 ##
+# Set PDF profile
+##
+#fop.conf=${work.dir}/conf/fop.xconf
+
+##
 #
 # Use local Validator Configuration XRechnung Repository
 #
