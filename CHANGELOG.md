@@ -4,18 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## UNRELEASED
+## v2022-05-31
+
+### Added
+
+* Several more test documents
+* Guide for visual testing
 
 ### Changed
 
-
 * Add FileSaver.js for better cross-browser attachment download functionality
-* Created ubl-common-xr.xsl for common named templates as a single point of change 
+* Created ubl-common-xr.xsl for common named templates as a single point of change
+* Handling of calendar date display is now more robust
 
 ### Fixed
 
 * Missing display of BG-32 (thanks to GitHub user @JannickWeisshaupt)
 * BT-47 bug in UBL CreditNote
+* Logic and display of BT-110 and BT-111 in CII
+* Display of percentage sign for VAT percentage rate
+* Missing tooltips in HTML
 
 
 ## v2022-01-31
