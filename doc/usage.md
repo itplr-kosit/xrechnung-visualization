@@ -4,6 +4,15 @@ There are various configuration options for the XSLT transformations.
 
 ## PDF Transformation
 
+### Choice of PDF Profile
+
+There are various profiles for PDF generation. The default uses none with enabled accessibility. 
+In order to use profile PDF/UA-1 and PDF/A-1, you can use another FOP configuration during build time, e.g. 
+```bash
+ant -Dfop.conf=conf/fop-with-ua1-a1.xconf transform-xr-to-pdf
+```
+
+
 ### Choice of FO engine 
 
 The FO engine used can be specified. Engine specific extensions will then be enabled. 
