@@ -60,6 +60,8 @@
     <property name="test.src.dir" location="${src.dir}/test"/>
     <property name="test.build.dir" location="${build.dir}/test"/>
     <property name="test.docs.dir" location="${test.build.dir}/instances"/>
+    <property name="test.docs.positive.dir" location="${test.docs.dir}/positive"/>
+    <property name="test.docs.negative.dir" location="${test.docs.dir}/negative"/>
     <property name="test.transformed.dir" location="${test.build.dir}/transformed"/>
     <property name="test.transformed.html.dir" location="${test.build.dir}/html"/>
     <property name="test.transformed.pdf.dir" location="${test.build.dir}/pdf"/>
@@ -88,6 +90,8 @@
         <mkdir dir="${lib.dir}"/>
         <mkdir dir="${fop.home}"/>
         <mkdir dir="${test.docs.dir}"/>
+        <mkdir dir="${test.docs.positive.dir}"/>
+        <mkdir dir="${test.docs.negative.dir}"/>
         <mkdir dir="${test.transformed.dir}"/>
         <mkdir dir="${test.transformed.html.dir}"/>
         <mkdir dir="${test.transformed.pdf.dir}"/>
@@ -208,11 +212,11 @@
     <target name="provide-testsuite" depends="init, retrieve-xr-testsuite"
         description="Get data from xrechnung-testsuite for testing visualization">
 
-        <copy todir="${test.build.dir}" verbose="true">
-            <fileset dir="${test.src.dir}" includes="**/*.xml" excludes="**/wrong*.xml"/>
+        <copy todir="${test.docs.positive.dir}" verbose="true">
+            <fileset dir="${test.src.dir}/instances" includes="**/*.xml" excludes="**/wrong*.xml"/>
         </copy>
 
-        <unzip src="${download.dir}/${xr.testsuite.zip}" dest="${test.docs.dir}">
+        <unzip src="${download.dir}/${xr.testsuite.zip}" dest="${test.docs.positive.dir}">
             <patternset>
                 <include name="**/*.xml"/>
                 <exclude name="**/04.05a-INVOICE_uncefact.xml"/>
@@ -255,6 +259,14 @@
 
     </target>
 
+
+    <target name="compile-negative-tests" depends="dependency-resolve"
+        description="add negative tests to test directory">
+        <copy todir="${test.docs.negative.dir}" verbose="true">
+            <fileset dir="${test.src.dir}" includes="**/wrong*.xml"/>
+        </copy>
+    </target>
+
     <!-- Check that data from xrechnung-testsuite is valid -->
     <target name="test-testsuite" depends="dependency-resolve"
         description="Testsuite validation with Validator XRechnung Configuration">
@@ -272,34 +284,44 @@
             <arg value="-h"/>
             <arg value="-o"/>
             <arg value="${test.reports.dir}"/>
-            <arg value="${test.docs.dir}"/>
+            <arg value="${test.docs.positive.dir}"/>
         </java>
     </target>
 
-    <target name="transform-ubl-invoice-to-xr" depends="dependency-resolve">
+    <target name="transform-ubl-invoice-to-xr" depends="dependency-resolve, compile-negative-tests">
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
             style="${src.dir}/xsl/ubl-invoice-xr.xsl" includes="**/*ubl.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-            <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+            <chainedmapper>
+                <flattenmapper/>
+                <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+            </chainedmapper>
+
         </xslt>
     </target>
 
-    <target name="transform-ubl-creditnote-to-xr" depends="dependency-resolve">
+    <target name="transform-ubl-creditnote-to-xr" depends="dependency-resolve, compile-negative-tests">
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
             style="${src.dir}/xsl/ubl-creditnote-xr.xsl" includes="**/*creditnote.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-            <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+            <chainedmapper>
+                <flattenmapper/>
+                <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+            </chainedmapper>
         </xslt>
     </target>
 
-    <target name="transform-cii-to-xr" depends="dependency-resolve">
+    <target name="transform-cii-to-xr" depends="dependency-resolve, compile-negative-tests">
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
             style="${src.dir}/xsl/cii-xr.xsl" includes="**/*uncefact.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-            <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+            <chainedmapper>
+                <flattenmapper/>
+                <mapper type="glob" from="*.xml" to="*-xr.xml"/>
+            </chainedmapper>
         </xslt>
     </target>
 
@@ -327,7 +349,7 @@
 
 
     <target name="transform-xr-to-pdf" depends="transform-to-xr, dependency-resolve">
-        <echo message="Transforming PDF with profile=${fop.config}" />
+        <echo message="Transforming PDF with profile=${fop.config}"/>
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}"
             style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
@@ -414,8 +436,9 @@
     </target>
 
 
+
     <target name="test"
-        depends="dependency-resolve, test-testsuite, test-xr-transformation, test-html, test-pdf"
+        depends="dependency-resolve, compile-negative-tests, test-testsuite, test-xr-transformation, test-html, test-pdf"
         description="Validates source UBL or CII XML against XRechnung, transforms to XR Sem Model and schema validates results and transforms and test HTML and PDF visualization"/>
 
     <target name="dist-only">
