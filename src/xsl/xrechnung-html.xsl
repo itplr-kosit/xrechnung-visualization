@@ -8,7 +8,7 @@
 
     <xsl:output indent="yes" method="html" encoding="UTF-8" include-content-type="no" media-type="text/html" undeclare-prefixes="yes"/>
 
-  <xsl:import href="functions.xsl" />
+  <xsl:import href="common-xr.xsl" />
 
   <xsl:param name="l10n-nl-lookup" select="true()" />
 
@@ -412,7 +412,18 @@
                   <xsl:value-of select="xrf:_('xr:Invoice_issue_date')" />:
                 </div>
                 <div data-title="BT-2" class="BT-2 boxdaten wert">
-                  <xsl:value-of select="format-date(xr:Invoice_issue_date,xrf:_('date-format'))" />
+                  <xsl:value-of select="
+                    if (matches(
+                    normalize-space(
+                    replace(xr:Invoice_issue_date, '-', '')
+                    ),
+                    $datepattern)
+                    )
+                    then
+                    format-date(xr:Invoice_issue_date, xrf:_('date-format'))
+                    else
+                    xr:Invoice_issue_date"
+                  />
                 </div>
               </div>
               <div class="boxzeile" role="listitem">
@@ -425,7 +436,8 @@
               </div>
               <div class="boxzeile" role="listitem">
                 <div class="boxdaten legende">
-                  <xsl:value-of select="xrf:_('xr:Invoice_currency_code')" />:
+                  <xsl:value-of select="xrf:_('xr:Invoice_currency_code')"
+                  />:
                 </div>
                 <div data-title="BT-5" class="BT-5 boxdaten wert">
                   <xsl:value-of select="xr:Invoice_currency_code" />
@@ -433,11 +445,14 @@
               </div>
               <div class="boxzeile" role="listitem">
                 <div class="boxdaten legende">
-                  <xsl:value-of select="xrf:_('xr:Value_added_tax_point_date')" />:
+                  <xsl:value-of select="xrf:_('xr:Value_added_tax_point_date')"
+                  />:
                 </div>
                 <div data-title="BT-7" class="BT-7 boxdaten wert">
-                  <xsl:for-each select="tokenize(xr:Value_added_tax_point_date,';')">
-                    <xsl:value-of select="format-date(xs:date(.),xrf:_('date-format'))" />
+                  <xsl:for-each
+                    select="tokenize(xr:Value_added_tax_point_date, ';')">
+                    <xsl:value-of
+                      select="format-date(xs:date(.), xrf:_('date-format'))" />
                     <xsl:if test="position() != last()">
                       <br />
                     </xsl:if>
@@ -446,7 +461,9 @@
               </div>
               <div class="boxzeile" role="listitem">
                 <div class="boxdaten legende">
-                  <xsl:value-of select="xrf:_('xr:Value_added_tax_point_date_code')" />:
+                  <xsl:value-of
+                    select="xrf:_('xr:Value_added_tax_point_date_code')"
+                  />:
                 </div>
                 <div data-title="BT-8" class="BT-8 boxdaten wert">
                   <xsl:value-of select="xr:Value_added_tax_point_date_code" />
@@ -454,32 +471,40 @@
               </div>
               <div role="listitem">
                 <strong>
-                  <xsl:value-of select="xrf:_('uebersichtRechnungAbrechnungszeitraum')" />:
+                  <xsl:value-of
+                    select="xrf:_('uebersichtRechnungAbrechnungszeitraum')"
+                  />:
                 </strong>
                 <div class="boxtabelle borderSpacing" role="list">
                   <div class="boxzeile" role="listitem">
                     <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('xr:Invoicing_period_start_date')" />:
+                      <xsl:value-of
+                        select="xrf:_('xr:Invoicing_period_start_date')"
+                      />:
                     </div>
                     <div data-title="BT-73" class="BT-73 boxdaten wert">
                       <xsl:value-of
-                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_start_date,xrf:_('date-format'))" />
+                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_start_date, xrf:_('date-format'))"
+                      />
                     </div>
                   </div>
                   <div class="boxzeile" role="listitem">
                     <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('xr:Invoicing_period_end_date')" />:
+                      <xsl:value-of
+                        select="xrf:_('xr:Invoicing_period_end_date')"
+                      />:
                     </div>
                     <div data-title="BT-74" class="BT-74 boxdaten wert">
                       <xsl:value-of
-                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_end_date,xrf:_('date-format'))" />
+                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_end_date, xrf:_('date-format'))"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="boxabstand"></div>
+          <div class="boxabstand" />
           <div class="boxcell boxZweispaltig">
             <div class="boxtabelle borderSpacing" role="list">
               <div class="boxzeile" role="listitem">
@@ -500,7 +525,8 @@
               </div>
               <div class="boxzeile" role="listitem">
                 <div class="boxdaten legende">
-                  <xsl:value-of select="xrf:_('xr:Purchase_order_reference')" />:
+                  <xsl:value-of select="xrf:_('xr:Purchase_order_reference')"
+                  />:
                 </div>
                 <div data-title="BT-13" class="BT-13 boxdaten wert">
                   <xsl:value-of select="xr:Purchase_order_reference" />
@@ -508,7 +534,8 @@
               </div>
               <div class="boxzeile" role="listitem">
                 <div class="boxdaten legende">
-                  <xsl:value-of select="xrf:_('xr:Sales_order_reference')" />:
+                  <xsl:value-of select="xrf:_('xr:Sales_order_reference')"
+                  />:
                 </div>
                 <div data-title="BT-14" class="BT-14 boxdaten wert">
                   <xsl:value-of select="xr:Sales_order_reference" />
@@ -521,6 +548,7 @@
       </div>
     </div>
   </xsl:template>
+  
 
   <xsl:template match="xr:PRECEDING_INVOICE_REFERENCE">
     <div role="list">
