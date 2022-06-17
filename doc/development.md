@@ -48,13 +48,13 @@ If you want to test with a local validator configuration xrechnung installation 
 To execute the `test` target, for example, call
 
 ```shell
-ant -Dvalidator.config.download.url.prefix=file:/home/renzo/projects/validator-configuration-xrechnung/build test
+ant -Dvalidator.repository.dir=/home/renzo/projects/validator-configuration-xrechnung/build test
 ```
 
 For Windows users:
 
 ```shell
-ant "-Dvalidator.config.download.url.prefix=file:/c:/dev/git/validator-configuration-xrechnung" test
+ant "-Dvalidator.repository.dir=/c:/dev/git/validator-configuration-xrechnung/build" test
 ```
 
 ### Development properties file
