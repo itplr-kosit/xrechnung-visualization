@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-* Add FileSaver.js for better cross-browser attachment download functionality
+* Added FileSaver.js for better cross-browser attachment download functionality
 * Created ubl-common-xr.xsl for common named templates as a single point of change
 * Handling of calendar date display is now more robust
 
