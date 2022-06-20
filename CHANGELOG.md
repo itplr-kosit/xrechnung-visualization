@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## UNRELEASED
+
+This release is compatible with XRechnung ?.?.?
+
 ## v2022-05-31
 
 ### Added
@@ -24,7 +28,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Logic and display of BT-110 and BT-111 in CII
 * Display of percentage sign for VAT percentage rate
 * Missing tooltips in HTML
-
 
 ## v2022-01-31
 
