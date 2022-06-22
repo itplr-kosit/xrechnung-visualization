@@ -1645,14 +1645,6 @@
                 </div>
                 <div class="boxzeile" role="listitem">
                     <div class="boxdaten legende">
-                        <xsl:value-of select="xrf:_('xr:Seller_tax_registration_identifier/@scheme_identifier')" />:
-                    </div>
-                    <div data-title="BT-32-scheme" class="BT-32-scheme boxdaten wert">
-                        <xsl:value-of select="xr:Seller_tax_registration_identifier/@scheme_identifier" />
-                    </div>
-                </div>
-                <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
                         <xsl:value-of select="xrf:_('xr:Seller_additional_legal_information')" />:
                     </div>
                     <div data-title="BT-33" class="BT-33 boxdaten wert">
