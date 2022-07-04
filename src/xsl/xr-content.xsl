@@ -172,8 +172,8 @@
             <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Sum_of_Invoice_line_net_amount">
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_Invoice_line_net_amount,$amount-picture,$lang)"/>
             </xsl:apply-templates>
-            <xsl:apply-templates mode="value-list-entry" select="xr:Sum_of_allowances_on_document_level">
-              <xsl:with-param name="value" select="format-number(xr:Sum_of_allowances_on_document_level,$amount-picture,$lang)"/>
+            <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level">
+              <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level,$amount-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Sum_of_charges_on_document_level">
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_charges_on_document_level,$amount-picture,$lang)"/>
