@@ -330,12 +330,12 @@
                 </cac:TaxScheme>
             </cac:ClassifiedTaxCategory>
             <cac:AdditionalItemProperty>
-                <cbc:Name>Name der Eigenschaft</cbc:Name>
-                <cbc:Value>Wert der Eigenschaft</cbc:Value>
+                <cbc:Name>Farbe</cbc:Name>
+                <cbc:Value>blau</cbc:Value>
             </cac:AdditionalItemProperty>
             <cac:AdditionalItemProperty>
-                <cbc:Name>Name der Artikeleigenschaft</cbc:Name>
-                <cbc:Value>Wert der Artikeleigenschaft</cbc:Value>
+                <cbc:Name>Größe</cbc:Name>
+                <cbc:Value>XL</cbc:Value>
             </cac:AdditionalItemProperty>
         </cac:Item>
         <cac:Price>
