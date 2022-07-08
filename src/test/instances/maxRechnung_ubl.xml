@@ -291,6 +291,7 @@
         </cac:OrderLineReference>
         <cac:DocumentReference>
             <cbc:ID schemeID="AAD">7362789</cbc:ID>
+            <cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>
         </cac:DocumentReference>
         <cac:AllowanceCharge>
             <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
