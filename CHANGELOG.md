@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung 2.2.0
 
+### Fixed
+
+* Superfluous display of BT-32 scheme identifier
+
 ### Added
 
 * BT-128 "Invoice line object identifier" and "Invoice line object identifier/Scheme identifier" to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances

@@ -97,7 +97,6 @@
   <entry key="xr:Seller_legal_registration_identifier/@scheme_identifier" id="BT-30_scheme">Legal registration identifier scheme</entry>
   <entry key="xr:Seller_VAT_identifier" id="BT-31">VAT ID</entry>
   <entry key="xr:Seller_tax_registration_identifier" id="BT-32">Tax number</entry>
-  <entry key="xr:Seller_tax_registration_identifier/@scheme_identifier" id="BT-32_scheme">Tax number scheme</entry>
   <entry key="xr:Seller_additional_legal_information" id="BT-33">Further legal information</entry>
   <entry key="xr:VAT_accounting_currency_code" id="BT-6">VAT accounting currency</entry>
   <!-- BG 12 and 11 Tax Representative party -->
