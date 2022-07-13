@@ -12,6 +12,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
+* Tests for BT-90 Scheme ID (see [Guide for visual testing Direct Debit](./doc/guide-for-visual-testing.md))
 * Several more test documents
 * Guide for visual testing
 
