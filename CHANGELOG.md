@@ -4,13 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## UNRELEASED
+## v2022-07-15
 
-This release is compatible with XRechnung ?.?.?
+This release is compatible with XRechnung 2.2.0
 
 ### Added
 
 * BT-128 "Invoice line object identifier" and "Invoice line object identifier/Scheme identifier" to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+
+### Fixed
+
+* Missing display of BT-107 "Sum of allowances on document level"
 
 ## v2022-05-31
 
