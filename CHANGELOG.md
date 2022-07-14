@@ -15,6 +15,7 @@ This release is compatible with XRechnung 2.2.0
 ### Added
 
 * BT-128 "Invoice line object identifier" and "Invoice line object identifier/Scheme identifier" to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+* Added multiple BG-27 and BG-28 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
 * Tests for BT-90 Scheme ID (see [Guide for visual testing Direct Debit](./doc/guide-for-visual-testing.md))
 
 ### Fixed
