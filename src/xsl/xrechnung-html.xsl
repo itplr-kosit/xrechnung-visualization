@@ -150,7 +150,8 @@
 
   <xsl:template name="uebersichtKaeufer" match="xr:BUYER">
     <div id="uebersichtKaeufer" class="box boxZweispaltig">
-      <div data-title="BG-7" class="BG-7 boxtitel" role="heading" aria-level="2">
+      <div class="BG-7 boxtitel" role="heading" aria-level="2">        
+        <xsl:attribute name="data-title">BG-7&#013;&#010;BUYER&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über den Erwerber enthalten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:value-of select="xrf:_('uebersichtKaeufer')" />
       </div>
       <div class="boxtabelle boxinhalt borderSpacing" role="list">
