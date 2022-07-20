@@ -218,20 +218,6 @@
 			</cac:TaxScheme>
 		</cac:TaxCategory>
 	</cac:AllowanceCharge>
-	<cac:AllowanceCharge>
-		<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
-		<cbc:AllowanceChargeReason>Grund für den Zuschlag 2</cbc:AllowanceChargeReason>
-		<cbc:MultiplierFactorNumeric>30.00</cbc:MultiplierFactorNumeric>
-		<cbc:Amount currencyID="EUR">400.00</cbc:Amount>
-		<cbc:BaseAmount currencyID="EUR">4000.00</cbc:BaseAmount>
-		<cac:TaxCategory>
-			<cbc:ID>Z</cbc:ID>
-			<cbc:Percent>0</cbc:Percent>
-			<cac:TaxScheme>
-				<cbc:ID>VAT</cbc:ID>
-			</cac:TaxScheme>
-		</cac:TaxCategory>
-	</cac:AllowanceCharge>
 	<cac:TaxTotal>
 		<cbc:TaxAmount currencyID="EUR">510.00</cbc:TaxAmount>
 		<cac:TaxSubtotal>
@@ -306,14 +292,28 @@
 		</cac:DocumentReference>
 		<cac:AllowanceCharge>
 			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
-			<cbc:AllowanceChargeReason>Grund Nachlass</cbc:AllowanceChargeReason>
+			<cbc:AllowanceChargeReason>Grund Nachlass 1</cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="EUR">10.00</cbc:Amount>
+			<cbc:BaseAmount currencyID="EUR">100.00</cbc:BaseAmount>
+		</cac:AllowanceCharge>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReason>Grund Nachlass 2</cbc:AllowanceChargeReason>
 			<cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric>
 			<cbc:Amount currencyID="EUR">10.00</cbc:Amount>
 			<cbc:BaseAmount currencyID="EUR">100.00</cbc:BaseAmount>
 		</cac:AllowanceCharge>
 		<cac:AllowanceCharge>
 			<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
-			<cbc:AllowanceChargeReason>Grund Zuschlag</cbc:AllowanceChargeReason>
+			<cbc:AllowanceChargeReason>Grund Zuschlag 1</cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>50.00</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="EUR">100.00</cbc:Amount>
+			<cbc:BaseAmount currencyID="EUR">200.00</cbc:BaseAmount>
+		</cac:AllowanceCharge>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReason>Grund Zuschlag 2</cbc:AllowanceChargeReason>
 			<cbc:MultiplierFactorNumeric>50.00</cbc:MultiplierFactorNumeric>
 			<cbc:Amount currencyID="EUR">100.00</cbc:Amount>
 			<cbc:BaseAmount currencyID="EUR">200.00</cbc:BaseAmount>
