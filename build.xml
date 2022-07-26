@@ -11,7 +11,7 @@
     <!-- fop -->
     <property name="fop.jar" value="fop.jar"/>
     <property name="fop.home" value="${lib.dir}/fop"/>
-    <property name="fop.conf" value="conf/fop.xconf"/>
+    <property name="fop.config" value="conf/fop.xconf"/>
 
     <!-- Part of the download path -->
     <property name="saxon.url.version" value="10"/>

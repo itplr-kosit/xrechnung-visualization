@@ -19,7 +19,7 @@
 ##
 # Set PDF profile
 ##
-#fop.conf=${work.dir}/conf/fop.xconf
+#fop.config=${work.dir}/conf/fop.xconf
 
 ##
 #
