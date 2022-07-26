@@ -8,9 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Added multiple BG-27 and BG-28 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+
 ### Fixed
 
-* Multiple embedded documents bug
+* Bug that prevented display of multiple embedded documents in PDF
+
 
 ## v2022-07-15
 
