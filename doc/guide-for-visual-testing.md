@@ -2,6 +2,7 @@
 
 ## Embedded Documets
 For testing embedded documents' features, use
+* embedded-documents-bt-125_ubl.xml
 * 01.15
 
 expectation:
