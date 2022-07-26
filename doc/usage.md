@@ -12,6 +12,7 @@ In order to use profile PDF/UA-1 and PDF/A-1, you can use another FOP configurat
 ant -Dfop.config=conf/fop-with-ua1-a1.xconf transform-xr-to-pdf
 ```
 
+Note: PDF/A-1 does not allow embedded files. Use the default profile for display of embedded documents.
 
 ### Choice of FO engine 
 
