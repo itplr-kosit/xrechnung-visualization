@@ -12,6 +12,11 @@ This release is compatible with XRechnung ?.?.?
 
 * Added multiple BG-27 and BG-28 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
 
+### Fixed
+
+* Bug that prevented display of multiple embedded documents in PDF
+
+
 ## v2022-07-15
 
 This release is compatible with XRechnung 2.2.0
