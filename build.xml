@@ -446,7 +446,7 @@
             destfile="${dist.dir}/xrechnung-${xrechnung.version.full}-${ant.project.name}-${xr-visualization.version.full}.zip">
 
             <zipfileset dir="${src.dir}" excludes="README.md"/>
-            <zipfileset dir="." includes="README.md"/>
+            <zipfileset dir="." includes="README.md CHANGELOG.md"/>
             <zipfileset dir="doc" prefix="doc"/>
 
         </zip>
