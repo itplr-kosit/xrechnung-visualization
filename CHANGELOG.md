@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## UNRELEASED
+
+This release is compatible with XRechnung ?.?.?
+
 ## v2022-07-31
 
 This release is compatible with XRechnung 2.2.0
