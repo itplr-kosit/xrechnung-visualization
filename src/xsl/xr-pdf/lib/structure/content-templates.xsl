@@ -390,7 +390,7 @@
     <xsl:param name="identifier"/>   
       <pdf:embedded-file>
         <xsl:attribute name="filename"><xsl:value-of select="$identifier"/></xsl:attribute>
-        <xsl:attribute name="src">data:application/pdf;base64,<xsl:value-of select="."/></xsl:attribute>
+        <xsl:attribute name="src">data:application/pdf;base64,<xsl:value-of select="normalize-space(.)"/></xsl:attribute>
       </pdf:embedded-file> 
   </xsl:template>
 
