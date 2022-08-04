@@ -484,7 +484,7 @@
                     </div>
                     <div data-title="BT-73" class="BT-73 boxdaten wert">
                       <xsl:value-of
-                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_start_date, xrf:_('date-format'))"
+                        select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_start_date, xrf:_('date-format'))"
                       />
                     </div>
                   </div>
@@ -496,7 +496,7 @@
                     </div>
                     <div data-title="BT-74" class="BT-74 boxdaten wert">
                       <xsl:value-of
-                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_end_date, xrf:_('date-format'))"
+                        select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_end_date, xrf:_('date-format'))"
                       />
                     </div>
                   </div>
