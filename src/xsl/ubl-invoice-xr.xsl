@@ -974,7 +974,7 @@
          <xsl:call-template name="code"/>
       </xr:Payment_means_type_code>
    </xsl:template>
-   <xsl:template mode="BT-82" match="/Invoice:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode/@Name">
+   <xsl:template mode="BT-82" match="/Invoice:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode/@name">
       <xr:Payment_means_text>
          <xsl:attribute name="xr:id" select="'BT-82'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
