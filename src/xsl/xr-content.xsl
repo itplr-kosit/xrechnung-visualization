@@ -170,15 +170,19 @@
         <xsl:call-template name="value-list">
           <xsl:with-param name="content">
             <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Sum_of_Invoice_line_net_amount">
+              <xsl:with-param name="tax" select="xrf:_('_net')"></xsl:with-param>
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_Invoice_line_net_amount,$amount-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level">
+              <xsl:with-param name="tax" select="xrf:_('_net')"></xsl:with-param>
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_allowances_on_document_level,$amount-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Sum_of_charges_on_document_level">
+              <xsl:with-param name="tax" select="xrf:_('_net')"></xsl:with-param>
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Sum_of_charges_on_document_level,$amount-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="sum-list-entry" select="xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_without_VAT">
+              <xsl:with-param name="tax" select="xrf:_('_net')"></xsl:with-param>
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_without_VAT,$amount-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount">
@@ -188,16 +192,20 @@
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_VAT_amount_in_accounting_currency,$amount-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="sum-list-entry" select="xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_with_VAT">
+              <xsl:with-param name="tax" select="xrf:_('_gross')"></xsl:with-param>
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Invoice_total_amount_with_VAT,$amount-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Paid_amount">
+              <xsl:with-param name="tax" select="xrf:_('_gross')"></xsl:with-param>
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Paid_amount,$amount-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Rounding_amount">
+              <xsl:with-param name="tax" select="xrf:_('_gross')"></xsl:with-param>
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Rounding_amount,$amount-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="sum-list-entry" select="xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment">
               <xsl:with-param name="level" select="'final'"/>
+              <xsl:with-param name="tax" select="xrf:_('_gross')"></xsl:with-param>
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment,$amount-picture,$lang)"/>
             </xsl:apply-templates>
           </xsl:with-param>
@@ -216,6 +224,7 @@
             <xsl:with-param name="headingValue" select="xr:VAT_category_code"/>
             <xsl:with-param name="content">
               <xsl:apply-templates mode="value-list-entry" select="xr:VAT_category_taxable_amount">
+                <xsl:with-param name="tax" select="xrf:_('_net')"></xsl:with-param>
                 <xsl:with-param name="value" select="format-number(xr:VAT_category_taxable_amount,$amount-picture,$lang)"/>
               </xsl:apply-templates>
               <xsl:apply-templates mode="value-list-entry" select="xr:VAT_category_rate">
@@ -250,12 +259,14 @@
                 <xsl:with-param name="headingValue" select="xr:Document_level_allowance_VAT_category_code"/>
                 <xsl:with-param name="content">
                   <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_base_amount">
+                    <xsl:with-param name="tax" select="xrf:_('_net')"></xsl:with-param>
                     <xsl:with-param name="value" select="format-number(xr:Document_level_allowance_base_amount,$amount-picture,$lang)"/>
                   </xsl:apply-templates>
                   <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_percentage">
                     <xsl:with-param name="value" select="concat(format-number(xr:Document_level_allowance_percentage,$percentage-picture,$lang), '%')"/>
                   </xsl:apply-templates>
-                  <xsl:apply-templates mode="sum-list-entry" select="xr:Document_level_allowance_amount">
+                  <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_amount">
+                    <xsl:with-param name="tax" select="xrf:_('_net')"></xsl:with-param>
                     <xsl:with-param name="value" select="format-number(xr:Document_level_allowance_amount,$amount-picture,$lang)"/>
                   </xsl:apply-templates>
                   <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_VAT_rate"/>
@@ -287,12 +298,14 @@
                   <xsl:with-param name="headingValue" select="xr:Document_level_charge_VAT_category_code"/>
                   <xsl:with-param name="content">
                     <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_charge_base_amount">
+                      <xsl:with-param name="tax" select="xrf:_('_net')"></xsl:with-param>
                       <xsl:with-param name="value" select="format-number(xr:Document_level_charge_base_amount,$amount-picture,$lang)"/>
                     </xsl:apply-templates>
                     <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_charge_percentage">
                       <xsl:with-param name="value" select="concat(format-number(xr:Document_level_charge_percentage,$percentage-picture,$lang), '%')"/>
                     </xsl:apply-templates>
                     <xsl:apply-templates mode="sum-list-entry" select="xr:Document_level_charge_amount">
+                      <xsl:with-param name="tax" select="xrf:_('_net')"></xsl:with-param>
                       <xsl:with-param name="value" select="format-number(xr:Document_level_charge_amount,$amount-picture,$lang)"/>
                     </xsl:apply-templates>
                     <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_charge_VAT_rate"/>
