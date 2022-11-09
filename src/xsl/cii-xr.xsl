@@ -105,7 +105,6 @@
          <!--Manuell: angepasst für BG-16-->
          <xsl:for-each-group select="./rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans"
                              group-by="ram:TypeCode">
-             <xsl:message >Matched BG-16</xsl:message>
             <xr:PAYMENT_INSTRUCTIONS>
                <xsl:attribute name="xr:id" select="'BG-16'"/>
                <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -981,7 +980,6 @@
                   exists( ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString) or
                   exists( ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod)
                   ]">
-        <xsl:message >Matched BG-13</xsl:message>
       <xsl:variable name="bg-contents" as="item()*">
           
           <xsl:apply-templates mode="BT-70" select="./ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Name"/>
@@ -1146,7 +1144,6 @@
    <xsl:template mode="BG-16"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans">
       <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans der Instanz in konkreter Syntax wird auf 6 Objekte der EN 16931 abgebildet. -->
-          <xsl:message >Matched BG-16</xsl:message>
           
          <xsl:apply-templates mode="BT-81" select="./ram:TypeCode"/>
          <xsl:apply-templates mode="BT-82" select="./ram:Information"/>
