@@ -265,7 +265,7 @@
                   <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_percentage">
                     <xsl:with-param name="value" select="concat(format-number(xr:Document_level_allowance_percentage,$percentage-picture,$lang), '%')"/>
                   </xsl:apply-templates>
-                  <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_amount">
+                  <xsl:apply-templates mode="sum-list-entry" select="xr:Document_level_allowance_amount">
                     <xsl:with-param name="tax" select="xrf:_('_net')"></xsl:with-param>
                     <xsl:with-param name="value" select="format-number(xr:Document_level_allowance_amount,$amount-picture,$lang)"/>
                   </xsl:apply-templates>
