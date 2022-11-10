@@ -235,7 +235,7 @@
   <entry key="at-least-two-format">###.##0,#################</entry>
   
   <entry key="_disclaimer">Wir übernehmen keine Haftung für die Richtigkeit der Daten.</entry>
-  <entry key="_invoice-note-group">Bemerkung zur Rechnung</entry>
+  <entry key="_invoice-note-group">Bemerkungen zur Rechnung</entry>
   <entry key="_open">Öffnen</entry>
   <entry key="no-data">Keine Daten vorhanden</entry>
   <entry key="_net">netto</entry>
