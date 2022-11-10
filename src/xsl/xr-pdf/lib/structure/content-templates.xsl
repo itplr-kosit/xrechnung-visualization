@@ -290,7 +290,7 @@
 
   <xsl:template match="*|@*" mode="value-list-entry">
     <xsl:param name="value"/>
-    <xsl:param name="tax"/>
+    <xsl:param name="tax-deduction"/>
     <xsl:param name="field-mapping-identifier">
       <xsl:value-of select="name()"/>
     </xsl:param>
@@ -302,18 +302,12 @@
       </xsl:variable>
       <fo:table-row>
         <fo:table-cell xsl:use-attribute-sets="rechnung-legende"><fo:block><xsl:value-of select="$field-mapping/label"/></fo:block></fo:table-cell>
-        <!--
-        <fo:table-cell xsl:use-attribute-sets="rechnung-steuer"><fo:block><xsl:value-of select="$field-mapping/art"/></fo:block></fo:table-cell>
-        -->
         <fo:table-cell xsl:use-attribute-sets="rechnung-steuer">
           <fo:block>
             <xsl:choose>
-              <xsl:when test="$tax">
-                <xsl:value-of select="$tax"/>
+              <xsl:when test="$tax-deduction">
+                <xsl:value-of select="$tax-deduction"/>
               </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="$field-mapping/art"/>
-              </xsl:otherwise>
             </xsl:choose>
           </fo:block>
         </fo:table-cell>
@@ -336,7 +330,7 @@
   <xsl:template match="*|@*" mode="sum-list-entry">
     <xsl:param name="level"/>
     <xsl:param name="value"/>
-    <xsl:param name="tax"/>
+    <xsl:param name="tax-deduction"/>
     <xsl:param name="field-mapping-identifier">
       <xsl:value-of select="name()"/>
     </xsl:param>
@@ -356,20 +350,12 @@
             <fo:table-cell xsl:use-attribute-sets="rechnung-legende-summe"><fo:block><xsl:value-of select="$field-mapping/label"/></fo:block></fo:table-cell>
           </xsl:otherwise>
         </xsl:choose>
-        <!--
-        <fo:table-cell xsl:use-attribute-sets="rechnung-steuer-summe"><fo:block><xsl:value-of select="$field-mapping/art"/></fo:block></fo:table-cell>
-        -->
         <fo:table-cell xsl:use-attribute-sets="rechnung-steuer-summe">
           <fo:block>
             <xsl:choose>
-              <xsl:when test="$tax">
-                <xsl:value-of select="$tax"/>
+              <xsl:when test="$tax-deduction">
+                <xsl:value-of select="$tax-deduction"/>
               </xsl:when>
-              <!--
-              <xsl:otherwise>
-                <xsl:value-of select="."/>
-              </xsl:otherwise>
-              -->
             </xsl:choose>
           </fo:block>
         </fo:table-cell>
