@@ -209,7 +209,7 @@
   <entry key="uebersichtZahlungKarte" id="BG-18">Karteninformation</entry>
   <entry key="uebersichtZahlungLastschrift" id="BG-19">Lastschrift</entry>
   <entry key="uebersichtZahlungUeberweisung" id="BG-17">Überweisung</entry>
-  <entry key="uebersichtBemerkungen" id="BG-1">Bemerkung zur Rechnung</entry>
+  <entry key="uebersichtBemerkungen" id="BG-1">Bemerkungen zur Rechnung</entry>
   <entry key="details">Details</entry>
   <entry key="detailsPositionAbrechnungszeitraum" id="BG-26">Abrechnungszeitraum</entry>
   <entry key="detailsPositionPreiseinzelheiten" id="BG-29">Preiseinzelheiten</entry>
