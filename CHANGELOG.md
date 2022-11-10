@@ -10,6 +10,12 @@ This release is compatible with XRechnung ?.?.?
 
 ### Changed
 
+* Unified country code labels
+* Unified translation of BG-1 INVOICE NOTE in PDF and HTML
+
+### Fixed
+
+* Missing display of BT-54 "Buyer country subdivision" in PDF
 * Removed unnecessary xslt messages
 
 ## v2022-07-31

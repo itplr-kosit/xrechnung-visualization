@@ -44,6 +44,7 @@
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:BUYER_POSTAL_ADDRESS/xr:Buyer_address_line_3"/>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:BUYER_POSTAL_ADDRESS/xr:Buyer_post_code"/>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:BUYER_POSTAL_ADDRESS/xr:Buyer_city"/>
+            <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:BUYER_POSTAL_ADDRESS/xr:Buyer_country_subdivision"/>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:BUYER_POSTAL_ADDRESS/xr:Buyer_country_code"/>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:Buyer_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:Buyer_identifier/@scheme_identifier">
