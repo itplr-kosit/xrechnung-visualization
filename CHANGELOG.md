@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* BG-26 INVOICE LINE PERIOD elements to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+
+### Fixed
+
+* missing display of BG-14 INVOICING PERIOD
+
 ## v2022-07-31
 
 This release is compatible with XRechnung 2.2.0
