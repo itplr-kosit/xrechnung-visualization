@@ -8,8 +8,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
-### Fixed
+### Added
 
+* BG-26 INVOICE LINE PERIOD elements to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+
+### Changed
+
+* Unified country code labels
+* Unified translation of BG-1 INVOICE NOTE in PDF and HTML
+
+### Fixed
+* missing display of BG-14 INVOICING PERIOD
+* Missing display of BT-54 "Buyer country subdivision" in PDF
+* Removed unnecessary xslt messages
 * Display of BT-128 scheme identifier label in PDF normal
 
 ## v2022-07-31
