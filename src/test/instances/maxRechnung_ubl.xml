@@ -164,7 +164,7 @@
         </cac:DeliveryParty>
     </cac:Delivery>
     <cac:PaymentMeans>
-        <cbc:PaymentMeansCode name="ZAHLUNGSMITTEL">30</cbc:PaymentMeansCode>
+        <cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
         <cbc:PaymentID>Verwendungszweck</cbc:PaymentID>
         <cac:PayeeFinancialAccount>
             <cbc:ID>DE84 6004 0071 0561 5158 01</cbc:ID>
