@@ -286,6 +286,10 @@
         <cbc:InvoicedQuantity unitCode="LTR">10.00</cbc:InvoicedQuantity>
         <cbc:LineExtensionAmount currencyID="EUR">10000.00</cbc:LineExtensionAmount>
         <cbc:AccountingCost>BRE</cbc:AccountingCost>
+        <cac:InvoicePeriod>
+            <cbc:StartDate>2018-10-05</cbc:StartDate>
+            <cbc:EndDate>2018-10-07</cbc:EndDate>
+        </cac:InvoicePeriod>
         <cac:OrderLineReference>
             <cbc:LineID>RPB</cbc:LineID>
         </cac:OrderLineReference>

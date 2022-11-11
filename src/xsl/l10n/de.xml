@@ -7,7 +7,7 @@
   <entry key="xr:Buyer_address_line_3" id="BT-163">Adresszeile 3</entry>
   <entry key="xr:Buyer_post_code" id="BT-53">PLZ</entry>
   <entry key="xr:Buyer_city" id="BT-52">Ort</entry>
-  <entry key="xr:Buyer_country_code" id="BT-55">Land</entry>
+  <entry key="xr:Buyer_country_code" id="BT-55">Ländercode</entry>
   <entry key="xr:Buyer_identifier" id="BT-46">Kennung</entry>
   <entry key="xr:Buyer_identifier/@scheme_identifier" id="BT-46_scheme">Schema der Kennung</entry>
   <entry key="xr:Buyer_contact_point" id="BT-56">Name</entry>
@@ -132,7 +132,7 @@
   <entry key="xr:Deliver_to_post_code" id="BT-78">PLZ</entry>
   <entry key="xr:Deliver_to_city" id="BT-77">Ort</entry>
   <entry key="xr:Deliver_to_country_subdivision" id="BT-79">Bundesland</entry>
-  <entry key="xr:Deliver_to_country_code" id="BT-80">Land</entry>
+  <entry key="xr:Deliver_to_country_code" id="BT-80">Ländercode</entry>
   <entry key="xr:Tender_or_lot_reference" id="BT-17">Vergabenummer</entry>
   <entry key="xr:Receiving_advice_reference" id="BT-15">Kennung der Empfangsbestätigung</entry>
   <entry key="xr:Despatch_advice_reference" id="BT-16">Kennung der Versandanzeige</entry>
@@ -235,7 +235,7 @@
   <entry key="at-least-two-format">###.##0,#################</entry>
   
   <entry key="_disclaimer">Wir übernehmen keine Haftung für die Richtigkeit der Daten.</entry>
-  <entry key="_invoice-note-group">Bemerkung zur Rechnung</entry>
+  <entry key="_invoice-note-group">Bemerkungen zur Rechnung</entry>
   <entry key="_open">Öffnen</entry>
   <entry key="no-data">Keine Daten vorhanden</entry>
   <entry key="_net">netto</entry>
