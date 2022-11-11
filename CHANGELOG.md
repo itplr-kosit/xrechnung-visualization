@@ -21,7 +21,7 @@ This release is compatible with XRechnung ?.?.?
 * missing display of BG-14 INVOICING PERIOD
 * Missing display of BT-54 "Buyer country subdivision" in PDF
 * Removed unnecessary xslt messages
-
+* Display of BT-128 scheme identifier label in PDF normal
 
 ## v2022-07-31
 
