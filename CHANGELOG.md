@@ -18,11 +18,13 @@ This release is compatible with XRechnung ?.?.?
 * Unified translation of BG-1 INVOICE NOTE in PDF and HTML
 
 ### Fixed
-
-* missing display of BG-14 INVOICING PERIOD
+* Missing display of BG-14 INVOICING PERIOD
 * Missing display of BT-54 "Buyer country subdivision" in PDF
 * Removed unnecessary xslt messages
+* Display of BT-128 scheme identifier label in PDF normal
+* Incorrect elements in UBL test files removed
 * bug that prevented output of BT-82 in UBL
+
 
 ## v2022-07-31
 

@@ -30,11 +30,11 @@
     </cac:ContractDocumentReference>
     <cac:AdditionalDocumentReference>
         <cbc:ID>Dokument Referenz</cbc:ID>
-        <cbc:DocumentType>Beschreibung der angehängten JPG-Datei</cbc:DocumentType>
+        <cbc:DocumentDescription>Beschreibung der angehängten JPG-Datei</cbc:DocumentDescription>
     </cac:AdditionalDocumentReference>
     <cac:AdditionalDocumentReference>
         <cbc:ID>Kennung des Objekts</cbc:ID>
-        <cbc:DocumentType>ATS</cbc:DocumentType>
+        <cbc:DocumentDescription>ATS</cbc:DocumentDescription>
     </cac:AdditionalDocumentReference>
 <!--    <cac:BillingReference>
         <cac:InvoiceDocumentReference>
@@ -217,7 +217,6 @@
         <cac:TaxCategory>
             <cbc:ID>E</cbc:ID>
             <cbc:Percent>0</cbc:Percent>
-            <cbc:TaxExemptionReason>Grund für Nachlass 2</cbc:TaxExemptionReason>
             <cac:TaxScheme>
                 <cbc:ID>VAT</cbc:ID>
             </cac:TaxScheme>

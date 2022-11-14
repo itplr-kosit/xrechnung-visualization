@@ -465,8 +465,10 @@
     <xsl:variable name="content">
       <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_identifier"/>
       <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_note"/>
-      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier"/>
-      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier/@scheme_identifier"/>
+      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier"/>      
+      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier/@scheme_identifier">
+        <xsl:with-param name="field-mapping-identifier" select="'xr:Invoice_line_object_identifier/@scheme_identifier'"/>
+      </xsl:apply-templates>
       <xsl:apply-templates mode="list-entry" select="xr:Referenced_purchase_order_line_reference"/>
       <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_Buyer_accounting_reference"/>
     </xsl:variable>
