@@ -23,6 +23,8 @@ This release is compatible with XRechnung ?.?.?
 * Removed unnecessary xslt messages
 * Display of BT-128 scheme identifier label in PDF normal
 * Incorrect elements in UBL test files removed
+* bug that prevented output of BT-82 in UBL
+
 
 ## v2022-07-31
 
