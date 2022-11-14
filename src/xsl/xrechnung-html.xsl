@@ -159,7 +159,8 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Buyer_reference')" />:
           </div>
-          <div data-title="BT-10" class="BT-10 boxdaten wert">
+          <div class="BT-10 boxdaten wert">
+            <xsl:attribute name="data-title">BT-10&#013;&#010;Buyer reference&#013;&#010;Ein vom Erwerber zugewiesener und für interne Lenkungszwecke benutzter Bezeichner.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="../xr:Buyer_reference" />
           </div>
         </div>
@@ -167,7 +168,8 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Buyer_name')" />:
           </div>
-          <div data-title="BT-44" class="BT-44 boxdaten wert">
+          <div class="BT-44 boxdaten wert">
+            <xsl:attribute name="data-title">BT-44&#013;&#010;Buyer name&#013;&#010;Der vollständige Name des Erwerbers.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Buyer_name" />
           </div>
         </div>
@@ -175,7 +177,8 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Buyer_address_line_1')" />:
           </div>
-          <div data-title="BT-50" class="BT-50 boxdaten wert">
+          <div class="BT-50 boxdaten wert">
+            <xsl:attribute name="data-title">BT-50&#013;&#010;Buyer address line 1YER&#013;&#010;Die Hauptzeile einer Anschrift. Üblicherweise ist dies entweder Strasse und Hausnummer oder der Text "Postfach" gefolgt von der Postfachnummer. &#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:BUYER_POSTAL_ADDRESS/xr:Buyer_address_line_1" />
           </div>
         </div>
@@ -183,7 +186,8 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Buyer_address_line_2')" />:
           </div>
-          <div data-title="BT-51" class="BT-51 boxdaten wert">
+          <div class="BT-51 boxdaten wert">
+            <xsl:attribute name="data-title">BT-51&#013;&#010;Buyer address line 2&#013;&#010;Eine zusätzliche Adresszeile in einer Anschrift, die verwendet werden kann, um weitere Einzelheiten in Ergänzung zur Hauptzeile anzugeben.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:BUYER_POSTAL_ADDRESS/xr:Buyer_address_line_2" />
           </div>
         </div>
@@ -192,6 +196,7 @@
             <xsl:value-of select="xrf:_('xr:Buyer_address_line_3')" />:
           </div>
           <div data-title="BT-163" class="BT-163 boxdaten wert">
+            <xsl:attribute name="data-title">BT-163&#013;&#010;Buyer address line 3&#013;&#010;Eine zusätzliche Adresszeile in einer Anschrift, die verwendet werden kann, um weitere Einzelheiten in Ergänzung zur Hauptzeile anzugeben.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:BUYER_POSTAL_ADDRESS/xr:Buyer_address_line_3" />
           </div>
         </div>
