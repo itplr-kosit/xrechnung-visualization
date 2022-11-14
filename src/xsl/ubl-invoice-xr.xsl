@@ -104,6 +104,7 @@
                <xsl:attribute name="xr:id" select="'BG-16'"/>
                <xsl:attribute name="xr:src" select="xr:src-path($current-bg)"/>
                <xsl:apply-templates mode="BT-81" select="current-group()[1]/cbc:PaymentMeansCode"/>
+               <xsl:apply-templates mode="BT-82" select="current-group()[1]/cbc:PaymentMeansCode/@name"/>
                <xsl:for-each-group select="current-group()/cbc:PaymentID" group-by="text()">
                   <xsl:apply-templates mode="BT-83" select="current-group()[1]"/>
                </xsl:for-each-group>
@@ -974,7 +975,7 @@
          <xsl:call-template name="code"/>
       </xr:Payment_means_type_code>
    </xsl:template>
-   <xsl:template mode="BT-82" match="/Invoice:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode/@Name">
+   <xsl:template mode="BT-82" match="/Invoice:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode/@name">
       <xr:Payment_means_text>
          <xsl:attribute name="xr:id" select="'BT-82'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
