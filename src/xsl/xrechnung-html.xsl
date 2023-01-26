@@ -1131,7 +1131,7 @@
             <xsl:value-of select="xrf:_('xr:Payment_card_primary_account_number')" />:
           </div>
           <div class="BT-87 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-87&#013;&#010;Payment card primary account number&#013;&#010;Die Nummer der Kreditkarte, die für die Zahlung genutzt wurde.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of
               select="xr:PAYMENT_INSTRUCTIONS/xr:PAYMENT_CARD_INFORMATION/xr:Payment_card_primary_account_number" />
           </div>
@@ -1141,7 +1141,7 @@
             <xsl:value-of select="xrf:_('xr:Payment_card_holder_name')" />:
           </div>
           <div class="BT-88 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-88&#013;&#010;Payment card holder name&#013;&#010;Name des Karteninhabers.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of
               select="xr:PAYMENT_INSTRUCTIONS/xr:PAYMENT_CARD_INFORMATION/xr:Payment_card_holder_name" />
           </div>
@@ -1154,7 +1154,8 @@
   <xsl:template name="uebersichtLastschrift">
     <div id="uebersichtLastschrift" class="box subBox">
       <div class="BG-19 boxtitel boxtitelSub" role="heading" aria-level="3">
-        <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:attribute name="data-title">BG-19&#013;&#010;DIRECT DEBIT&#013;&#010;Eine Gruppe von Informationselementen, die spezifische Informationen über die
+        vorgesehene Lastschrift geben.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:value-of select="xrf:_('uebersichtZahlungLastschrift')" />
       </div>
       <div class="boxtabelle boxinhalt borderSpacing" role="list">
@@ -1163,7 +1164,8 @@
             <xsl:value-of select="xrf:_('xr:Mandate_reference_identifier')" />:
           </div>
           <div class="BT-89 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-89&#013;&#010;Mandate reference identifier&#013;&#010;Eindeutige Kennung, die vom Zahlungsempfänger zur Referenzierung der
+        Einzugsermächtigung zugewiesen wird (Mandatsreferenznummer).&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:DIRECT_DEBIT/xr:Mandate_reference_identifier" />
           </div>
         </div>
@@ -1172,7 +1174,9 @@
             <xsl:value-of select="xrf:_('xr:Debited_account_identifier')" />:
           </div>
           <div class="BT-91 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-91&#013;&#010;Debited account identifier&#013;&#010;Die Kennung des Kontos, von dem die Lastschrift erfolgen soll: IBAN für
+        Zahlungen im SEPA-Raum, Kontonummer oder IBAN im Falle von
+        Auslandszahlungen.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:PAYMENT_INSTRUCTIONS/xr:DIRECT_DEBIT/xr:Debited_account_identifier" />
           </div>
         </div>
@@ -1181,7 +1185,9 @@
             <xsl:value-of select="xrf:_('xr:Bank_assigned_creditor_identifier')" />:
           </div>
           <div class="BT-90 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-90&#013;&#010;Bank assigned creditor identifier&#013;&#010;Die eindeutige Kennung des Verkäufers (Seller) oder des Zahlungsempfängers
+        (Payee), um am SEPA-Lastschriftverfahren teilnehmen zu können
+        (Gläubiger-ID).&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of
               select="xr:PAYMENT_INSTRUCTIONS/xr:DIRECT_DEBIT/xr:Bank_assigned_creditor_identifier" />
           </div>
@@ -1194,7 +1200,8 @@
   <xsl:template name="uebersichtUeberweisung">
     <div id="uebersichtUeberweisung" class="box subBox">
       <div class="BG-17 boxtitel boxtitelSub" role="heading" aria-level="3">
-        <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:attribute name="data-title">BG-17&#013;&#010;CREDIT TRANSFER&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über das Bankkonto
+        geben, auf das die Überweisung zu leisten ist.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:value-of select="xrf:_('uebersichtZahlungUeberweisung')" />
       </div>
       <xsl:for-each select="xr:PAYMENT_INSTRUCTIONS/xr:CREDIT_TRANSFER">
@@ -1204,7 +1211,8 @@
               <xsl:value-of select="xrf:_('xr:Payment_account_name')" />:
             </div>
             <div class="BT-85 boxdaten wert">
-              <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+              <xsl:attribute name="data-title">BT-85&#013;&#010;Payment account name&#013;&#010;Name des Kontos bei einem Zahlungsdienstleister, auf das die Zahlung erfolgen
+        soll. (z. B. Kontoinhaber)&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
               <xsl:value-of select="xr:Payment_account_name" />
             </div>
           </div>
@@ -1213,7 +1221,8 @@
               <xsl:value-of select="xrf:_('xr:Payment_account_identifier')" />:
             </div>
             <div class="BT-84 boxdaten wert">
-              <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+              <xsl:attribute name="data-title">BT-84&#013;&#010;Payment account identifier&#013;&#010;Die Kennung des Kontos, auf das die Zahlung erfolgen soll: IBAN für Zahlungen
+        im SEPA-Raum, Kontonummer oder IBAN im Falle von Auslandszahlungen.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
               <xsl:value-of select="xr:Payment_account_identifier" />
             </div>
           </div>
@@ -1222,7 +1231,7 @@
               <xsl:value-of select="xrf:_('xr:Payment_service_provider_identifier')" />:
             </div>
             <div class="BT-86 boxdaten wert">
-              <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+              <xsl:attribute name="data-title">&#013;&#010;Payment service provider identifier&#013;&#010;Die Kennung des Konto führenden Kreditinstitutes, diese Kennung ergibt sich bei Zahlungen im SEPA-Raum im Regelfall aus der IBAN.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
               <xsl:value-of select="xr:Payment_service_provider_identifier" />
             </div>
           </div>
@@ -1235,7 +1244,8 @@
   <xsl:template name="uebersichtBemerkungen" match="xr:INVOICE_NOTE">
     <div class="uebersichtBemerkungen box">
       <div class="BG-1 boxtitel" role="heading" aria-level="2">
-        <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:attribute name="data-title">BG-1&#013;&#010;INVOICE NOTE&#013;&#010;Eine Gruppe von Informationselementen für rechnungsrelevante Erläuterungen mit
+        Hinweisen auf den Rechnungsbetreff.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:value-of select="xrf:_('_invoice-note-group')" />
       </div>
       <div class="boxtabelle boxinhalt borderSpacing" role="list">
@@ -1244,7 +1254,7 @@
             <xsl:value-of select="xrf:_('xr:Invoice_note_subject_code')" />:
           </div>
           <div class="BT-21 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-21&#013;&#010;Invoice note subject code&#013;&#010;Der Betreff für den nachfolgenden Textvermerk zur Rechnung.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Invoice_note_subject_code" />
           </div>
         </div>
@@ -1253,7 +1263,9 @@
             <xsl:value-of select="xrf:_('xr:Invoice_note')" />:
           </div>
           <div class="BT-22 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-22&#013;&#010;Invoice note&#013;&#010;Ein Textvermerk, der unstrukturierte Informationen enthält, die für die
+        Rechnung als Ganzes maßgeblich sind. Erforderlichenfalls können Angaben zur
+        Aufbewahrungspflicht gem. § 14 Abs. 4 Nr. 9 UStG hier aufgenommen werden.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Invoice_note" />
           </div>
         </div>
@@ -1277,7 +1289,7 @@
       <div class="boxzeile">
         <div class="box subBox">
           <div class="BT-126 boxtitel" role="heading" aria-level="2">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-126&#013;&#010;Invoice line identifier&#013;&#010;Eindeutige Bezeichnung für die betreffende Rechnungsposition.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="concat( xrf:_('xr:Invoice_line_identifier') , ': ', xr:Invoice_line_identifier)" />
           </div>
           <div class="boxtabelle boxinhalt borderSpacing" role="list">
@@ -1286,7 +1298,8 @@
                 <xsl:value-of select="xrf:_('xr:Invoice_line_note')" />:
               </div>
               <div class="BT-127 boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-127&#013;&#010;Invoice line note&#013;&#010;Ein Textvermerk, der unstrukturierte Informationen enthält, die für die
+        Rechnungsposition maßgeblich sind.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xr:Invoice_line_note" />
               </div>
             </div>
@@ -1295,7 +1308,9 @@
                 <xsl:value-of select="xrf:_('xr:Invoice_line_object_identifier')" />:
               </div>
               <div class="BT-128 boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-128&#013;&#010;Invoice line object identifier&#013;&#010;Eine vom Verkäufer angegebene Kennung für ein Objekt, auf das sich die
+        Rechnungsposition bezieht (z. B. Zählernummer, Telefonnummer, Kfz-Kennzeichen, versicherte
+        Person, Abonnement-Nummer, Rufnummer).&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xr:Invoice_line_object_identifier" />
               </div>  
             </div>
@@ -1304,7 +1319,7 @@
                 <xsl:value-of select="xrf:_('xr:Invoice_line_object_identifier/@scheme_identifier')" />:
               </div>
               <div data-title="BT-128-scheme-id" class="BT-128-scheme-id boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">bt-128-scheme-id&#013;&#010;Invoiced object identifier/Scheme identifier&#013;&#010;Die Kennung des Bildungsmusters der Objektkennung.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xr:Invoice_line_object_identifier/@scheme_identifier" />
               </div>
             </div>
@@ -1313,7 +1328,8 @@
                 <xsl:value-of select="xrf:_('xr:Referenced_purchase_order_line_reference')" />:
               </div>
               <div class="BT-132 boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-132&#013;&#010;Referenced purchase order line reference&#013;&#010;Eine vom Erwerber ausgegebene Kennung für eine referenzierte Position einer
+                Bestellung/eines Auftrags.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xr:Referenced_purchase_order_line_reference" />
               </div>
             </div>
@@ -1322,13 +1338,15 @@
                 <xsl:value-of select="xrf:_('xr:Invoice_line_Buyer_accounting_reference')" />:
               </div>
               <div class="BT-133 boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-133&#013;&#010;Invoice line Buyer accounting reference&#013;&#010;Ein Textwert, der angibt, an welcher Stelle die betreffenden Daten in den
+                Finanzkonten des Erwerbers zu buchen sind.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xr:Invoice_line_Buyer_accounting_reference" />
               </div>
             </div>
             <div role="listitem">
               <strong class="BG-26">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BG-26&#013;&#010;INVOICE LINE PERIOD&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über den für die
+        Rechnungsposition maßgeblichen Abrechnungszeitraum enthalten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xrf:_('detailsPositionAbrechnungszeitraum')" />:
               </strong>
               <div class="boxtabelle borderSpacing" role="list">
@@ -1337,7 +1355,8 @@
                     <xsl:value-of select="xrf:_('xr:Invoice_line_period_start_date')" />:
                   </div>
                   <div class="BT-134 boxdaten wert">
-                    <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                    <xsl:attribute name="data-title">BT-134&#013;&#010;Invoice line period start date&#013;&#010;Das Datum, an dem der Abrechnungszeitraum der betreffenden Rechnungsposition
+        beginnt.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                     <xsl:value-of
                       select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_start_date,xrf:_('date-format'))" />
                   </div>
@@ -1347,7 +1366,8 @@
                     <xsl:value-of select="xrf:_('xr:Invoice_line_period_end_date')" />:
                   </div>
                   <div class="BT-135 boxdaten wert">
-                    <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                    <xsl:attribute name="data-title">BT-135&#013;&#010;Invoice line period end date&#013;&#010;Das Datum, an dem der Abrechnungszeitraum der betreffenden Rechnungsposition
+        endet.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                     <xsl:value-of
                       select="format-date(xr:INVOICE_LINE_PERIOD/xr:Invoice_line_period_end_date,xrf:_('date-format'))" />
                   </div>
@@ -1358,7 +1378,9 @@
         </div>
         <div class="box subBox">
           <div class="BG-29 boxtitel boxtitelSub" role="heading" aria-level="3">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BG-29&#013;&#010;PRICE DETAILS&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über den Preis für die 
+        in der betreffenden Rechnungsposition in Rechnung gestellten Waren und Dienstleistungen
+        enthalten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xrf:_('detailsPositionPreiseinzelheiten')" />
           </div>
           <div class="boxtabelle boxinhalt" role="table">
@@ -1367,7 +1389,8 @@
                 <xsl:value-of select="xrf:_('xr:Invoiced_quantity')" />
               </div>
               <div class="BT-129 boxdaten detailSp2" role="cell">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-129&#013;&#010;Invoiced quantity&#013;&#010;Die Menge zu dem in der betreffenden Zeile in Rechnung gestellten Einzelposten
+        (Waren oder Dienstleistungen).&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xr:Invoiced_quantity" />
               </div>
             </div>
@@ -1376,7 +1399,7 @@
                 <xsl:value-of select="xrf:_('xr:Invoiced_quantity_unit_of_measure_code')" />
               </div>
               <div class="BT-130 boxdaten detailSp2" role="cell">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-130&#013;&#010;Invoiced quantity unit of measure code&#013;&#010;Die für BT-129 geltende Maßeinheit.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xr:Invoiced_quantity_unit_of_measure_code" />
               </div>
             </div>
@@ -1385,7 +1408,8 @@
                 <xsl:value-of select="xrf:_('xr:Item_net_price')" />
               </div>
               <div class="BT-146 boxdaten detailSp2 line1Bottom" role="cell">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-146&#013;&#010;Item net price&#013;&#010;Der Preis eines Postens, ohne Umsatzsteuer, nach Abzug des für diese
+                Rechnungsposition geltenden Rabatts.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of
                   select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_net_price,$lang)" />
               </div>
@@ -1395,7 +1419,9 @@
                 <xsl:value-of select="xrf:_('xr:Invoice_line_net_amount')" />
               </div>
               <div class="BT-131 boxdaten detailSp2 bold" role="cell">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-131&#013;&#010;Invoice line net amount&#013;&#010;Der Gesamtbetrag der Rechnungsposition. Dies ist der Betrag ohne Umsatzsteuer,
+        aber einschließlich aller für die Rechnungsposition geltenden Nachlässe und Abgaben sowie
+        sonstiger anfallender Steuern.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:Invoice_line_net_amount,$lang)" />
               </div>
             </div>
@@ -1406,7 +1432,8 @@
                 <xsl:value-of select="xrf:_('xr:Item_price_discount')" />:
               </div>
               <div class="BT-147 boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-147&#013;&#010;Item price discount&#013;&#010;Der gesamte zur Berechnung des Netto-Postenpreises vom Brutto-Postenpreis
+                subtrahierte Rabatt.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of
                   select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_price_discount,$lang)" />
               </div>
@@ -1416,7 +1443,8 @@
                 <xsl:value-of select="xrf:_('xr:Item_gross_price')" />:
               </div>
               <div class="BT-148 boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-148&#013;&#010;Item gross price&#013;&#010;Der Postenpreis ohne Umsatzsteuer vor Abzug des
+        Postenpreisrabatts.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of
                   select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_gross_price,$lang)" />
               </div>
@@ -1426,7 +1454,7 @@
                 <xsl:value-of select="xrf:_('xr:Item_price_base_quantity')" />:
               </div>
               <div class="BT-149 boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-149&#013;&#010;Item price base quantity&#013;&#010;Die Anzahl von Einheiten, für die der Postenpreis gilt.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_base_quantity" />
               </div>
             </div>
@@ -1435,7 +1463,7 @@
                 <xsl:value-of select="xrf:_('xr:Item_price_base_quantity_unit_of_measure')" />:
               </div>
               <div class="BT-150 boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-150&#013;&#010;Item price base quantity unit of measure code&#013;&#010;Der Code der zu Grunde gelegten Maßeinheit.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_base_quantity_unit_of_measure" />
               </div>
             </div>
@@ -1444,7 +1472,8 @@
                 <xsl:value-of select="xrf:_('xr:Invoiced_item_VAT_category_code')" />:
               </div>
               <div class="BT-151 boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-151&#013;&#010;Invoiced item VAT category code&#013;&#010;Der Code der für den in Rechnung gestellten Posten geltenden
+                Umsatzsteuerkategorie.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_category_code" />
               </div>
             </div>
@@ -1453,7 +1482,8 @@
                 <xsl:value-of select="xrf:_('xr:Invoiced_item_VAT_rate')" />:
               </div>
               <div class="BT-152 boxdaten wert">
-                <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                <xsl:attribute name="data-title">BT-152&#013;&#010;Invoiced item VAT rate&#013;&#010;Der für den in Rechnung gestellten Posten geltende und als Prozentsatz
+                angegebene Umsatzsteuersatz.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                 <xsl:value-of
                   select="xrf:format-with-at-least-two-digits(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate,$lang)" /> %
               </div>
@@ -1466,7 +1496,8 @@
       <div class="boxzeile">
         <div class="box subBox">
           <div class="BG-27 boxtitel boxtitelSub" role="heading" aria-level="3">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BG-27&#013;&#010;INVOICE LINE ALLOWANCES&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über die für die
+        betreffende Rechnungsposition geltenden Nachlässe enthalten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xrf:_('detailsPositionNachlaesse')" />
           </div>
           <xsl:for-each select="xr:INVOICE_LINE_ALLOWANCES">
@@ -1476,7 +1507,8 @@
                   <xsl:value-of select="xrf:_('xr:Invoice_line_allowance_base_amount')" />
                 </div>
                 <div class="BT-137 boxdaten detailSp2" role="cell">
-                  <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                  <xsl:attribute name="data-title">BT-137&#013;&#010;Invoice line allowance base amount&#013;&#010;Der Grundbetrag, der in Verbindung mit BT-138 zur Berechnung des BT-136
+        verwendet werden kann.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                   <xsl:value-of
                     select="xrf:format-with-at-least-two-digits(xr:Invoice_line_allowance_base_amount,$lang)" />
                 </div>
@@ -1486,7 +1518,8 @@
                   <xsl:value-of select="xrf:_('xr:Invoice_line_allowance_percentage')" />
                 </div>
                 <div class="BT-138 boxdaten detailSp2 line1Bottom" role="cell">
-                  <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                  <xsl:attribute name="data-title">BT-138&#013;&#010;Invoice line allowance percentage&#013;&#010;Der Prozentsatz, der in Verbindung mit dem BT-137 zur Berechnung des BT-136
+        verwendet werden kann.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                   <xsl:value-of
                     select="xrf:format-with-at-least-two-digits(xr:Invoice_line_allowance_percentage,$lang)" /> %
                 </div>
@@ -1496,7 +1529,7 @@
                   <xsl:value-of select="xrf:_('xr:Invoice_line_allowance_amount')" />
                 </div>
                 <div class="BT-136 boxdaten detailSp2 bold" role="cell">
-                  <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                  <xsl:attribute name="data-title">BT-136&#013;&#010;Invoice line allowance amount&#013;&#010;Der Nachlassbetrag ohne Umsatzsteuer.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                   <xsl:value-of
                     select="xrf:format-with-at-least-two-digits(xr:Invoice_line_allowance_amount,$lang)" />
                 </div>
@@ -1506,14 +1539,15 @@
               <div class="color2" role="listitem">
                 <xsl:value-of select="xrf:_('xr:Invoice_line_allowance_reason')" />:
                 <span class="BT-139 bold">
-                  <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                  <xsl:attribute name="data-title">BT-139&#013;&#010;Invoice line allowance reason&#013;&#010;Der in Textform angegebene Grund für den
+        Rechnungspositionennachlass.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                   <xsl:value-of select="xr:Invoice_line_allowance_reason" />
                 </span>
               </div>
               <div class="color2" role="listitem">
                 <xsl:value-of select="xrf:_('xr:Invoice_line_allowance_reason_code')" />:
                 <span class="BT-140 bold">
-                  <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                  <xsl:attribute name="data-title">BT-140&#013;&#010;Invoice line allowance reason code&#013;&#010;Der als Code angegebene Grund für den Rechnungspositionennachlass.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                   <xsl:value-of select="xr:Invoice_line_allowance_reason_code" />
                 </span>
               </div>
@@ -1522,7 +1556,9 @@
         </div>
         <div class="box subBox">
           <div class="BG-28 boxtitel boxtitelSub" role="heading" aria-level="3">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BG-28&#013;&#010;INVOICE LINE CHARGES&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über Kosten,
+        Zuschläge, und Steuern – ausgenommen die Umsatzsteuer – enthalten, die für die jeweilige
+        Rechnungsposition gelten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xrf:_('detailsPositionZuschlaege')" />
           </div>
           <xsl:for-each select="xr:INVOICE_LINE_CHARGES">
@@ -1532,7 +1568,8 @@
                   <xsl:value-of select="xrf:_('xr:Invoice_line_charge_base_amount')" />
                 </div>
                 <div class="BT-142 boxdaten detailSp2" role="cell">
-                  <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                  <xsl:attribute name="data-title">BT-142&#013;&#010;Invoice line charge base amount&#013;&#010;Der Grundbetrag, der in Verbindung mit BT-143 zur Berechnung des BT-141
+        verwendet werden kann.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                   <xsl:value-of
                     select="xrf:format-with-at-least-two-digits(xr:Invoice_line_charge_base_amount,$lang)" />
                 </div>
@@ -1542,7 +1579,8 @@
                   <xsl:value-of select="xrf:_('xr:Invoice_line_charge_percentage')" />
                 </div>
                 <div class="BT-143 boxdaten detailSp2 line1Bottom" role="cell">
-                  <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                  <xsl:attribute name="data-title">BT-143&#013;&#010;Invoice line charge percentage&#013;&#010;Der Prozentsatz, der in Verbindung mit dem BT-142 zur Berechnung des BT-141
+        verwendet werden kann.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                   <xsl:value-of
                     select="xrf:format-with-at-least-two-digits(xr:Invoice_line_charge_percentage,$lang)" /> %
                 </div>
@@ -1552,7 +1590,7 @@
                   <xsl:value-of select="xrf:_('xr:Invoice_line_charge_amount')" />
                 </div>
                 <div class="BT-141 boxdaten detailSp2 bold" role="cell">
-                  <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                  <xsl:attribute name="data-title">BT-141&#013;&#010;Invoice line charge amount&#013;&#010;Der Betrag einer Abgabe ohne die Umsatzsteuer.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                   <xsl:value-of
                     select="xrf:format-with-at-least-two-digits(xr:Invoice_line_charge_amount,$lang)" />
                 </div>
@@ -1562,14 +1600,15 @@
               <div class="color2" role="listitem">
                 <xsl:value-of select="xrf:_('xr:Invoice_line_charge_reason')" />:
                 <span class="BT-144 bold">
-                  <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                  <xsl:attribute name="data-title">BT-144&#013;&#010;Invoice line charge reason&#013;&#010;Der in Textform angegebene Grund für die
+        Rechnungspositionenabgaben.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                   <xsl:value-of select="xr:Invoice_line_charge_reason" />
                 </span>
               </div>
               <div class="color2" role="listitem">
                 <xsl:value-of select="xrf:_('xr:Invoice_line_charge_reason_code')" />:
                 <span class="BT-145 bold">
-                  <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                  <xsl:attribute name="data-title">BT-145&#013;&#010;Invoice line charge reason code&#013;&#010;Der als Code angegebene Grund für die Rechnungspositionenabgaben.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                   <xsl:value-of select="xr:Invoice_line_charge_reason_code" />
                 </span>
               </div>
@@ -1582,7 +1621,8 @@
       <div class="boxzeile">
         <div class="box subBox">
           <div class="BG-31 boxtitel boxtitelSub" role="heading" aria-level="3">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BG-31&#013;&#010;ITEM INFORMATION&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über die in Rechnung
+        gestellten Waren und Dienstleistungen enthalten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xrf:_('detailsPositionArtikelinformationen')" />
           </div>
           <div class="boxtabelle boxinhalt ">
@@ -1594,7 +1634,7 @@
                       <xsl:value-of select="xrf:_('xr:Item_name')" />:
                     </div>
                     <div class="BT-153 boxdaten wert bold">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-153&#013;&#010;Item name&#013;&#010;Ein Name des Postens.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_name" />
                     </div>
                   </div>
@@ -1603,7 +1643,7 @@
                       <xsl:value-of select="xrf:_('xr:Item_description')" />:
                     </div>
                     <div class="BT-154 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-154&#013;&#010;Item description&#013;&#010;Eine Beschreibung des Postens.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_description" />
                     </div>
                   </div>
@@ -1612,7 +1652,7 @@
                       <xsl:value-of select="xrf:_('xr:Item_Sellers_identifier')" />:
                     </div>
                     <div class="BT-155 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-155&#013;&#010;Item Sellers identifier&#013;&#010;Eine dem Posten vom Verkäufer zugewiesene Kennung.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_Sellers_identifier" />
                     </div>
                   </div>
@@ -1621,13 +1661,14 @@
                       <xsl:value-of select="xrf:_('xr:Item_Buyers_identifier')" />:
                     </div>
                     <div class="BT-156 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-156&#013;&#010;Item Buyers identifier&#013;&#010;Eine dem Posten vom Erwerber zugewiesene Kennung.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_Buyers_identifier" />
                     </div>
                   </div>
                   <div class="boxtabelle borderSpacing" role="listitem">
                     <strong class="BG-32">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BG-32&#013;&#010;ITEM ATTRIBUTES&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über die Eigenschaften
+        der in Rechnung gestellten Waren und Dienstleistungen enthalten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xrf:_('detailsPositionArtikeleigenschaften')" />:
                     </strong>
                     <xsl:apply-templates select="xr:ITEM_INFORMATION/xr:ITEM_ATTRIBUTES" />
@@ -1642,7 +1683,7 @@
                       <xsl:value-of select="xrf:_('xr:Item_standard_identifier')" />:
                     </div>
                     <div class="BT-157 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-157&#013;&#010;Item standard identifier&#013;&#010;Eine auf einem registrierten Schema basierende Postenkennung.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_standard_identifier" />
                     </div>
                   </div>
@@ -1651,7 +1692,7 @@
                       <xsl:value-of select="xrf:_('xr:Item_standard_identifier/@scheme_identifier')" />:
                     </div>
                     <div data-title="BT-157-scheme-id" class="BT-157-scheme-id boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">scheme-id-bt-157&#013;&#010;Item standard identifier/Scheme identifier&#013;&#010;Die Kennung des Schemas für das Element BT-157.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of
                         select="xr:ITEM_INFORMATION/xr:Item_standard_identifier/@scheme_identifier" />
                     </div>
@@ -1661,7 +1702,8 @@
                       <xsl:value-of select="xrf:_('xr:Item_classification_identifier')" />:
                     </div>
                     <div class="BT-158 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-158&#013;&#010;Item classification identifier&#013;&#010;Ein Code für die Klassifizierung des Postens nach Typ bzw. Art oder Wesen bzw.
+                Beschaffenheit.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_classification_identifier" />
                     </div>
                   </div>
@@ -1670,7 +1712,7 @@
                       <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_identifier')" />:
                     </div>
                     <div data-title="BT-158-scheme-id" class="BT-158-scheme-id boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">scheme-id-bt-158&#013;&#010;Item classification identifier/Scheme identifier&#013;&#010;Die Kennung des Bildungsschemas für das Informationselement BT-158.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of
                         select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_identifier" />
                     </div>
@@ -1680,7 +1722,7 @@
                       <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_version_identifier')" />:
                     </div>
                     <div data-title="BT-158-scheme-version-id" class="BT-158-scheme-version-id boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">scheme-version-id-bt-158&#013;&#010;Item classification identifier/Scheme version identifier&#013;&#010;Die Version des Bildungsschemas für das Informationselement BT-158.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of
                         select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_version_identifier" />
                     </div>
@@ -1690,7 +1732,8 @@
                       <xsl:value-of select="xrf:_('xr:Item_country_of_origin')" />:
                     </div>
                     <div class="BT-159 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-159&#013;&#010;Item country of origin&#013;&#010;Der Ländercode, der das Land angibt, aus dem die Ware stammt oder in dem die
+                Dienstleistung erbracht wird.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_country_of_origin" />
                     </div>
                   </div>
@@ -1707,11 +1750,11 @@
   <xsl:template name="eigenschaft" match="xr:ITEM_ATTRIBUTES">
     <div class="boxzeile">
       <div class="BT-160 boxdaten legende">
-        <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:attribute name="data-title">BT-160&#013;&#010;Item attribute name&#013;&#010;Der Name der Eigenschaft des Postens, wie z. B. Farbe.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:value-of select="xr:Item_attribute_name" />
       </div>
       <div class="BT-161 boxdaten wert">
-        <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:attribute name="data-title">BT-161&#013;&#010;Item attribute value&#013;&#010;Der Wert der Eigenschaft des Postens, wie z. B. rot.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:value-of select="xr:Item_attribute_value" />
       </div>
     </div>
@@ -1720,13 +1763,13 @@
     <xsl:template name="sub_invoice_eigenschaft" match="xr:SUB_INVOICE_ITEM_ATTRIBUTES">
         <div class="boxzeile" role="listitem">
             <div class="BT-160 boxdaten legende">
-              <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
-              <xsl:value-of select="xr:Item_attribute_name" />
-            </div>
-            <div class="BT-161 boxdaten wert">
-              <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
-              <xsl:value-of select="xr:Item_attribute_value" />
-            </div>
+        <xsl:attribute name="data-title">BT-160&#013;&#010;Item attribute name&#013;&#010;Der Name der Eigenschaft des Postens, wie z. B. Farbe.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:value-of select="xr:Item_attribute_name" />
+      </div>
+      <div class="BT-161 boxdaten wert">
+        <xsl:attribute name="data-title">BT-161&#013;&#010;Item attribute value&#013;&#010;Der Wert der Eigenschaft des Postens, wie z. B. rot.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:value-of select="xr:Item_attribute_value" />
+      </div>
         </div>
     </xsl:template>
     
@@ -1764,7 +1807,8 @@
     <xsl:template name="zusaetzeVerkaeufer" match="xr:SELLER" mode="zusaetze">
         <div id="zusaetzeVerkaeufer" class="box boxZweispaltig">
             <div class="BG-4 boxtitel" role="heading" aria-level="2">
-              <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+              <xsl:attribute name="data-title">BG-4&#013;&#010;SELLER&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über den Verkäufer
+        enthalten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
               <xsl:value-of select="xrf:_('uebersichtVerkaeufer')" />
             </div>
             <div class="boxtabelle boxinhalt borderSpacing" role="list">
@@ -1773,7 +1817,8 @@
                         <xsl:value-of select="xrf:_('xr:Seller_trading_name')" />:
                     </div>
                     <div class="BT-28 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-28&#013;&#010;Seller trading name&#013;&#010;Ein Name, unter dem der Verkäufer bekannt ist, sofern abweichend vom Namen des
+        Verkäufers.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:Seller_trading_name" />
                     </div>
                 </div>
@@ -1782,7 +1827,8 @@
                         <xsl:value-of select="xrf:_('xr:Seller_country_subdivision')" />:
                     </div>
                     <div class="BT-39 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-39&#013;&#010;Seller country subdivision&#013;&#010;Die Unterteilung eines Landes (wie Region, Bundesland, Provinz
+        etc.).&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:SELLER_POSTAL_ADDRESS/xr:Seller_country_subdivision" />
                     </div>
                 </div>
@@ -1791,7 +1837,8 @@
                         <xsl:value-of select="xrf:_('xr:Seller_electronic_address')" />:
                     </div>
                     <div class="BT-34 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-34&#013;&#010;Seller electronic address&#013;&#010;Gibt die elektronische Adresse des Verkäufers an, an die die Antwort der Anwendungsebene auf eine Rechnung
+                gesendet werden kann.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:Seller_electronic_address" />
                     </div>
                 </div>
@@ -1800,7 +1847,7 @@
                         <xsl:value-of select="xrf:_('xr:Seller_electronic_address/@scheme_identifier')" />:
                     </div>
                     <div data-title="BT-34-scheme-id" class="BT-34-scheme-id boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">scheme-id-bt-34&#013;&#010;Seller electronic address/Scheme identifier&#013;&#010;Das Bildungsschema für BT-34.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:Seller_electronic_address/@scheme_identifier" />
                     </div>
                 </div>
@@ -1809,7 +1856,8 @@
                         <xsl:value-of select="xrf:_('xr:Seller_legal_registration_identifier')" />:
                     </div>
                     <div class="BT-30 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-30&#013;&#010;Seller legal registration identifier&#013;&#010;Eine von einer offiziellen Registrierstelle ausgegebene Kennung, die den
+        Verkäufer als Rechtsträger oder juristische Person identifiziert.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:Seller_legal_registration_identifier" />
                     </div>
                 </div>
@@ -1818,7 +1866,7 @@
                         <xsl:value-of select="xrf:_('xr:Seller_legal_registration_identifier/@scheme_identifier')" />:
                     </div>
                     <div data-title="BT-30-scheme-id" class="BT-30-scheme-id boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">scheme-id-bt-30&#013;&#010;Seller legal registration identifier/Scheme identifier&#013;&#010;Das für das Element BT-30 geltende Schema.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:Seller_legal_registration_identifier/@scheme_identifier" />
                     </div>
                 </div>
@@ -1828,7 +1876,9 @@
                         <xsl:value-of select="xrf:_('xr:Seller_VAT_identifier')" />:
                     </div>
                     <div class="BT-31 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-31&#013;&#010;Seller VAT identifier&#013;&#010;Die Umsatzsteuer-Identifikationsnummer des Verkäufers. Verfügt der Verkäufer
+        über eine solche, ist sie hier anzugeben, sofern nicht Angaben zum BG-11
+            gemacht werden.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:Seller_VAT_identifier" />
                     </div>
                 </div>
@@ -1837,7 +1887,10 @@
                         <xsl:value-of select="xrf:_('xr:Seller_tax_registration_identifier')" />:
                     </div>
                     <div class="BT-32 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-32&#013;&#010;Seller tax registration identifier&#013;&#010;Eine örtliche steuerrechtliche Kennung des Verkäufers (bestimmt durch dessen
+        Adresse) oder ein Verweis auf seinen eingetragenen Steuerstatus. (Hier ist ggf. die Angabe
+                Steuerschuldnerschaft des Leistungsempfängers oder die USt-Befreiung des Rechnungsstellers
+        einzutragen.)&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:Seller_tax_registration_identifier" />
                     </div>
                 </div>
@@ -1846,6 +1899,8 @@
                         <xsl:value-of select="xrf:_('xr:Seller_additional_legal_information')" />:
                     </div>
                     <div class="BT-33 boxdaten wert">
+                      <xsl:attribute name="data-title">BT-33&#013;&#010;Seller additional legal information&#013;&#010;Weitere rechtliche Informationen, die für den Verkäufer maßgeblich sind (wie z.
+        B. Grundkapital).&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:Seller_additional_legal_information" />
                     </div>
                 </div>
@@ -1854,7 +1909,8 @@
                         <xsl:value-of select="xrf:_('xr:VAT_accounting_currency_code')" />:
                     </div>
                     <div class="BT-6 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-6&#013;&#010;VAT accounting currency code&#013;&#010;Die für die Umsatzsteuer-Abrechnungs- und -Meldezwecke verwendete Währung, die
+                im Land des Verkäufers gültig ist oder verlangt wird.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="../xr:VAT_accounting_currency_code" />
                     </div>
                 </div>
@@ -1866,7 +1922,8 @@
   <xsl:template name="zusaetzeSteuervertreter" match="xr:SELLER_TAX_REPRESENTATIVE_PARTY">
     <div id="zusaetzeSteuervertreter" class="box boxZweispaltig">
       <div class="BG-11 boxtitel" role="heading" aria-level="2">
-        <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:attribute name="data-title">BG-11&#013;&#010;SELLER TAX REPRESENTATIVE PARTY&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über den
+        Steuervertreter des Verkäufers enthalten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:value-of select="xrf:_('zusaetzeSteuervertreter')" />
       </div>
       <div class="boxtabelle boxinhalt borderSpacing" role="list">
@@ -1875,7 +1932,7 @@
             <xsl:value-of select="xrf:_('xr:Seller_tax_representative_name')" />:
           </div>
           <div class="BT-62 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-62&#013;&#010;Seller tax representative name&#013;&#010;Der vollständige Name des Steuervertreters des Verkäufers.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Seller_tax_representative_name" />
           </div>
         </div>
@@ -1884,7 +1941,8 @@
             <xsl:value-of select="xrf:_('xr:Tax_representative_address_line_1')" />:
           </div>
           <div class="BT-64 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-64&#013;&#010;Tax representative address line 1&#013;&#010;Die Hauptzeile in einer Anschrift. Üblicherweise ist dies entweder Strasse und
+        Hausnummer oder der Text Postfach gefolgt von der Postfachnummer.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of
               select="xr:SELLER_TAX_REPRESENTATIVE_POSTAL_ADDRESS/xr:Tax_representative_address_line_1" />
           </div>
@@ -1893,8 +1951,9 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Tax_representative_address_line_2')" />:
           </div>
-          <div class="BT-65boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+          <div class="BT-65 boxdaten wert">
+            <xsl:attribute name="data-title">BT-65&#013;&#010;Tax representative address line 2&#013;&#010;Eine zusätzliche Adresszeile in einer Anschrift, die verwendet werden kann, um
+        weitere Einzelheiten in Ergänzung zur Hauptzeile anzugeben.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of
               select="xr:SELLER_TAX_REPRESENTATIVE_POSTAL_ADDRESS/xr:Tax_representative_address_line_2" />
           </div>
@@ -1904,7 +1963,8 @@
             <xsl:value-of select="xrf:_('xr:Tax_representative_address_line_3')" />:
           </div>
           <div class="BT-164 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-164&#013;&#010;Tax representative address line 3&#013;&#010;Eine zusätzliche Adresszeile in einer Anschrift, die verwendet werden kann, um
+        weitere Einzelheiten in Ergänzung zur Hauptzeile anzugeben.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of
               select="xr:SELLER_TAX_REPRESENTATIVE_POSTAL_ADDRESS/xr:Tax_representative_address_line_3" />
           </div>
@@ -1914,7 +1974,7 @@
             <xsl:value-of select="xrf:_('xr:Tax_representative_post_code')" />:
           </div>
           <div class="BT-67 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-67&#013;&#010;Tax representative post code&#013;&#010;Die Postleitzahl.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of
               select="xr:SELLER_TAX_REPRESENTATIVE_POSTAL_ADDRESS/xr:Tax_representative_post_code" />
           </div>
@@ -1924,7 +1984,8 @@
             <xsl:value-of select="xrf:_('xr:Tax_representative_city')" />:
           </div>
           <div class="BT-66 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-66&#013;&#010;Tax representative city&#013;&#010;Die Bezeichnung der Stadt oder Gemeinde, in der sich die Anschrift des
+        Steuervertreters befindet.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:SELLER_TAX_REPRESENTATIVE_POSTAL_ADDRESS/xr:Tax_representative_city" />
           </div>
         </div>
@@ -1933,7 +1994,7 @@
             <xsl:value-of select="xrf:_('xr:Tax_representative_country_subdivision')" />:
           </div>
           <div class="BT-68 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-68&#013;&#010;Tax representative country subdivision&#013;&#010;Die Unterteilung eines Landes.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of
               select="xr:SELLER_TAX_REPRESENTATIVE_POSTAL_ADDRESS/xr:Tax_representative_country_subdivision" />
           </div>
@@ -1943,7 +2004,7 @@
             <xsl:value-of select="xrf:_('xr:Tax_representative_country_code')" />:
           </div>
           <div class="BT-69 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-69&#013;&#010;Tax representative country code&#013;&#010;Ein Code, mit dem das Land bezeichnet wird.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of
               select="xr:SELLER_TAX_REPRESENTATIVE_POSTAL_ADDRESS/xr:Tax_representative_country_code" />
           </div>
@@ -1953,7 +2014,8 @@
             <xsl:value-of select="xrf:_('xr:Seller_tax_representative_VAT_identifier')" />:
           </div>
           <div class="BT-63 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-63&#013;&#010;Seller tax representative VAT identifier&#013;&#010;Die Umsatzsteuer-Identifikationsnummer des Steuervertreters des
+            Verkäufers.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Seller_tax_representative_VAT_identifier" />
           </div>
         </div>
@@ -1965,7 +2027,8 @@
   <xsl:template name="zusaetzeKaeufer" match="xr:BUYER" mode="zusaetze">
     <div id="zusaetzeKaeufer" class="box boxZweispaltig">
       <div class="BG-7 boxtitel" role="heading" aria-level="2">
-        <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:attribute name="data-title">BG-7&#013;&#010;BUYER&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über den Erwerber
+        enthalten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:value-of select="xrf:_('zusaetzeKaeufer')" />
       </div>
       <div class="boxtabelle boxinhalt borderSpacing" role="list">
@@ -1974,7 +2037,8 @@
             <xsl:value-of select="xrf:_('xr:Buyer_trading_name')" />:
           </div>
           <div class="BT-45 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-45&#013;&#010;Buyer trading name&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über den Erwerber
+        enthalten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Buyer_trading_name" />
           </div>
         </div>
@@ -1983,7 +2047,8 @@
             <xsl:value-of select="xrf:_('xr:Buyer_country_subdivision')" />:
           </div>
           <div class="BT-54 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-54&#013;&#010;Buyer country subdivision&#013;&#010;Die Unterteilung eines Landes (wie Region, Bundesland, Provinz
+        etc.).&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:BUYER_POSTAL_ADDRESS/xr:Buyer_country_subdivision" />
           </div>
         </div>
@@ -1992,7 +2057,8 @@
             <xsl:value-of select="xrf:_('xr:Buyer_electronic_address')" />:
           </div>
                     <div class="BT-30 boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">BT-30&#013;&#010;Seller legal registration identifier&#013;&#010;Eine von einer offiziellen Registrierstelle ausgegebene Kennung, die den
+        Verkäufer als Rechtsträger oder juristische Person identifiziert.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:Seller_legal_registration_identifier" />
                     </div>
                 </div>
@@ -2000,7 +2066,7 @@
                     <div class="boxdaten legende">
                         <xsl:value-of select="xrf:_('xr:Seller_legal_registration_identifier/@scheme_identifier')"/>: </div>
                     <div data-title="BT-30-scheme-id" class="BT-30-scheme-id boxdaten wert">
-                      <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+                      <xsl:attribute name="data-title">scheme-id-bt-30&#013;&#010;Seller legal registration identifier/Scheme identifier&#013;&#010;Das für das Element BT-30 geltende Schema.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
                       <xsl:value-of select="xr:Seller_legal_registration_identifier/@scheme_identifier"/>
                     </div>
                 </div>
@@ -2014,7 +2080,7 @@
             <xsl:value-of select="xrf:_('xr:Buyer_electronic_address/@scheme_identifier')" />:
           </div>
           <div data-title="BT-49-scheme-id" class="BT-49-scheme-id boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">scheme-id-bt-49&#013;&#010;Buyer electronic address/Scheme identifier&#013;&#010;Gibt eine elektronische Adresse des Erwerbers an, an die eine Rechnung gesendet werden sollte.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Buyer_electronic_address/@scheme_identifier" />
           </div>
         </div>
@@ -2023,7 +2089,9 @@
             <xsl:value-of select="xrf:_('xr:Buyer_legal_registration_identifier')" />:
           </div>
           <div class="BT-47 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-47&#013;&#010;Buyer legal registration identifier&#013;&#010;Ein von einer offiziellen Registrierstelle ausgegebener Bezeichner, der den
+        Erwerber als Rechtsträger oder juristische Person identifiziert. Z. B.
+        Handelsregister-Eintrag, Vereinsregister etc.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Buyer_legal_registration_identifier" />
           </div>
         </div>
@@ -2032,7 +2100,7 @@
             <xsl:value-of select="xrf:_('xr:Buyer_legal_registration_identifier/@scheme_identifier')" />:
           </div>
           <div data-title="BT-47-scheme-id" class="BT-47-scheme-id boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">scheme-id-bt-47&#013;&#010;Buyer legal registration identifier/Scheme identifier&#013;&#010;Die Kennung des Bildungsschemas für den BT-47.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Buyer_legal_registration_identifier/@scheme_identifier" />
           </div>
         </div>
@@ -2041,7 +2109,7 @@
             <xsl:value-of select="xrf:_('xr:Buyer_VAT_identifier')" />:
           </div>
           <div class="BT-48 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-48&#013;&#010;Buyer VAT identifier&#013;&#010;Die Umsatzsteuer-Identifikationsnummer des Erwerbers.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Buyer_VAT_identifier" />
           </div>
         </div>
@@ -2050,7 +2118,8 @@
             <xsl:value-of select="xrf:_('xr:Buyer_accounting_reference')" />:
           </div>
           <div class="BT-19 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-19&#013;&#010;Buyer accounting reference&#013;&#010;Ein Textwert, der angibt, an welcher Stelle die betreffenden Daten in den
+        Finanzkonten des Erwerbers zu buchen sind.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="../xr:Buyer_accounting_reference" />
           </div>
         </div>
@@ -2062,7 +2131,9 @@
   <xsl:template name="zusaetzeLieferung" match="xr:DELIVERY_INFORMATION">
     <div id="zusaetzeLieferung" class="box boxZweispaltig">
       <div class="BG-13 boxtitel" role="heading" aria-level="2">
-        <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:attribute name="data-title">BG-13&#013;&#010;DELIVERY INFORMATION&#013;&#010;Eine Gruppe von Informationselementen, die Informationen darüber enthalten, wo
+        und wann die in Rechnung gestellten Waren und Dienstleistungen geliefert bzw. erbracht
+        werden.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:value-of select="xrf:_('zusaetzeLieferung')" />
       </div>
       <div class="boxtabelle boxinhalt borderSpacing" role="list">
@@ -2071,7 +2142,8 @@
             <xsl:value-of select="xrf:_('xr:Deliver_to_location_identifier')" />:
           </div>
           <div class="BT-71 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-71&#013;&#010;Deliver to location identifier&#013;&#010;Ein Bezeichner für den Ort, an den die Waren geliefert oder an dem die
+        Dienstleistungen erbracht werden.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Deliver_to_location_identifier" />
           </div>
         </div>
@@ -2080,7 +2152,7 @@
             <xsl:value-of select="xrf:_('xr:Deliver_to_location_identifier/@scheme_identifier')" />:
           </div>
           <div data-title="BT-71-scheme-id" class="BT-71-scheme-id boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">scheme-id-bt-71&#013;&#010;Deliver to location identifier/Scheme identifier&#013;&#010;Die Kennung des Bildungsschemas für den BT-71.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Deliver_to_location_identifier/@scheme_identifier" />
           </div>
         </div>
@@ -2089,7 +2161,8 @@
             <xsl:value-of select="xrf:_('xr:Actual_delivery_date')" />:
           </div>
           <div class="BT-72 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-72&#013;&#010;Actual delivery date&#013;&#010;Datum, an dem die Lieferung tatsächlich erfolgt bzw. die Dienstleistung
+        tatsächlich erbracht wird.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="format-date(xr:Actual_delivery_date,xrf:_('date-format'))" />
           </div>
         </div>
@@ -2098,7 +2171,8 @@
             <xsl:value-of select="xrf:_('xr:Deliver_to_party_name')" />:
           </div>
           <div class="BT-70 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-70&#013;&#010;Deliver to party name&#013;&#010;Der Name des Empfängers, an den die Waren geliefert bzw. für den die
+                Dienstleistungen erbracht werden.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Deliver_to_party_name" />
           </div>
         </div>
@@ -2107,7 +2181,8 @@
             <xsl:value-of select="xrf:_('xr:Deliver_to_address_line_1')" />:
           </div>
           <div class="BT-75 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-75&#013;&#010;Deliver to address line 1&#013;&#010;Die Hauptzeile einer Anschrift. Üblicherweise ist dies entweder Strasse und
+        Hausnummer oder der Text Postfach gefolgt von der Postfachnummer.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:DELIVER_TO_ADDRESS/xr:Deliver_to_address_line_1" />
           </div>
         </div>
@@ -2116,7 +2191,8 @@
             <xsl:value-of select="xrf:_('xr:Deliver_to_address_line_2')" />:
           </div>
           <div class="BT-76 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-76&#013;&#010;Deliver to address line 2&#013;&#010;Eine zusätzliche Adresszeile in einer Anschrift, die verwendet werden kann, um
+        weitere Einzelheiten in Ergänzung zur Hauptzeile anzugeben.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:DELIVER_TO_ADDRESS/xr:Deliver_to_address_line_2" />
           </div>
         </div>
@@ -2125,7 +2201,8 @@
             <xsl:value-of select="xrf:_('xr:Deliver_to_address_line_3')" />:
           </div>
           <div class="BT-165 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-165&#013;&#010;Deliver to address line 3&#013;&#010;Eine zusätzliche Adresszeile in einer Anschrift, die verwendet werden kann, um
+        weitere Einzelheiten in Ergänzung zur Hauptzeile anzugeben.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:DELIVER_TO_ADDRESS/xr:Deliver_to_address_line_3" />
           </div>
         </div>
@@ -2134,7 +2211,7 @@
             <xsl:value-of select="xrf:_('xr:Deliver_to_post_code')" />:
           </div>
           <div class="BT-78 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-78&#013;&#010;Deliver to post code&#013;&#010;Die Postleitzahl.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:DELIVER_TO_ADDRESS/xr:Deliver_to_post_code" />
           </div>
         </div>
@@ -2143,7 +2220,8 @@
             <xsl:value-of select="xrf:_('xr:Deliver_to_city')" />:
           </div>
           <div class="BT-77 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-77&#013;&#010;Deliver to city&#013;&#010;Die Bezeichnung der Stadt oder Gemeinde, in der sich die Erwerberanschrift
+        befindet.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:DELIVER_TO_ADDRESS/xr:Deliver_to_city" />
           </div>
         </div>
@@ -2152,7 +2230,8 @@
             <xsl:value-of select="xrf:_('xr:Deliver_to_country_subdivision')" />:
           </div>
           <div class="BT-79 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-79&#013;&#010;Deliver to country subdivision&#013;&#010;Die Unterteilung eines Landes (wie Region, Bundesland, Provinz
+        etc.).&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:DELIVER_TO_ADDRESS/xr:Deliver_to_country_subdivision" />
           </div>
         </div>
@@ -2161,7 +2240,7 @@
             <xsl:value-of select="xrf:_('xr:Deliver_to_country_code')" />:
           </div>
           <div class="BT-80 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-80&#013;&#010;Deliver to country code&#013;&#010;Ein Code, mit dem das Land bezeichnet wird.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:DELIVER_TO_ADDRESS/xr:Deliver_to_country_code" />
           </div>
         </div>
@@ -2181,7 +2260,8 @@
             <xsl:value-of select="xrf:_('xr:Tender_or_lot_reference')" />:
           </div>
           <div class="BT-17 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-17&#013;&#010;Tender or lot reference&#013;&#010;Die Kennung der Ausschreibung oder des Loses auf die/das sich die Rechnung
+        bezieht.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Tender_or_lot_reference" />
           </div>
         </div>
@@ -2190,7 +2270,7 @@
             <xsl:value-of select="xrf:_('xr:Receiving_advice_reference')" />:
           </div>
           <div class="BT-15 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-15&#013;&#010;Receiving advice reference&#013;&#010;Eine Kennung für eine referenzierte Empfangsbestätigung.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Receiving_advice_reference" />
           </div>
         </div>
@@ -2199,7 +2279,7 @@
             <xsl:value-of select="xrf:_('xr:Despatch_advice_reference')" />:
           </div>
           <div class="BT-16 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-16&#013;&#010;Despatch advice reference&#013;&#010;Eine Kennung für eine referenzierte Versandanzeige.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Despatch_advice_reference" />
           </div>
         </div>
@@ -2208,7 +2288,8 @@
             <xsl:value-of select="xrf:_('xr:Business_process_type_identifier')" />:
           </div>
           <div class="BT-23 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-23&#013;&#010;Business process type&#013;&#010;Identifiziert den Kontext des Geschäftsprozesses, in dem die Transaktion
+                erfolgt. Er ermöglicht es dem Erwerber, die Rechnung in angemessener Weise zu verarbeiten.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:PROCESS_CONTROL/xr:Business_process_type_identifier" />
           </div>
         </div>
@@ -2217,7 +2298,9 @@
             <xsl:value-of select="xrf:_('xr:Specification_identifier')" />:
           </div>
           <div class="BT-24 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-24&#013;&#010;Specification identifier&#013;&#010;Eine Kennung der Spezifikation, die das gesamte Regelwerk zum semantischen
+        Inhalt, zu den Kardinalitäten und den Geschäftsregeln enthält, denen die in der Rechnung
+        enthaltenen Daten entsprechen.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:PROCESS_CONTROL/xr:Specification_identifier" />
           </div>
         </div>
@@ -2226,7 +2309,7 @@
             <xsl:value-of select="xrf:_('xr:Invoiced_object_identifier')" />:
           </div>
           <div class="BT-18 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-18&#013;&#010;Invoiced object identifier&#013;&#010;Eine vom Verkäufer angegebene Kennung für ein Objekt, auf das sich die Rechnung bezieht (z. B. Zählernummer, Telefonnummer, Kfz-Kennzeichen, versicherte Person, Abonnement-Nummer, Rufnummer).&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Invoiced_object_identifier" />
           </div>
         </div>
@@ -2235,7 +2318,7 @@
             <xsl:value-of select="xrf:_('xr:Invoiced_object_identifier/@scheme_identifier')" />:
           </div>
           <div data-title="BT-18-scheme-id" class="BT-18-scheme-id boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">bt-18-scheme-id&#013;&#010;Invoiced object identifier/Scheme identifier&#013;&#010;Die Kennung des Bildungsmusters der Objektkennung.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Invoiced_object_identifier/@scheme_identifier" />
           </div>
         </div>
@@ -2247,7 +2330,9 @@
   <xsl:template name="zusaetzeZahlungsempfaenger" match="xr:PAYEE">
     <div id="zusaetzeZahlungsempfaenger" class="box boxZweispaltig">
       <div class="BG-10 boxtitel" role="heading" aria-level="2">
-        <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+        <xsl:attribute name="data-title">BG-10&#013;&#010;PAYEE&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über den
+        Zahlungsempfänger enthalten. Die Gruppe wird genutzt, wenn der Zahlungsempfänger nicht mit dem
+        Verkäufer identisch ist.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:value-of select="xrf:_('zusaetzeZahlungsempfaenger')" />
       </div>
       <div class="boxtabelle boxinhalt borderSpacing" role="list">
@@ -2256,7 +2341,9 @@
             <xsl:value-of select="xrf:_('xr:Payee_name')" />:
           </div>
           <div class="BT-59 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-59&#013;&#010;Payee name&#013;&#010;Eine Gruppe von Informationselementen, die Informationen über den
+        Zahlungsempfänger enthalten. Die Gruppe wird genutzt, wenn der Zahlungsempfänger nicht mit dem
+        Verkäufer identisch ist.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Payee_name" />
           </div>
         </div>
@@ -2274,7 +2361,7 @@
             <xsl:value-of select="xrf:_('xr:Payee_identifier/@scheme_identifier')" />:
           </div>
           <div data-title="BT-60-scheme-id" class="BT-60-scheme-id boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-60&#013;&#010;Payee identifier&#013;&#010;Eine Kennung für den Zahlungsempfänger.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Payee_identifier/@scheme_identifier" />
           </div>
         </div>
@@ -2283,7 +2370,9 @@
             <xsl:value-of select="xrf:_('xr:Payee_legal_registration_identifier')" />:
           </div>
           <div class="BT-61 boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">BT-61&#013;&#010;Payee legal registration identifier&#013;&#010;Eine von einer offiziellen Registrierstelle ausgegebene Kennung, die den
+        Zahlungsempfänger als einen Rechtsträger oder eine juristische Person
+        identifiziert.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Payee_legal_registration_identifier" />
           </div>
         </div>
@@ -2292,7 +2381,7 @@
             <xsl:value-of select="xrf:_('xr:Payee_legal_registration_identifier/@scheme_identifier')" />:
           </div>
           <div data-title="BT-61-scheme-id" class="BT-61-scheme-id boxdaten wert">
-            <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+            <xsl:attribute name="data-title">scheme-id-bt-61&#013;&#010;Payee legal registration identifier/Scheme identifier&#013;&#010;Das für das Element BT-61 geltende Schema.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
             <xsl:value-of select="xr:Payee_legal_registration_identifier/@scheme_identifier" />
           </div>
         </div>
@@ -2310,7 +2399,9 @@
         <div class="boxzeile">
           <div id="anlagenListe" class="box">
             <div class="BG-24 boxtitel" role="heading" aria-level="2">
-              <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+              <xsl:attribute name="data-title">BG-24&#013;&#010;ADDITIONAL SUPPORTING DOCUMENTS&#013;&#010;Eine Gruppe von Informationselementen mit Informationen über
+        rechnungsbegründende Unterlagen, die Belege für die in der Rechnung gestellten Ansprüche
+        enthalten.s&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
               <xsl:value-of select="xrf:_('anlagenListe')" />
             </div>
             <xsl:apply-templates select="./xr:ADDITIONAL_SUPPORTING_DOCUMENTS" />
@@ -2328,7 +2419,7 @@
           <xsl:value-of select="xrf:_('xr:Supporting_document_reference')" />:
         </div>
         <div class="BT-122 boxdaten wert">
-          <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+          <xsl:attribute name="data-title">BT-122&#013;&#010;Supporting document reference&#013;&#010;Eine Kennung der rechnungsbegründenden Unterlage.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
           <xsl:value-of select="xr:Supporting_document_reference" />
         </div>
       </div>
@@ -2337,7 +2428,7 @@
           <xsl:value-of select="xrf:_('xr:Supporting_document_description')" />:
         </div>
         <div class="BT-123 boxdaten wert">
-          <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+          <xsl:attribute name="data-title">BT-123&#013;&#010;Supporting document description&#013;&#010;Eine Beschreibung der rechnungsbegründenden Unterlage.s&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
           <xsl:value-of select="xr:Supporting_document_description" />
         </div>
       </div>
@@ -2346,7 +2437,8 @@
           <xsl:value-of select="xrf:_('xr:External_document_location')" />:
         </div>
         <div class="BT-124 boxdaten wert">
-          <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+          <xsl:attribute name="data-title">BT-124&#013;&#010;External document location&#013;&#010;Die Internetadresse bzw. URL (Uniform Resource Locator), unter der das externe
+        Dokument verfügbar ist.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
           <a href="{xr:External_document_location}" target="_blank">
             <xsl:value-of select="xr:External_document_location" />
           </a>
@@ -2361,7 +2453,7 @@
         <!-- JS restrictions for param in getElementById(id), in this case $doc-ref-id: case-sensitive string unique within the document -->
           <xsl:variable name="doc-ref-id" as="xs:string" select="translate(normalize-space(xr:Supporting_document_reference), ' ', '-')"/>
         <div class="BT-125 boxdaten wert">
-          <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+          <xsl:attribute name="data-title">BT-125&#013;&#010;Attached document&#013;&#010;Ein als Binärobjekt eingebettetes Anhangsdokument.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="empty(xr:Attached_document/text())">
                 <xsl:value-of select="xrf:_('no-data')" />
@@ -2385,7 +2477,7 @@
           <xsl:value-of select="xrf:_('xr:Attached_document/@mime_code')" />:
         </div>
         <div class="BT-125 boxdaten wert">
-          <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+          <xsl:attribute name="data-title">mime-code-bt-125&#013;&#010;Attached document/Attached document Mime code&#013;&#010;Der MIME Code des eingebetteten Anhangsdokumentes.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
           <xsl:value-of select="xr:Attached_document/@mime_code" />
         </div>
       </div>
@@ -2394,7 +2486,10 @@
           <xsl:value-of select="xrf:_('xr:Attached_document/@filename')" />:
         </div>
         <div class="BT-125 boxdaten wert">
-          <xsl:attribute name="data-title">&#013;&#010;&#013;&#010;&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
+          <xsl:attribute name="data-title">doc-filename-bt-125&#013;&#010;Attached document/Attached document Filename&#013;&#010;Der Dateiname des eingebetteten Anhangsdokumentes. Dieser muss innerhalb
+          einer Rechnung eindeutig sein (nicht case-sensitiv). Die Dateinamenserweiterung
+          (extension), in der meist der Typ der Datei angegeben wird, ist dabei Teil des Dateinamens
+          und wird bei der Bestimmung der Eindeutigkeit einbezogen.&#013;&#010;<xsl:value-of select="@xr:src"/></xsl:attribute>
           <xsl:value-of select="xr:Attached_document/@filename" />
         </div>
       </div>
