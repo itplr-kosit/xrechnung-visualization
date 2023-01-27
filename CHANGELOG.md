@@ -6,7 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## UNRELEASED
 
-This release is compatible with XRechnung ?.?.?
+This release is compatible with XRechnung 2.3.0
+
+### Fixed
+ 
+* wrong filenames in pdf attachments
 
 ## v2022-11-15
 
