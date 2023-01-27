@@ -29,7 +29,7 @@
 
     <property name="github.group.url" value="https://github.com/itplr-kosit"/>
 
-    <property name="validator.version" value="1.4.2"/>
+    <property name="validator.version" value="1.5.0"/>
     <property name="validator.jar" value="validationtool-${validator.version}-standalone.jar"/>
     <property name="validator.download.zip" value="validator-${validator.version}-distribution.zip"/>
     <property name="validator.download.url"
