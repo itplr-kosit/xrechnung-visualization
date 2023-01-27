@@ -380,7 +380,7 @@
   <xsl:template match="*|@*" mode="binary">
     <xsl:param name="identifier"/>    
     <fo:basic-link>
-      <xsl:attribute name="external-destination">url(embedded-file:<xsl:value-of select="$identifier"/>)</xsl:attribute>
+      <xsl:attribute name="external-destination">url(embedded-file:<xsl:value-of select="encode-for-uri($identifier)"/>)</xsl:attribute>
       <xsl:value-of select="$identifier"/>
     </fo:basic-link>
   </xsl:template>
