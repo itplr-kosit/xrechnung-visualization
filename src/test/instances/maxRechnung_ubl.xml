@@ -30,11 +30,11 @@
     </cac:ContractDocumentReference>
     <cac:AdditionalDocumentReference>
         <cbc:ID>Dokument Referenz</cbc:ID>
-        <cbc:DocumentType>Beschreibung der angehängten JPG-Datei</cbc:DocumentType>
+        <cbc:DocumentDescription>Beschreibung der angehängten JPG-Datei</cbc:DocumentDescription>
     </cac:AdditionalDocumentReference>
     <cac:AdditionalDocumentReference>
         <cbc:ID>Kennung des Objekts</cbc:ID>
-        <cbc:DocumentType>ATS</cbc:DocumentType>
+        <cbc:DocumentDescription>ATS</cbc:DocumentDescription>
     </cac:AdditionalDocumentReference>
 <!--    <cac:BillingReference>
         <cac:InvoiceDocumentReference>
@@ -164,7 +164,7 @@
         </cac:DeliveryParty>
     </cac:Delivery>
     <cac:PaymentMeans>
-        <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
+        <cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
         <cbc:PaymentID>Verwendungszweck</cbc:PaymentID>
         <cac:PayeeFinancialAccount>
             <cbc:ID>DE84 6004 0071 0561 5158 01</cbc:ID>
@@ -217,7 +217,6 @@
         <cac:TaxCategory>
             <cbc:ID>E</cbc:ID>
             <cbc:Percent>0</cbc:Percent>
-            <cbc:TaxExemptionReason>Grund für Nachlass 2</cbc:TaxExemptionReason>
             <cac:TaxScheme>
                 <cbc:ID>VAT</cbc:ID>
             </cac:TaxScheme>
@@ -286,6 +285,10 @@
         <cbc:InvoicedQuantity unitCode="LTR">10.00</cbc:InvoicedQuantity>
         <cbc:LineExtensionAmount currencyID="EUR">10000.00</cbc:LineExtensionAmount>
         <cbc:AccountingCost>BRE</cbc:AccountingCost>
+        <cac:InvoicePeriod>
+            <cbc:StartDate>2018-10-05</cbc:StartDate>
+            <cbc:EndDate>2018-10-07</cbc:EndDate>
+        </cac:InvoicePeriod>
         <cac:OrderLineReference>
             <cbc:LineID>RPB</cbc:LineID>
         </cac:OrderLineReference>

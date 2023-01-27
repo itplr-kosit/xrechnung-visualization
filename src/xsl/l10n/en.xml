@@ -130,7 +130,7 @@
   <entry key="xr:Deliver_to_post_code" id="BT-78">ZIP</entry>
   <entry key="xr:Deliver_to_city" id="BT-77">Location</entry>
   <entry key="xr:Deliver_to_country_subdivision" id="BT-79">State</entry>
-  <entry key="xr:Deliver_to_country_code" id="BT-80">Country</entry>
+  <entry key="xr:Deliver_to_country_code" id="BT-80">Country code</entry>
   <entry key="xr:Tender_or_lot_reference" id="BT-17">Award reference</entry>
   <entry key="xr:Receiving_advice_reference" id="BT-15">Receiving advice reference</entry>
   <entry key="xr:Despatch_advice_reference" id="BT-16">Despatch advice reference</entry>
@@ -207,7 +207,7 @@
   <entry key="uebersichtZahlungKarte" id="BG-18">Card information</entry>
   <entry key="uebersichtZahlungLastschrift" id="BG-19">Direct debit</entry>
   <entry key="uebersichtZahlungUeberweisung" id="BG-17">Transfer</entry>
-  <entry key="uebersichtBemerkungen" id="BG-1">Comments on the invoice</entry>
+  <entry key="uebersichtBemerkungen" id="BG-1">Notes on the invoice</entry>
   <entry key="details">Details</entry>
   <entry key="detailsPositionAbrechnungszeitraum" id="BG-26">Billing period</entry>
   <entry key="detailsPositionPreiseinzelheiten" id="BG-29">Price details</entry>
@@ -233,7 +233,7 @@
   <entry key="at-least-two-format">###,##0.#################</entry>
   
   <entry key="_disclaimer">We assume no liability for the accuracy of the data.</entry>
-  <entry key="_invoice-note-group">Note on the invoice</entry>
+  <entry key="_invoice-note-group">Notes on the invoice</entry>
   <entry key="_open">Open</entry>
     <entry key="no-data">No data available</entry>
   <entry key="_net">net</entry>
