@@ -2094,21 +2094,21 @@
       <xr:Third_party_payment_type>
          <xsl:attribute name="xr:id" select="'BT-DEX-001'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="code"/>
+         <xsl:call-template name="text"/>
       </xr:Third_party_payment_type>
    </xsl:template>
    <xsl:template mode="BT-DEX-002" match="cbc:PaidAmount">
       <xr:Third_party_payment_amount>
          <xsl:attribute name="xr:id" select="'BT-DEX-002'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="code"/>
+         <xsl:call-template name="amount"/>
       </xr:Third_party_payment_amount>
    </xsl:template>
    <xsl:template mode="BT-DEX-003" match="cbc:InstructionID">
       <xr:Third_party_payment_description>
          <xsl:attribute name="xr:id" select="'BT-DEX-003'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="code"/>
+         <xsl:call-template name="text"/>
       </xr:Third_party_payment_description>
    </xsl:template>
 </xsl:stylesheet>
