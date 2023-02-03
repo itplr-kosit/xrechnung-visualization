@@ -118,10 +118,10 @@
          <xsl:apply-templates mode="BG-21"
             select="./cac:AllowanceCharge[cbc:ChargeIndicator = 'true']"/>
          <xsl:apply-templates mode="BG-22" select="./cac:LegalMonetaryTotal"/>
-         <xsl:apply-templates mode="BG-DEX-09" select="./cac:PrepaidPayment"/>
          <xsl:apply-templates mode="BG-23" select="./cac:TaxTotal/cac:TaxSubtotal"/>
          <xsl:apply-templates mode="BG-24" select="./cac:AdditionalDocumentReference"/>
          <xsl:apply-templates mode="BG-25" select="./cac:InvoiceLine"/>
+         <xsl:apply-templates mode="BG-DEX-09" select="./cac:PrepaidPayment"/>
       </xr:invoice>
    </xsl:template>
    <xsl:template mode="BT-1" match="/Invoice:Invoice/cbc:ID">
