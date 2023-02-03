@@ -110,11 +110,11 @@
       </div>
 
       <div class="boxtabelle boxabstandtop boxtabelleZweispaltig">
-        <xsl:call-template name="uebersichtRechnungsuebersicht" />
+        <xsl:apply-templates select="./xr:THIRD_PARTY_PAYMENT" />
       </div>
 
       <div class="boxtabelle boxabstandtop boxtabelleZweispaltig">
-        <xsl:apply-templates select="./xr:THIRD_PARTY_PAYMENT" />
+        <xsl:call-template name="uebersichtRechnungsuebersicht" />
       </div>
 
       <div class="boxtabelle boxabstandtop boxtabelleZweispaltig">
