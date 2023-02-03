@@ -580,6 +580,42 @@
     </div>
   </xsl:template>
 
+  <xsl:template name="uebersichtFremdleistungen" match="xr:THIRD_PARTY_PAYMENT">
+    <div class="boxzeile">
+      <div class="uebersichtUmsatzsteuer box">
+        <div data-title="BG-DEX-09" class="BG-DEX-09 boxtitel" role="heading" aria-level="2">
+          <xsl:value-of select="xrf:_('uebersichtFremdleistungen')" />
+        </div>
+        <div class="boxtabelle boxinhalt" role="table">
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1" role="rowheader">
+              <xsl:value-of select="xrf:_('xr:Third_party_payment_type')" />
+            </div>
+            <div data-title="BT-DEX-002" class="BT-DEX-001 boxdaten rechnungSp1" role="cell">
+              <xsl:value-of select="xr:Third_party_payment_type" />
+            </div>
+          </div>
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1" role="rowheader">
+              <xsl:value-of select="xrf:_('xr:Third_party_payment_description')" />
+            </div>
+            <div data-title="BT-DEX-002" class="BT-DEX-002 boxdaten rechnungSp1" role="cell">
+              <xsl:value-of select="xr:Third_party_payment_description" />
+            </div>
+          </div>
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1" role="rowheader">
+              <xsl:value-of select="xrf:_('xr:Third_party_payment_amount')" />
+            </div>
+            <div data-title="BT-DEX-002" class="BT-DEX-003 boxdaten rechnungSp3" role="cell">
+              <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:Third_party_payment_amount,$lang)" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </xsl:template>
+
   <xsl:template name="uebersichtRechnungsuebersicht">
     <div class="boxzeile">
       <div id="uebersichtRechnungsuebersicht" class="box">
@@ -704,42 +740,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </xsl:template>
-
-  <xsl:template name="uebersichtFremdleistungen" match="xr:THIRD_PARTY_PAYMENT">
-    <div class="boxzeile">
-      <div class="uebersichtUmsatzsteuer box">
-        <div data-title="BG-23" class="BG-23 boxtitel" role="heading" aria-level="2">
-          <xsl:value-of select="xrf:_('uebersichtFremdleistungen')" />
-        </div>
-        <div class="boxtabelle boxinhalt" role="table"> 
-          <div class="rechnungsZeile" role="row">
-            <div class="boxdaten rechnungSp1" role="rowheader">
-              <xsl:value-of select="xrf:_('xr:Third_party_payment_type')" />
-            </div>      
-            <div data-title="BT-DEX-002" class="BT-116 boxdaten rechnungSp3" role="cell">
-              <xsl:value-of select="xr:Third_party_payment_type" />
-            </div>
-          </div>  
-          <div class="rechnungsZeile" role="row">
-            <div class="boxdaten rechnungSp1" role="rowheader">
-              <xsl:value-of select="xrf:_('xr:Third_party_payment_description')" />
-            </div>
-            <div data-title="BT-DEX-002" class="BT-116 boxdaten rechnungSp3" role="cell">
-              <xsl:value-of select="xr:Third_party_payment_description" />
-            </div>
-          </div>  
-          <div class="rechnungsZeile" role="row">
-            <div class="boxdaten rechnungSp1" role="rowheader">
-              <xsl:value-of select="xrf:_('xr:Third_party_payment_amount')" />
-            </div>
-            <div data-title="BT-DEX-002" class="BT-116 boxdaten rechnungSp3" role="cell">
-              <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:Third_party_payment_amount,$lang)" />
-            </div>
-          </div>          
-        </div>                
       </div>
     </div>
   </xsl:template>
