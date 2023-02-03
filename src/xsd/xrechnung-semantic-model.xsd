@@ -2471,6 +2471,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
             </xs:annotation>
          </xs:element>
       </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
    </xs:complexType>
    <xs:complexType name="amount">
       <xs:simpleContent>
