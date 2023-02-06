@@ -1279,9 +1279,9 @@
          <xsl:apply-templates mode="BT-108" select="./cbc:ChargeTotalAmount"/>
          <xsl:apply-templates mode="BT-109" select="./cbc:TaxExclusiveAmount"/>
          <xsl:apply-templates mode="BT-110"
-                              select="/CreditNote:CreditNote/cac:TaxTotal/cbc:TaxAmount"/>
+                              select="/CreditNote:CreditNote/cac:TaxTotal/cbc:TaxAmount[/CreditNote:CreditNote/cbc:DocumentCurrencyCode = @currencyID]"/>
          <xsl:apply-templates mode="BT-111"
-                              select="/CreditNote:CreditNote/cac:TaxTotal/cbc:TaxAmount"/>
+                              select="/CreditNote:CreditNote/cac:TaxTotal/cbc:TaxAmount[/CreditNote:CreditNote/cbc:TaxCurrencyCode = @currencyID]"/>
          <xsl:apply-templates mode="BT-112" select="./cbc:TaxInclusiveAmount"/>
          <xsl:apply-templates mode="BT-113" select="./cbc:PrepaidAmount"/>
          <xsl:apply-templates mode="BT-114" select="./cbc:PayableRoundingAmount"/>
