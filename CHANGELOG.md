@@ -15,6 +15,7 @@ This release is compatible with XRechnung 2.3.1
 ### Fixed
 
 * Add missing condition to BT-110 and BT-111 in ubl-creditnote-xr.xsl
+* Selection of identifier for pdf attachments
 
 ## v2022-11-15
 
@@ -30,6 +31,7 @@ This release is compatible with XRechnung 2.2.0
 * Unified translation of BG-1 INVOICE NOTE in PDF and HTML
 
 ### Fixed
+
 * Missing display of BG-14 INVOICING PERIOD
 * Missing display of BT-54 "Buyer country subdivision" in PDF
 * Removed unnecessary xslt messages

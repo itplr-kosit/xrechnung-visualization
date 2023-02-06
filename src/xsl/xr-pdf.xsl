@@ -74,7 +74,7 @@
         </x:xmpmeta>
         <xsl:for-each select="xr:ADDITIONAL_SUPPORTING_DOCUMENTS">
           <xsl:apply-templates mode="binary-declaration" select="xr:Attached_document">
-            <xsl:with-param name="identifier" select="xr:Supporting_document_reference"/>
+            <xsl:with-param name="identifier" select="xr:Attached_document/@filename"/>
           </xsl:apply-templates>
         </xsl:for-each>
       </fo:declarations>
