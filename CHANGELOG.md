@@ -11,6 +11,7 @@ This release is compatible with XRechnung ?.?.?
 ### Added
 
  * normalize newlines in embedded documents
+
 ## v2022-11-15
 
 This release is compatible with XRechnung 2.2.0
