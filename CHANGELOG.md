@@ -12,6 +12,10 @@ This release is compatible with XRechnung 2.3.1
 
 * Add missing condition to BT-110 and BT-111 in ubl-creditnote-xr.xsl
 
+### Changed
+
+ * Normalization of newlines in embedded documents
+
 ## v2022-11-15
 
 This release is compatible with XRechnung 2.2.0
