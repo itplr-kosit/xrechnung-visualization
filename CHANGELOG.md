@@ -8,13 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung 2.3.1
 
+### Changed
+
+* Normalization of newlines in embedded documents
+
 ### Fixed
 
 * Add missing condition to BT-110 and BT-111 in ubl-creditnote-xr.xsl
-
-### Changed
-
- * Normalization of newlines in embedded documents
 
 ## v2022-11-15
 
