@@ -3,6 +3,7 @@
 ## Embedded Documets
 For testing embedded documents' features, use
 * embedded-documents-bt-125_ubl.xml
+* embedded-documents-with-newline-and-whitespace_ubl.xml
 * 01.15
 
 expectation:
