@@ -5,7 +5,7 @@
     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
     xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
     xmlns:ns0="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
-    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2</cbc:CustomizationID>
+    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
     <cbc:ID>1234567890</cbc:ID>
     <cbc:IssueDate>2018-10-15</cbc:IssueDate>
     <cbc:DueDate>2018-10-29</cbc:DueDate>
