@@ -607,7 +607,7 @@
             <div class="boxdaten rechnungSp1" role="rowheader">
               <xsl:value-of select="xrf:_('xr:Third_party_payment_amount')" />
             </div>
-            <div data-title="BT-DEX-002" class="BT-DEX-003 boxdaten rechnungSp3" role="cell">
+            <div data-title="BT-DEX-003" class="BT-DEX-003 boxdaten rechnungSp3" role="cell">
               <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:Third_party_payment_amount,$lang)" />
             </div>
           </div>
