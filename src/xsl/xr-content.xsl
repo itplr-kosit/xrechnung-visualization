@@ -866,7 +866,7 @@
                   <xsl:apply-templates mode="list-entry" select="xr:Attached_document">
                     <xsl:with-param name="value">                      
                       <xsl:apply-templates mode="binary" select="xr:Attached_document">
-                        <xsl:with-param name="identifier" select="xr:Supporting_document_reference"/>
+                        <xsl:with-param name="identifier" select="xr:Attached_document/@filename"/>
                       </xsl:apply-templates>
                     </xsl:with-param>
                   </xsl:apply-templates>
