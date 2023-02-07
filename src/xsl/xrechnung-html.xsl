@@ -716,15 +716,25 @@
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
-            <div class="boxdaten rechnungSp1 paddingBottom line2Bottom" role="rowheader">
+            <div class="boxdaten rechnungSp1 paddingBottom line1Bottom" role="rowheader">
               <xsl:value-of select="xrf:_('xr:Rounding_amount')" />
             </div>
-            <div class="boxdaten rechnungSp2 paddingBottom line2Bottom color2" role="cell">
+            <div class="boxdaten rechnungSp2 paddingBottom line1Bottom color2" role="cell">
               <xsl:value-of select="xrf:_('_gross')" />
             </div>
-            <div data-title="BT-114" class="BT-114 boxdaten rechnungSp3 paddingBottom line2Bottom" role="cell">
+            <div data-title="BT-114" class="BT-114 boxdaten rechnungSp3 paddingBottom line1Bottom" role="cell">
               <xsl:value-of
                 select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Rounding_amount,$lang)" />
+            </div>
+          </div>
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1 paddingTop paddingBottom line2Bottom" role="rowheader">
+              <xsl:value-of select="xrf:_('sum-of-third-party-payment-amounts')" />
+            </div>
+            <div class="boxdaten rechnungSp2 paddingTop paddingBottom line2Bottom" role="cell"></div>
+            <div data-title="BT-DEX-003_sum" class="BT-DEX-003_sum boxdaten rechnungSp3 paddingTop paddingBottom line2Bottom" role="cell">
+              <xsl:value-of
+                select="xrf:format-with-at-least-two-digits(sum(xr:THIRD_PARTY_PAYMENT/xr:Third_party_payment_amount),$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
