@@ -236,7 +236,7 @@
   <entry key="percentage-format">##0.##</entry>
   <entry key="at-least-two-format">###,##0.#################</entry>
   
-  <entry key="sum-of-third-party-payment-amounts" id="BT-DEX-002_sum">Third Party Payment Total</entry>
+  <entry key="sum-of-third-party-payment-amounts" id="BT-DEX-002_sum">Third party payment total</entry>
 
   <entry key="_disclaimer">We assume no liability for the accuracy of the data.</entry>
   <entry key="_invoice-note-group">Notes on the invoice</entry>
