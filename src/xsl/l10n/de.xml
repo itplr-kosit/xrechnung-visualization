@@ -195,11 +195,15 @@
   <entry key="xr:Invoice_line_charge_amount" id="BT-141">Zuschlag (netto)</entry>
   <entry key="xr:Invoice_line_charge_reason" id="BT-144">Grund des Zuschlags</entry>
   <entry key="xr:Invoice_line_charge_reason_code" id="BT-145">Code für den Zuschlagsgrund</entry>
+  <entry key="xr:Third_party_payment_type" id="BT-DEX-001">Art der Fremdforderung</entry>
+  <entry key="xr:Third_party_payment_amount" id="BT-DEX-002">Betrag der Fremdforderung</entry>
+  <entry key="xr:Third_party_payment_description" id="BT-DEX-003">Beschreibung der Fremdforderung</entry>
   <entry key="uebersicht">Übersicht</entry>
   <entry key="uebersichtKaeufer" id="BG-7">Informationen zum Käufer</entry>
   <entry key="uebersichtVerkaeufer" id="BG-4">Informationen zum Verkäufer</entry>
   <entry key="uebersichtRechnungsInfo" id="invoice-data">Rechnungsdaten</entry>
   <entry key="uebersichtRechnungsuebersicht" id="BG-22">Gesamtbeträge der Rechnung</entry>
+  <entry key="uebersichtFremdleistungen" id="BG-DEX-09">Fremdforderung</entry>
   <entry key="uebersichtUmsatzsteuer" id="BG-23">Aufschlüsselung der Umsatzsteuer auf Ebene der Rechnung</entry>
   <entry key="uebersichtNachlass" id="BG-20">Nachlass auf Ebene der Rechnung</entry>
   <entry key="uebersichtZuschlaege" id="BG-21">Zuschlag auf Ebene der Rechnung</entry>
@@ -234,6 +238,8 @@
   <entry key="percentage-format">##0,##</entry>
   <entry key="at-least-two-format">###.##0,#################</entry>
   
+  <entry key="sum-of-third-party-payment-amounts" id="BT-DEX-002_sum">Summe Fremdforderungen</entry>
+
   <entry key="_disclaimer">Wir übernehmen keine Haftung für die Richtigkeit der Daten.</entry>
   <entry key="_invoice-note-group">Bemerkungen zur Rechnung</entry>
   <entry key="_open">Öffnen</entry>

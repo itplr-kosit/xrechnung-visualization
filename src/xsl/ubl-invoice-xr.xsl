@@ -121,6 +121,7 @@
          <xsl:apply-templates mode="BG-23" select="./cac:TaxTotal/cac:TaxSubtotal"/>
          <xsl:apply-templates mode="BG-24" select="./cac:AdditionalDocumentReference"/>
          <xsl:apply-templates mode="BG-25" select="./cac:InvoiceLine"/>
+         <xsl:apply-templates mode="BG-DEX-09" select="./cac:PrepaidPayment"/>
       </xr:invoice>
    </xsl:template>
    <xsl:template mode="BT-1" match="/Invoice:Invoice/cbc:ID">
@@ -2074,5 +2075,40 @@
             <xsl:sequence select="$bg-contents"/>
          </xr:SUB_INVOICE_PRICE_DETAILS>
       </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BG-DEX-09" match="cac:PrepaidPayment">
+      <xsl:variable name="bg-contents" as="item()*">         
+         <xsl:apply-templates mode="BT-DEX-001" select="cbc:ID"/>
+         <xsl:apply-templates mode="BT-DEX-002" select="cbc:PaidAmount"/>
+         <xsl:apply-templates mode="BT-DEX-003" select="cbc:InstructionID"/>   
+      </xsl:variable>
+      <xsl:if test="$bg-contents">
+         <xr:THIRD_PARTY_PAYMENT>
+            <xsl:attribute name="xr:id" select="'BG-DEX-09'"/>
+            <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+            <xsl:sequence select="$bg-contents"/>
+         </xr:THIRD_PARTY_PAYMENT>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BT-DEX-001" match="cbc:ID">
+      <xr:Third_party_payment_type>
+         <xsl:attribute name="xr:id" select="'BT-DEX-001'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Third_party_payment_type>
+   </xsl:template>
+   <xsl:template mode="BT-DEX-002" match="cbc:PaidAmount">
+      <xr:Third_party_payment_amount>
+         <xsl:attribute name="xr:id" select="'BT-DEX-002'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="amount"/>
+      </xr:Third_party_payment_amount>
+   </xsl:template>
+   <xsl:template mode="BT-DEX-003" match="cbc:InstructionID">
+      <xr:Third_party_payment_description>
+         <xsl:attribute name="xr:id" select="'BT-DEX-003'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Third_party_payment_description>
    </xsl:template>
 </xsl:stylesheet>

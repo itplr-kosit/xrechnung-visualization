@@ -23,6 +23,7 @@
     <xsl:call-template name="uebersichtKaeufer"/>
     <xsl:call-template name="uebersichtVerkaeufer"/>
     <xsl:call-template name="uebersichtRechnungsInfo"/>
+    <xsl:call-template name="uebersichtFremdleistungen"/>
     <xsl:call-template name="uebersichtRechnungsuebersicht"/>
     <xsl:call-template name="uebersichtUmsatzsteuer"/>
     <xsl:call-template name="uebersichtNachlass"/>
@@ -164,6 +165,35 @@
     </xsl:call-template>
   </xsl:template>
 
+  <xsl:template name="uebersichtFremdleistungen">
+    <xsl:for-each select="xr:THIRD_PARTY_PAYMENT">
+      <xsl:call-template name="spanned-box">
+        <xsl:with-param name="identifier" select="'uebersichtFremdleistungen'"/>
+        <xsl:with-param name="content">
+          <xsl:call-template name="list">
+            <xsl:with-param name="layout" select="'einspaltig'"/>
+            <xsl:with-param name="content">
+              <xsl:apply-templates mode="list-entry" select="xr:Third_party_payment_type"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="list">
+            <xsl:with-param name="layout" select="'einspaltig'"/>
+            <xsl:with-param name="content">
+              <xsl:apply-templates mode="list-entry" select="xr:Third_party_payment_description"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="value-list">
+            <xsl:with-param name="content">
+              <xsl:apply-templates mode="sum-list-entry" select="xr:Third_party_payment_amount">
+                <xsl:with-param name="value" select="xr:Third_party_payment_amount"/>
+              </xsl:apply-templates>
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:for-each>
+  </xsl:template>
+
   <xsl:template name="uebersichtRechnungsuebersicht">
     <xsl:call-template name="spanned-box">
       <xsl:with-param name="identifier" select="'uebersichtRechnungsuebersicht'"/>
@@ -196,6 +226,10 @@
             </xsl:apply-templates>
             <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Rounding_amount">
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Rounding_amount,$amount-picture,$lang)"/>
+            </xsl:apply-templates>
+            <xsl:apply-templates mode="value-list-entry" select="/xr:invoice">
+              <xsl:with-param name="field-mapping-identifier" select="'sum-of-third-party-payment-amounts'"/>
+              <xsl:with-param name="value" select="format-number(sum(xr:THIRD_PARTY_PAYMENT/xr:Third_party_payment_amount),$amount-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="sum-list-entry" select="xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment">
               <xsl:with-param name="level" select="'final'"/>

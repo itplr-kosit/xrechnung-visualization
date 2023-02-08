@@ -193,11 +193,15 @@
   <entry key="xr:Invoice_line_charge_amount" id="BT-141">Charge (net)</entry>
   <entry key="xr:Invoice_line_charge_reason" id="BT-144">Reason for the Charge</entry>
   <entry key="xr:Invoice_line_charge_reason_code" id="BT-145">Charge reason code</entry>
+  <entry key="xr:Third_party_payment_type" id="BT-DEX-001">Third party payment type</entry>
+  <entry key="xr:Third_party_payment_amount" id="BT-DEX-002">Third party payment amount</entry>
+  <entry key="xr:Third_party_payment_description" id="BT-DEX-003">Third party payment description</entry>
   <entry key="uebersicht">Overview</entry>
   <entry key="uebersichtKaeufer" id="BG-7">Information about the buyer</entry>
   <entry key="uebersichtVerkaeufer" id="BG-4">Information about the seller</entry>
   <entry key="uebersichtRechnungsInfo" id="invoice-data">Invoice data</entry>
   <entry key="uebersichtRechnungsuebersicht" id="BG-22">Invoice totals</entry>
+  <entry key="uebersichtFremdleistungen" id="BG-DEX-09">Third party payment</entry>
   <entry key="uebersichtUmsatzsteuer" id="BG-23">Sales tax breakdown at invoice level</entry>
   <entry key="uebersichtNachlass" id="BG-20">Invoice level discount</entry>
   <entry key="uebersichtZuschlaege" id="BG-21">Invoice level surcharge</entry>
@@ -232,6 +236,8 @@
   <entry key="percentage-format">##0.##</entry>
   <entry key="at-least-two-format">###,##0.#################</entry>
   
+  <entry key="sum-of-third-party-payment-amounts" id="BT-DEX-002_sum">Third party payment total</entry>
+
   <entry key="_disclaimer">We assume no liability for the accuracy of the data.</entry>
   <entry key="_invoice-note-group">Notes on the invoice</entry>
   <entry key="_open">Open</entry>

@@ -110,6 +110,10 @@
       </div>
 
       <div class="boxtabelle boxabstandtop boxtabelleZweispaltig">
+        <xsl:apply-templates select="./xr:THIRD_PARTY_PAYMENT" />
+      </div>
+
+      <div class="boxtabelle boxabstandtop boxtabelleZweispaltig">
         <xsl:call-template name="uebersichtRechnungsuebersicht" />
       </div>
 
@@ -576,6 +580,42 @@
     </div>
   </xsl:template>
 
+  <xsl:template name="uebersichtFremdleistungen" match="xr:THIRD_PARTY_PAYMENT">
+    <div class="boxzeile">
+      <div class="uebersichtUmsatzsteuer box">
+        <div data-title="BG-DEX-09" class="BG-DEX-09 boxtitel" role="heading" aria-level="2">
+          <xsl:value-of select="xrf:_('uebersichtFremdleistungen')" />
+        </div>
+        <div class="boxtabelle boxinhalt" role="table">
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1" role="rowheader">
+              <xsl:value-of select="xrf:_('xr:Third_party_payment_type')" />
+            </div>
+            <div data-title="BT-DEX-002" class="BT-DEX-001 boxdaten rechnungSp1" role="cell">
+              <xsl:value-of select="xr:Third_party_payment_type" />
+            </div>
+          </div>
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1" role="rowheader">
+              <xsl:value-of select="xrf:_('xr:Third_party_payment_description')" />
+            </div>
+            <div data-title="BT-DEX-002" class="BT-DEX-002 boxdaten rechnungSp1" role="cell">
+              <xsl:value-of select="xr:Third_party_payment_description" />
+            </div>
+          </div>
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1" role="rowheader">
+              <xsl:value-of select="xrf:_('xr:Third_party_payment_amount')" />
+            </div>
+            <div data-title="BT-DEX-003" class="BT-DEX-003 boxdaten rechnungSp3" role="cell">
+              <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:Third_party_payment_amount,$lang)" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </xsl:template>
+
   <xsl:template name="uebersichtRechnungsuebersicht">
     <div class="boxzeile">
       <div id="uebersichtRechnungsuebersicht" class="box">
@@ -676,15 +716,25 @@
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
-            <div class="boxdaten rechnungSp1 paddingBottom line2Bottom" role="rowheader">
+            <div class="boxdaten rechnungSp1 paddingBottom line1Bottom" role="rowheader">
               <xsl:value-of select="xrf:_('xr:Rounding_amount')" />
             </div>
-            <div class="boxdaten rechnungSp2 paddingBottom line2Bottom color2" role="cell">
+            <div class="boxdaten rechnungSp2 paddingBottom line1Bottom color2" role="cell">
               <xsl:value-of select="xrf:_('_gross')" />
             </div>
-            <div data-title="BT-114" class="BT-114 boxdaten rechnungSp3 paddingBottom line2Bottom" role="cell">
+            <div data-title="BT-114" class="BT-114 boxdaten rechnungSp3 paddingBottom line1Bottom" role="cell">
               <xsl:value-of
                 select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Rounding_amount,$lang)" />
+            </div>
+          </div>
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1 paddingTop paddingBottom line2Bottom" role="rowheader">
+              <xsl:value-of select="xrf:_('sum-of-third-party-payment-amounts')" />
+            </div>
+            <div class="boxdaten rechnungSp2 paddingTop paddingBottom line2Bottom" role="cell"></div>
+            <div data-title="BT-DEX-002_sum" class="BT-DEX-002_sum boxdaten rechnungSp3 paddingTop paddingBottom line2Bottom" role="cell">
+              <xsl:value-of
+                select="xrf:format-with-at-least-two-digits(sum(xr:THIRD_PARTY_PAYMENT/xr:Third_party_payment_amount),$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -703,7 +753,6 @@
       </div>
     </div>
   </xsl:template>
-
 
   <xsl:template name="uebersichtUmsatzsteuer" match="xr:VAT_BREAKDOWN">
     <div class="boxzeile">

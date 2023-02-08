@@ -354,6 +354,12 @@ Die Gruppe kann verwendet werden, um auf eine dem Erwerber bekannte Dokumentennu
                   <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über einzelne Rechnungspositionen liefern.</xs:documentation>
                </xs:annotation>
             </xs:element>
+            <xs:element name="THIRD_PARTY_PAYMENT" type="xr:THIRD_PARTY_PAYMENTType" minOccurs="0" maxOccurs="unbounded">
+               <xs:annotation>
+                  <xs:appinfo>BG-DEX-09</xs:appinfo>
+                  <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über Fremdforderungen enthalten.</xs:documentation>
+               </xs:annotation>
+            </xs:element>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
@@ -2439,6 +2445,29 @@ M (Tax for production, services and importation in Ceuta and Melilla)
             <xs:annotation>
                <xs:appinfo>BT-150</xs:appinfo>
                <xs:documentation>Der Code der zu Grunde gelegten Maßeinheit. Die Maßeinheit der Item price base quantity unit of measure sollte gleich der Maßeinheit der in Rechnung gestellten Menge (BT-130) sein.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="xr:xr-attributes"/>
+   </xs:complexType>
+   <xs:complexType name="THIRD_PARTY_PAYMENTType">
+      <xs:sequence>
+         <xs:element name="Third_party_payment_type" type="xr:text" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-DEX-001</xs:appinfo>
+               <xs:documentation>Die Art der Fremdforderung.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Third_party_payment_amount" type="xr:amount" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-DEX-002</xs:appinfo>
+               <xs:documentation>Der Betrag der Fremdforderung.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Third_party_payment_description" type="xr:text" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>BT-DEX-003</xs:appinfo>
+               <xs:documentation>Eine innerhalb der Rechnung eindeutige Beschreibung der Fremdforderung.</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
