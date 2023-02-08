@@ -293,7 +293,9 @@
                   <xsl:apply-templates mode="sum-list-entry" select="xr:Document_level_allowance_amount">
                     <xsl:with-param name="value" select="format-number(xr:Document_level_allowance_amount,$amount-picture,$lang)"/>
                   </xsl:apply-templates>
-                  <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_VAT_rate"/>
+                  <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_VAT_rate">
+                    <xsl:with-param name="value" select="concat(format-number(xr:Document_level_allowance_VAT_rate,$percentage-picture,$lang), '%')"/>
+                  </xsl:apply-templates>
                 </xsl:with-param>
               </xsl:call-template>
               <xsl:call-template name="list">
@@ -330,7 +332,9 @@
                     <xsl:apply-templates mode="sum-list-entry" select="xr:Document_level_charge_amount">
                       <xsl:with-param name="value" select="format-number(xr:Document_level_charge_amount,$amount-picture,$lang)"/>
                     </xsl:apply-templates>
-                    <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_charge_VAT_rate"/>
+                    <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_charge_VAT_rate">
+                      <xsl:with-param name="value" select="concat(format-number(xr:Document_level_charge_VAT_rate,$percentage-picture,$lang), '%')"/>
+                    </xsl:apply-templates>
                   </xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="list">
@@ -583,7 +587,9 @@
                   <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_allowance_base_amount">
                     <xsl:with-param name="value" select="format-number(xr:Invoice_line_allowance_base_amount,$amount-picture,$lang)"/>
                   </xsl:apply-templates>
-                  <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_allowance_percentage"/>
+                  <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_allowance_percentage">
+                    <xsl:with-param name="value" select="concat(format-number(xr:Invoice_line_allowance_percentage,$percentage-picture,$lang), '%')"/>
+                  </xsl:apply-templates>
                   <xsl:apply-templates mode="sum-list-entry" select="xr:Invoice_line_allowance_amount">
                     <xsl:with-param name="value" select="format-number(xr:Invoice_line_allowance_amount,$amount-picture,$lang)"/>
                   </xsl:apply-templates>
@@ -614,7 +620,9 @@
                 <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_charge_base_amount">
                   <xsl:with-param name="value" select="format-number(xr:Invoice_line_charge_base_amount,$amount-picture,$lang)"/>
                 </xsl:apply-templates>
-                <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_charge_percentage"/>
+                <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_charge_percentage">
+                  <xsl:with-param name="value" select="concat(format-number(xr:Invoice_line_charge_percentage,$percentage-picture,$lang), '%')"/>
+                </xsl:apply-templates>
                 <xsl:apply-templates mode="sum-list-entry" select="xr:Invoice_line_charge_amount">
                   <xsl:with-param name="value" select="format-number(xr:Invoice_line_charge_amount,$amount-picture,$lang)"/>
                 </xsl:apply-templates>
