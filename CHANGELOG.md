@@ -15,11 +15,13 @@ This release is compatible with XRechnung 2.3.x
 ### Changed
 
 * Normalization of newlines in embedded documents
+* Percentage sign format in PDF and HTML now identical
 
 ### Fixed
 
 * Missing condition to BT-110 and BT-111 in ubl-creditnote-xr.xsl
 * Selection of identifier for pdf attachments
+* Missing percentage sign `%` output in PDF and PDF Tabular
 
 ## v2022-11-15
 
