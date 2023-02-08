@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* Percentage sign format in PDF and HTML now identical
+
+### Fixed
+
+* Missing percentage sign `%` output in PDF and PDF Tabular
+
 ## v2022-07-31
 
 This release is compatible with XRechnung 2.2.0
