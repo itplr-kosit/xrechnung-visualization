@@ -18,4 +18,4 @@ You can find an example use of these transformations in the [ant build script](b
 
 This GitHub repository is only a mirror of our [GitLab project repository](https://projekte.kosit.org/xrechnung/xrechnung-visualization).
 
-For questions please contact [KoSIT](https://www.xoev.de/xrechnung-16828).
+For questions please contact [KoSIT](https://xeinkauf.de/kontakt/#support).

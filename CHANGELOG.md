@@ -18,7 +18,7 @@ This release is compatible with XRechnung 2.3.x
 
 ### Fixed
 
-* Add missing condition to BT-110 and BT-111 in ubl-creditnote-xr.xsl
+* Missing condition to BT-110 and BT-111 in ubl-creditnote-xr.xsl
 * Selection of identifier for pdf attachments
 
 ## v2022-11-15
