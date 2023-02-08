@@ -587,7 +587,7 @@
         </fo:block>
       </fo:table-cell>
       <fo:table-cell text-align="center">
-        <fo:block><xsl:value-of select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate"/></fo:block>
+        <fo:block><xsl:value-of select="concat(format-number(xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate, $percentage-picture, $lang), '%')"/></fo:block>
       </fo:table-cell>
       <fo:table-cell text-align="center">
         <fo:block><xsl:value-of select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_category_code"/></fo:block>
@@ -834,7 +834,7 @@
                   </fo:table-cell>
                   <fo:table-cell text-align="center">
                     <fo:block>
-                      <xsl:value-of select="xr:Invoice_line_allowance_percentage"/>
+                      <xsl:value-of select="concat(format-number(xr:Invoice_line_allowance_percentage, $percentage-picture, $lang), '%')"/>
                     </fo:block>
                   </fo:table-cell>
                   <fo:table-cell text-align="right">
@@ -916,7 +916,7 @@
                   </fo:table-cell>
                   <fo:table-cell text-align="center">
                     <fo:block>
-                      <xsl:value-of select="xr:Invoice_line_charge_percentage"/>
+                      <xsl:value-of select="concat(format-number(xr:Invoice_line_charge_percentage, $percentage-picture, $lang), '%')" />
                     </fo:block>
                   </fo:table-cell>
                   <fo:table-cell text-align="right">
