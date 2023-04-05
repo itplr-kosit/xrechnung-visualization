@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* Missing output of BT-49 (Buyer electronic address) in HTML
+* Misplaced output of BT-30 (Seller legal registration identifier) and BT-31 (Seller VAT identifier) values in Buyer section in HTML
+
 ## v2023-01-31
 
 This release is compatible with XRechnung 2.3.x
