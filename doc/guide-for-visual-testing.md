@@ -30,7 +30,9 @@ expectation:
 ## Dates
 * wrong-date-with-text-uncefact.xml
 * wrong-date-with-zeros-uncefact.xml
+* multiple-due-dates-uncefact.xml
 
 expectation: 
 * fields should contain "no date defined" or similar
 * all others should show YYYY-MM-DD without timezone
+* multiple due dates should be renderer correctly
