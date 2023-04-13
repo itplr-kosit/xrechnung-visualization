@@ -42,6 +42,9 @@
             <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
             <cac:PartyIdentification>
                 <!-- BT-29 -->
+                <cbc:ID schemeID="0088">291234567</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyIdentification>
                 <!-- BT-90 -->
                 <cbc:ID schemeID="SEPA">DE64500105173922382999</cbc:ID>
             </cac:PartyIdentification>
