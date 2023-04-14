@@ -12,6 +12,10 @@ This release is compatible with XRechnung ?.?.?
 
 * Removed id for Third Party Payment Total from translation files and html
 
+## Fixed
+
+* Display of elements with unrestricted number of fraction digits (BT-146, BT-147, BT-148) in PDF.
+
 ## v2023-01-31
 
 This release is compatible with XRechnung 2.3.x
