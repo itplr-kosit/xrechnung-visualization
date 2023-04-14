@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* Display of BT-29 and BT-60 in UBL to prevent display of BT-90 as BT-29 or BT-60.
+
 ## v2023-01-31
 
 This release is compatible with XRechnung 2.3.x
