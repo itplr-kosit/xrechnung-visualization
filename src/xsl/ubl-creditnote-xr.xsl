@@ -296,7 +296,7 @@
          <xsl:apply-templates mode="BT-27"
                               select="./cac:Party/cac:PartyLegalEntity/cbc:RegistrationName"/>
          <xsl:apply-templates mode="BT-28" select="./cac:Party/cac:PartyName/cbc:Name"/>
-         <xsl:apply-templates mode="BT-29" select="./cac:Party/cac:PartyIdentification/cbc:ID"/>
+         <xsl:apply-templates mode="BT-29" select="./cac:Party/cac:PartyIdentification/cbc:ID[not(@schemeID = 'SEPA')]"/>
          <xsl:apply-templates mode="BT-30" select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID"/>
          <xsl:apply-templates mode="BT-31"
                               select="./cac:Party/cac:PartyTaxScheme/cbc:CompanyID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']"/>
@@ -333,7 +333,7 @@
       </xr:Seller_trading_name>
    </xsl:template>
    <xsl:template mode="BT-29"
-                 match="/CreditNote:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID">
+      match="/CreditNote:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[not(@schemeID = 'SEPA')]">
       <xr:Seller_identifier>
          <xsl:attribute name="xr:id" select="'BT-29'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -680,7 +680,7 @@
    <xsl:template mode="BG-10" match="/CreditNote:CreditNote/cac:PayeeParty">
       <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /CreditNote:CreditNote/cac:PayeeParty der Instanz in konkreter Syntax wird auf 3 Objekte der EN 16931 abgebildet. -->
          <xsl:apply-templates mode="BT-59" select="./cac:PartyName/cbc:Name"/>
-         <xsl:apply-templates mode="BT-60" select="./cac:PartyIdentification/cbc:ID"/>
+         <xsl:apply-templates mode="BT-60" select="./cac:PartyIdentification/cbc:ID[not(@schemeID = 'SEPA')]"/>
          <xsl:apply-templates mode="BT-61" select="./cac:PartyLegalEntity/cbc:CompanyID"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
@@ -700,7 +700,7 @@
       </xr:Payee_name>
    </xsl:template>
    <xsl:template mode="BT-60"
-                 match="/CreditNote:CreditNote/cac:PayeeParty/cac:PartyIdentification/cbc:ID">
+      match="/CreditNote:CreditNote/cac:PayeeParty/cac:PartyIdentification/cbc:ID[not(@schemeID = 'SEPA')]">
       <xr:Payee_identifier>
          <xsl:attribute name="xr:id" select="'BT-60'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
