@@ -261,12 +261,14 @@
               </xsl:apply-templates>
             </xsl:with-param>
           </xsl:call-template>
+          <xsl:if test="not(xr:VAT_category_code = ('S', 'Z', 'IGIC', 'IPSI' ))">
           <xsl:call-template name="list">
             <xsl:with-param name="content">
               <xsl:apply-templates mode="list-entry" select="xr:VAT_exemption_reason_text"/>
               <xsl:apply-templates mode="list-entry" select="xr:VAT_exemption_reason_code"/>
             </xsl:with-param>
           </xsl:call-template>
+          </xsl:if>
         </xsl:for-each>
       </xsl:with-param>
     </xsl:call-template>

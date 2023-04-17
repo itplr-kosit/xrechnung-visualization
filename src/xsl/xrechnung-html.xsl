@@ -802,6 +802,7 @@
           </div>
         </div>
 
+        <xsl:if test="not(xr:VAT_category_code = ('S', 'Z', 'IGIC', 'IPSI' ))">
         <div class="grund" role="list">
           <div role="listitem">
             <xsl:value-of select="xrf:_('xr:VAT_exemption_reason_text')" />:
@@ -816,6 +817,7 @@
             </span>
           </div>
         </div>
+        </xsl:if>
       </div>
     </div>
   </xsl:template>
