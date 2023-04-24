@@ -1828,20 +1828,8 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Buyer_electronic_address')" />:
           </div>
-                    <div data-title="BT-30" class="BT-30 boxdaten wert">
-                        <xsl:value-of select="xr:Seller_legal_registration_identifier" />
-                    </div>
-                </div>
-                <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
-                        <xsl:value-of select="xrf:_('xr:Seller_legal_registration_identifier/@scheme_identifier')"/>: </div>
-                    <div data-title="BT-30-scheme-id" class="BT-30-scheme-id boxdaten wert">
-                        <xsl:value-of select="xr:Seller_legal_registration_identifier/@scheme_identifier"/>
-                    </div>
-                </div>
-                <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
-                        <xsl:value-of select="xrf:_('xr:Seller_VAT_identifier')" />:
+          <div data-title="BT-49" class="BT-49 boxdaten wert">
+            <xsl:value-of select="xr:Buyer_electronic_address" />
           </div>
         </div>
         <div class="boxzeile" role="listitem">
