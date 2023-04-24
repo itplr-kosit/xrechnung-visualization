@@ -8,8 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
-### Fixed
+### Changed
 
+* Removed id for Third Party Payment Total from translation files and html
+
+## Fixed
+
+* Display of elements with unrestricted number of fraction digits (BT-146, BT-147, BT-148) in PDF.
 * Missing output of BT-49 (Buyer electronic address) in HTML
 * Misplaced output of BT-30 (Seller legal registration identifier) and BT-31 (Seller VAT identifier) values in Buyer section in HTML
 

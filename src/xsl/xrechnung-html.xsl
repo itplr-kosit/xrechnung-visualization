@@ -732,7 +732,7 @@
               <xsl:value-of select="xrf:_('sum-of-third-party-payment-amounts')" />
             </div>
             <div class="boxdaten rechnungSp2 paddingTop paddingBottom line2Bottom" role="cell"></div>
-            <div data-title="BT-DEX-002_sum" class="BT-DEX-002_sum boxdaten rechnungSp3 paddingTop paddingBottom line2Bottom" role="cell">
+            <div class="boxdaten rechnungSp3 paddingTop paddingBottom line2Bottom" role="cell">
               <xsl:value-of
                 select="xrf:format-with-at-least-two-digits(sum(xr:THIRD_PARTY_PAYMENT/xr:Third_party_payment_amount),$lang)" />
             </div>
