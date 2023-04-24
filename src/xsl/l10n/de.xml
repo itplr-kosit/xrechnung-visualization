@@ -238,7 +238,7 @@
   <entry key="percentage-format">##0,00</entry>
   <entry key="at-least-two-format">###.##0,#################</entry>
   
-  <entry key="sum-of-third-party-payment-amounts" id="BT-DEX-002_sum">Summe Fremdforderungen</entry>
+  <entry key="sum-of-third-party-payment-amounts">Summe Fremdforderungen</entry>
 
   <entry key="_disclaimer">Wir übernehmen keine Haftung für die Richtigkeit der Daten.</entry>
   <entry key="_invoice-note-group">Bemerkungen zur Rechnung</entry>
