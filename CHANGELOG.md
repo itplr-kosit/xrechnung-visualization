@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Notification of disabled JavaScript in HTML.
+
 ### Changed
 
 * Removed id for Third Party Payment Total from translation files and html
