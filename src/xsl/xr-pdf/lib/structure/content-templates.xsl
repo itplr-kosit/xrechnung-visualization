@@ -577,7 +577,7 @@
         </fo:block>
       </fo:table-cell>
       <fo:table-cell text-align="right" padding-right="1em">
-        <fo:block><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_net_price, $amount-picture, $lang)"/></fo:block>
+        <fo:block><xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_net_price, $at-least-two-picture, $lang)"/></fo:block>
       </fo:table-cell>
       <fo:table-cell text-align="center">
         <fo:block>
@@ -676,14 +676,14 @@
           <xsl:if test="xr:PRICE_DETAILS/xr:Item_price_discount">
             <xsl:value-of select="xrf:field-label('xr:Item_price_discount')"/>
             <xsl:text>: </xsl:text>
-            <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_discount"/>
+            <xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount, $at-least-two-picture, $lang)"/>
           </xsl:if>
         </xsl:with-param>
         <xsl:with-param name="col2">
           <xsl:if test="xr:PRICE_DETAILS/xr:Item_gross_price">
             <xsl:value-of select="xrf:field-label('xr:Item_gross_price')"/>
             <xsl:text>: </xsl:text>
-            <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_gross_price"/>
+            <xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price, $at-least-two-picture, $lang)"/>
           </xsl:if>
         </xsl:with-param>
       </xsl:call-template>
