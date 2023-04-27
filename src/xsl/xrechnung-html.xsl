@@ -33,6 +33,11 @@
         <script>
           <xsl:value-of select="unparsed-text('xrechnung-viewer.js')" />
         </script>
+        <noscript>
+          <div class="noscript">
+            <xsl:value-of select="xrf:_('no-script')"/>
+          </div>
+        </noscript>
       </head>
       <body>
         <div role="main">
