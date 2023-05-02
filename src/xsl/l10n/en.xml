@@ -230,8 +230,8 @@
   <entry key="laufzettelHistorie">Processing history</entry>
   <entry key="anlagen">Attachments</entry>
   <entry key="anlagenListe">Documents justifying the invoice</entry>
-  <entry key="date-format">[Y]-[M,2]-[D,2]</entry>
-  <entry key="datetime-format">[Y]-[M,2]-[D,2] [H]:[m]:[s]</entry>
+  <entry key="date-format">[Y,4]-[M,2]-[D,2]</entry>
+  <entry key="datetime-format">[Y,4]-[M,2]-[D,2] [H]:[m]:[s]</entry>
   <entry key="amount-format">###,##0.00</entry>
   <entry key="percentage-format">##0.00</entry>
   <entry key="at-least-two-format">###,##0.#################</entry>
