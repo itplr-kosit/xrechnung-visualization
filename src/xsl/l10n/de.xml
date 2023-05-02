@@ -232,8 +232,8 @@
   <entry key="laufzettelHistorie">Bearbeitungshistorie</entry>
   <entry key="anlagen">Anlagen</entry>
   <entry key="anlagenListe">Rechnungsbegründende Unterlagen</entry>
-  <entry key="date-format">[D].[M].[Y]</entry>
-  <entry key="datetime-format">[D].[M].[Y] [H]:[m]:[s]</entry>
+  <entry key="date-format">[D].[M].[Y,4]</entry>
+  <entry key="datetime-format">[D].[M].[Y,4] [H]:[m]:[s]</entry>
   <entry key="amount-format">###.##0,00</entry>
   <entry key="percentage-format">##0,00</entry>
   <entry key="at-least-two-format">###.##0,#################</entry>
