@@ -35,7 +35,8 @@
 		<cac:Party>
 			<cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
 			<cac:PartyIdentification>
-				<cbc:ID schemeID="0013">Kennung des Verkäufers</cbc:ID>
+				<!-- BT-29 -->
+				<cbc:ID>292345678</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PartyName>
 				<cbc:Name>EntServDE</cbc:Name>
@@ -117,6 +118,11 @@
 	</cac:AccountingCustomerParty>
 	<cac:PayeeParty>
 		<cac:PartyIdentification>
+			<!-- BT-60 -->
+			<cbc:ID>601234567</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyIdentification>
+			<!-- BT-90 -->
 			<cbc:ID schemeID="SEPA">DE64500105173922382999</cbc:ID>
 		</cac:PartyIdentification>
 		<cac:PartyName>
