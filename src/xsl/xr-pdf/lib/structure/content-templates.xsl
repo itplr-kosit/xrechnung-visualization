@@ -480,7 +480,7 @@
                   </fo:table-header>
                   <fo:table-body>
                     <fo:table-row>
-                      <fo:table-cell xsl:use-attribute-sets="wert-legende">
+                      <fo:table-cell xsl:use-attribute-sets="wert-ausgabe">
                         <fo:block><xsl:value-of select="xr:Item_attribute_name"/>:</fo:block>
                       </fo:table-cell>
                     </fo:table-row>

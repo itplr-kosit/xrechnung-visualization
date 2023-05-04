@@ -10,6 +10,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Changed
 
+* BT-160 marked as value, not label
 * Removed id for Third Party Payment Total from translation files and html
 
 ## Fixed
