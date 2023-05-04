@@ -15,6 +15,7 @@ This release is compatible with XRechnung ?.?.?
 ## Fixed
 
 * Display of elements with unrestricted number of fraction digits (BT-146, BT-147, BT-148) in PDF.
+* Display of BT-29 and BT-60 in UBL to prevent display of BT-90 as BT-29 or BT-60.
 * Superfluous display of BT-120 and BT-121 labels for VAT category codes that prohibit BT-120 and BT-121.
 * Missing output of BT-49 (Buyer electronic address) in HTML
 * Misplaced output of BT-30 (Seller legal registration identifier) and BT-31 (Seller VAT identifier) values in Buyer section in HTML

@@ -19,10 +19,10 @@ expectation:
 
 ## Direct Debit (BG-19)
 
-* direct-debit-bt-90-seller_ubl.xml
-* direct-debit-bt-90-payee_ubl.xml
-* direct-debit-bt-90-seller_creditnote.xml
-* direct-debit-bt-90-payee_creditnote.xml
+* direct-debit-bt-90-seller_ubl.xml (BT-29 and BT-60 with @schemeID)
+* direct-debit-bt-90-payee_ubl.xml (BT-29 and BT-60 without @schemeID)
+* direct-debit-bt-90-seller_creditnote.xml (BT-29 and BT-60 with @schemeID)
+* direct-debit-bt-90-payee_creditnote.xml (BT-29 and BT-60 without @schemeID)
 
 ## Item Attributes (BG-32)
 * itemAttributes_ubl.xml
