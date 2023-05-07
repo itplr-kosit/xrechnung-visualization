@@ -8,9 +8,83 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* BT-160 marked as value, not label
+* Removed id for Third Party Payment Total from translation files and html
+
+## Fixed
+
+* Display of elements with unrestricted number of fraction digits (BT-146, BT-147, BT-148) in PDF.
+* Display of BT-29 and BT-60 in UBL to prevent display of BT-90 as BT-29 or BT-60.
+* Superfluous display of BT-120 and BT-121 labels for VAT category codes that prohibit BT-120 and BT-121.
+* Missing output of BT-49 (Buyer electronic address) in HTML.
+* Misplaced output of BT-30 (Seller legal registration identifier) and BT-31 (Seller VAT identifier) values in Buyer section in HTML.
+* Bug on dates with years less than 1000
+* Mouse over hover in HTML
+
+## v2023-01-31
+
+This release is compatible with XRechnung 2.3.x
+
+### Added
+
+* Visualization of third party payment
+
+### Changed
+
+* Normalization of newlines in embedded documents
+* Percentage sign format in PDF and HTML now identical
+
 ### Fixed
 
-* Mouse over hover in HTML
+* Missing condition to BT-110 and BT-111 in ubl-creditnote-xr.xsl
+* Selection of identifier for pdf attachments
+* Missing percentage sign `%` output in PDF and PDF Tabular
+
+## v2022-11-15
+
+This release is compatible with XRechnung 2.2.0
+
+### Added
+
+* BG-26 INVOICE LINE PERIOD elements to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+
+### Changed
+
+* Unified country code labels
+* Unified translation of BG-1 INVOICE NOTE in PDF and HTML
+
+### Fixed
+
+* Missing display of BG-14 INVOICING PERIOD
+* Missing display of BT-54 "Buyer country subdivision" in PDF
+* Removed unnecessary xslt messages
+* Display of BT-128 scheme identifier label in PDF normal
+* Incorrect elements in UBL test files removed
+* bug that prevented output of BT-82 in UBL
+
+
+### Changed
+
+* Percentage sign format in PDF and HTML now identical
+
+### Fixed
+
+* Missing percentage sign `%` output in PDF and PDF Tabular
+
+## v2022-07-31
+
+This release is compatible with XRechnung 2.2.0
+
+### Added
+
+* Added multiple BG-27 and BG-28 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+
+### Fixed
+
+* Bug that prevented display of multiple embedded documents in PDF
+
 
 ## v2022-07-15
 

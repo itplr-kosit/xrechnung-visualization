@@ -72,9 +72,11 @@
             </rdf:Description>
           </rdf:RDF>
         </x:xmpmeta>
-        <xsl:apply-templates mode="binary-declaration" select="xr:ADDITIONAL_SUPPORTING_DOCUMENTS/xr:Attached_document">
-          <xsl:with-param name="identifier" select="xr:ADDITIONAL_SUPPORTING_DOCUMENTS/xr:Supporting_document_reference"/>
-        </xsl:apply-templates>
+        <xsl:for-each select="xr:ADDITIONAL_SUPPORTING_DOCUMENTS">
+          <xsl:apply-templates mode="binary-declaration" select="xr:Attached_document">
+            <xsl:with-param name="identifier" select="xr:Attached_document/@filename"/>
+          </xsl:apply-templates>
+        </xsl:for-each>
       </fo:declarations>
       <xsl:call-template name="generiere-page-sequence">
         <xsl:with-param name="body-content-flow">

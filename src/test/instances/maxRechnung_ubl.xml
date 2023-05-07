@@ -5,7 +5,7 @@
     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
     xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
     xmlns:ns0="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
-    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2</cbc:CustomizationID>
+    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
     <cbc:ID>1234567890</cbc:ID>
     <cbc:IssueDate>2018-10-15</cbc:IssueDate>
     <cbc:DueDate>2018-10-29</cbc:DueDate>
@@ -30,11 +30,11 @@
     </cac:ContractDocumentReference>
     <cac:AdditionalDocumentReference>
         <cbc:ID>Dokument Referenz</cbc:ID>
-        <cbc:DocumentType>Beschreibung der angehängten JPG-Datei</cbc:DocumentType>
+        <cbc:DocumentDescription>Beschreibung der angehängten JPG-Datei</cbc:DocumentDescription>
     </cac:AdditionalDocumentReference>
     <cac:AdditionalDocumentReference>
         <cbc:ID>Kennung des Objekts</cbc:ID>
-        <cbc:DocumentType>ATS</cbc:DocumentType>
+        <cbc:DocumentDescription>ATS</cbc:DocumentDescription>
     </cac:AdditionalDocumentReference>
 <!--    <cac:BillingReference>
         <cac:InvoiceDocumentReference>
@@ -164,7 +164,7 @@
         </cac:DeliveryParty>
     </cac:Delivery>
     <cac:PaymentMeans>
-        <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
+        <cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
         <cbc:PaymentID>Verwendungszweck</cbc:PaymentID>
         <cac:PayeeFinancialAccount>
             <cbc:ID>DE84 6004 0071 0561 5158 01</cbc:ID>
@@ -217,7 +217,6 @@
         <cac:TaxCategory>
             <cbc:ID>E</cbc:ID>
             <cbc:Percent>0</cbc:Percent>
-            <cbc:TaxExemptionReason>Grund für Nachlass 2</cbc:TaxExemptionReason>
             <cac:TaxScheme>
                 <cbc:ID>VAT</cbc:ID>
             </cac:TaxScheme>
@@ -286,6 +285,10 @@
         <cbc:InvoicedQuantity unitCode="LTR">10.00</cbc:InvoicedQuantity>
         <cbc:LineExtensionAmount currencyID="EUR">10000.00</cbc:LineExtensionAmount>
         <cbc:AccountingCost>BRE</cbc:AccountingCost>
+        <cac:InvoicePeriod>
+            <cbc:StartDate>2018-10-05</cbc:StartDate>
+            <cbc:EndDate>2018-10-07</cbc:EndDate>
+        </cac:InvoicePeriod>
         <cac:OrderLineReference>
             <cbc:LineID>RPB</cbc:LineID>
         </cac:OrderLineReference>
@@ -295,14 +298,28 @@
         </cac:DocumentReference>
         <cac:AllowanceCharge>
             <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
-            <cbc:AllowanceChargeReason>Grund Nachlass</cbc:AllowanceChargeReason>
+            <cbc:AllowanceChargeReason>Grund Nachlass 1</cbc:AllowanceChargeReason>
+            <cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric>
+            <cbc:Amount currencyID="EUR">10.00</cbc:Amount>
+            <cbc:BaseAmount currencyID="EUR">100.00</cbc:BaseAmount>
+        </cac:AllowanceCharge>
+        <cac:AllowanceCharge>
+            <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+            <cbc:AllowanceChargeReason>Grund Nachlass 2</cbc:AllowanceChargeReason>
             <cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric>
             <cbc:Amount currencyID="EUR">10.00</cbc:Amount>
             <cbc:BaseAmount currencyID="EUR">100.00</cbc:BaseAmount>
         </cac:AllowanceCharge>
         <cac:AllowanceCharge>
             <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
-            <cbc:AllowanceChargeReason>Grund Zuschlag</cbc:AllowanceChargeReason>
+            <cbc:AllowanceChargeReason>Grund Zuschlag 1</cbc:AllowanceChargeReason>
+            <cbc:MultiplierFactorNumeric>50.00</cbc:MultiplierFactorNumeric>
+            <cbc:Amount currencyID="EUR">100.00</cbc:Amount>
+            <cbc:BaseAmount currencyID="EUR">200.00</cbc:BaseAmount>
+        </cac:AllowanceCharge>
+        <cac:AllowanceCharge>
+            <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+            <cbc:AllowanceChargeReason>Grund Zuschlag 2</cbc:AllowanceChargeReason>
             <cbc:MultiplierFactorNumeric>50.00</cbc:MultiplierFactorNumeric>
             <cbc:Amount currencyID="EUR">100.00</cbc:Amount>
             <cbc:BaseAmount currencyID="EUR">200.00</cbc:BaseAmount>

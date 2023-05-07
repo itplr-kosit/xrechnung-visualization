@@ -9,9 +9,10 @@ There are various configuration options for the XSLT transformations.
 There are various profiles for PDF generation. The default uses none with enabled accessibility. 
 In order to use profile PDF/UA-1 and PDF/A-1, you can use another FOP configuration during build time, e.g. 
 ```bash
-ant -Dfop.conf=conf/fop-with-ua1-a1.xconf transform-xr-to-pdf
+ant -Dfop.config=conf/fop-with-ua1-a1.xconf transform-xr-to-pdf
 ```
 
+Note: PDF/A-1 does not allow embedded files. Use the default profile for display of embedded documents.
 
 ### Choice of FO engine 
 
