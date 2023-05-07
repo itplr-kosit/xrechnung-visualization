@@ -331,15 +331,21 @@
 
 
     <target name="transform-xr-to-html" depends="transform-to-xr">
+        <xslt in="${build.dir}/model/xrechnung-model.xml" out="${build.dir}/xsl/xrechnung-html.xsl"
+            style="${src.dir}/xsl/generate-and-execute-xr2html.xsl">
+            <classpath location="${lib.dir}/${saxon.jar}"/>
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>            
+        </xslt>
+        
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.html.dir}"
-            style="${src.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml">
+            style="${build.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <mapper type="glob" from="*.xml" to="*.html"/>
         </xslt>
 
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.html.dir}-en"
-            style="${src.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml">
+            style="${build.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <param name="lang" type="STRING" expression="en"/>

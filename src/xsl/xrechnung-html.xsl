@@ -8,7 +8,7 @@
 
     <xsl:output indent="yes" method="html" encoding="UTF-8" include-content-type="no" media-type="text/html" undeclare-prefixes="yes"/>
 
-  <xsl:import href="common-xr.xsl" />
+  <xsl:import href="../../src/xsl/common-xr.xsl" />
 
   <xsl:param name="l10n-nl-lookup" select="true()" />
 
@@ -24,14 +24,14 @@
         <title>XRechnung</title>
         <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0" />
         <style>
-          <xsl:value-of select="unparsed-text('xrechnung-viewer.css')" />
+          <xsl:value-of select="unparsed-text('../../src/xsl/xrechnung-viewer.css')" />
         </style>
         <script>
-          <xsl:value-of select="unparsed-text('FileSaver-v2.0.5.js')" />
+          <xsl:value-of select="unparsed-text('../../src/xsl/FileSaver-v2.0.5.js')" />
         </script>
         <!-- according to https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup -->
         <script>
-          <xsl:value-of select="unparsed-text('xrechnung-viewer.js')" />
+          <xsl:value-of select="unparsed-text('../../src/xsl/xrechnung-viewer.js')" />
         </script>
       </head>
       <body>
