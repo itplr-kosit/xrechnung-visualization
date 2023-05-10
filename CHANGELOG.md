@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Notification if JavaScript is disabled
+
 ### Changed
 
 * BT-160 marked as value, not label
