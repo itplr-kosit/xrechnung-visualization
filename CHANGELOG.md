@@ -10,7 +10,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
-* Notification of disabled JavaScript in HTML.
+* Notification if JavaScript is disabled
 
 ### Changed
 
