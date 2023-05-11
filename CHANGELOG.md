@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## UNRELEASED
+## 2023-05-12
 
-This release is compatible with XRechnung ?.?.?
+This release is compatible with XRechnung 2.3.x
 
 ### Added
 
@@ -19,13 +19,13 @@ This release is compatible with XRechnung ?.?.?
 
 ## Fixed
 
-* Display of elements with unrestricted number of fraction digits (BT-146, BT-147, BT-148) in PDF.
+* Display of elements with unrestricted number of fraction digits (BT-146, BT-147, BT-148) in PDF (thanks to GitHub user @JannickWeisshaupt).
 * Display of BT-29 and BT-60 in UBL to prevent display of BT-90 as BT-29 or BT-60.
 * Superfluous display of BT-120 and BT-121 labels for VAT category codes that prohibit BT-120 and BT-121.
 * Missing output of BT-49 (Buyer electronic address) in HTML.
 * Misplaced output of BT-30 (Seller legal registration identifier) and BT-31 (Seller VAT identifier) values in Buyer section in HTML.
-* Bug on dates with years less than 1000
-* Display of multiple BT-29 and BT-158
+* Bug on dates with years less than 1000 (thanks to GitHub user @JannickWeisshaupt).
+* Display of multiple BT-29 and BT-158.
 
 ## v2023-01-31
 
