@@ -25,6 +25,7 @@ This release is compatible with XRechnung ?.?.?
 * Missing output of BT-49 (Buyer electronic address) in HTML.
 * Misplaced output of BT-30 (Seller legal registration identifier) and BT-31 (Seller VAT identifier) values in Buyer section in HTML.
 * Bug on dates with years less than 1000
+* Display of multiple BT-29 and BT-158
 
 ## v2023-01-31
 
