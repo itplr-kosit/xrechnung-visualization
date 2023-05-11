@@ -21,7 +21,7 @@
     <property name="saxon.jar" value="saxon-he-10.6.jar"/>
 
     <!-- Naming -->
-    <property name="xr-visualization.version.full" value="2023-04-31-SNAPSHOT"/>
+    <property name="xr-visualization.version.full" value="2023-05-12"/>
 
     <!-- Test resources -->
     <property name="xrechnung.version.major.minor" value="2.3"/>
@@ -37,7 +37,7 @@
 
     <!-- Validator Configuration XRechnung -->
     <property name="validator.config.proj.name" value="validator-configuration-xrechnung"/>
-    <property name="validator.config.release.date" value="2023-01-31"/>
+    <property name="validator.config.release.date" value="2023-05-12"/>
 
     <property name="validator.config.download.url"
         value="${github.group.url}/${validator.config.proj.name}/releases/download/release-${validator.config.release.date}/${validator.config.proj.name}_${xrechnung.version.full}_${validator.config.release.date}.zip"/>
@@ -68,7 +68,7 @@
     <property name="test.reports.dir" location="${test.build.dir}/reports"/>
 
     <!-- testsuite -->
-    <property name="xr.testsuite.version" value="2023-01-31"/>
+    <property name="xr.testsuite.version" value="2023-05-12"/>
     <property name="xr.testsuite.download.url.prefix"
         value="https://github.com/itplr-kosit/xrechnung-testsuite/releases/download"/>
     <property name="xr.testsuite.zip"
