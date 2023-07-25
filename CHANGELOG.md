@@ -11,6 +11,7 @@ This release is compatible with XRechnung ?.?.?
 ### Changed
 
 * Test files to comply with updated schematron rules
+* Removed references to "Verzugszinsen" from `xrechnung-semantic-model.xsd`
 
 ## 2023-05-12
 
