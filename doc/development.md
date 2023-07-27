@@ -92,7 +92,7 @@ ant clean dist
 ```
 
 * Tag the last commit according to the following naming rule: `v${xr-visu.version.full}` e.g.
-  `git tag v2023-05-12 && git push origin v2023-07-31`
+  `git tag v2023-07-31 && git push origin v2023-07-31`
 
 ### Publish
 
