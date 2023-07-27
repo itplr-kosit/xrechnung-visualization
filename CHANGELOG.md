@@ -13,6 +13,10 @@ This release is compatible with XRechnung 3.0.?
 * Test files in accordance with new Schematron rules (see [XRechnung Schematron 2.0.0](https://github.com/itplr-kosit/xrechnung-schematron/releases/tag/release-2.0.0))
 * Removed references to "Verzugszinsen" from `xrechnung-semantic-model.xsd`
 
+### Fixed
+
+* Bug on selection of BT-61 path in `cii-xr.xsl`
+
 ## v2023-05-12
 
 This release is compatible with XRechnung 2.3.x
