@@ -10,7 +10,7 @@ This release is compatible with XRechnung 3.0.?
 
 ### Changed
 
-* Test files to comply with updated schematron rules
+* Test files in accordance with new Schematron rules (see [XRechnung Schematron 2.0.0](https://github.com/itplr-kosit/xrechnung-schematron/releases/tag/release-2.0.0))
 * Removed references to "Verzugszinsen" from `xrechnung-semantic-model.xsd`
 
 ## v2023-05-12
