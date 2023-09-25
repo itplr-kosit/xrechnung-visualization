@@ -387,7 +387,7 @@ Die Gruppe kann verwendet werden, um auf eine dem Erwerber bekannte Dokumentennu
       <xs:sequence>
          <xs:element name="Business_process_type_identifier"
                      type="xr:text"
-                     minOccurs="0"
+                     minOccurs="1"
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-23</xs:appinfo>
@@ -494,7 +494,7 @@ Person eingetragen ist oder anderweitig als Person(en) handelt (Firma).</xs:docu
          </xs:element>
          <xs:element name="Seller_electronic_address"
                      type="xr:identifier"
-                     minOccurs="0"
+                     minOccurs="1"
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-34</xs:appinfo>
@@ -666,7 +666,7 @@ von Eigenschaften.</xs:documentation>
          </xs:element>
          <xs:element name="Buyer_electronic_address"
                      type="xr:identifier"
-                     minOccurs="0"
+                     minOccurs="1"
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-49</xs:appinfo>

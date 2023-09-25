@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## UNRELEASED
 
-This release is compatible with XRechnung ?.?.?
+This release is compatible with XRechnung ?.?.x
+
+## v2023-09-22
+
+This release is compatible with XRechnung 3.0.x
+
+### Fixed
+
+* Cardinalities of BT-23 "Business process type", BT-34 "Seller electronic address", and BT-49 "Buyer electronic address" in `src/xsd/xrechnung-semantic-model.xsd`
 
 ### Added
 * Test file with Document Type Code 50 in BT-11 for CreditNote
