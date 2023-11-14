@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.x
 
+### Changed
+
+* BG-3 "PRECEDING INVOICE REFERENCE" was added to test files `maxRechnung_ubl.xml` and `maxRechnung_creditnote.xml`
+* BT-11 "Project reference" with Document Type Code `50` was added to test file `maxRechnung_creditnote.xml`
+
 ## v2023-09-22
 
 This release is compatible with XRechnung 3.0.x
@@ -15,9 +20,6 @@ This release is compatible with XRechnung 3.0.x
 ### Fixed
 
 * Cardinalities of BT-23 "Business process type", BT-34 "Seller electronic address", and BT-49 "Buyer electronic address" in `src/xsd/xrechnung-semantic-model.xsd`
-
-### Added
-* Test file with Document Type Code 50 in BT-11 for CreditNote
 
 ## v2023-07-31
 
