@@ -10,7 +10,7 @@ This release is compatible with XRechnung ?.?.x
 
 ### Changed
 
-* Display of BT-29 and BT-158 in HTML
+* Display of BT-158 in HTML
 * BG-3 "PRECEDING INVOICE REFERENCE" was added to test files `maxRechnung_ubl.xml` and `maxRechnung_creditnote.xml`
 * BT-11 "Project reference" with Document Type Code `50` was added to test file `maxRechnung_creditnote.xml`
 

@@ -358,14 +358,19 @@
           <div class="boxzeile" role="listitem">
             <div class="boxdaten legende">
               <xsl:value-of select="xrf:_('xr:Seller_identifier')" />:
-              <br/>
+            </div>
+            <div data-title="BT-29" class="BT-29 boxdaten wert">
+              <xsl:value-of select="." />
+            </div>
+          </div>
+          <div class="boxzeile" role="listitem">
+            <div class="boxdaten legende">
               <xsl:value-of select="xrf:_('xr:Seller_identifier/@scheme_identifier')" />:
             </div>
-            <div class="boxdaten wert">
-              <div data-title="BT-29" class="BT-29"><xsl:value-of select="." /></div>
-              <div data-title="BT-29-scheme-id" class="BT-29-scheme-id"><xsl:value-of select="./@scheme_identifier" /></div>
-            </div>            
-          </div>          
+            <div data-title="BT-29-scheme-id" class="BT-29-scheme-id boxdaten wert">
+              <xsl:value-of select="./@scheme_identifier" />
+            </div>
+          </div>
         </xsl:for-each>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
