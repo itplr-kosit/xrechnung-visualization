@@ -1,12 +1,12 @@
 # Guide for Visual Testing
 
-## Embedded Documets
+## Embedded Documents
 For testing embedded documents' features, use
 * embedded-documents-bt-125_ubl.xml
 * embedded-documents-with-newline-and-whitespace_ubl.xml
 * 01.15
 
-expectation:
+Expectation:
 * HTML: should work across all browsers
 * PDF: default configuration should work:
   * with Adobe Professional 2017
@@ -15,6 +15,9 @@ expectation:
 
 ## Scheme Identifier for various BTs
 * maxRechnung_ubl.xml
+* maxRechnung_creditnote.xml
+
+## "Project reference" (BT-11) in UBL Creditnote
 * maxRechnung_creditnote.xml
 
 ## Direct Debit (BG-19)

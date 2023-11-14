@@ -23,6 +23,12 @@
         <cbc:ID>2345678901</cbc:ID>
         <cbc:SalesOrderID>Auftragsreferenz</cbc:SalesOrderID>
     </cac:OrderReference>
+    <cac:BillingReference>
+        <cac:InvoiceDocumentReference>
+            <cbc:ID>PRG1502168</cbc:ID>
+            <cbc:IssueDate>2018-10-13</cbc:IssueDate>
+        </cac:InvoiceDocumentReference>
+    </cac:BillingReference>
     <cac:OriginatorDocumentReference>
         <cbc:ID>Vergabe-und Losreferenz</cbc:ID>
     </cac:OriginatorDocumentReference>
@@ -37,12 +43,7 @@
         <cbc:ID>Kennung des Objekts</cbc:ID>
         <cbc:DocumentDescription>ATS</cbc:DocumentDescription>
     </cac:AdditionalDocumentReference>
-<!--    <cac:BillingReference>
-        <cac:InvoiceDocumentReference>
-            <cbc:ID>PRG1502168</cbc:ID>
-            <cbc:IssueDate>2018-10-23</cbc:IssueDate>
-        </cac:InvoiceDocumentReference>
-    </cac:BillingReference>-->
+    <!-- BT-11 -->
     <cac:ProjectReference>
         <cbc:ID>Projektreferenz</cbc:ID>
     </cac:ProjectReference>
