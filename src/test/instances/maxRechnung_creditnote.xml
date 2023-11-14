@@ -34,6 +34,11 @@
 		<cbc:ID>Kennung des Objekts</cbc:ID>
 		<cbc:DocumentDescription>ATS</cbc:DocumentDescription>
 	</cac:AdditionalDocumentReference>
+	<!-- BT-11 -->
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>Projektreferenz</cbc:ID>
+		<cbc:DocumentTypeCode>50</cbc:DocumentTypeCode>
+	</cac:AdditionalDocumentReference>
 	<cac:OriginatorDocumentReference>
 		<cbc:ID>Vergabe-und Losreferenz</cbc:ID>
 	</cac:OriginatorDocumentReference>
