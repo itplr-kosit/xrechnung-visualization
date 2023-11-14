@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.x
 
+### Changed
+
+* Display of BT-29 and BT-158 in HTML
+
 ## v2023-09-22
 
 This release is compatible with XRechnung 3.0.x
