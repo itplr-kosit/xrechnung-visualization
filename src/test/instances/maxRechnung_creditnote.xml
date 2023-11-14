@@ -8,7 +8,6 @@
 	<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
 	<cbc:ID>1234567890</cbc:ID>
 	<cbc:IssueDate>2018-10-15</cbc:IssueDate>
-	<!--<cbc:IssueDate>2018-10-29</cbc:IssueDate>-->
 	<cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
 	<cbc:Note>Bemerkung zu der Rechnung gibt es nicht, da dies eine Testrechnung
 		ist.</cbc:Note>
@@ -22,10 +21,15 @@
 		<cbc:ID>2345678901</cbc:ID>
 		<cbc:SalesOrderID>Auftragsreferenz</cbc:SalesOrderID>
 	</cac:OrderReference>
+	<cac:BillingReference>
+		<cac:InvoiceDocumentReference>
+			<cbc:ID>PRG1502168</cbc:ID>
+			<cbc:IssueDate>2018-10-13</cbc:IssueDate>
+		</cac:InvoiceDocumentReference>
+	</cac:BillingReference>
 	<cac:ContractDocumentReference>
 		<cbc:ID>Vertragsreferenz</cbc:ID>
 	</cac:ContractDocumentReference>
-
 	<cac:AdditionalDocumentReference>
 		<cbc:ID>Dokument Referenz</cbc:ID>
 		<cbc:DocumentDescription>Beschreibung der angehängten JPG-Datei</cbc:DocumentDescription>
@@ -34,13 +38,14 @@
 		<cbc:ID>Kennung des Objekts</cbc:ID>
 		<cbc:DocumentDescription>ATS</cbc:DocumentDescription>
 	</cac:AdditionalDocumentReference>
+	<!-- BT-11 -->
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>Projektreferenz</cbc:ID>
+		<cbc:DocumentTypeCode>50</cbc:DocumentTypeCode>
+	</cac:AdditionalDocumentReference>
 	<cac:OriginatorDocumentReference>
 		<cbc:ID>Vergabe-und Losreferenz</cbc:ID>
 	</cac:OriginatorDocumentReference>
-	<!--
-	<cac:ProjectReference>
-		<cbc:ID>Projektreferenz</cbc:ID>
-	</cac:ProjectReference>-->
 	<cac:AccountingSupplierParty>
 		<cac:Party>
 			<cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
