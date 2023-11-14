@@ -53,6 +53,9 @@
             <cac:PartyIdentification>
                 <cbc:ID schemeID="0013">987654321</cbc:ID>
             </cac:PartyIdentification>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0013">987654320</cbc:ID>
+            </cac:PartyIdentification>
             <cac:PartyName>
                 <cbc:Name>EntServDE</cbc:Name>
             </cac:PartyName>
