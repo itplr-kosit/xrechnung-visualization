@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* Scheme identifier 'VAT' in BT-31 removed from templates
+
 ## v2023-11-15
 
 This release is compatible with XRechnung 3.0.x
