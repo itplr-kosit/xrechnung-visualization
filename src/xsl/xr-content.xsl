@@ -74,10 +74,9 @@
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:SELLER_POSTAL_ADDRESS/xr:Seller_city"/>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:SELLER_POSTAL_ADDRESS/xr:Seller_country_subdivision"/>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:SELLER_POSTAL_ADDRESS/xr:Seller_country_code"/>
-            <xsl:for-each select="xr:SELLER/xr:Seller_identifier">
-              <xsl:apply-templates mode="list-entry" select="."/>
-              <xsl:apply-templates mode="list-entry" select="./@scheme_identifier">
-                <xsl:with-param name="field-mapping-identifier" select="'xr:Seller_identifier/@scheme_identifier'"/>
+            <xsl:for-each select="xr:SELLER/xr:Seller_identifier">              
+              <xsl:apply-templates mode="list-entry-with-scheme-id" select=".">
+                <xsl:with-param name="field-mapping-scheme-identifier" select="'xr:Seller_identifier/@scheme_identifier'"/>
               </xsl:apply-templates>
             </xsl:for-each>
             <xsl:apply-templates mode="list-entry" select="xr:SELLER/xr:SELLER_CONTACT/xr:Seller_contact_point"/>
