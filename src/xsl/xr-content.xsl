@@ -809,7 +809,7 @@
   </xsl:template>
 
   <xsl:template name="zusaetzeVertrag">
-    <xsl:call-template name="box">
+    <xsl:call-template name="spanned-box">
       <xsl:with-param name="identifier" select="'zusaetzeVertrag'"/>
       <xsl:with-param name="content">
         <xsl:call-template name="list">
