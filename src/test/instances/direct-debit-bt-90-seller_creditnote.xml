@@ -4,7 +4,8 @@
 	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
 	xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
 	xmlns:ns0="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
-    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
+    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
 	<cbc:ID>1234567890</cbc:ID>
 	<cbc:IssueDate>2018-10-15</cbc:IssueDate>
 	<cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
@@ -173,7 +174,7 @@
 		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
 		<cbc:AllowanceChargeReason>Grund für den Nachlass auf
 			Dokumentenebene</cbc:AllowanceChargeReason>
-		<cbc:MultiplierFactorNumeric>40.00</cbc:MultiplierFactorNumeric>
+		<cbc:MultiplierFactorNumeric>50.00</cbc:MultiplierFactorNumeric>
 		<cbc:Amount currencyID="EUR">1000.00</cbc:Amount>
 		<cbc:BaseAmount currencyID="EUR">2000.00</cbc:BaseAmount>
 		<cac:TaxCategory>
@@ -188,7 +189,7 @@
 		<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
 		<cbc:AllowanceChargeReason>Grund für den Zuschlag auf
 			Dokumentenenbene</cbc:AllowanceChargeReason>
-		<cbc:MultiplierFactorNumeric>30.00</cbc:MultiplierFactorNumeric>
+		<cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric>
 		<cbc:Amount currencyID="EUR">400.00</cbc:Amount>
 		<cbc:BaseAmount currencyID="EUR">4000.00</cbc:BaseAmount>
 		<cac:TaxCategory>
@@ -202,7 +203,7 @@
 	<cac:AllowanceCharge>
 		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
 		<cbc:AllowanceChargeReason>Grund für Nachlass 2</cbc:AllowanceChargeReason>
-		<cbc:MultiplierFactorNumeric>80.00</cbc:MultiplierFactorNumeric>
+		<cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric>
 		<cbc:Amount currencyID="EUR">1500.00</cbc:Amount>
 		<cbc:BaseAmount currencyID="EUR">15000.00</cbc:BaseAmount>
 		<cac:TaxCategory>
@@ -283,6 +284,7 @@
 		</cac:OrderLineReference>
 		<cac:DocumentReference>
 			<cbc:ID schemeID="AAD">7362789</cbc:ID>
+			<cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>
 		</cac:DocumentReference>
 		<cac:AllowanceCharge>
 			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
@@ -292,11 +294,25 @@
 			<cbc:BaseAmount currencyID="EUR">100.00</cbc:BaseAmount>
 		</cac:AllowanceCharge>
 		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReason>Grund Nachlass 2</cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>50.00</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="EUR">100.00</cbc:Amount>
+			<cbc:BaseAmount currencyID="EUR">200.00</cbc:BaseAmount>
+		</cac:AllowanceCharge>
+		<cac:AllowanceCharge>
 			<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
 			<cbc:AllowanceChargeReason>Grund Zuschlag</cbc:AllowanceChargeReason>
 			<cbc:MultiplierFactorNumeric>50.00</cbc:MultiplierFactorNumeric>
 			<cbc:Amount currencyID="EUR">100.00</cbc:Amount>
 			<cbc:BaseAmount currencyID="EUR">200.00</cbc:BaseAmount>
+		</cac:AllowanceCharge>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReason>Grund Zuschlag 2</cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="EUR">10.00</cbc:Amount>
+			<cbc:BaseAmount currencyID="EUR">100.00</cbc:BaseAmount>
 		</cac:AllowanceCharge>
 		<cac:Item>
 			<cbc:Description>Beschreibung Artikel</cbc:Description>

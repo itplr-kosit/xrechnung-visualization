@@ -90,6 +90,11 @@
 
   <xsl:template name="uebersicht">
     <div id="uebersicht" class="divShow" role="tabpanel" aria-labelledby="menueUebersicht" tabindex="0">
+      <noscript>
+        <div class="noscript">
+        <xsl:value-of select="xrf:_('no-script')"/>
+        </div>
+      </noscript>
       <div class="haftungausschluss">
         <xsl:value-of select="xrf:_('_disclaimer')" />
       </div>
@@ -349,22 +354,24 @@
             <xsl:value-of select="xr:SELLER_POSTAL_ADDRESS/xr:Seller_country_code" />
           </div>
         </div>
-        <div class="boxzeile" role="listitem">
-          <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('xr:Seller_identifier')" />:
+        <xsl:for-each select="xr:Seller_identifier">
+          <div class="boxzeile" role="listitem">
+            <div class="boxdaten legende">
+              <xsl:value-of select="xrf:_('xr:Seller_identifier')" />:
+            </div>
+            <div data-title="BT-29" class="BT-29 boxdaten wert">
+              <xsl:value-of select="." />
+            </div>
           </div>
-          <div data-title="BT-29" class="BT-29 boxdaten wert">
-            <xsl:value-of select="xr:Seller_identifier" />
+          <div class="boxzeile" role="listitem">
+            <div class="boxdaten legende">
+              <xsl:value-of select="xrf:_('xr:Seller_identifier/@scheme_identifier')" />:
+            </div>
+            <div data-title="BT-29-scheme-id" class="BT-29-scheme-id boxdaten wert">
+              <xsl:value-of select="./@scheme_identifier" />
+            </div>
           </div>
-        </div>
-        <div class="boxzeile" role="listitem">
-          <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('xr:Seller_identifier/@scheme_identifier')" />:
-          </div>
-          <div data-title="BT-29-scheme-id" class="BT-29-scheme-id boxdaten wert">
-            <xsl:value-of select="xr:Seller_identifier/@scheme_identifier" />
-          </div>
-        </div>
+        </xsl:for-each>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Seller_contact_point')" />:
@@ -1528,38 +1535,44 @@
                   </div>
                   <div class="boxzeile" role="listitem">
                     <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('xr:Item_classification_identifier')" />:
-                    </div>
-                    <div data-title="BT-158" class="BT-158 boxdaten wert">
-                      <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_classification_identifier" />
-                    </div>
-                  </div>
-                  <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_identifier')" />:
-                    </div>
-                    <div data-title="BT-158-scheme-id" class="BT-158-scheme-id boxdaten wert">
-                      <xsl:value-of
-                        select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_identifier" />
-                    </div>
-                  </div>
-                  <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_version_identifier')" />:
-                    </div>
-                    <div data-title="BT-158-scheme-version-id" class="BT-158-scheme-version-id boxdaten wert">
-                      <xsl:value-of
-                        select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_version_identifier" />
-                    </div>
-                  </div>
-                  <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
                       <xsl:value-of select="xrf:_('xr:Item_country_of_origin')" />:
                     </div>
                     <div data-title="BT-159" class="BT-159 boxdaten wert">
                       <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_country_of_origin" />
                     </div>
                   </div>
+                  <xsl:for-each select="xr:ITEM_INFORMATION/xr:Item_classification_identifier">
+                    <div class="boxzeile" role="listitem">
+                      <div class="boxdaten legende"><b><xsl:value-of select="xrf:_('artikelklassifizierung')" /></b>
+                      </div>                                          
+                    </div>
+                    <div class="boxzeile" role="listitem">
+                      <div class="boxdaten legende">
+                        <xsl:value-of select="xrf:_('xr:Item_classification_identifier')" />:
+                      </div>
+                      <div data-title="BT-158" class="BT-158 boxdaten wert">
+                        <xsl:value-of select="." />
+                      </div>
+                    </div>
+                    <div class="boxzeile" role="listitem">
+                      <div class="boxdaten legende">
+                        <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_identifier')" />:
+                      </div>
+                      <div data-title="BT-158-scheme-id" class="BT-158-scheme-id boxdaten wert">
+                        <xsl:value-of
+                          select="./@scheme_identifier" />
+                      </div>
+                    </div>
+                    <div class="boxzeile" role="listitem">
+                      <div class="boxdaten legende">
+                        <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_version_identifier')" />:
+                      </div>
+                      <div data-title="BT-158-scheme-version-id" class="BT-158-scheme-version-id boxdaten wert">
+                        <xsl:value-of
+                          select="./@scheme_version_identifier" />
+                      </div>
+                    </div>
+                  </xsl:for-each>                  
                 </div>
               </div>
             </div>
