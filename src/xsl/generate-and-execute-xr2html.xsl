@@ -20,7 +20,7 @@
                 <xsl:apply-templates/>
             </xsla:stylesheet>
         </xsl:variable>
-        
+        <!--<xsl:copy-of select="$transform-xrechnung-html"/>-->
         <xsl:sequence select="transform(
             map { 
             'source-node': document('xrechnung-html.xsl'), 
@@ -37,7 +37,25 @@
                     <xsl:value-of select="@id"/>
                     <xsl:text>&#013;&#010;</xsl:text>
                     <xsl:value-of select="./*:description"/>
-                    &#013;&#010;<xslb:value-of select="@xr:src"/>
+                    <xsl:text>&#013;&#010;</xsl:text>                    
+                    <!--<xsla:if test="matches(xsl:value-of/@select,'(xr:[A-Z_a-z0-9/:]*)')">
+                        <xsla:element name="xsl:value-of">
+                            <xsla:attribute name="select">
+                                <xsla:analyze-string regex="(xr:[A-Z_a-z0-9/:]*)" select="xsl:value-of/@select">
+                                    <xsla:matching-substring>
+                                        <xsla:value-of select="regex-group(1)"/><xsl:text>/&#64;xr:src</xsl:text>                                        
+                                    </xsla:matching-substring>
+                                </xsla:analyze-string>
+                            </xsla:attribute>
+                        </xsla:element>   
+                    </xsla:if>-->
+                    <xsla:if test="matches(xsl:value-of/@select,'(xr:[A-Z_a-z0-9/:]*)')">                        
+                        <xsla:element name="xsl:value-of">
+                            <xsla:attribute name="select">
+                                <xsla:value-of select="analyze-string(xsl:value-of/@select, '(xr:[A-Z_a-z0-9/:]*)')/*[local-name(.) eq 'match'][1]/*"/><xsl:text>/&#64;xr:src</xsl:text>                                
+                            </xsla:attribute>
+                        </xsla:element>   
+                    </xsla:if>
                 </xslb:attribute>
                 <xsla:apply-templates select="*"/>
             </div>            

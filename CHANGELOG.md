@@ -13,6 +13,10 @@ This release is compatible with XRechnung ?.?.?
 
 * Scheme identifier 'VAT' in BT-31 removed from templates
 
+### Added
+
+* Mouse over in HTML
+
 ## v2023-11-15
 
 This release is compatible with XRechnung 3.0.x

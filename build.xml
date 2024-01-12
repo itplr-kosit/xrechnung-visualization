@@ -74,6 +74,9 @@
     <property name="xr.testsuite.zip"
         value="xrechnung-${xrechnung.version.full}-testsuite-${xr.testsuite.version}.zip"/>
 
+    <!-- semox xr model -->
+    <property name="xr.model.src.dir" value="../xrechnung-model-semox/src"/>
+
     <property name="xrechnung.xsd.ns"
         value="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"/>
 
@@ -85,6 +88,7 @@
         <echo>Build date: ${build.date}</echo>
         <!-- Create the build directory structure used by compile -->
         <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.dir}/model"/>
         <mkdir dir="${download.dir}"/>
         <mkdir dir="${dist.dir}"/>
         <mkdir dir="${lib.dir}"/>
@@ -226,6 +230,9 @@
 
     </target>
 
+    <target name="provide-model" depends="init">
+        <copy file="${xr.model.src.dir}/main/model/xrechnung-model.xml" todir="${build.dir}/model"/>
+    </target>
 
     <target name="provide-fop" depends="init, provide-saxon" unless="${dep.fop.available}"
         description="Download Apache FOP for taskdef stuff">
@@ -245,7 +252,7 @@
     </target>
 
     <target name="dependency-resolve"
-        depends="init, provide-fop, provide-validator, provide-validator-configuration, provide-saxon, provide-testsuite, provide-vnu">
+        depends="init, provide-fop, provide-validator, provide-validator-configuration, provide-saxon, provide-testsuite, provide-vnu, provide-model">
         <taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop">
             <classpath>
                 <fileset dir="${fop.home}">
@@ -330,7 +337,7 @@
         description="Calls transformation from all source formats to XR"/>
 
 
-    <target name="transform-xr-to-html" depends="transform-to-xr">
+    <target name="transform-xr-to-html" depends="provide-model, transform-to-xr">
         <xslt in="${build.dir}/model/xrechnung-model.xml" out="${build.dir}/xsl/xrechnung-html.xsl"
             style="${src.dir}/xsl/generate-and-execute-xr2html.xsl">
             <classpath location="${lib.dir}/${saxon.jar}"/>
