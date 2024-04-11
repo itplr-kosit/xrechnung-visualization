@@ -135,4 +135,17 @@
       </xsl:choose>                   
   </xsl:function>
 
+  <!-- auxiliary function to insert a line break in extension specification identifier -->
+  <xsl:function name="xrf:handle-specification-identifier" as="xs:string">
+    <xsl:param name="specification-identifier"/>    
+    <xsl:choose>
+      <xsl:when test="$specification-identifier = 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0'">      
+        <xsl:value-of select="'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0 #conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0'"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$specification-identifier"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>
+
 </xsl:stylesheet>
