@@ -139,8 +139,8 @@
   <xsl:function name="xrf:handle-specification-identifier" as="xs:string">
     <xsl:param name="specification-identifier"/>    
     <xsl:choose>
-      <xsl:when test="$specification-identifier = 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0'">      
-        <xsl:value-of select="'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0 #conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0'"/>
+      <xsl:when test="matches($specification-identifier, 'xrechnung_[0-9]\.[0-9]#conformant')">      
+        <xsl:value-of select="replace($specification-identifier, '(xrechnung_[0-9]\.[0-9])(#)(conformant)', '$1$2 $3')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$specification-identifier"/>
