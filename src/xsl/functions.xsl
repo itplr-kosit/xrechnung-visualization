@@ -140,7 +140,7 @@
     <xsl:param name="specification-identifier"/>    
     <xsl:choose>
       <xsl:when test="matches($specification-identifier, 'xrechnung_[0-9]\.[0-9]#conformant')">      
-        <xsl:value-of select="replace($specification-identifier, '(xrechnung_[0-9]\.[0-9])(#)(conformant)', '$1$2 $3')"/>
+        <xsl:value-of select="replace($specification-identifier, '(xrechnung_[0-9]\.[0-9])(#conformant)', '$1 $2')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$specification-identifier"/>
