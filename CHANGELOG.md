@@ -12,6 +12,7 @@ This release is compatible with XRechnung ?.?.?
 ### Fixed
 
 * Scheme identifier 'VAT' in BT-31 removed from templates
+* Display of specification identifier in PDF
 
 ## v2023-11-15
 
