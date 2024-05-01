@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+
 ## UNRELEASED
 
 This release is compatible with XRechnung ?.?.?
@@ -11,6 +12,26 @@ This release is compatible with XRechnung ?.?.?
 ### Fixed
 
 * Wrong German translation for BT-10
+* Scheme identifier 'VAT' in BT-31 removed from templates
+* Display of specification identifier in PDF
+
+## v2023-11-15
+
+This release is compatible with XRechnung 3.0.x
+
+### Changed
+
+* Display of BT-158 in HTML
+* BG-3 "PRECEDING INVOICE REFERENCE" was added to test files `maxRechnung_ubl.xml` and `maxRechnung_creditnote.xml`
+* BT-11 "Project reference" with Document Type Code `50` was added to test file `maxRechnung_creditnote.xml`
+
+## v2023-09-22
+
+This release is compatible with XRechnung 3.0.x
+
+### Fixed
+
+* Cardinalities of BT-23 "Business process type", BT-34 "Seller electronic address", and BT-49 "Buyer electronic address" in `src/xsd/xrechnung-semantic-model.xsd`
 
 ## v2023-07-31
 

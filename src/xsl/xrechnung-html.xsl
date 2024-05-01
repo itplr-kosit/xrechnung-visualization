@@ -1533,7 +1533,19 @@
                         select="xr:ITEM_INFORMATION/xr:Item_standard_identifier/@scheme_identifier" />
                     </div>
                   </div>
+                  <div class="boxzeile" role="listitem">
+                    <div class="boxdaten legende">
+                      <xsl:value-of select="xrf:_('xr:Item_country_of_origin')" />:
+                    </div>
+                    <div data-title="BT-159" class="BT-159 boxdaten wert">
+                      <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_country_of_origin" />
+                    </div>
+                  </div>
                   <xsl:for-each select="xr:ITEM_INFORMATION/xr:Item_classification_identifier">
+                    <div class="boxzeile" role="listitem">
+                      <div class="boxdaten legende"><b><xsl:value-of select="xrf:_('artikelklassifizierung')" /></b>
+                      </div>                                          
+                    </div>
                     <div class="boxzeile" role="listitem">
                       <div class="boxdaten legende">
                         <xsl:value-of select="xrf:_('xr:Item_classification_identifier')" />:
@@ -1560,15 +1572,7 @@
                           select="./@scheme_version_identifier" />
                       </div>
                     </div>
-                  </xsl:for-each>
-                  <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('xr:Item_country_of_origin')" />:
-                    </div>
-                    <div data-title="BT-159" class="BT-159 boxdaten wert">
-                      <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_country_of_origin" />
-                    </div>
-                  </div>
+                  </xsl:for-each>                  
                 </div>
               </div>
             </div>
