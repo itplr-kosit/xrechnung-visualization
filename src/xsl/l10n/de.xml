@@ -232,14 +232,16 @@
   <entry key="laufzettelHistorie">Bearbeitungshistorie</entry>
   <entry key="anlagen">Anlagen</entry>
   <entry key="anlagenListe">Rechnungsbegründende Unterlagen</entry>
-  <entry key="date-format">[D].[M].[Y]</entry>
-  <entry key="datetime-format">[D].[M].[Y] [H]:[m]:[s]</entry>
+  <entry key="artikelklassifizierung">Artikelklassifizierung</entry>
+  <entry key="date-format">[D].[M].[Y,4]</entry>
+  <entry key="datetime-format">[D].[M].[Y,4] [H]:[m]:[s]</entry>
   <entry key="amount-format">###.##0,00</entry>
   <entry key="percentage-format">##0,00</entry>
   <entry key="at-least-two-format">###.##0,#################</entry>
   
-  <entry key="sum-of-third-party-payment-amounts" id="BT-DEX-002_sum">Summe Fremdforderungen</entry>
+  <entry key="sum-of-third-party-payment-amounts">Summe Fremdforderungen</entry>
 
+  <entry key="no-script">Inhalte auf dieser Seite sind ohne JavaScript nur eingeschränkt darstellbar.</entry>
   <entry key="_disclaimer">Wir übernehmen keine Haftung für die Richtigkeit der Daten.</entry>
   <entry key="_invoice-note-group">Bemerkungen zur Rechnung</entry>
   <entry key="_open">Öffnen</entry>

@@ -391,7 +391,7 @@
          <xsl:apply-templates mode="BT-29" select="./ram:GlobalID[exists(@schemeID)]"/>
          <xsl:apply-templates mode="BT-30" select="./ram:SpecifiedLegalOrganization/ram:ID"/>
          <xsl:apply-templates mode="BT-31"
-                              select="./ram:SpecifiedTaxRegistration/ram:ID[@schemeID=('VA', 'VAT')]"/>
+                              select="./ram:SpecifiedTaxRegistration/ram:ID[@schemeID='VA']"/>
          <xsl:apply-templates mode="BT-32"
                               select="./ram:SpecifiedTaxRegistration/ram:ID[@schemeID='FC']"/>
          <xsl:apply-templates mode="BT-33" select="./ram:Description"/>
@@ -448,7 +448,7 @@
       </xr:Seller_legal_registration_identifier>
    </xsl:template>
    <xsl:template mode="BT-31"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:SpecifiedTaxRegistration/ram:ID[@schemeID=('VA', 'VAT')]">
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:SpecifiedTaxRegistration/ram:ID[@schemeID='VA']">
       <xr:Seller_VAT_identifier>
          <xsl:attribute name="xr:id" select="'BT-31'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -814,7 +814,6 @@
          <xsl:apply-templates mode="BT-60" select="./ram:GlobalID[exists(@schemeID)]"/>
          <xsl:apply-templates mode="BT-60"
                               select="./ram:ID[empty(following-sibling::ram:GlobalID/@schemeID)]"/>
-         <xsl:apply-templates mode="BT-61" select="./ram:SpecifiedLegalOrganization/ram:ID/@schemeID"/>
          <xsl:apply-templates mode="BT-61" select="./ram:SpecifiedLegalOrganization/ram:ID"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
@@ -848,14 +847,6 @@
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="identifier"/>
       </xr:Payee_identifier>
-   </xsl:template>
-   <xsl:template mode="BT-61"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedLegalOrganization/ram:ID/@schemeID">
-      <xr:Payee_legal_registration_identifier>
-         <xsl:attribute name="xr:id" select="'BT-61'"/>
-         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="identifier"/>
-      </xr:Payee_legal_registration_identifier>
    </xsl:template>
    <xsl:template mode="BT-61"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedLegalOrganization/ram:ID">

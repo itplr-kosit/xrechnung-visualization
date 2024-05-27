@@ -230,18 +230,20 @@
   <entry key="laufzettelHistorie">Processing history</entry>
   <entry key="anlagen">Attachments</entry>
   <entry key="anlagenListe">Documents justifying the invoice</entry>
-  <entry key="date-format">[Y]-[M,2]-[D,2]</entry>
-  <entry key="datetime-format">[Y]-[M,2]-[D,2] [H]:[m]:[s]</entry>
+  <entry key="artikelklassifizierung">Item classification</entry>
+  <entry key="date-format">[Y,4]-[M,2]-[D,2]</entry>
+  <entry key="datetime-format">[Y,4]-[M,2]-[D,2] [H]:[m]:[s]</entry>
   <entry key="amount-format">###,##0.00</entry>
   <entry key="percentage-format">##0.00</entry>
   <entry key="at-least-two-format">###,##0.#################</entry>
   
-  <entry key="sum-of-third-party-payment-amounts" id="BT-DEX-002_sum">Third party payment total</entry>
+  <entry key="sum-of-third-party-payment-amounts">Third party payment total</entry>
 
+  <entry key="no-script">The display of content on this page is limited without JavaScript.</entry>
   <entry key="_disclaimer">We assume no liability for the accuracy of the data.</entry>
   <entry key="_invoice-note-group">Notes on the invoice</entry>
   <entry key="_open">Open</entry>
-    <entry key="no-data">No data available</entry>
+  <entry key="no-data">No data available</entry>
   <entry key="_net">net</entry>
   <entry key="_gross">gross</entry>
   <entry key="_no-content">Areas without content are not displayed!</entry>
