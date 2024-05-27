@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Add fo basic link to pdf visualization (thanks to GitHub user @JannickWeisshaupt)
+
 ## v2023-01-31
 
 This release is compatible with XRechnung 2.3.x
