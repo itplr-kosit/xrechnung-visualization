@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
-  <entry key="xr:Buyer_reference" id="BT-10">Leitweg-ID</entry>
+  <entry key="xr:Buyer_reference" id="BT-10">Käuferreferenz</entry>
   <entry key="xr:Buyer_name" id="BT-44">Name</entry>
   <entry key="xr:Buyer_address_line_1" id="BT-50">Adresszeile 1</entry>
   <entry key="xr:Buyer_address_line_2" id="BT-51">Adresszeile 2</entry>
