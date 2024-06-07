@@ -11,8 +11,10 @@ This release is compatible with XRechnung ?.?.?
 
 ### Fixed
 
+* Wrong German translation for BT-10 (thanks to GitHub user @futurescenario9).
 * Scheme identifier 'VAT' in BT-31 removed from templates
 * Remove condition from BT-29 in cii2xr conversion, which prevent to display multiple BT-20 form different bindings.
+* Display of specification identifier in PDF
 
 ## v2023-11-15
 
