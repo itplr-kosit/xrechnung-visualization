@@ -2170,7 +2170,7 @@
                 <xsl:value-of select="xrf:_('no-data')" />
             </xsl:when>
             <xsl:otherwise>
-                <a href="#{$doc-ref-id}" onClick="downloadData('{$doc-ref-id}', '{xr:Attached_document/@mime_code}', '{xr:Attached_document/@filename}')">
+                <a href="#{$doc-ref-id}" onclick="downloadData('{$doc-ref-id}', '{xr:Attached_document/@mime_code}', '{xr:Attached_document/@filename}')">
                     <xsl:value-of select="xrf:_('_open')" />
                 </a>    
             </xsl:otherwise>
