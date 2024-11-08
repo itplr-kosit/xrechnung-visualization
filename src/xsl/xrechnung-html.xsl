@@ -912,7 +912,7 @@
 
   <xsl:template name="uebersichtZuschlaege" match="xr:DOCUMENT_LEVEL_CHARGES">
     <div class="boxzeile">
-      <div id="uebersichtZuschlaege" class="box">
+      <div class="box uebersichtZuschlaege">
         <div data-title="BG-21" class="BG-21 boxtitel" role="heading" aria-level="2">
           <xsl:value-of select="xrf:_('uebersichtZuschlaege')" />
         </div>
