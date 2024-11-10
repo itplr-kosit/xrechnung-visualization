@@ -1958,7 +1958,7 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Deliver_to_post_code')" />:
           </div>
-          <div data-itle="BT-78" class="BT-78 boxdaten wert">
+          <div data-title="BT-78" class="BT-78 boxdaten wert">
             <xsl:value-of select="xr:DELIVER_TO_ADDRESS/xr:Deliver_to_post_code" />
           </div>
         </div>
