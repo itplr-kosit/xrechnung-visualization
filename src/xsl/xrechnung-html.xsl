@@ -1755,7 +1755,7 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Tax_representative_address_line_2')" />:
           </div>
-          <div data-title="BT-65" class="BT-65boxdaten wert">
+          <div data-title="BT-65" class="BT-65 boxdaten wert">
             <xsl:value-of
               select="xr:SELLER_TAX_REPRESENTATIVE_POSTAL_ADDRESS/xr:Tax_representative_address_line_2" />
           </div>
