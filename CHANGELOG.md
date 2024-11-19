@@ -9,8 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This release is compatible with XRechnung ?.?.?
 
 ### Fixed
+
 * Incorrect id uebersichtZuschlaege in html template
-* Missing white space in xrechnung-html.xsl (thanks to GitHub user @chefarbeiter)
+* Display of BT-65 in xrechnung-html.xsl (thanks to GitHub user @chefarbeiter)
 
 ## v2024-06-20
 
