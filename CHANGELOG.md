@@ -10,6 +10,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Fixed
 * Incorrect id uebersichtZuschlaege in html template
+* Missing white space in xrechnung-html.xsl (thanks to GitHub user @chefarbeiter)
 
 ## v2024-06-20
 
