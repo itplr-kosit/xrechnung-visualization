@@ -12,7 +12,8 @@ This release is compatible with XRechnung ?.?.?
 
 * Broken English translation for BT-23 (thanks to GitHub user @samcandis)
 * Incorrect id uebersichtZuschlaege in html template
-* Display of BT-65 in xrechnung-html.xsl (thanks to GitHub user @chefarbeiter)
+* Display of BT-78 tooltip in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
+* Display of BT-65 in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
 
 ## v2024-06-20
 
