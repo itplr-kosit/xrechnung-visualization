@@ -9,8 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This release is compatible with XRechnung ?.?.?
 
 ### Fixed
+
+* Broken English translation for BT-23 (thanks to GitHub user @samcandis)
 * Incorrect id uebersichtZuschlaege in html template
 * Incorrect div attribute in xrechnung-html.xsl (thanks to GitHub user @chefarbeiter)
+* Display of BT-65 in xrechnung-html.xsl (thanks to GitHub user @chefarbeiter)
 
 ## v2024-06-20
 
