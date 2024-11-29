@@ -557,8 +557,7 @@
    <xsl:template mode="BG-6"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact">
       <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact der Instanz in konkreter Syntax wird auf 3 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-41" select="./ram:DepartmentName"/>
-         <xsl:apply-templates mode="BT-41" select="./ram:PersonName"/>
+         <xsl:apply-templates mode="BT-41" select="."/>
          <xsl:apply-templates mode="BT-42"
                               select="./ram:TelephoneUniversalCommunication/ram:CompleteNumber"/>
          <xsl:apply-templates mode="BT-43" select="./ram:EmailURIUniversalCommunication/ram:URIID"/>
@@ -572,19 +571,23 @@
       </xsl:if>
    </xsl:template>
    <xsl:template mode="BT-41"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact/ram:DepartmentName">
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact">
       <xr:Seller_contact_point>
          <xsl:attribute name="xr:id" select="'BT-41'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="text"/>
-      </xr:Seller_contact_point>
-   </xsl:template>
-   <xsl:template mode="BT-41"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact/ram:PersonName">
-      <xr:Seller_contact_point>
-         <xsl:attribute name="xr:id" select="'BT-41'"/>
-         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="text"/>
+         <xsl:variable name="department" select="ram:DepartmentName"/>
+         <xsl:variable name="person" select="ram:PersonName"/>
+         <xsl:choose>
+            <xsl:when test="$person and $department">
+               <xsl:value-of select="concat($person, ' (', $department, ')')"/>
+            </xsl:when>
+            <xsl:when test="$person">
+               <xsl:value-of select="$person"/>
+            </xsl:when>
+            <xsl:when test="$department">
+               <xsl:value-of select="$department"/>
+            </xsl:when>
+         </xsl:choose>
       </xr:Seller_contact_point>
    </xsl:template>
    <xsl:template mode="BT-42"
@@ -761,8 +764,7 @@
    <xsl:template mode="BG-9"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact">
       <xsl:variable name="bg-contents" as="item()*"><!--Der Pfad /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact der Instanz in konkreter Syntax wird auf 3 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-56" select="./ram:DepartmentName"/>
-         <xsl:apply-templates mode="BT-56" select="./ram:PersonName"/>
+         <xsl:apply-templates mode="BT-56" select="."/>
          <xsl:apply-templates mode="BT-57"
                               select="./ram:TelephoneUniversalCommunication/ram:CompleteNumber"/>
          <xsl:apply-templates mode="BT-58" select="./ram:EmailURIUniversalCommunication/ram:URIID"/>
@@ -776,11 +778,23 @@
       </xsl:if>
    </xsl:template>
    <xsl:template mode="BT-56"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact/ram:DepartmentName">
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact">
       <xr:Buyer_contact_point>
          <xsl:attribute name="xr:id" select="'BT-56'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
-         <xsl:call-template name="text"/>
+         <xsl:variable name="department" select="ram:DepartmentName"/>
+         <xsl:variable name="person" select="ram:PersonName"/>
+         <xsl:choose>
+            <xsl:when test="$person and $department">
+               <xsl:value-of select="concat($person, ' (', $department, ')')"/>
+            </xsl:when>
+            <xsl:when test="$person">
+               <xsl:value-of select="$person"/>
+            </xsl:when>
+            <xsl:when test="$department">
+               <xsl:value-of select="$department"/>
+            </xsl:when>
+         </xsl:choose>
       </xr:Buyer_contact_point>
    </xsl:template>
    <xsl:template mode="BT-56"
