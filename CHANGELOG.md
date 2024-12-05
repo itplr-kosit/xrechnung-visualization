@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* Wrong BT-23 identifier (thanks to GitHub user @samcandis)
+
 ## v2024-06-20
 
 This release is compatible with XRechnung 3.0.x
