@@ -27,7 +27,7 @@
             axf - Antenna House XSL Formatter
             fop - Apache FOP
        -->
-  <xsl:param name="foengine">fop</xsl:param>
+  <xsl:param name="foengine"/>
   
   <!-- Layout of invoce lines: 
             normal - default behaviour

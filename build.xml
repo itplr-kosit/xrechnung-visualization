@@ -368,7 +368,8 @@
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}-tabular"
             style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
-            <factory name="net.sf.saxon.TransformerFactoryImpl"/>            
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/> 
+            <param name="foengine" type="STRING" expression="fop"/>           
             <param name="invoiceline-layout" type="STRING" expression="tabular"/>
             <mapper type="glob" from="*.xml" to="*.fo"/>
         </xslt>
@@ -384,6 +385,7 @@
             style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>            
+            <param name="foengine" type="STRING" expression="fop"/>
             <param name="invoiceline-layout" type="STRING" expression="tabular"/>
             <param name="lang" type="STRING" expression="en"/>
             <mapper type="glob" from="*.xml" to="*.fo"/>
