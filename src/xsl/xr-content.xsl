@@ -9,6 +9,7 @@
   
   <xsl:decimal-format name="de" decimal-separator="," grouping-separator="." NaN="" />
   <xsl:decimal-format name="en" decimal-separator="." grouping-separator="," NaN="" />
+  <xsl:decimal-format name="fr" decimal-separator="," grouping-separator="." NaN="" />
   
   <xsl:template name="uebersicht">
     <xsl:call-template name="page">
