@@ -14,6 +14,7 @@
 
   <xsl:decimal-format name="de" decimal-separator="," grouping-separator="." NaN="" />
   <xsl:decimal-format name="en" decimal-separator="." grouping-separator="," NaN="" />
+  <xsl:decimal-format name="fr" decimal-separator="," grouping-separator="." NaN="" />
 
     <!-- MAIN HTML -->
   <xsl:template match="/xr:invoice">
@@ -912,7 +913,7 @@
 
   <xsl:template name="uebersichtZuschlaege" match="xr:DOCUMENT_LEVEL_CHARGES">
     <div class="boxzeile">
-      <div class="box uebersichtZuschlaege">
+      <div id="uebersichtZuschlaege" class="box">
         <div data-title="BG-21" class="BG-21 boxtitel" role="heading" aria-level="2">
           <xsl:value-of select="xrf:_('uebersichtZuschlaege')" />
         </div>
@@ -1755,7 +1756,7 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Tax_representative_address_line_2')" />:
           </div>
-          <div data-title="BT-65" class="BT-65 boxdaten wert">
+          <div data-title="BT-65" class="BT-65boxdaten wert">
             <xsl:value-of
               select="xr:SELLER_TAX_REPRESENTATIVE_POSTAL_ADDRESS/xr:Tax_representative_address_line_2" />
           </div>
@@ -1958,7 +1959,7 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Deliver_to_post_code')" />:
           </div>
-          <div data-title="BT-78" class="BT-78 boxdaten wert">
+          <div data-itle="BT-78" class="BT-78 boxdaten wert">
             <xsl:value-of select="xr:DELIVER_TO_ADDRESS/xr:Deliver_to_post_code" />
           </div>
         </div>
