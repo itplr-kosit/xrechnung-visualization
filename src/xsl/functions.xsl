@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-  xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"  
+  xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"  # Unresolvable because it quieres a gitlab login
   exclude-result-prefixes="xs math xrf"
   version="2.0">
   
@@ -118,7 +118,7 @@
     <xsl:sequence select="xrf:_($identifier)"></xsl:sequence>
   </xsl:function>  
 
-  <xsl:variable name="amount-picture" select="xrf:_('amount-format')" />
+  <xsl:variable name="amount-picture" select="xrf:_('amount-format')" /> # amount-format can not be found anywhere except here and the "functions" is not visible
   <xsl:variable name="at-least-two-picture" select="xrf:_('at-least-two-format')" />
 
   <xsl:function name="xrf:format-with-at-least-two-digits" as="xs:string">
