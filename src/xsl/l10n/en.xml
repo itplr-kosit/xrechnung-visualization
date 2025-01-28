@@ -1,4 +1,4 @@
-<?xml version = "1.0" encoding = "UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <properties>
   <entry key="xr:Buyer_reference" id="BT-10">Buyer reference</entry>
   <entry key="xr:Buyer_name" id="BT-44">Name</entry>
@@ -16,7 +16,7 @@
   <entry key="xr:Seller_name" id="BT-27">Company name</entry>
   <entry key="xr:Seller_address_line_1" id="BT-35">Address line 1</entry>
   <entry key="xr:Seller_address_line_2" id="BT-36">Address line 2</entry>
-  <entry key="xr:Seller_address_line_3">Address line 3</entry>
+  <entry key="xr:Seller_address_line_3" id="BT-162">Address line 3</entry>
   <entry key="xr:Seller_post_code" id="BT-38">ZIP</entry>
   <entry key="xr:Seller_city" id="BT-37">Location</entry>
   <entry key="xr:Seller_country_subdivision" id="BT-39">State</entry>
@@ -45,7 +45,7 @@
   <entry key="xr:Invoice_total_amount_without_VAT" id="BT-109">Total amount</entry>
   <entry key="xr:Invoice_total_VAT_amount" id="BT-110">Total VAT</entry>
   <entry key="xr:Invoice_total_VAT_amount_in_accounting_currency" id="BT-111">Total VAT in accounting currency</entry>
-  <entry key="xr:Invoice_total_amount_with_VAT" id="BT-112">Total</entry> 
+  <entry key="xr:Invoice_total_amount_with_VAT" id="BT-112">Total</entry>
   <entry key="xr:Paid_amount" id="BT-113">Already paid</entry>
   <entry key="xr:Rounding_amount" id="BT-114">Rounding amount</entry>
   <entry key="xr:Amount_due_for_payment" id="BT-115">Amount due</entry>
@@ -82,7 +82,7 @@
   <entry key="xr:Mandate_reference_identifier" id="BT-89">Mandate reference no.</entry>
   <entry key="xr:Debited_account_identifier" id="BT-91">Debited account identifier</entry>
   <entry key="xr:Bank_assigned_creditor_identifier" id="BT-90">Creditor ID</entry>
-  <!-- BG-17 Credit Transfer-->
+  <!-- BG-17 Credit Transfer -->
   <entry key="xr:Payment_account_name" id="BT-85">Account holder</entry>
   <entry key="xr:Payment_account_identifier" id="BT-84">Account identifier</entry>
   <entry key="xr:Payment_service_provider_identifier" id="BT-86">BIC</entry>
@@ -91,8 +91,7 @@
   <!-- BG-4 Seller and others -->
   <entry key="xr:Seller_trading_name" id="BT-28">Different trading name</entry>
   <entry key="xr:Seller_electronic_address" id="BT-34">Electronic address</entry>
-  <entry key="xr:Seller_electronic_address/@scheme_identifier" id="BT-34_scheme">Electronic address
-    scheme</entry>
+  <entry key="xr:Seller_electronic_address/@scheme_identifier" id="BT-34_scheme">Electronic address scheme</entry>
   <entry key="xr:Seller_legal_registration_identifier" id="BT-30">Legal registration identifier</entry>
   <entry key="xr:Seller_legal_registration_identifier/@scheme_identifier" id="BT-30_scheme">Legal registration identifier scheme</entry>
   <entry key="xr:Seller_VAT_identifier" id="BT-31">VAT ID</entry>
@@ -135,6 +134,7 @@
   <entry key="xr:Receiving_advice_reference" id="BT-15">Receiving advice reference</entry>
   <entry key="xr:Despatch_advice_reference" id="BT-16">Despatch advice reference</entry>
   <entry key="xr:Business_process_type" id="BT-23">Process identifier</entry>
+  <entry key="xr:Business_process_type_identifier" id="BT-23">Process identifier</entry>
   <entry key="xr:Specification_identifier" id="BT-24">Specification identifier</entry>
   <entry key="xr:Invoiced_object_identifier" id="BT-18">Object identifier</entry>
   <entry key="xr:Invoiced_object_identifier/@scheme_identifier" id="BT-18_scheme">Object identifier scheme</entry>
@@ -151,8 +151,8 @@
   <entry key="xr:Attached_document" id="BT-125">Attached document</entry>
   <entry key="xr:Attached_document/@mime_code" id="BT-125_mime_code">MIME type of the attached document</entry>
   <entry key="xr:Attached_document/@filename" id="BT-125_filename">Name of the attachment document</entry>
-  <entry key="xrv:timestamp">Date / time</entry>
-  <entry key="xrv:subject">Subject</entry>
+  <entry key="xrv:zeitstempel">Date / time</entry>
+  <entry key="xrv:betreff">Subject</entry>
   <entry key="xrv:text">Text</entry>
   <entry key="xrv:details">Details</entry>
   <entry key="xr:Invoice_line_identifier" id="BT-126">Identifier</entry>
@@ -236,9 +236,7 @@
   <entry key="amount-format">###,##0.00</entry>
   <entry key="percentage-format">##0.00</entry>
   <entry key="at-least-two-format">###,##0.#################</entry>
-  
   <entry key="sum-of-third-party-payment-amounts">Third party payment total</entry>
-
   <entry key="no-script">The display of content on this page is limited without JavaScript.</entry>
   <entry key="_disclaimer">We assume no liability for the accuracy of the data.</entry>
   <entry key="_invoice-note-group">Notes on the invoice</entry>

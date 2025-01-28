@@ -14,6 +14,7 @@
 
   <xsl:decimal-format name="de" decimal-separator="," grouping-separator="." NaN="" />
   <xsl:decimal-format name="en" decimal-separator="." grouping-separator="," NaN="" />
+  <xsl:decimal-format name="fr" decimal-separator="," grouping-separator="." NaN="" />
 
     <!-- MAIN HTML -->
   <xsl:template match="/xr:invoice">
