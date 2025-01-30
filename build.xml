@@ -85,7 +85,7 @@
         <echo>Build date: ${build.date}</echo>
         <!-- Create the build directory structure used by compile -->
         <mkdir dir="${build.dir}"/>
-        <mkdir dir="${download.dir}"/>
+        <mkdir dir="${download.dir}"/>        
         <mkdir dir="${dist.dir}"/>
         <mkdir dir="${lib.dir}"/>
         <mkdir dir="${fop.home}"/>
@@ -106,6 +106,21 @@
         <available file="${fop.home}/${fop.jar}" property="dep.fop.available"/>
         <available file="${lib.dir}/${vnu.jar}" property="dep.vnu.available"/>
 
+    </target>
+
+    <target name="fonts-available">
+        <condition property="font.dir.exists">
+            <available file="${download.dir}/fonts" type="dir"/>
+        </condition>
+    </target>
+
+    <target name="provide-fonts" depends="init, fonts-available" unless="font.dir.exists" description="Download fonts for pdf visualisation">
+        <exec executable="git" failonerror="true">
+            <arg line="clone https://github.com/tecnickcom/tc-font-pdfa.git ${download.dir}/fonts"/>
+        </exec>
+        <copy todir="${download.dir}/fonts/pfb">
+            <fileset dir="${download.dir}/fonts/afm"/>
+        </copy>
     </target>
 
     <target name="provide-saxon" depends="init" unless="dep.saxon.available"
@@ -245,7 +260,7 @@
     </target>
 
     <target name="dependency-resolve"
-        depends="init, provide-fop, provide-validator, provide-validator-configuration, provide-saxon, provide-testsuite, provide-vnu">
+        depends="init, provide-fop, provide-validator, provide-validator-configuration, provide-saxon, provide-testsuite, provide-vnu, provide-fonts">
         <taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop">
             <classpath>
                 <fileset dir="${fop.home}">
