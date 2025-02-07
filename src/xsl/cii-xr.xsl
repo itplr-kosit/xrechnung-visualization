@@ -1942,23 +1942,27 @@
                               select="./ram:GrossPriceProductTradePrice/ram:AppliedTradeAllowanceCharge/ram:ActualAmount"/>
          <xsl:apply-templates mode="BT-148"
                               select="./ram:GrossPriceProductTradePrice/ram:ChargeAmount"/>
-         <xr:Item_price_base_quantity>
-            <xsl:attribute name="xr:id" select="'BT-149'"/>
-            <xsl:attribute name="xr:src" select="'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount|/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:AppliedTradeAllowanceCharge/ram:ActualAmount'"/>
-            <xsl:choose>
-               <xsl:when test="./ram:NetPriceProductTradePrice/ram:BasisQuantity != ./ram:GrossPriceProductTradePrice/ram:BasisQuantity">
-                  <xsl:apply-templates mode="BT-149"
-                     select="./ram:NetPriceProductTradePrice/ram:BasisQuantity"/>
-                  <xsl:value-of select="';'"/>
-                  <xsl:apply-templates mode="BT-149"
-                     select="./ram:GrossPriceProductTradePrice/ram:BasisQuantity"/>
-               </xsl:when>
-               <xsl:otherwise>
-                  <xsl:apply-templates mode="BT-149"
-                     select="./ram:NetPriceProductTradePrice/ram:BasisQuantity"/>
-               </xsl:otherwise>
-            </xsl:choose>
-         </xr:Item_price_base_quantity>         
+         <xsl:if test="./ram:NetPriceProductTradePrice/ram:BasisQuantity | ./ram:GrossPriceProductTradePrice/ram:BasisQuantity">
+            <xr:Item_price_base_quantity>
+               <xsl:attribute name="xr:id" select="'BT-149'"/>
+               <xsl:attribute name="xr:src" select="'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity | /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity'"/>
+               <xsl:choose>
+                  <xsl:when test="./ram:NetPriceProductTradePrice/ram:BasisQuantity != ./ram:GrossPriceProductTradePrice/ram:BasisQuantity">
+                     <xsl:apply-templates mode="BT-149"
+                        select="./ram:NetPriceProductTradePrice/ram:BasisQuantity"/>                        
+                     <xsl:value-of select="';'"/>
+                     <xsl:apply-templates mode="BT-149"
+                        select="./ram:GrossPriceProductTradePrice/ram:BasisQuantity"/>                        
+                  </xsl:when>
+                  <xsl:otherwise>
+                     <xsl:apply-templates mode="BT-149"
+                           select="./ram:NetPriceProductTradePrice/ram:BasisQuantity"/>
+                     <xsl:apply-templates mode="BT-149"
+                           select="./ram:GrossPriceProductTradePrice/ram:BasisQuantity"/>
+                  </xsl:otherwise>
+               </xsl:choose>
+            </xr:Item_price_base_quantity>
+         </xsl:if>
          <xsl:apply-templates mode="BT-150"
                               select="./ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode"/>
       </xsl:variable>
@@ -1994,14 +1998,14 @@
          <xsl:call-template name="unit_price_amount"/>
       </xr:Item_gross_price>
    </xsl:template>
-   <xsl:template mode="BT-149"
+   <!--<xsl:template mode="BT-149"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity">
       <xsl:call-template name="quantity"/>
    </xsl:template>
    <xsl:template mode="BT-149"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity">
       <xsl:call-template name="quantity"/>      
-   </xsl:template>
+   </xsl:template>-->
    <xsl:template mode="BT-150"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode">
       <xr:Item_price_base_quantity_unit_of_measure>
