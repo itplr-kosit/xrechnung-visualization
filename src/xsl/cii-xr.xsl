@@ -1997,15 +1997,7 @@
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="unit_price_amount"/>
       </xr:Item_gross_price>
-   </xsl:template>
-   <!--<xsl:template mode="BT-149"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity">
-      <xsl:call-template name="quantity"/>
-   </xsl:template>
-   <xsl:template mode="BT-149"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity">
-      <xsl:call-template name="quantity"/>      
-   </xsl:template>-->
+   </xsl:template>  
    <xsl:template mode="BT-150"
                  match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode">
       <xr:Item_price_base_quantity_unit_of_measure>
