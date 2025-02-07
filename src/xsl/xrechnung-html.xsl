@@ -1274,7 +1274,7 @@
                 <xsl:value-of select="xrf:_('xr:Invoiced_quantity')" />
               </div>
               <div data-title="BT-129" class="BT-129 boxdaten detailSp2" role="cell">
-                <xsl:value-of select="xr:Invoiced_quantity" />
+                <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:Invoiced_quantity,$lang)" />
               </div>
             </div>
             <div class="rechnungsZeile" role="row">
@@ -1327,7 +1327,7 @@
                 <xsl:value-of select="xrf:_('xr:Item_price_base_quantity')" />:
               </div>
               <div data-title="BT-149" class="BT-149 boxdaten wert">
-                <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_base_quantity" />
+                <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_price_base_quantity,$lang)" />
               </div>
             </div>
             <div class="boxzeile" role="listitem">
