@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* German label for BT-56 "Contact point" to "Kontaktstelle"
+
 ### Fixed
 
 * Broken English translation for BT-23 (thanks to GitHub user @samcandis)
