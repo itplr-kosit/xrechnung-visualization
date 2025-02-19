@@ -10,7 +10,7 @@
   <entry key="xr:Buyer_country_code" id="BT-55">Ländercode</entry>
   <entry key="xr:Buyer_identifier" id="BT-46">Kennung</entry>
   <entry key="xr:Buyer_identifier/@scheme_identifier" id="BT-46_scheme">Schema der Kennung</entry>
-  <entry key="xr:Buyer_contact_point" id="BT-56">Name</entry>
+  <entry key="xr:Buyer_contact_point" id="BT-56">Kontaktstelle </entry>
   <entry key="xr:Buyer_contact_telephone_number" id="BT-57">Telefon</entry>
   <entry key="xr:Buyer_contact_email_address" id="BT-58">E-Mail-Adresse</entry>
   <entry key="xr:Seller_name" id="BT-27">Firmenname</entry>
