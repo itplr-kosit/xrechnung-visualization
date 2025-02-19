@@ -18,6 +18,7 @@ This release is compatible with XRechnung ?.?.?
 * Incorrect id uebersichtZuschlaege in html template
 * Display of BT-78 tooltip in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
 * Display of BT-65 in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
+* Several attributes in localization files `l10n/de.xml` and `l10n/en.xml`
 
 ## v2024-06-20
 
