@@ -10,7 +10,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Changed
 
-* German label for BT-56
+* German label for BT-56 "Contact point" to "Kontaktstelle"
 
 ### Fixed
 
