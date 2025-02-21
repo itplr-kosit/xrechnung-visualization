@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* German label for BT-56 "Contact point" to "Kontaktstelle"
+
 ### Fixed
 
 * Wrong BT-23 identifier (thanks to GitHub user @samcandis)
@@ -15,6 +19,7 @@ This release is compatible with XRechnung ?.?.?
 * Incorrect id uebersichtZuschlaege in html template
 * Display of BT-78 tooltip in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
 * Display of BT-65 in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
+* Several attributes in localization files `l10n/de.xml` and `l10n/en.xml`
 
 ## v2024-06-20
 
