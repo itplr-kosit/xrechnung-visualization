@@ -559,7 +559,7 @@
           <xsl:with-param name="layout" select="'einspaltig'"/>
           <xsl:with-param name="content">
             <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_discount">
-              <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount,$at-least-two-picture,$lang)"/>
+              <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount[1],$at-least-two-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_gross_price">
               <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price,$at-least-two-picture,$lang)"/>
