@@ -368,8 +368,44 @@
   <xsl:template name="uebersichtZahlungInfo_Content">
     <xsl:call-template name="list">
       <xsl:with-param name="content">        
-        <xsl:apply-templates mode="list-entry" select="xr:Payment_terms"/>        
-        <xsl:apply-templates mode="list-entry" select="xr:Payment_due_date"/>       
+        <!-- <xsl:apply-templates mode="list-entry" select="xr:Payment_terms"/> -->
+        <!-- <xsl:apply-templates mode="list-entry" select="xr:Payment_due_date"/> -->
+        <!--
+             We are going to tokenize the values of multiple elements that are related to each other. 
+             Therefore, we store a list of items into a variable per element.
+             This way, it is easy to correlate the items from all elements if necessary
+             and the tokenization is done only once per element.
+        -->
+        <xsl:variable name="terms">
+          <items>
+            <xsl:for-each select="tokenize(xr:Payment_terms,';')">
+              <item>
+                <xsl:value-of select="normalize-space(.)"/>
+              </item>
+            </xsl:for-each>
+          </items>
+        </xsl:variable>
+        <xsl:variable name="dates">
+          <items>
+            <xsl:for-each select="tokenize(xr:Payment_due_date,';')">
+              <item>
+                <xsl:value-of select="normalize-space(.)"/>
+              </item>
+            </xsl:for-each>
+          </items>
+        </xsl:variable>
+        <xsl:for-each select="$terms/items/item">
+          <xsl:variable name="termpos" select="position()"/>
+          <xsl:variable name="duedate" select="$dates/items/item[$termpos]"/>
+          <xsl:call-template name="list-entry-bt-7">
+            <xsl:with-param name="value" select="string(.)"/>
+            <xsl:with-param name="field-mapping-identifier" select="'xr:Payment_terms'"/>
+          </xsl:call-template>
+          <xsl:call-template name="list-entry-bt-7">
+            <xsl:with-param name="value" select="format-date(xs:date($duedate),xrf:_('date-format'))"/>
+            <xsl:with-param name="field-mapping-identifier" select="'xr:Payment_due_date'"/>
+          </xsl:call-template>
+        </xsl:for-each>
         <xsl:apply-templates mode="list-entry" select="xr:PAYMENT_INSTRUCTIONS/xr:Payment_means_type_code"/>
         <xsl:apply-templates mode="list-entry" select="xr:PAYMENT_INSTRUCTIONS/xr:Payment_means_text"/>
         <xsl:apply-templates mode="list-entry" select="xr:PAYMENT_INSTRUCTIONS/xr:Remittance_information"/>
@@ -821,7 +857,7 @@
             <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Specification_identifier">
               <xsl:with-param name="value" select="xrf:handle-specification-identifier(xr:PROCESS_CONTROL/xr:Specification_identifier)"></xsl:with-param>
             </xsl:apply-templates>
-            <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Business_process_type"/>
+            <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Business_process_type_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:Invoiced_object_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:Invoiced_object_identifier/@scheme_identifier">
               <xsl:with-param name="field-mapping-identifier" select="'xr:Invoiced_object_identifier/@scheme_identifier'"/>
