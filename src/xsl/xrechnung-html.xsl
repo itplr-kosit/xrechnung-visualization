@@ -1310,7 +1310,7 @@
               </div>
               <div data-title="BT-147" class="BT-147 boxdaten wert">
                 <xsl:value-of
-                  select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_price_discount,$lang)" />
+                  select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_price_discount[1],$lang)" />
               </div>
             </div>
             <div class="boxzeile" role="listitem">
