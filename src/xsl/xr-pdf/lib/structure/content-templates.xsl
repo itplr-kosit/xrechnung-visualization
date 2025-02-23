@@ -676,7 +676,7 @@
           <xsl:if test="xr:PRICE_DETAILS/xr:Item_price_discount">
             <xsl:value-of select="xrf:field-label('xr:Item_price_discount')"/>
             <xsl:text>: </xsl:text>
-            <xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount, $at-least-two-picture, $lang)"/>
+            <xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount[1], $at-least-two-picture, $lang)"/>
           </xsl:if>
         </xsl:with-param>
         <xsl:with-param name="col2">
