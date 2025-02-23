@@ -10,7 +10,7 @@
   <entry key="xr:Buyer_country_code" id="BT-55">Ländercode</entry>
   <entry key="xr:Buyer_identifier" id="BT-46">Kennung</entry>
   <entry key="xr:Buyer_identifier/@scheme_identifier" id="BT-46_scheme">Schema der Kennung</entry>
-  <entry key="xr:Buyer_contact_point" id="BT-56">Name</entry>
+  <entry key="xr:Buyer_contact_point" id="BT-56">Kontaktstelle </entry>
   <entry key="xr:Buyer_contact_telephone_number" id="BT-57">Telefon</entry>
   <entry key="xr:Buyer_contact_email_address" id="BT-58">E-Mail-Adresse</entry>
   <entry key="xr:Seller_name" id="BT-27">Firmenname</entry>
@@ -134,7 +134,6 @@
   <entry key="xr:Receiving_advice_reference" id="BT-15">Kennung der Empfangsbestätigung</entry>
   <entry key="xr:Despatch_advice_reference" id="BT-16">Kennung der Versandanzeige</entry>
   <entry key="xr:Business_process_type" id="BT-23">Prozesskennung</entry>
-  <entry key="xr:Business_process_type_identifier" id="BT-23">Prozesskennung</entry>
   <entry key="xr:Specification_identifier" id="BT-24">Spezifikationskennung</entry>
   <entry key="xr:Invoiced_object_identifier" id="BT-18">Objektkennung</entry>
   <entry key="xr:Invoiced_object_identifier/@scheme_identifier" id="BT-18_scheme">Schema der Objektkennung</entry>

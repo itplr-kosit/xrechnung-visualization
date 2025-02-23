@@ -385,7 +385,7 @@ Die Gruppe kann verwendet werden, um auf eine dem Erwerber bekannte Dokumentennu
    </xs:complexType>
    <xs:complexType name="PROCESS_CONTROLType">
       <xs:sequence>
-         <xs:element name="Business_process_type_identifier"
+         <xs:element name="Business_process_type"
                      type="xr:text"
                      minOccurs="1"
                      maxOccurs="1">
