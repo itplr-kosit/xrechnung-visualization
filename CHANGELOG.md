@@ -21,6 +21,10 @@ This release is compatible with XRechnung ?.?.?
 * Display of BT-65 in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
 * Several attributes in localization files `l10n/de.xml` and `l10n/en.xml`
 
+### Changed
+
+* FO engine parameter for PDF transformation (thanks to GitHub user @yegorich)
+
 ## v2024-06-20
 
 This release is compatible with XRechnung 3.0.x
