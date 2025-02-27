@@ -12,8 +12,9 @@ This release is compatible with XRechnung ?.?.?
 * Broken English translation for BT-23 (thanks to GitHub user @samcandis)
 * Incorrect id uebersichtZuschlaege in html template
 
-### Changed 
-* Parameter of foengine for pdf transformation (thanks to GitHub user @yegorich)
+### Changed
+
+* FO engine parameter for PDF transformation (thanks to GitHub user @yegorich)
 
 ## v2024-06-20
 
