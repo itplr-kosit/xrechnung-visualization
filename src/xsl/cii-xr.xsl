@@ -335,11 +335,11 @@
    </xsl:template>
    <xsl:template mode="BT-23"
                  match="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID">
-      <xr:Business_process_type_identifier>
+      <xr:Business_process_type>
          <xsl:attribute name="xr:id" select="'BT-23'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="text"/>
-      </xr:Business_process_type_identifier>
+      </xr:Business_process_type>
    </xsl:template>
    <xsl:template mode="BT-24"
                  match="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID">
@@ -387,7 +387,7 @@
          <xsl:apply-templates mode="BT-28"
                               select="./ram:SpecifiedLegalOrganization/ram:TradingBusinessName"/>
          <xsl:apply-templates mode="BT-29"
-                              select="./ram:ID[empty(following-sibling::ram:GlobalID/@schemeID)]"/>
+                              select="./ram:ID"/>
          <xsl:apply-templates mode="BT-29" select="./ram:GlobalID[exists(@schemeID)]"/>
          <xsl:apply-templates mode="BT-30" select="./ram:SpecifiedLegalOrganization/ram:ID"/>
          <xsl:apply-templates mode="BT-31"
@@ -424,7 +424,7 @@
       </xr:Seller_trading_name>
    </xsl:template>
    <xsl:template mode="BT-29"
-                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID[empty(following-sibling::ram:GlobalID/@schemeID)]">
+                 match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID">
       <xr:Seller_identifier>
          <xsl:attribute name="xr:id" select="'BT-29'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>

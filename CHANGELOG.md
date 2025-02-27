@@ -4,7 +4,6 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-
 ## UNRELEASED
 
 This release is compatible with XRechnung ?.?.?
@@ -13,9 +12,28 @@ This release is compatible with XRechnung ?.?.?
 
 * Add fo basic link to pdf visualization (thanks to GitHub user @JannickWeisshaupt)
 
+### Changed
+
+* German label for BT-56 "Contact point" to "Kontaktstelle"
+
 ### Fixed
 
-* Scheme identifier 'VAT' in BT-31 removed from templates
+* Wrong BT-23 identifier (thanks to GitHub user @samcandis)
+* Broken English translation for BT-23 (thanks to GitHub user @samcandis)
+* Incorrect id uebersichtZuschlaege in html template
+* Display of BT-78 tooltip in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
+* Display of BT-65 in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
+* Several attributes in localization files `l10n/de.xml` and `l10n/en.xml`
+
+## v2024-06-20
+
+This release is compatible with XRechnung 3.0.x
+
+### Fixed
+
+* Incorrect German translation for BT-10 (thanks to GitHub user @futurescenario9)
+* BT-31: scheme identifier 'VAT' removed from templates
+* condition removed from BT-29 in cii2xr conversion, which prevented display of multiple BT-29 from different bindings
 * Display of specification identifier in PDF
 
 ## v2023-11-15
