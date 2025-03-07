@@ -1944,7 +1944,7 @@
                               select="./ram:GrossPriceProductTradePrice/ram:ChargeAmount"/>
          <xr:Item_price_base_quantity>
             <xsl:attribute name="xr:id" select="'BT-149'"/>
-            <xsl:attribute name="xr:src" select="'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount|/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:AppliedTradeAllowanceCharge/ram:ActualAmount'"/>
+            <xsl:attribute name="xr:src" select="'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity | /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity'"/>
             <xsl:choose>
                <xsl:when test="./ram:NetPriceProductTradePrice/ram:BasisQuantity != ./ram:GrossPriceProductTradePrice/ram:BasisQuantity">
                   <xsl:apply-templates mode="BT-149"

@@ -20,6 +20,7 @@ This release is compatible with XRechnung ?.?.?
 * Display of BT-78 tooltip in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
 * Display of BT-65 in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
 * Several attributes in localization files `l10n/de.xml` and `l10n/en.xml`
+* Wrong src path of BT-149 in `cii-xr.xsl`
 
 ### Changed
 
