@@ -335,11 +335,11 @@
    </xsl:template>
    <xsl:template mode="BT-23"
                  match="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID">
-      <xr:Business_process_type_identifier>
+      <xr:Business_process_type>
          <xsl:attribute name="xr:id" select="'BT-23'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
          <xsl:call-template name="text"/>
-      </xr:Business_process_type_identifier>
+      </xr:Business_process_type>
    </xsl:template>
    <xsl:template mode="BT-24"
                  match="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID">
