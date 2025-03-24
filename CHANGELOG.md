@@ -11,6 +11,7 @@ This release is compatible with XRechnung 3.0.x
 ### Changed
 
 * German label for BT-56 "Contact point" to "Kontaktstelle"
+* FO engine parameter for PDF transformation (thanks to GitHub user @yegorich)
 
 ### Fixed
 
@@ -21,10 +22,6 @@ This release is compatible with XRechnung 3.0.x
 * Display of BT-65 in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
 * Several attributes in localization files `l10n/de.xml` and `l10n/en.xml`
 * RDF tags in pdf transformation (thanks to GitHub user @jstaerk)
-
-### Changed
-
-* FO engine parameter for PDF transformation (thanks to GitHub user @yegorich)
 
 ## v2024-06-20
 
