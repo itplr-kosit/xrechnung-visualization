@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* Bug in CII to XR transformation of BT-149 "Item price base quantitiy" and BT-150 "Item price base quantity unit of measure code"
+
 ### Changed
 
 * German label for BT-56 "Contact point" to "Kontaktstelle"
@@ -20,7 +24,6 @@ This release is compatible with XRechnung ?.?.?
 * Incorrect id uebersichtZuschlaege in html template
 * Display of BT-78 tooltip in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
 * Display of BT-65 in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
-* Bug in CII to XR transformation of BT-149
 * Several attributes in localization files `l10n/de.xml` and `l10n/en.xml`
 * RDF tags in pdf transformation (thanks to GitHub user @jstaerk)
 
