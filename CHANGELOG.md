@@ -10,7 +10,12 @@ This release is compatible with XRechnung ?.?.?
 
 ### Fixed
 
-* Bug in CII to XR transformation of BT-149 "Item price base quantitiy" and BT-150 "Item price base quantity unit of measure code"
+* Bug in CII to XR transformation of BT-149 "Item price base quantity" and BT-150 "Item price base quantity unit of measure code"
+* Localization of decimal seperators of BT-129 "Invoiced quantity" and BT-149 "Item price base quantity"
+
+## v2025-03-21
+
+This release is compatible with XRechnung 3.0.x
 
 ### Changed
 
