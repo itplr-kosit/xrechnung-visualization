@@ -12,6 +12,10 @@ This release is compatible with XRechnung ?.?.?
 
 * Bug in CII to XR transformation of BT-149 "Item price base quantitiy" and BT-150 "Item price base quantity unit of measure code"
 
+## v2025-03-21
+
+This release is compatible with XRechnung 3.0.x
+
 ### Changed
 
 * German label for BT-56 "Contact point" to "Kontaktstelle"
