@@ -8,9 +8,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* BT-149 source path in `cii-xr.xsl`
+
+## v2025-03-21
+
+This release is compatible with XRechnung 3.0.x
+
 ### Changed
 
 * German label for BT-56 "Contact point" to "Kontaktstelle"
+* FO engine parameter for PDF transformation (thanks to GitHub user @yegorich)
 
 ### Fixed
 
@@ -20,11 +29,6 @@ This release is compatible with XRechnung ?.?.?
 * Display of BT-78 tooltip in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
 * Display of BT-65 in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
 * Several attributes in localization files `l10n/de.xml` and `l10n/en.xml`
-* Wrong src path of BT-149 in `cii-xr.xsl`
-
-### Changed
-
-* FO engine parameter for PDF transformation (thanks to GitHub user @yegorich)
 
 ## v2024-06-20
 
