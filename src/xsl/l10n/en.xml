@@ -16,7 +16,7 @@
   <entry key="xr:Seller_name" id="BT-27">Company name</entry>
   <entry key="xr:Seller_address_line_1" id="BT-35">Address line 1</entry>
   <entry key="xr:Seller_address_line_2" id="BT-36">Address line 2</entry>
-  <entry key="xr:Seller_address_line_3">Address line 3</entry>
+  <entry key="xr:Seller_address_line_3" id="BT-162">Address line 3</entry>
   <entry key="xr:Seller_post_code" id="BT-38">ZIP</entry>
   <entry key="xr:Seller_city" id="BT-37">Location</entry>
   <entry key="xr:Seller_country_subdivision" id="BT-39">State</entry>
@@ -151,8 +151,8 @@
   <entry key="xr:Attached_document" id="BT-125">Attached document</entry>
   <entry key="xr:Attached_document/@mime_code" id="BT-125_mime_code">MIME type of the attached document</entry>
   <entry key="xr:Attached_document/@filename" id="BT-125_filename">Name of the attachment document</entry>
-  <entry key="xrv:timestamp">Date / time</entry>
-  <entry key="xrv:subject">Subject</entry>
+  <entry key="xrv:zeitstempel">Date / time</entry>
+  <entry key="xrv:betreff">Subject</entry>
   <entry key="xrv:text">Text</entry>
   <entry key="xrv:details">Details</entry>
   <entry key="xr:Invoice_line_identifier" id="BT-126">Identifier</entry>
