@@ -17,6 +17,10 @@ This release is compatible with XRechnung ?.?.?
 
 This release is compatible with XRechnung 3.0.x
 
+## v2025-03-21
+
+This release is compatible with XRechnung 3.0.x
+
 ### Changed
 
 * German label for BT-56 "Contact point" to "Kontaktstelle"
