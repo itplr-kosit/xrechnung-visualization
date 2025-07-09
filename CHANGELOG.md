@@ -4,18 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## UNRELEASED
+## v2025-07-10
 
-This release is compatible with XRechnung ?.?.?
+This release is compatible with XRechnung 3.0.x
 
 ### Fixed
 
 * Bug in CII to XR transformation of BT-149 "Item price base quantity" and BT-150 "Item price base quantity unit of measure code"
 * Localization of decimal seperators of BT-129 "Invoiced quantity" and BT-149 "Item price base quantity" in HTML and PDF
-
-## v2025-03-21
-
-This release is compatible with XRechnung 3.0.x
 
 ## v2025-03-21
 
