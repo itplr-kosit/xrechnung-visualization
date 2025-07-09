@@ -571,7 +571,7 @@
       </fo:table-cell>
       <fo:table-cell text-align="center">
         <fo:block>
-          <xsl:value-of select="xr:Invoiced_quantity"/>
+          <xsl:value-of select="format-number(xr:Invoiced_quantity, $at-least-two-picture, $lang)"/>
           <xsl:text> </xsl:text>
           <xsl:value-of select="xr:Invoiced_quantity_unit_of_measure_code"/>
         </fo:block>
@@ -581,7 +581,7 @@
       </fo:table-cell>
       <fo:table-cell text-align="center">
         <fo:block>
-          <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_base_quantity"/>
+          <xsl:value-of select="format-number(xr:PRICE_DETAILS/xr:Item_price_base_quantity, $at-least-two-picture, $lang)"/>
           <xsl:text> </xsl:text>
           <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_base_quantity_unit_of_measure"/>
         </fo:block>
