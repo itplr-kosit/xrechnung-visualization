@@ -545,7 +545,9 @@
       <xsl:with-param name="content">
         <xsl:call-template name="value-list">
           <xsl:with-param name="content">
-            <xsl:apply-templates mode="value-list-entry" select="xr:Invoiced_quantity"/>
+            <xsl:apply-templates mode="value-list-entry" select="xr:Invoiced_quantity">
+              <xsl:with-param name="value" select="xrf:format-with-at-least-two-digits(xr:Invoiced_quantity,$lang)"/>
+            </xsl:apply-templates>
             <xsl:apply-templates mode="value-list-entry" select="xr:Invoiced_quantity_unit_of_measure_code"/>
             <xsl:apply-templates mode="value-list-entry" select="xr:PRICE_DETAILS/xr:Item_net_price">
               <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_net_price,$at-least-two-picture,$lang)"/>
@@ -564,7 +566,9 @@
             <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_gross_price">
               <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price,$at-least-two-picture,$lang)"/>
             </xsl:apply-templates>
-            <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_base_quantity"/>
+            <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_base_quantity">
+              <xsl:with-param name="value" select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_price_base_quantity,$lang)"/>
+            </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_base_quantity_unit_of_measure"/>
             <xsl:apply-templates mode="list-entry" select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_category_code"/>
             <xsl:apply-templates mode="list-entry" select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate">
