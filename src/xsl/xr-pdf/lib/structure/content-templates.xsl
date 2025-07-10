@@ -365,7 +365,12 @@
     <xsl:param name="title" select="." />
 
     <xsl:if test="normalize-space(.)">
-      <xsl:value-of select="."/>
+      <fo:basic-link>
+        <xsl:attribute name="external-destination">
+          <xsl:value-of select="$title" />
+        </xsl:attribute>
+        <xsl:value-of select="$title" />
+      </fo:basic-link>
     </xsl:if>
   </xsl:template>
 
