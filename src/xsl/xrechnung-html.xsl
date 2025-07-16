@@ -442,7 +442,16 @@
                   <xsl:value-of select="xrf:_('xr:Invoice_type_code')" />:
                 </div>
                 <div data-title="BT-3" class="BT-3 boxdaten wert">
-                  <xsl:value-of select="xr:Invoice_type_code" />
+                  <xsl:variable name="key" select="concat('xr:Invoice_type_code_text.', xr:Invoice_type_code)"/>
+                  <xsl:variable name="localized" select="xrf:_($key)"/>
+                  <xsl:choose>
+                    <xsl:when test="$localized != $key">
+                      <xsl:copy-of select="concat($localized, ' (', xr:Invoice_type_code, ')')"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="xr:Invoice_type_code"/>
+                    </xsl:otherwise>
+                  </xsl:choose>                
                 </div>
               </div>
               <div class="boxzeile" role="listitem">
