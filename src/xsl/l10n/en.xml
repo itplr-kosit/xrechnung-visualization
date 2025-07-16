@@ -254,4 +254,14 @@
   <entry key="_tax-code">Code</entry>
   <entry key="_total">Total</entry>
   <entry key="_page">Page</entry>
+
+  <!-- BG 3 Additonal text for invoice type code -->
+  <entry key="xr:Invoice_type_code_text.326" id="BT-3">Partial invoice</entry>
+  <entry key="xr:Invoice_type_code_text.380" id="BT-3">Commercial invoice</entry>
+  <entry key="xr:Invoice_type_code_text.384" id="BT-3">Corrected invoice</entry>
+  <entry key="xr:Invoice_type_code_text.389" id="BT-3">Self-billed invoice</entry>
+  <entry key="xr:Invoice_type_code_text.381" id="BT-3">Credit note</entry>
+  <entry key="xr:Invoice_type_code_text.875" id="BT-3">Partial construction invoice</entry>
+  <entry key="xr:Invoice_type_code_text.876" id="BT-3">Partial final construction invoice</entry>
+  <entry key="xr:Invoice_type_code_text.877" id="BT-3">Final construction invoice</entry>
 </properties>

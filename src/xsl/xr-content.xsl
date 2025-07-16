@@ -116,7 +116,7 @@
             else
             xr:Invoice_issue_date/text()"/>
         </xsl:apply-templates>
-        <xsl:apply-templates select="xr:Invoice_type_code" mode="list-entry"/>
+        <xsl:apply-templates select="xr:Invoice_type_code" mode="list-entry-bt-3"/>
         <xsl:apply-templates select="xr:Invoice_currency_code" mode="list-entry"/>
         <xsl:for-each select="tokenize(xr:Value_added_tax_point_date,';')">             
           <xsl:call-template name="list-entry-bt-7">
