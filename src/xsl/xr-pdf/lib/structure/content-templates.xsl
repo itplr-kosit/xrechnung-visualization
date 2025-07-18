@@ -7,8 +7,6 @@
                	          xmlns:xrv="http://www.example.org/XRechnung-Viewer"
                	          xmlns:xrf="https://projekte.kosit.org/xrechnung/xrechnung-visualization/functions"
                           xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf"
-						  xmlns:exsl="http://exslt.org/common"
-						  extension-element-prefixes="exsl"
 	        version="2.0">
 
 
@@ -68,33 +66,29 @@
   </xsl:template>
 
   <xsl:template name="spanned-box">
-	<xsl:param name="identifier"/>
-	<xsl:param name="content"/>
+    <xsl:param name="identifier"/>
+    <xsl:param name="content"/>
 
-	<xsl:if test="normalize-space($content)">
-    
-    <xsl:variable name="heading">
-      <xsl:call-template name="field-mapping">
-        <xsl:with-param name="identifier" select="$identifier"/>
-      </xsl:call-template>
-    </xsl:variable>
+    <xsl:if test="normalize-space($content)">
 
-    <!--Convert to node-set to fix page break-->
-    <xsl:variable name="content-nodes" select="exsl:node-set($content)"/>
+      <xsl:variable name="heading">
+        <xsl:call-template name="field-mapping">
+          <xsl:with-param name="identifier" select="$identifier"/>
+        </xsl:call-template>
+      </xsl:variable>
 
-    <fo:block xsl:use-attribute-sets="box-container-bereich"
-              keep-together.within-page="auto">
-      
-      <xsl:call-template name="h2">
-        <xsl:with-param name="titel" select="$heading/label"/>
-      </xsl:call-template>
+      <fo:block xsl:use-attribute-sets="box-container-bereich"
+                keep-together.within-page="auto">
 
-      <xsl:for-each select="$content-nodes/*">
-        <xsl:copy-of select="."/>
-      </xsl:for-each>
+        <xsl:call-template name="h2">
+          <xsl:with-param name="titel" select="$heading/label"/>
+        </xsl:call-template>
 
-    </fo:block>
-	</xsl:if>
+        <xsl:copy-of select="$content"/>
+
+      </fo:block>
+
+    </xsl:if>
   </xsl:template>
 
   
