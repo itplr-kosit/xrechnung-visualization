@@ -1931,7 +1931,7 @@
             select="./cac:AllowanceCharge[cbc:ChargeIndicator = 'false']"/>
          <xsl:apply-templates mode="BG-28"
             select="./cac:AllowanceCharge[cbc:ChargeIndicator = 'true']"/>
-         <xsl:apply-templates mode="BG-29" select="./cac:Price"/>
+         <xsl:apply-templates mode="BG-DEX-07" select="./cac:Price"/>
          <xsl:apply-templates mode="BG-30" select="./cac:Item/cac:ClassifiedTaxCategory"/>
          <xsl:apply-templates mode="BG-31" select="./cac:Item"/>
          <xsl:apply-templates mode="BG-DEX-01" select="cac:SubInvoiceLine"/>
@@ -2057,23 +2057,23 @@
          </xr:SUB_INVOICE_LINE_VAT_INFORMATION>
       </xsl:if>
    </xsl:template>
-   <xsl:template mode="BG-DEX-07" match="cac:SubInvoiceLine/cac:Price">
+   <xsl:template mode="BG-DEX-07" match="cac:Price">
       <xsl:variable name="bg-contents" as="item()*">
-         <!--Der Pfad cac:SubInvoiceLine/cac:Price der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
-         <xsl:apply-templates mode="BT-146" select="cac:Price/cbc:PriceAmount"/>
+         <!--Der Pfad cac:Price der Instanz in konkreter Syntax wird auf 5 Objekte der EN 16931 abgebildet. -->
+         <xsl:apply-templates mode="BT-146" select="./cbc:PriceAmount"/>
          <xsl:apply-templates mode="BT-147"
-            select="cac:Price/cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+                              select="./cac:AllowanceCharge/cbc:Amount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
          <xsl:apply-templates mode="BT-148"
-            select="cac:Price/cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
-         <xsl:apply-templates mode="BT-149" select="cac:Price/cbc:BaseQuantity"/>
-         <xsl:apply-templates mode="BT-150" select="cac:Price/cbc:BaseQuantity/@unitCode"/>
+                              select="./cac:AllowanceCharge/cbc:BaseAmount[preceding-sibling::cbc:ChargeIndicator = 'false']"/>
+         <xsl:apply-templates mode="BT-149" select="./cbc:BaseQuantity"/>
+         <xsl:apply-templates mode="BT-150" select="./cbc:BaseQuantity/@unitCode"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
-         <xr:SUB_INVOICE_PRICE_DETAILS>
+         <xr:PRICE_DETAILS>
             <xsl:attribute name="xr:id" select="'BG-DEX-07'"/>
             <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
             <xsl:sequence select="$bg-contents"/>
-         </xr:SUB_INVOICE_PRICE_DETAILS>
+         </xr:PRICE_DETAILS>
       </xsl:if>
    </xsl:template>
    <xsl:template mode="BG-DEX-09" match="cac:PrepaidPayment">
