@@ -1702,7 +1702,7 @@ Anhangsdokument.</xs:documentation>
             </xs:annotation>
          </xs:element>
          <xs:element name="SUB_INVOICE_LINE"
-                     type="xr:INVOICE_LINEType"
+                     type="xr:SUB_INVOICE_LINEType"
                      minOccurs="0"
                      maxOccurs="unbounded">
             <xs:annotation>
@@ -2047,7 +2047,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
          </xs:element>
          <xs:element name="Invoiced_quantity"
                      type="xr:quantity"
-                     minOccurs="1"
+                     minOccurs="0"
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-129</xs:appinfo>
@@ -2056,7 +2056,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
          </xs:element>
          <xs:element name="Invoiced_quantity_unit_of_measure_code"
                      type="xr:code"
-                     minOccurs="1"
+                     minOccurs="0"
                      maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>BT-130</xs:appinfo>
@@ -2090,15 +2090,15 @@ M (Tax for production, services and importation in Ceuta and Melilla)
                <xs:documentation>Ein Textwert, der angibt, an welcher Stelle die betreffenden Daten in den Finanzkonten des Erwerbers zu buchen sind. Anmerkung: Wenn die Angabe genutzt werden soll, muss der Erwerber dem Verkäufer diese Referenz vor der Rechnungserstellung mitteilen.</xs:documentation>
             </xs:annotation>
          </xs:element>
-         <xs:element name="SUB_INVOICE_ITEM_INFORMATION"
-                     type="xr:SUB_INVOICE_ITEM_INFORMATIONType"
-                     minOccurs="1"
+         <xs:element name="SUB_INVOICE_LINE_PERIOD"
+                     type="xr:SUB_INVOICE_LINE_PERIODType"
+                     minOccurs="0"
                      maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>BG-DEX-02</xs:appinfo>
-               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über die in Rechnung gestellten Waren und Dienstleistungen liefern.</xs:documentation>
-            </xs:annotation>
-         </xs:element>
+             <xs:annotation>
+                 <xs:appinfo>BG-DEX-05</xs:appinfo>
+                 <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den für die Rechnungsposition maßgeblichen Rechnungszeitraum liefern.</xs:documentation>
+             </xs:annotation>
+          </xs:element>
          <xs:element name="SUB_INVOICE_LINE_ALLOWANCES"
                      type="xr:SUB_INVOICE_LINE_ALLOWANCESType"
                      minOccurs="0"
@@ -2117,15 +2117,15 @@ M (Tax for production, services and importation in Ceuta and Melilla)
                <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über Kosten, Zuschläge, und Steuern ndash; ausgenommen die Umsatzsteuer ndash;  enthalten, die für die jeweilige Rechnungsposition gelten. Anmerkung: Es wird davon ausgegangen, dass alle Kosten und Zuschläge dem gleichen Umsatzsteuersatz unterliegen wie die Rechnungsposition.</xs:documentation>
             </xs:annotation>
          </xs:element>
-         <xs:element name="SUB_INVOICE_LINE_PERIOD"
-                     type="xr:SUB_INVOICE_LINE_PERIODType"
-                     minOccurs="0"
-                     maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>BG-DEX-05</xs:appinfo>
-               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den für die Rechnungsposition maßgeblichen Rechnungszeitraum liefern.</xs:documentation>
-            </xs:annotation>
-         </xs:element>
+          <xs:element name="SUB_INVOICE_LINE_PRICE_DETAILS"
+                      type="xr:SUB_INVOICE_LINE_PRICE_DETAILSType"
+                      minOccurs="0"
+                      maxOccurs="1">
+              <xs:annotation>
+                  <xs:appinfo>BG-DEX-07</xs:appinfo>
+                  <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den Preis für die in der betreffenden Rechnungsposition in Rechnung gestellten Waren und Dienstleistungen liefern.</xs:documentation>
+              </xs:annotation>
+          </xs:element>
          <xs:element name="SUB_INVOICE_LINE_VAT_INFORMATION"
                      type="xr:SUB_INVOICE_LINE_VAT_INFORMATIONType"
                      minOccurs="1"
@@ -2135,14 +2135,23 @@ M (Tax for production, services and importation in Ceuta and Melilla)
                <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über die Umsatzsteuer liefern, die für die in der betreffenden Zeile in Rechnung gestellten Waren und Dienstleistungen gilt.</xs:documentation>
             </xs:annotation>
          </xs:element>
-         <xs:element name="SUB_INVOICE_PRICE_DETAILS"
-                     type="xr:SUB_INVOICE_PRICE_DETAILSType"
-                     minOccurs="1"
-                     maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>BG-DEX-07</xs:appinfo>
-               <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über den Preis für die in der betreffenden Rechnungsposition in Rechnung gestellten Waren und Dienstleistungen liefern.</xs:documentation>
-            </xs:annotation>
+          <xs:element name="SUB_INVOICE_ITEM_INFORMATION"
+                      type="xr:SUB_INVOICE_ITEM_INFORMATIONType"
+                      minOccurs="1"
+                      maxOccurs="1">
+              <xs:annotation>
+                  <xs:appinfo>BG-DEX-02</xs:appinfo>
+                  <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über die in Rechnung gestellten Waren und Dienstleistungen liefern.</xs:documentation>
+              </xs:annotation>
+          </xs:element>
+         <xs:element name="SUB_INVOICE_LINE"
+                     type="xr:SUB_INVOICE_LINEType"
+                     minOccurs="0"
+                     maxOccurs="unbounded">
+             <xs:annotation>
+                 <xs:appinfo>BG-DEX-01</xs:appinfo>
+                 <xs:documentation>Eine Gruppe von Informationselementen, die Informationen über einzelne Rechnungspositionen liefern.</xs:documentation>
+             </xs:annotation>
          </xs:element>
       </xs:sequence>
       <xs:attributeGroup ref="xr:xr-attributes"/>
@@ -2400,7 +2409,7 @@ M (Tax for production, services and importation in Ceuta and Melilla)
       </xs:sequence>
       <xs:attributeGroup ref="xr:xr-attributes"/>
    </xs:complexType>
-   <xs:complexType name="SUB_INVOICE_PRICE_DETAILSType">
+   <xs:complexType name="SUB_INVOICE_LINE_PRICE_DETAILSType">
       <xs:sequence>
          <xs:element name="Item_net_price"
                      type="xr:unit_price_amount"
