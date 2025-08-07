@@ -1926,14 +1926,14 @@
          <xsl:apply-templates mode="BT-131" select="./cbc:LineExtensionAmount"/>
          <xsl:apply-templates mode="BT-132" select="./cac:OrderLineReference/cbc:LineID"/>
          <xsl:apply-templates mode="BT-133" select="./cbc:AccountingCost"/>
-         <xsl:apply-templates mode="BG-26" select="./cac:InvoicePeriod"/>
-         <xsl:apply-templates mode="BG-27"
+         <xsl:apply-templates mode="BG-DEX-05" select="./cac:InvoicePeriod"/>
+         <xsl:apply-templates mode="BG-DEX-03"
             select="./cac:AllowanceCharge[cbc:ChargeIndicator = 'false']"/>
-         <xsl:apply-templates mode="BG-28"
+         <xsl:apply-templates mode="BG-DEX-04"
             select="./cac:AllowanceCharge[cbc:ChargeIndicator = 'true']"/>
-         <xsl:apply-templates mode="BG-29" select="./cac:Price"/>
-         <xsl:apply-templates mode="BG-30" select="./cac:Item/cac:ClassifiedTaxCategory"/>
-         <xsl:apply-templates mode="BG-31" select="./cac:Item"/>
+         <xsl:apply-templates mode="BG-DEX-07" select="./cac:Price"/>
+         <xsl:apply-templates mode="BG-DEX-06" select="./cac:Item/cac:ClassifiedTaxCategory"/>
+         <xsl:apply-templates mode="BG-DEX-02" select="./cac:Item"/>
          <xsl:apply-templates mode="BG-DEX-01" select="cac:SubInvoiceLine"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
