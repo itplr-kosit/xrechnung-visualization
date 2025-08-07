@@ -2035,11 +2035,11 @@
          <xsl:apply-templates mode="BT-135" select="./cbc:EndDate"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
-         <xr:PERIOD>
+         <xr:INVOICE_LINE_PERIOD>
             <xsl:attribute name="xr:id" select="'BG-DEX-05'"/>
             <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
             <xsl:sequence select="$bg-contents"/>
-         </xr:PERIOD>
+         </xr:INVOICE_LINE_PERIOD>
       </xsl:if>
    </xsl:template>
    <xsl:template mode="BG-DEX-06" match="cac:ClassifiedTaxCategory">
