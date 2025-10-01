@@ -10,7 +10,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Fixed
 
-* Bug in UBL to XR and CII to XR transformation of BG-DEX-01 "SUB INVOICE LINE" and its subordinate groups
+* Bug in UBL to XR transformation of BG-DEX-01 "SUB INVOICE LINE" and its subordinate groups
 
 ## v2025-07-10
 
