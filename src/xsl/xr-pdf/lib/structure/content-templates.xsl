@@ -84,7 +84,9 @@
           <xsl:with-param name="titel" select="$heading/label"/>
         </xsl:call-template>
 
-        <xsl:copy-of select="$content"/>
+        <xsl:for-each select="$content/*">
+          <xsl:copy-of select="."/>
+        </xsl:for-each>
 
       </fo:block>
 
@@ -129,9 +131,10 @@
     <xsl:if test="normalize-space($content)">
       <xsl:variable name="boxContent">
         <xsl:copy-of select="$content"/>
-        <!-- Placeholder for spacing after the box - REMOVED span="all" -->
-        <fo:block xsl:use-attribute-sets="box-container-inner" line-height="0pt"/>
+        <!-- Placeholder for spacing after the box -->
+        <fo:block xsl:use-attribute-sets="box-container-inner" line-height="0pt" span="all"/>
       </xsl:variable>
+
       <xsl:if test="$headingId">
         <xsl:variable name="heading">
           <xsl:call-template name="field-mapping">

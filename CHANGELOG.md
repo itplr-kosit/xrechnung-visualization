@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Test that contains 61x BG-1 "INVOICE NOTE"
+
+### Fixed
+
+* Bug in PDF visualization that broke after too many BG-1 "INVOICE NOTE"
+
 ## v2025-07-10
 
 This release is compatible with XRechnung 3.0.x
