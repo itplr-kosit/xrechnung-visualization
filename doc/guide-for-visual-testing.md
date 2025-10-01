@@ -37,3 +37,10 @@ Expectation:
 expectation: 
 * fields should contain "no date defined" or similar
 * all others should show YYYY-MM-DD without timezone
+
+## Invoice Notes (BG-1)
+* included-notes-bg-1-uncefact.xml (includes 61 Invoice Notes)
+
+expectation:
+* visualization does not break after 35 Invoice Notes
+* all 61 Invoice Notes should be visualized correctly
