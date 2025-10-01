@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* Bug in UBL to XR and CII to XR transformation of BG-DEX-01 "SUB INVOICE LINE" and its subordinate groups
+
 ## v2025-07-10
 
 This release is compatible with XRechnung 3.0.x
