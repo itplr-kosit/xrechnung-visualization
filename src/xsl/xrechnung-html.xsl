@@ -1238,7 +1238,7 @@
               </div>
             </div>
             <div role="listitem">
-              <strong class="BG-26" data-title="BG-26">
+              <strong class="BG-26" data-title="{xr:INVOICE_LINE_PERIOD/@xr:id}">
                 <xsl:value-of select="xrf:_('detailsPositionAbrechnungszeitraum')" />:
               </strong>
               <div class="boxtabelle borderSpacing" role="list">
@@ -1265,7 +1265,7 @@
           </div>
         </div>
         <div class="box subBox">
-          <div data-title="BG-29" class="BG-29 boxtitel boxtitelSub" role="heading" aria-level="3">
+          <div data-title="{xr:PRICE_DETAILS/@xr:id}" class="BG-29 boxtitel boxtitelSub" role="heading" aria-level="3">
             <xsl:value-of select="xrf:_('detailsPositionPreiseinzelheiten')" />
           </div>
           <div class="boxtabelle boxinhalt" role="table">
@@ -1362,7 +1362,7 @@
     <div class="boxtabelle">
       <div class="boxzeile">
         <div class="box subBox">
-          <div data-title="BG-27" class="BG-27 boxtitel boxtitelSub" role="heading" aria-level="3">
+          <div data-title="{xr:INVOICE_LINE_ALLOWANCES[1]/@xr:id}" class="BG-27 boxtitel boxtitelSub" role="heading" aria-level="3">
             <xsl:value-of select="xrf:_('detailsPositionNachlaesse')" />
           </div>
           <xsl:for-each select="xr:INVOICE_LINE_ALLOWANCES">
@@ -1412,7 +1412,7 @@
           </xsl:for-each>
         </div>
         <div class="box subBox">
-          <div data-title="BG-28" class="BG-28 boxtitel boxtitelSub" role="heading" aria-level="3">
+          <div data-title="{xr:INVOICE_LINE_CHARGES[1]/@xr:id}" class="BG-28 boxtitel boxtitelSub" role="heading" aria-level="3">
             <xsl:value-of select="xrf:_('detailsPositionZuschlaege')" />
           </div>
           <xsl:for-each select="xr:INVOICE_LINE_CHARGES">
@@ -1466,7 +1466,7 @@
     <div class="boxtabelle">
       <div class="boxzeile">
         <div class="box subBox">
-          <div data-title="BG-31" class="BG-31 boxtitel boxtitelSub" role="heading" aria-level="3">
+          <div data-title="{xr:ITEM_INFORMATION/@xr:id}" class="BG-31 boxtitel boxtitelSub" role="heading" aria-level="3">
             <xsl:value-of select="xrf:_('detailsPositionArtikelinformationen')" />
           </div>
           <div class="boxtabelle boxinhalt ">
