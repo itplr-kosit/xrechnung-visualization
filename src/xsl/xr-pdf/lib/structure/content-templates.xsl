@@ -68,27 +68,31 @@
   <xsl:template name="spanned-box">
     <xsl:param name="identifier"/>
     <xsl:param name="content"/>
-    
+
     <xsl:if test="normalize-space($content)">
-      
+
       <xsl:variable name="heading">
         <xsl:call-template name="field-mapping">
           <xsl:with-param name="identifier" select="$identifier"/>
         </xsl:call-template>
       </xsl:variable>
-      
-      <fo:block xsl:use-attribute-sets="box-container-bereich" span="all">
+
+      <fo:block xsl:use-attribute-sets="box-container-bereich"
+                keep-together.within-page="auto">
+
         <xsl:call-template name="h2">
           <xsl:with-param name="titel" select="$heading/label"/>
         </xsl:call-template>
-                
+
         <xsl:for-each select="$content/*">
           <xsl:copy-of select="."/>
         </xsl:for-each>
+
       </fo:block>
-      
+
     </xsl:if>
   </xsl:template>
+
   
 
   <!-- ==========================================================================
@@ -124,9 +128,7 @@
     <xsl:param name="layout">zweispaltig</xsl:param>
     <xsl:param name="headingId"/>
     <xsl:param name="content"/>
-
     <xsl:if test="normalize-space($content)">
-
       <xsl:variable name="boxContent">
         <xsl:copy-of select="$content"/>
         <!-- Placeholder for spacing after the box -->
