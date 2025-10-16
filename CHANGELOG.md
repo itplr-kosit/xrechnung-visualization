@@ -14,7 +14,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Fixed
 
-* Bug in PDF visualization that broke after too many BG-1 "INVOICE NOTE" (thanks to Lissie Naumann)
+* Bug in PDF visualization that broke after too many BG-1 "INVOICE NOTE"
 
 ## v2025-07-10
 
