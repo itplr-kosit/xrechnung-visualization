@@ -1507,7 +1507,7 @@
                     </div>
                   </div>
                   <div class="boxtabelle borderSpacing" role="listitem">
-                    <strong class="BG-32" data-title="BG-32">
+                    <strong class="BG-32" data-title="{if ($isSubInvoiceLine) then 'BG-DEX-08' else 'BG-32'}">
                       <xsl:value-of select="xrf:_('detailsPositionArtikeleigenschaften')" />:
                     </strong>
                     <xsl:apply-templates select="xr:ITEM_INFORMATION/xr:ITEM_ATTRIBUTES" />
