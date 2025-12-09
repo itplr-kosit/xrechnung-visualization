@@ -11,6 +11,7 @@ This release is compatible with XRechnung ?.?.?
 ### Added
 
 * Test that contains 61x BG-1 "INVOICE NOTE"
+* Test file for Sub Invoice Lines
 
 ### Fixed
 
