@@ -8,8 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Test that contains 61x BG-1 "INVOICE NOTE"
+
 ### Fixed
 
+* Bug in PDF visualization that prevented page break after multiple BG-1 "INVOICE NOTE"
 * Bug in UBL to XR transformation of BG-DEX-01 "SUB INVOICE LINE" and its subordinate groups
 * Bug in visualization where hovering over Elements of Sub Invoice Lines would display incorrect IDs
 
