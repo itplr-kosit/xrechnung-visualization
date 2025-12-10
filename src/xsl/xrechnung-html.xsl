@@ -1594,18 +1594,6 @@
       </div>
     </div>
   </xsl:template>
-
-    <xsl:template name="sub_invoice_eigenschaft" match="xr:SUB_INVOICE_ITEM_ATTRIBUTES">
-        <div class="boxzeile" role="listitem">
-            <div data-title="BT-160" class="BT-160 boxdaten wert">
-                <xsl:value-of select="xr:Item_attribute_name" />:
-            </div>
-            <div data-title="BT-161" class="BT-161 boxdaten wert">
-                <xsl:value-of select="xr:Item_attribute_value" />
-            </div>
-        </div>
-    </xsl:template>
-    
     
     <xsl:template name="zusaetze">
         <div id="zusaetze" class="divHide" role="tabpanel" aria-labelledby="menueZusaetze" tabindex="0">
