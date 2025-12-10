@@ -2,9 +2,9 @@
 
 ## Embedded Documents
 For testing embedded documents' features, use
-* embedded-documents-bt-125_ubl.xml
-* embedded-documents-with-newline-and-whitespace_ubl.xml
-* 01.15
+* `embedded-documents-bt-125_ubl.xml`
+* `embedded-documents-with-newline-and-whitespace_ubl.xml`
+* `01.15`
 
 Expectation:
 * HTML: should work across all browsers
@@ -14,33 +14,40 @@ Expectation:
   * but not in browsers at all 
 
 ## Scheme Identifier for various BTs
-* maxRechnung_ubl.xml
-* maxRechnung_creditnote.xml
+* `maxRechnung_ubl.xml`
+* `maxRechnung_creditnote.xml`
 
 ## "Project reference" (BT-11) in UBL Creditnote
-* maxRechnung_creditnote.xml
+* `maxRechnung_creditnote.xml`
 
 ## Direct Debit (BG-19)
 
-* direct-debit-bt-90-seller_ubl.xml (BT-29 and BT-60 with @schemeID)
-* direct-debit-bt-90-payee_ubl.xml (BT-29 and BT-60 without @schemeID)
-* direct-debit-bt-90-seller_creditnote.xml (BT-29 and BT-60 with @schemeID)
-* direct-debit-bt-90-payee_creditnote.xml (BT-29 and BT-60 without @schemeID)
+* `direct-debit-bt-90-seller_ubl.xml` (BT-29 and BT-60 with @schemeID)
+* `direct-debit-bt-90-payee_ubl.xml` (BT-29 and BT-60 without @schemeID)
+* `direct-debit-bt-90-seller_creditnote.xml` (BT-29 and BT-60 with @schemeID)
+* `direct-debit-bt-90-payee_creditnote.xml` (BT-29 and BT-60 without @schemeID)
 
 ## Item Attributes (BG-32)
-* itemAttributes_ubl.xml
+* `itemAttributes_ubl.xml`
 
 ## Dates
-* wrong-date-with-text-uncefact.xml
-* wrong-date-with-zeros-uncefact.xml
+* `wrong-date-with-text-uncefact.xml`
+* `wrong-date-with-zeros-uncefact.xml`
 
-expectation: 
+Expectation: 
 * fields should contain "no date defined" or similar
 * all others should show YYYY-MM-DD without timezone
 
 ## Invoice Notes (BG-1)
-* included-notes-bg-1-uncefact.xml (includes 61 Invoice Notes)
+* `included-notes-bg-1-uncefact.xml` (includes 61 Invoice Notes)
 
-expectation:
+Expectation:
 * visualization does not break after 35 Invoice Notes
 * all 61 Invoice Notes should be visualized correctly
+
+## Sub Invoice Lines (BG-DEX-01 and subsequent BG-DEX)
+* `sub-invoice-lines_ubl.xml`
+
+Expectation:
+* sub invoice lines 11 and 111 contain elements in HTML and PDF
+* HTML hover-over shows correct IDs for sub invoice line BGs 
