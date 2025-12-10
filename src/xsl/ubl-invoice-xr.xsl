@@ -77,11 +77,11 @@
             <xsl:attribute name="xr:id" select="'BG-2'"/>
             <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
             <xsl:if test="./cbc:ProfileID">
-               <xr:Business_process_type_identifier>
+               <xr:Business_process_type>
                   <xsl:attribute name="xr:id" select="'BT-23'"/>
                   <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
                   <xsl:value-of select="./cbc:ProfileID"/>
-               </xr:Business_process_type_identifier>
+               </xr:Business_process_type>
             </xsl:if>
             <xr:Specification_identifier>
                <xsl:attribute name="xr:id" select="'BT-24'"/>
@@ -104,6 +104,7 @@
                <xsl:attribute name="xr:id" select="'BG-16'"/>
                <xsl:attribute name="xr:src" select="xr:src-path($current-bg)"/>
                <xsl:apply-templates mode="BT-81" select="current-group()[1]/cbc:PaymentMeansCode"/>
+               <xsl:apply-templates mode="BT-82" select="current-group()[1]/cbc:PaymentMeansCode/@name"/>
                <xsl:for-each-group select="current-group()/cbc:PaymentID" group-by="text()">
                   <xsl:apply-templates mode="BT-83" select="current-group()[1]"/>
                </xsl:for-each-group>
@@ -120,6 +121,7 @@
          <xsl:apply-templates mode="BG-23" select="./cac:TaxTotal/cac:TaxSubtotal"/>
          <xsl:apply-templates mode="BG-24" select="./cac:AdditionalDocumentReference"/>
          <xsl:apply-templates mode="BG-25" select="./cac:InvoiceLine"/>
+         <xsl:apply-templates mode="BG-DEX-09" select="./cac:PrepaidPayment"/>
       </xr:invoice>
    </xsl:template>
    <xsl:template mode="BT-1" match="/Invoice:Invoice/cbc:ID">
@@ -293,7 +295,7 @@
          <xsl:apply-templates mode="BT-27"
             select="./cac:Party/cac:PartyLegalEntity/cbc:RegistrationName"/>
          <xsl:apply-templates mode="BT-28" select="./cac:Party/cac:PartyName/cbc:Name"/>
-         <xsl:apply-templates mode="BT-29" select="./cac:Party/cac:PartyIdentification/cbc:ID"/>
+         <xsl:apply-templates mode="BT-29" select="./cac:Party/cac:PartyIdentification/cbc:ID[not(@schemeID = 'SEPA')]"/>
          <xsl:apply-templates mode="BT-30" select="./cac:Party/cac:PartyLegalEntity/cbc:CompanyID"/>
          <xsl:apply-templates mode="BT-31"
             select="./cac:Party/cac:PartyTaxScheme/cbc:CompanyID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT']"/>
@@ -330,7 +332,7 @@
       </xr:Seller_trading_name>
    </xsl:template>
    <xsl:template mode="BT-29"
-      match="/Invoice:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID">
+      match="/Invoice:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[not(@schemeID = 'SEPA')]">
       <xr:Seller_identifier>
          <xsl:attribute name="xr:id" select="'BT-29'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -685,7 +687,7 @@
       <xsl:variable name="bg-contents" as="item()*">
          <!--Der Pfad /Invoice:Invoice/cac:PayeeParty der Instanz in konkreter Syntax wird auf 3 Objekte der EN 16931 abgebildet. -->
          <xsl:apply-templates mode="BT-59" select="./cac:PartyName/cbc:Name"/>
-         <xsl:apply-templates mode="BT-60" select="./cac:PartyIdentification/cbc:ID"/>
+         <xsl:apply-templates mode="BT-60" select="./cac:PartyIdentification/cbc:ID[not(@schemeID = 'SEPA')]"/>
          <xsl:apply-templates mode="BT-61" select="./cac:PartyLegalEntity/cbc:CompanyID"/>
       </xsl:variable>
       <xsl:if test="$bg-contents">
@@ -703,7 +705,7 @@
          <xsl:call-template name="text"/>
       </xr:Payee_name>
    </xsl:template>
-   <xsl:template mode="BT-60" match="/Invoice:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID">
+   <xsl:template mode="BT-60" match="/Invoice:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID[not(@schemeID = 'SEPA')]">
       <xr:Payee_identifier>
          <xsl:attribute name="xr:id" select="'BT-60'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -974,7 +976,7 @@
          <xsl:call-template name="code"/>
       </xr:Payment_means_type_code>
    </xsl:template>
-   <xsl:template mode="BT-82" match="/Invoice:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode/@Name">
+   <xsl:template mode="BT-82" match="/Invoice:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode/@name">
       <xr:Payment_means_text>
          <xsl:attribute name="xr:id" select="'BT-82'"/>
          <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
@@ -2073,5 +2075,40 @@
             <xsl:sequence select="$bg-contents"/>
          </xr:SUB_INVOICE_PRICE_DETAILS>
       </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BG-DEX-09" match="cac:PrepaidPayment">
+      <xsl:variable name="bg-contents" as="item()*">         
+         <xsl:apply-templates mode="BT-DEX-001" select="cbc:ID"/>
+         <xsl:apply-templates mode="BT-DEX-002" select="cbc:PaidAmount"/>
+         <xsl:apply-templates mode="BT-DEX-003" select="cbc:InstructionID"/>   
+      </xsl:variable>
+      <xsl:if test="$bg-contents">
+         <xr:THIRD_PARTY_PAYMENT>
+            <xsl:attribute name="xr:id" select="'BG-DEX-09'"/>
+            <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+            <xsl:sequence select="$bg-contents"/>
+         </xr:THIRD_PARTY_PAYMENT>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="BT-DEX-001" match="cbc:ID">
+      <xr:Third_party_payment_type>
+         <xsl:attribute name="xr:id" select="'BT-DEX-001'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Third_party_payment_type>
+   </xsl:template>
+   <xsl:template mode="BT-DEX-002" match="cbc:PaidAmount">
+      <xr:Third_party_payment_amount>
+         <xsl:attribute name="xr:id" select="'BT-DEX-002'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="amount"/>
+      </xr:Third_party_payment_amount>
+   </xsl:template>
+   <xsl:template mode="BT-DEX-003" match="cbc:InstructionID">
+      <xr:Third_party_payment_description>
+         <xsl:attribute name="xr:id" select="'BT-DEX-003'"/>
+         <xsl:attribute name="xr:src" select="xr:src-path(.)"/>
+         <xsl:call-template name="text"/>
+      </xr:Third_party_payment_description>
    </xsl:template>
 </xsl:stylesheet>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
-  <entry key="xr:Buyer_reference" id="BT-10">Leitweg-ID</entry>
+  <entry key="xr:Buyer_reference" id="BT-10">Käuferreferenz</entry>
   <entry key="xr:Buyer_name" id="BT-44">Name</entry>
   <entry key="xr:Buyer_address_line_1" id="BT-50">Adresszeile 1</entry>
   <entry key="xr:Buyer_address_line_2" id="BT-51">Adresszeile 2</entry>
   <entry key="xr:Buyer_address_line_3" id="BT-163">Adresszeile 3</entry>
   <entry key="xr:Buyer_post_code" id="BT-53">PLZ</entry>
   <entry key="xr:Buyer_city" id="BT-52">Ort</entry>
-  <entry key="xr:Buyer_country_code" id="BT-55">Land</entry>
+  <entry key="xr:Buyer_country_code" id="BT-55">Ländercode</entry>
   <entry key="xr:Buyer_identifier" id="BT-46">Kennung</entry>
   <entry key="xr:Buyer_identifier/@scheme_identifier" id="BT-46_scheme">Schema der Kennung</entry>
-  <entry key="xr:Buyer_contact_point" id="BT-56">Name</entry>
+  <entry key="xr:Buyer_contact_point" id="BT-56">Kontaktstelle </entry>
   <entry key="xr:Buyer_contact_telephone_number" id="BT-57">Telefon</entry>
   <entry key="xr:Buyer_contact_email_address" id="BT-58">E-Mail-Adresse</entry>
   <entry key="xr:Seller_name" id="BT-27">Firmenname</entry>
@@ -132,11 +132,11 @@
   <entry key="xr:Deliver_to_post_code" id="BT-78">PLZ</entry>
   <entry key="xr:Deliver_to_city" id="BT-77">Ort</entry>
   <entry key="xr:Deliver_to_country_subdivision" id="BT-79">Bundesland</entry>
-  <entry key="xr:Deliver_to_country_code" id="BT-80">Land</entry>
+  <entry key="xr:Deliver_to_country_code" id="BT-80">Ländercode</entry>
   <entry key="xr:Tender_or_lot_reference" id="BT-17">Vergabenummer</entry>
   <entry key="xr:Receiving_advice_reference" id="BT-15">Kennung der Empfangsbestätigung</entry>
   <entry key="xr:Despatch_advice_reference" id="BT-16">Kennung der Versandanzeige</entry>
-  <entry key="xr:Business_process_type_identifier" id="BT-23">Prozesskennung</entry>
+  <entry key="xr:Business_process_type" id="BT-23">Prozesskennung</entry>
   <entry key="xr:Specification_identifier" id="BT-24">Spezifikationskennung</entry>
   <entry key="xr:Invoiced_object_identifier" id="BT-18">Objektkennung</entry>
   <entry key="xr:Invoiced_object_identifier/@scheme_identifier" id="BT-18_scheme">Schema der Objektkennung</entry>
@@ -180,7 +180,7 @@
   <entry key="xr:Item_Sellers_identifier" id="BT-155">Artikelnummer</entry>
   <entry key="xr:Item_Buyers_identifier" id="BT-156">Artikelkennung des Käufers</entry>
   <entry key="xr:Item_standard_identifier" id="BT-157">Artikelkennung</entry>
-  <entry key="xr:Item_standard_identifier/@scheme_identifier" class="BT-157_scheme">Schema der Artikelkennung</entry>
+  <entry key="xr:Item_standard_identifier/@scheme_identifier" id="BT-157_scheme">Schema der Artikelkennung</entry>
   <entry key="xr:Item_classification_identifier" id="BT-158">Code der Artikelklassifizierung</entry>
   <entry key="xr:Item_classification_identifier/@scheme_identifier" id="BT-158_scheme">Kennung zur Bildung des Schemas</entry>
   <entry key="xr:Item_classification_identifier/@scheme_version_identifier" id="BT-158_scheme_version">Version zur Bildung des Schemas</entry>
@@ -195,11 +195,15 @@
   <entry key="xr:Invoice_line_charge_amount" id="BT-141">Zuschlag (netto)</entry>
   <entry key="xr:Invoice_line_charge_reason" id="BT-144">Grund des Zuschlags</entry>
   <entry key="xr:Invoice_line_charge_reason_code" id="BT-145">Code für den Zuschlagsgrund</entry>
+  <entry key="xr:Third_party_payment_type" id="BT-DEX-001">Art der Fremdforderung</entry>
+  <entry key="xr:Third_party_payment_amount" id="BT-DEX-002">Betrag der Fremdforderung</entry>
+  <entry key="xr:Third_party_payment_description" id="BT-DEX-003">Beschreibung der Fremdforderung</entry>
   <entry key="uebersicht">Übersicht</entry>
   <entry key="uebersichtKaeufer" id="BG-7">Informationen zum Käufer</entry>
   <entry key="uebersichtVerkaeufer" id="BG-4">Informationen zum Verkäufer</entry>
   <entry key="uebersichtRechnungsInfo" id="invoice-data">Rechnungsdaten</entry>
   <entry key="uebersichtRechnungsuebersicht" id="BG-22">Gesamtbeträge der Rechnung</entry>
+  <entry key="uebersichtFremdleistungen" id="BG-DEX-09">Fremdforderung</entry>
   <entry key="uebersichtUmsatzsteuer" id="BG-23">Aufschlüsselung der Umsatzsteuer auf Ebene der Rechnung</entry>
   <entry key="uebersichtNachlass" id="BG-20">Nachlass auf Ebene der Rechnung</entry>
   <entry key="uebersichtZuschlaege" id="BG-21">Zuschlag auf Ebene der Rechnung</entry>
@@ -228,14 +232,18 @@
   <entry key="laufzettelHistorie">Bearbeitungshistorie</entry>
   <entry key="anlagen">Anlagen</entry>
   <entry key="anlagenListe">Rechnungsbegründende Unterlagen</entry>
-  <entry key="date-format">[D].[M].[Y]</entry>
-  <entry key="datetime-format">[D].[M].[Y] [H]:[m]:[s]</entry>
+  <entry key="artikelklassifizierung">Artikelklassifizierung</entry>
+  <entry key="date-format">[D].[M].[Y,4]</entry>
+  <entry key="datetime-format">[D].[M].[Y,4] [H]:[m]:[s]</entry>
   <entry key="amount-format">###.##0,00</entry>
-  <entry key="percentage-format">##0,##</entry>
+  <entry key="percentage-format">##0,00</entry>
   <entry key="at-least-two-format">###.##0,#################</entry>
   
+  <entry key="sum-of-third-party-payment-amounts">Summe Fremdforderungen</entry>
+
+  <entry key="no-script">Inhalte auf dieser Seite sind ohne JavaScript nur eingeschränkt darstellbar.</entry>
   <entry key="_disclaimer">Wir übernehmen keine Haftung für die Richtigkeit der Daten.</entry>
-  <entry key="_invoice-note-group">Bemerkung zur Rechnung</entry>
+  <entry key="_invoice-note-group">Bemerkungen zur Rechnung</entry>
   <entry key="_open">Öffnen</entry>
   <entry key="no-data">Keine Daten vorhanden</entry>
   <entry key="_net">netto</entry>

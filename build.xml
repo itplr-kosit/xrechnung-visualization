@@ -21,15 +21,15 @@
     <property name="saxon.jar" value="saxon-he-10.6.jar"/>
 
     <!-- Naming -->
-    <property name="xr-visualization.version.full" value="2022-10-31-SNAPSHOT"/>
+    <property name="xr-visualization.version.full" value="2025-10-31-SNAPSHOT"/>
 
     <!-- Test resources -->
-    <property name="xrechnung.version.major.minor" value="2.2"/>
-    <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.0"/>
+    <property name="xrechnung.version.major.minor" value="3.0"/>
+    <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.2"/>
 
     <property name="github.group.url" value="https://github.com/itplr-kosit"/>
 
-    <property name="validator.version" value="1.4.2"/>
+    <property name="validator.version" value="1.5.0"/>
     <property name="validator.jar" value="validationtool-${validator.version}-standalone.jar"/>
     <property name="validator.download.zip" value="validator-${validator.version}-distribution.zip"/>
     <property name="validator.download.url"
@@ -37,7 +37,7 @@
 
     <!-- Validator Configuration XRechnung -->
     <property name="validator.config.proj.name" value="validator-configuration-xrechnung"/>
-    <property name="validator.config.release.date" value="2022-07-15"/>
+    <property name="validator.config.release.date" value="2025-07-10"/>
 
     <property name="validator.config.download.url"
         value="${github.group.url}/${validator.config.proj.name}/releases/download/release-${validator.config.release.date}/${validator.config.proj.name}_${xrechnung.version.full}_${validator.config.release.date}.zip"/>
@@ -68,7 +68,7 @@
     <property name="test.reports.dir" location="${test.build.dir}/reports"/>
 
     <!-- testsuite -->
-    <property name="xr.testsuite.version" value="2022-07-15"/>
+    <property name="xr.testsuite.version" value="2025-07-10"/>
     <property name="xr.testsuite.download.url.prefix"
         value="https://github.com/itplr-kosit/xrechnung-testsuite/releases/download"/>
     <property name="xr.testsuite.zip"
@@ -354,7 +354,7 @@
             style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-            <param name="fop.extensions" type="STRING" expression="fop"/>
+            <param name="foengine" type="STRING" expression="fop"/>
             <mapper type="glob" from="*.xml" to="*.fo"/>
         </xslt>
 
@@ -368,8 +368,8 @@
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}-tabular"
             style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
-            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-            <param name="fop.extensions" type="STRING" expression="fop"/>
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/> 
+            <param name="foengine" type="STRING" expression="fop"/>           
             <param name="invoiceline-layout" type="STRING" expression="tabular"/>
             <mapper type="glob" from="*.xml" to="*.fo"/>
         </xslt>
@@ -384,8 +384,8 @@
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}-tabular-en"
             style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
             <classpath location="${lib.dir}/${saxon.jar}"/>
-            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-            <param name="fop.extensions" type="STRING" expression="fop"/>
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>            
+            <param name="foengine" type="STRING" expression="fop"/>
             <param name="invoiceline-layout" type="STRING" expression="tabular"/>
             <param name="lang" type="STRING" expression="en"/>
             <mapper type="glob" from="*.xml" to="*.fo"/>

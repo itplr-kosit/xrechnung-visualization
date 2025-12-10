@@ -23,6 +23,7 @@
     <xsl:call-template name="uebersichtKaeufer"/>
     <xsl:call-template name="uebersichtVerkaeufer"/>
     <xsl:call-template name="uebersichtRechnungsInfo"/>
+    <xsl:call-template name="uebersichtFremdleistungen"/>
     <xsl:call-template name="uebersichtRechnungsuebersicht"/>
     <xsl:call-template name="uebersichtUmsatzsteuer"/>
     <xsl:call-template name="uebersichtNachlass"/>
@@ -44,6 +45,7 @@
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:BUYER_POSTAL_ADDRESS/xr:Buyer_address_line_3"/>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:BUYER_POSTAL_ADDRESS/xr:Buyer_post_code"/>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:BUYER_POSTAL_ADDRESS/xr:Buyer_city"/>
+            <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:BUYER_POSTAL_ADDRESS/xr:Buyer_country_subdivision"/>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:BUYER_POSTAL_ADDRESS/xr:Buyer_country_code"/>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:Buyer_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:BUYER/xr:Buyer_identifier/@scheme_identifier">
@@ -163,6 +165,35 @@
     </xsl:call-template>
   </xsl:template>
 
+  <xsl:template name="uebersichtFremdleistungen">
+    <xsl:for-each select="xr:THIRD_PARTY_PAYMENT">
+      <xsl:call-template name="spanned-box">
+        <xsl:with-param name="identifier" select="'uebersichtFremdleistungen'"/>
+        <xsl:with-param name="content">
+          <xsl:call-template name="list">
+            <xsl:with-param name="layout" select="'einspaltig'"/>
+            <xsl:with-param name="content">
+              <xsl:apply-templates mode="list-entry" select="xr:Third_party_payment_type"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="list">
+            <xsl:with-param name="layout" select="'einspaltig'"/>
+            <xsl:with-param name="content">
+              <xsl:apply-templates mode="list-entry" select="xr:Third_party_payment_description"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="value-list">
+            <xsl:with-param name="content">
+              <xsl:apply-templates mode="sum-list-entry" select="xr:Third_party_payment_amount">
+                <xsl:with-param name="value" select="xr:Third_party_payment_amount"/>
+              </xsl:apply-templates>
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:for-each>
+  </xsl:template>
+
   <xsl:template name="uebersichtRechnungsuebersicht">
     <xsl:call-template name="spanned-box">
       <xsl:with-param name="identifier" select="'uebersichtRechnungsuebersicht'"/>
@@ -196,6 +227,10 @@
             <xsl:apply-templates mode="value-list-entry" select="xr:DOCUMENT_TOTALS/xr:Rounding_amount">
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Rounding_amount,$amount-picture,$lang)"/>
             </xsl:apply-templates>
+            <xsl:apply-templates mode="value-list-entry" select="/xr:invoice">
+              <xsl:with-param name="field-mapping-identifier" select="'sum-of-third-party-payment-amounts'"/>
+              <xsl:with-param name="value" select="format-number(sum(xr:THIRD_PARTY_PAYMENT/xr:Third_party_payment_amount),$amount-picture,$lang)"/>
+            </xsl:apply-templates>
             <xsl:apply-templates mode="sum-list-entry" select="xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment">
               <xsl:with-param name="level" select="'final'"/>
               <xsl:with-param name="value" select="format-number(xr:DOCUMENT_TOTALS/xr:Amount_due_for_payment,$amount-picture,$lang)"/>
@@ -226,12 +261,14 @@
               </xsl:apply-templates>
             </xsl:with-param>
           </xsl:call-template>
+          <xsl:if test="not(xr:VAT_category_code = ('S', 'Z', 'IGIC', 'IPSI' ))">
           <xsl:call-template name="list">
             <xsl:with-param name="content">
               <xsl:apply-templates mode="list-entry" select="xr:VAT_exemption_reason_text"/>
               <xsl:apply-templates mode="list-entry" select="xr:VAT_exemption_reason_code"/>
             </xsl:with-param>
           </xsl:call-template>
+          </xsl:if>
         </xsl:for-each>
       </xsl:with-param>
     </xsl:call-template>
@@ -258,7 +295,9 @@
                   <xsl:apply-templates mode="sum-list-entry" select="xr:Document_level_allowance_amount">
                     <xsl:with-param name="value" select="format-number(xr:Document_level_allowance_amount,$amount-picture,$lang)"/>
                   </xsl:apply-templates>
-                  <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_VAT_rate"/>
+                  <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_allowance_VAT_rate">
+                    <xsl:with-param name="value" select="concat(format-number(xr:Document_level_allowance_VAT_rate,$percentage-picture,$lang), '%')"/>
+                  </xsl:apply-templates>
                 </xsl:with-param>
               </xsl:call-template>
               <xsl:call-template name="list">
@@ -295,7 +334,9 @@
                     <xsl:apply-templates mode="sum-list-entry" select="xr:Document_level_charge_amount">
                       <xsl:with-param name="value" select="format-number(xr:Document_level_charge_amount,$amount-picture,$lang)"/>
                     </xsl:apply-templates>
-                    <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_charge_VAT_rate"/>
+                    <xsl:apply-templates mode="value-list-entry" select="xr:Document_level_charge_VAT_rate">
+                      <xsl:with-param name="value" select="concat(format-number(xr:Document_level_charge_VAT_rate,$percentage-picture,$lang), '%')"/>
+                    </xsl:apply-templates>
                   </xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="list">
@@ -464,8 +505,10 @@
     <xsl:variable name="content">
       <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_identifier"/>
       <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_note"/>
-      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier"/>
-      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier/@scheme_identifier"/>
+      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier"/>      
+      <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_object_identifier/@scheme_identifier">
+        <xsl:with-param name="field-mapping-identifier" select="'xr:Invoice_line_object_identifier/@scheme_identifier'"/>
+      </xsl:apply-templates>
       <xsl:apply-templates mode="list-entry" select="xr:Referenced_purchase_order_line_reference"/>
       <xsl:apply-templates mode="list-entry" select="xr:Invoice_line_Buyer_accounting_reference"/>
     </xsl:variable>
@@ -502,10 +545,12 @@
       <xsl:with-param name="content">
         <xsl:call-template name="value-list">
           <xsl:with-param name="content">
-            <xsl:apply-templates mode="value-list-entry" select="xr:Invoiced_quantity"/>
+            <xsl:apply-templates mode="value-list-entry" select="xr:Invoiced_quantity">
+              <xsl:with-param name="value" select="xrf:format-with-at-least-two-digits(xr:Invoiced_quantity,$lang)"/>
+            </xsl:apply-templates>
             <xsl:apply-templates mode="value-list-entry" select="xr:Invoiced_quantity_unit_of_measure_code"/>
             <xsl:apply-templates mode="value-list-entry" select="xr:PRICE_DETAILS/xr:Item_net_price">
-              <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_net_price,$amount-picture,$lang)"/>
+              <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_net_price,$at-least-two-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="sum-list-entry" select="xr:Invoice_line_net_amount">
               <xsl:with-param name="value" select="format-number(xr:Invoice_line_net_amount,$amount-picture,$lang)"/>
@@ -516,12 +561,14 @@
           <xsl:with-param name="layout" select="'einspaltig'"/>
           <xsl:with-param name="content">
             <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_discount">
-              <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount,$amount-picture,$lang)"/>
+              <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_price_discount,$at-least-two-picture,$lang)"/>
             </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_gross_price">
-              <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price,$amount-picture,$lang)"/>
+              <xsl:with-param name="value" select="format-number(xr:PRICE_DETAILS/xr:Item_gross_price,$at-least-two-picture,$lang)"/>
             </xsl:apply-templates>
-            <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_base_quantity"/>
+            <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_base_quantity">
+              <xsl:with-param name="value" select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_price_base_quantity,$lang)"/>
+            </xsl:apply-templates>
             <xsl:apply-templates mode="list-entry" select="xr:PRICE_DETAILS/xr:Item_price_base_quantity_unit_of_measure"/>
             <xsl:apply-templates mode="list-entry" select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_category_code"/>
             <xsl:apply-templates mode="list-entry" select="xr:LINE_VAT_INFORMATION/xr:Invoiced_item_VAT_rate">
@@ -546,7 +593,9 @@
                   <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_allowance_base_amount">
                     <xsl:with-param name="value" select="format-number(xr:Invoice_line_allowance_base_amount,$amount-picture,$lang)"/>
                   </xsl:apply-templates>
-                  <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_allowance_percentage"/>
+                  <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_allowance_percentage">
+                    <xsl:with-param name="value" select="concat(format-number(xr:Invoice_line_allowance_percentage,$percentage-picture,$lang), '%')"/>
+                  </xsl:apply-templates>
                   <xsl:apply-templates mode="sum-list-entry" select="xr:Invoice_line_allowance_amount">
                     <xsl:with-param name="value" select="format-number(xr:Invoice_line_allowance_amount,$amount-picture,$lang)"/>
                   </xsl:apply-templates>
@@ -577,7 +626,9 @@
                 <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_charge_base_amount">
                   <xsl:with-param name="value" select="format-number(xr:Invoice_line_charge_base_amount,$amount-picture,$lang)"/>
                 </xsl:apply-templates>
-                <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_charge_percentage"/>
+                <xsl:apply-templates mode="value-list-entry" select="xr:Invoice_line_charge_percentage">
+                  <xsl:with-param name="value" select="concat(format-number(xr:Invoice_line_charge_percentage,$percentage-picture,$lang), '%')"/>
+                </xsl:apply-templates>
                 <xsl:apply-templates mode="sum-list-entry" select="xr:Invoice_line_charge_amount">
                   <xsl:with-param name="value" select="format-number(xr:Invoice_line_charge_amount,$amount-picture,$lang)"/>
                 </xsl:apply-templates>
@@ -762,7 +813,7 @@
   </xsl:template>
 
   <xsl:template name="zusaetzeVertrag">
-    <xsl:call-template name="box">
+    <xsl:call-template name="spanned-box">
       <xsl:with-param name="identifier" select="'zusaetzeVertrag'"/>
       <xsl:with-param name="content">
         <xsl:call-template name="list">
@@ -771,8 +822,10 @@
             <xsl:apply-templates mode="list-entry" select="xr:Receiving_advice_reference"/>
             <xsl:apply-templates mode="list-entry" select="xr:Despatch_advice_reference"/>
             <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Business_process_type"/>
-            <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Specification_identifier"/>
-            <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Business_process_type_identifier"/>
+            <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Specification_identifier">
+              <xsl:with-param name="value" select="xrf:handle-specification-identifier(xr:PROCESS_CONTROL/xr:Specification_identifier)"></xsl:with-param>
+            </xsl:apply-templates>
+            <xsl:apply-templates mode="list-entry" select="xr:PROCESS_CONTROL/xr:Business_process_type"/>
             <xsl:apply-templates mode="list-entry" select="xr:Invoiced_object_identifier"/>
             <xsl:apply-templates mode="list-entry" select="xr:Invoiced_object_identifier/@scheme_identifier">
               <xsl:with-param name="field-mapping-identifier" select="'xr:Invoiced_object_identifier/@scheme_identifier'"/>
@@ -833,7 +886,7 @@
                   <xsl:apply-templates mode="list-entry" select="xr:Attached_document">
                     <xsl:with-param name="value">                      
                       <xsl:apply-templates mode="binary" select="xr:Attached_document">
-                        <xsl:with-param name="identifier" select="xr:Supporting_document_reference"/>
+                        <xsl:with-param name="identifier" select="xr:Attached_document/@filename"/>
                       </xsl:apply-templates>
                     </xsl:with-param>
                   </xsl:apply-templates>

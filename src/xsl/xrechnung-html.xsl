@@ -90,6 +90,11 @@
 
   <xsl:template name="uebersicht">
     <div id="uebersicht" class="divShow" role="tabpanel" aria-labelledby="menueUebersicht" tabindex="0">
+      <noscript>
+        <div class="noscript">
+        <xsl:value-of select="xrf:_('no-script')"/>
+        </div>
+      </noscript>
       <div class="haftungausschluss">
         <xsl:value-of select="xrf:_('_disclaimer')" />
       </div>
@@ -107,6 +112,10 @@
 
       <div class="boxtabelle boxabstandtop boxtabelleZweispaltig">
         <xsl:call-template name="uebersichtRechnungsinfo" />
+      </div>
+
+      <div class="boxtabelle boxabstandtop boxtabelleZweispaltig">
+        <xsl:apply-templates select="./xr:THIRD_PARTY_PAYMENT" />
       </div>
 
       <div class="boxtabelle boxabstandtop boxtabelleZweispaltig">
@@ -345,22 +354,24 @@
             <xsl:value-of select="xr:SELLER_POSTAL_ADDRESS/xr:Seller_country_code" />
           </div>
         </div>
-        <div class="boxzeile" role="listitem">
-          <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('xr:Seller_identifier')" />:
+        <xsl:for-each select="xr:Seller_identifier">
+          <div class="boxzeile" role="listitem">
+            <div class="boxdaten legende">
+              <xsl:value-of select="xrf:_('xr:Seller_identifier')" />:
+            </div>
+            <div data-title="BT-29" class="BT-29 boxdaten wert">
+              <xsl:value-of select="." />
+            </div>
           </div>
-          <div data-title="BT-29" class="BT-29 boxdaten wert">
-            <xsl:value-of select="xr:Seller_identifier" />
+          <div class="boxzeile" role="listitem">
+            <div class="boxdaten legende">
+              <xsl:value-of select="xrf:_('xr:Seller_identifier/@scheme_identifier')" />:
+            </div>
+            <div data-title="BT-29-scheme-id" class="BT-29-scheme-id boxdaten wert">
+              <xsl:value-of select="./@scheme_identifier" />
+            </div>
           </div>
-        </div>
-        <div class="boxzeile" role="listitem">
-          <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('xr:Seller_identifier/@scheme_identifier')" />:
-          </div>
-          <div data-title="BT-29-scheme-id" class="BT-29-scheme-id boxdaten wert">
-            <xsl:value-of select="xr:Seller_identifier/@scheme_identifier" />
-          </div>
-        </div>
+        </xsl:for-each>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Seller_contact_point')" />:
@@ -484,7 +495,7 @@
                     </div>
                     <div data-title="BT-73" class="BT-73 boxdaten wert">
                       <xsl:value-of
-                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_start_date, xrf:_('date-format'))"
+                        select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_start_date, xrf:_('date-format'))"
                       />
                     </div>
                   </div>
@@ -496,7 +507,7 @@
                     </div>
                     <div data-title="BT-74" class="BT-74 boxdaten wert">
                       <xsl:value-of
-                        select="format-date(xr:DELIVERY_INFORMATION/xr:INVOICING_PERIOD/xr:Invoicing_period_end_date, xrf:_('date-format'))"
+                        select="format-date(xr:INVOICING_PERIOD/xr:Invoicing_period_end_date, xrf:_('date-format'))"
                       />
                     </div>
                   </div>
@@ -570,6 +581,42 @@
           </div>
           <div data-title="BT-26" class="BT-26 boxdaten wert">
             <xsl:value-of select="format-date(xr:Preceding_Invoice_issue_date,xrf:_('date-format'))" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </xsl:template>
+
+  <xsl:template name="uebersichtFremdleistungen" match="xr:THIRD_PARTY_PAYMENT">
+    <div class="boxzeile">
+      <div class="uebersichtUmsatzsteuer box">
+        <div data-title="BG-DEX-09" class="BG-DEX-09 boxtitel" role="heading" aria-level="2">
+          <xsl:value-of select="xrf:_('uebersichtFremdleistungen')" />
+        </div>
+        <div class="boxtabelle boxinhalt" role="table">
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1" role="rowheader">
+              <xsl:value-of select="xrf:_('xr:Third_party_payment_type')" />
+            </div>
+            <div data-title="BT-DEX-002" class="BT-DEX-001 boxdaten rechnungSp1" role="cell">
+              <xsl:value-of select="xr:Third_party_payment_type" />
+            </div>
+          </div>
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1" role="rowheader">
+              <xsl:value-of select="xrf:_('xr:Third_party_payment_description')" />
+            </div>
+            <div data-title="BT-DEX-002" class="BT-DEX-002 boxdaten rechnungSp1" role="cell">
+              <xsl:value-of select="xr:Third_party_payment_description" />
+            </div>
+          </div>
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1" role="rowheader">
+              <xsl:value-of select="xrf:_('xr:Third_party_payment_amount')" />
+            </div>
+            <div data-title="BT-DEX-003" class="BT-DEX-003 boxdaten rechnungSp3" role="cell">
+              <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:Third_party_payment_amount,$lang)" />
+            </div>
           </div>
         </div>
       </div>
@@ -676,15 +723,25 @@
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
-            <div class="boxdaten rechnungSp1 paddingBottom line2Bottom" role="rowheader">
+            <div class="boxdaten rechnungSp1 paddingBottom line1Bottom" role="rowheader">
               <xsl:value-of select="xrf:_('xr:Rounding_amount')" />
             </div>
-            <div class="boxdaten rechnungSp2 paddingBottom line2Bottom color2" role="cell">
+            <div class="boxdaten rechnungSp2 paddingBottom line1Bottom color2" role="cell">
               <xsl:value-of select="xrf:_('_gross')" />
             </div>
-            <div data-title="BT-114" class="BT-114 boxdaten rechnungSp3 paddingBottom line2Bottom" role="cell">
+            <div data-title="BT-114" class="BT-114 boxdaten rechnungSp3 paddingBottom line1Bottom" role="cell">
               <xsl:value-of
                 select="xrf:format-with-at-least-two-digits(xr:DOCUMENT_TOTALS/xr:Rounding_amount,$lang)" />
+            </div>
+          </div>
+          <div class="rechnungsZeile" role="row">
+            <div class="boxdaten rechnungSp1 paddingTop paddingBottom line2Bottom" role="rowheader">
+              <xsl:value-of select="xrf:_('sum-of-third-party-payment-amounts')" />
+            </div>
+            <div class="boxdaten rechnungSp2 paddingTop paddingBottom line2Bottom" role="cell"></div>
+            <div class="boxdaten rechnungSp3 paddingTop paddingBottom line2Bottom" role="cell">
+              <xsl:value-of
+                select="xrf:format-with-at-least-two-digits(sum(xr:THIRD_PARTY_PAYMENT/xr:Third_party_payment_amount),$lang)" />
             </div>
           </div>
           <div class="rechnungsZeile" role="row">
@@ -703,7 +760,6 @@
       </div>
     </div>
   </xsl:template>
-
 
   <xsl:template name="uebersichtUmsatzsteuer" match="xr:VAT_BREAKDOWN">
     <div class="boxzeile">
@@ -753,6 +809,7 @@
           </div>
         </div>
 
+        <xsl:if test="not(xr:VAT_category_code = ('S', 'Z', 'IGIC', 'IPSI' ))">
         <div class="grund" role="list">
           <div role="listitem">
             <xsl:value-of select="xrf:_('xr:VAT_exemption_reason_text')" />:
@@ -767,6 +824,7 @@
             </span>
           </div>
         </div>
+        </xsl:if>
       </div>
     </div>
   </xsl:template>
@@ -854,7 +912,7 @@
 
   <xsl:template name="uebersichtZuschlaege" match="xr:DOCUMENT_LEVEL_CHARGES">
     <div class="boxzeile">
-      <div id="uebersichtZuschlaege" class="box">
+      <div class="box uebersichtZuschlaege">
         <div data-title="BG-21" class="BG-21 boxtitel" role="heading" aria-level="2">
           <xsl:value-of select="xrf:_('uebersichtZuschlaege')" />
         </div>
@@ -1216,7 +1274,7 @@
                 <xsl:value-of select="xrf:_('xr:Invoiced_quantity')" />
               </div>
               <div data-title="BT-129" class="BT-129 boxdaten detailSp2" role="cell">
-                <xsl:value-of select="xr:Invoiced_quantity" />
+                <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:Invoiced_quantity,$lang)" />
               </div>
             </div>
             <div class="rechnungsZeile" role="row">
@@ -1269,7 +1327,7 @@
                 <xsl:value-of select="xrf:_('xr:Item_price_base_quantity')" />:
               </div>
               <div data-title="BT-149" class="BT-149 boxdaten wert">
-                <xsl:value-of select="xr:PRICE_DETAILS/xr:Item_price_base_quantity" />
+                <xsl:value-of select="xrf:format-with-at-least-two-digits(xr:PRICE_DETAILS/xr:Item_price_base_quantity,$lang)" />
               </div>
             </div>
             <div class="boxzeile" role="listitem">
@@ -1477,38 +1535,44 @@
                   </div>
                   <div class="boxzeile" role="listitem">
                     <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('xr:Item_classification_identifier')" />:
-                    </div>
-                    <div data-title="BT-158" class="BT-158 boxdaten wert">
-                      <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_classification_identifier" />
-                    </div>
-                  </div>
-                  <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_identifier')" />:
-                    </div>
-                    <div data-title="BT-158-scheme-id" class="BT-158-scheme-id boxdaten wert">
-                      <xsl:value-of
-                        select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_identifier" />
-                    </div>
-                  </div>
-                  <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
-                      <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_version_identifier')" />:
-                    </div>
-                    <div data-title="BT-158-scheme-version-id" class="BT-158-scheme-version-id boxdaten wert">
-                      <xsl:value-of
-                        select="xr:ITEM_INFORMATION/xr:Item_classification_identifier/@scheme_version_identifier" />
-                    </div>
-                  </div>
-                  <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
                       <xsl:value-of select="xrf:_('xr:Item_country_of_origin')" />:
                     </div>
                     <div data-title="BT-159" class="BT-159 boxdaten wert">
                       <xsl:value-of select="xr:ITEM_INFORMATION/xr:Item_country_of_origin" />
                     </div>
                   </div>
+                  <xsl:for-each select="xr:ITEM_INFORMATION/xr:Item_classification_identifier">
+                    <div class="boxzeile" role="listitem">
+                      <div class="boxdaten legende"><b><xsl:value-of select="xrf:_('artikelklassifizierung')" /></b>
+                      </div>                                          
+                    </div>
+                    <div class="boxzeile" role="listitem">
+                      <div class="boxdaten legende">
+                        <xsl:value-of select="xrf:_('xr:Item_classification_identifier')" />:
+                      </div>
+                      <div data-title="BT-158" class="BT-158 boxdaten wert">
+                        <xsl:value-of select="." />
+                      </div>
+                    </div>
+                    <div class="boxzeile" role="listitem">
+                      <div class="boxdaten legende">
+                        <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_identifier')" />:
+                      </div>
+                      <div data-title="BT-158-scheme-id" class="BT-158-scheme-id boxdaten wert">
+                        <xsl:value-of
+                          select="./@scheme_identifier" />
+                      </div>
+                    </div>
+                    <div class="boxzeile" role="listitem">
+                      <div class="boxdaten legende">
+                        <xsl:value-of select="xrf:_('xr:Item_classification_identifier/@scheme_version_identifier')" />:
+                      </div>
+                      <div data-title="BT-158-scheme-version-id" class="BT-158-scheme-version-id boxdaten wert">
+                        <xsl:value-of
+                          select="./@scheme_version_identifier" />
+                      </div>
+                    </div>
+                  </xsl:for-each>                  
                 </div>
               </div>
             </div>
@@ -1521,8 +1585,8 @@
 
   <xsl:template name="eigenschaft" match="xr:ITEM_ATTRIBUTES">
     <div class="boxzeile">
-      <div data-title="BT-160" class="BT-160 boxdaten legende">
-        <xsl:value-of select="xr:Item_attribute_name" />
+      <div data-title="BT-160" class="BT-160 boxdaten wert">
+        <xsl:value-of select="xr:Item_attribute_name" />:
       </div>
       <div data-title="BT-161" class="BT-161 boxdaten wert">
         <xsl:value-of select="xr:Item_attribute_value" />
@@ -1532,8 +1596,8 @@
 
     <xsl:template name="sub_invoice_eigenschaft" match="xr:SUB_INVOICE_ITEM_ATTRIBUTES">
         <div class="boxzeile" role="listitem">
-            <div data-title="BT-160" class="BT-160 boxdaten legende">
-                <xsl:value-of select="xr:Item_attribute_name" />
+            <div data-title="BT-160" class="BT-160 boxdaten wert">
+                <xsl:value-of select="xr:Item_attribute_name" />:
             </div>
             <div data-title="BT-161" class="BT-161 boxdaten wert">
                 <xsl:value-of select="xr:Item_attribute_value" />
@@ -1691,7 +1755,7 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Tax_representative_address_line_2')" />:
           </div>
-          <div data-title="BT-65" class="BT-65boxdaten wert">
+          <div data-title="BT-65" class="BT-65 boxdaten wert">
             <xsl:value-of
               select="xr:SELLER_TAX_REPRESENTATIVE_POSTAL_ADDRESS/xr:Tax_representative_address_line_2" />
           </div>
@@ -1779,20 +1843,8 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Buyer_electronic_address')" />:
           </div>
-                    <div data-title="BT-30" class="BT-30 boxdaten wert">
-                        <xsl:value-of select="xr:Seller_legal_registration_identifier" />
-                    </div>
-                </div>
-                <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
-                        <xsl:value-of select="xrf:_('xr:Seller_legal_registration_identifier/@scheme_identifier')"/>: </div>
-                    <div data-title="BT-30-scheme-id" class="BT-30-scheme-id boxdaten wert">
-                        <xsl:value-of select="xr:Seller_legal_registration_identifier/@scheme_identifier"/>
-                    </div>
-                </div>
-                <div class="boxzeile" role="listitem">
-                    <div class="boxdaten legende">
-                        <xsl:value-of select="xrf:_('xr:Seller_VAT_identifier')" />:
+          <div data-title="BT-49" class="BT-49 boxdaten wert">
+            <xsl:value-of select="xr:Buyer_electronic_address" />
           </div>
         </div>
         <div class="boxzeile" role="listitem">
@@ -1906,7 +1958,7 @@
           <div class="boxdaten legende">
             <xsl:value-of select="xrf:_('xr:Deliver_to_post_code')" />:
           </div>
-          <div data-itle="BT-78" class="BT-78 boxdaten wert">
+          <div data-title="BT-78" class="BT-78 boxdaten wert">
             <xsl:value-of select="xr:DELIVER_TO_ADDRESS/xr:Deliver_to_post_code" />
           </div>
         </div>
@@ -1971,10 +2023,10 @@
         </div>
         <div class="boxzeile" role="listitem">
           <div class="boxdaten legende">
-            <xsl:value-of select="xrf:_('xr:Business_process_type_identifier')" />:
+            <xsl:value-of select="xrf:_('xr:Business_process_type')" />:
           </div>
           <div data-title="BT-23" class="BT-23 boxdaten wert">
-            <xsl:value-of select="xr:PROCESS_CONTROL/xr:Business_process_type_identifier" />
+            <xsl:value-of select="xr:PROCESS_CONTROL/xr:Business_process_type" />
           </div>
         </div>
         <div class="boxzeile" role="listitem">
