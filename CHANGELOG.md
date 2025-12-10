@@ -10,7 +10,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
-* Added multiple BG-21 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+* multiple BG-21 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
 * Test that contains 61x BG-1 "INVOICE NOTE"
 
 ### Fixed
