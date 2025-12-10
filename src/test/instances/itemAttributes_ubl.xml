@@ -2,16 +2,17 @@
 <ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
              xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
              xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2</cbc:CustomizationID>
+    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
     <cbc:ID>123456XX</cbc:ID>
-    <cbc:IssueDate>2016-04-04+01:00</cbc:IssueDate>
+    <cbc:IssueDate>2016-04-04</cbc:IssueDate>
     <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
     <cbc:Note>#ADU#Es gelten unsere Allgem. Geschäftsbedingungen, die Sie unter […] finden.</cbc:Note>
     <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
-    <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
     <cbc:BuyerReference>04011000-12345-03</cbc:BuyerReference>
     <cac:AccountingSupplierParty>
         <cac:Party>
+            <cbc:EndpointID schemeID="EM">seller@seller.com</cbc:EndpointID>
             <cac:PartyName>
                 <cbc:Name>[Seller trading name]</cbc:Name>
             </cac:PartyName>
@@ -43,6 +44,7 @@
     </cac:AccountingSupplierParty>
     <cac:AccountingCustomerParty>
         <cac:Party>
+            <cbc:EndpointID schemeID="EM">buyer@buyer.com</cbc:EndpointID>
             <cac:PartyIdentification>
                 <cbc:ID>[Buyer identifier]</cbc:ID>
             </cac:PartyIdentification>
@@ -95,8 +97,8 @@
         <cbc:InvoicedQuantity unitCode="XPP">1</cbc:InvoicedQuantity>
         <cbc:LineExtensionAmount currencyID="EUR">288.79</cbc:LineExtensionAmount>
         <cac:InvoicePeriod>
-            <cbc:StartDate>2016-01-01+01:00</cbc:StartDate>
-            <cbc:EndDate>2016-12-31+01:00</cbc:EndDate>
+            <cbc:StartDate>2016-01-01</cbc:StartDate>
+            <cbc:EndDate>2016-12-31</cbc:EndDate>
         </cac:InvoicePeriod>
         <cac:OrderLineReference>
             <cbc:LineID>6171175.1</cbc:LineID>

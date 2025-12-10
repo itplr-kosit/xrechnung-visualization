@@ -10,7 +10,155 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
-* Added multiple BG-21 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+* multiple BG-21 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+* Test that contains 61x BG-1 "INVOICE NOTE"
+
+### Fixed
+
+* Bug in PDF visualization that prevented page break after multiple BG-1 "INVOICE NOTE"
+
+## v2025-07-10
+
+This release is compatible with XRechnung 3.0.x
+
+### Fixed
+
+* Bug in CII to XR transformation of BT-149 "Item price base quantity" and BT-150 "Item price base quantity unit of measure code"
+* Localization of decimal seperators of BT-129 "Invoiced quantity" and BT-149 "Item price base quantity" in HTML and PDF
+
+## v2025-03-21
+
+This release is compatible with XRechnung 3.0.x
+
+### Changed
+
+* German label for BT-56 "Contact point" to "Kontaktstelle"
+* FO engine parameter for PDF transformation (thanks to GitHub user @yegorich)
+
+### Fixed
+
+* Wrong BT-23 identifier (thanks to GitHub user @samcandis)
+* Broken English translation for BT-23 (thanks to GitHub user @samcandis)
+* Incorrect id uebersichtZuschlaege in html template
+* Display of BT-78 tooltip in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
+* Display of BT-65 in `xrechnung-html.xsl` (thanks to GitHub user @chefarbeiter)
+* Several attributes in localization files `l10n/de.xml` and `l10n/en.xml`
+* RDF tags in pdf transformation (thanks to GitHub user @jstaerk)
+
+## v2024-06-20
+
+This release is compatible with XRechnung 3.0.x
+
+### Fixed
+
+* Incorrect German translation for BT-10 (thanks to GitHub user @futurescenario9)
+* BT-31: scheme identifier 'VAT' removed from templates
+* condition removed from BT-29 in cii2xr conversion, which prevented display of multiple BT-29 from different bindings
+* Display of specification identifier in PDF
+
+## v2023-11-15
+
+This release is compatible with XRechnung 3.0.x
+
+### Changed
+
+* Display of BT-158 in HTML
+* BG-3 "PRECEDING INVOICE REFERENCE" was added to test files `maxRechnung_ubl.xml` and `maxRechnung_creditnote.xml`
+* BT-11 "Project reference" with Document Type Code `50` was added to test file `maxRechnung_creditnote.xml`
+
+## v2023-09-22
+
+This release is compatible with XRechnung 3.0.x
+
+### Fixed
+
+* Cardinalities of BT-23 "Business process type", BT-34 "Seller electronic address", and BT-49 "Buyer electronic address" in `src/xsd/xrechnung-semantic-model.xsd`
+
+## v2023-07-31
+
+This release is compatible with XRechnung 3.0.x
+
+### Changed
+
+* Test files in accordance with new Schematron rules (see [XRechnung Schematron 2.0.0](https://github.com/itplr-kosit/xrechnung-schematron/releases/tag/release-2.0.0))
+* Removed references to "Verzugszinsen" from `xrechnung-semantic-model.xsd`
+
+### Fixed
+
+* Bug on selection of BT-61 path in `cii-xr.xsl`
+
+## v2023-05-12
+
+This release is compatible with XRechnung 2.3.x
+
+### Added
+
+* Notification if JavaScript is disabled
+
+### Changed
+
+* BT-160 marked as value, not label
+* Removed id for Third Party Payment Total from translation files and html
+
+## Fixed
+
+* Display of elements with unrestricted number of fraction digits (BT-146, BT-147, BT-148) in PDF (thanks to GitHub user @JannickWeisshaupt).
+* Display of BT-29 and BT-60 in UBL to prevent display of BT-90 as BT-29 or BT-60.
+* Superfluous display of BT-120 and BT-121 labels for VAT category codes that prohibit BT-120 and BT-121.
+* Missing output of BT-49 (Buyer electronic address) in HTML.
+* Misplaced output of BT-30 (Seller legal registration identifier) and BT-31 (Seller VAT identifier) values in Buyer section in HTML.
+* Bug on dates with years less than 1000 (thanks to GitHub user @JannickWeisshaupt).
+* Display of multiple BT-29 and BT-158.
+
+## v2023-01-31
+
+This release is compatible with XRechnung 2.3.x
+
+### Added
+
+* Visualization of third party payment
+
+### Changed
+
+* Normalization of newlines in embedded documents
+* Percentage sign format in PDF and HTML now identical
+
+### Fixed
+
+* Missing condition to BT-110 and BT-111 in ubl-creditnote-xr.xsl
+* Selection of identifier for pdf attachments
+* Missing percentage sign `%` output in PDF and PDF Tabular
+
+## v2022-11-15
+
+This release is compatible with XRechnung 2.2.0
+
+### Added
+
+* BG-26 INVOICE LINE PERIOD elements to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
+
+### Changed
+
+* Unified country code labels
+* Unified translation of BG-1 INVOICE NOTE in PDF and HTML
+
+### Fixed
+
+* Missing display of BG-14 INVOICING PERIOD
+* Missing display of BT-54 "Buyer country subdivision" in PDF
+* Removed unnecessary xslt messages
+* Display of BT-128 scheme identifier label in PDF normal
+* Incorrect elements in UBL test files removed
+* bug that prevented output of BT-82 in UBL
+
+
+### Changed
+
+* Percentage sign format in PDF and HTML now identical
+
+### Fixed
+
+* Missing percentage sign `%` output in PDF and PDF Tabular
 
 ## v2022-07-31
 

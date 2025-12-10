@@ -50,7 +50,7 @@
         <xsl:choose>
             <xsl:when test="$year &gt; 0 and $month &gt; 0 and $day &gt; 0">
                 <xsl:value-of
-                    select="xs:date(concat($year, '-', format-number($month, '00'), '-', format-number($day, '00')))"
+                    select="xs:date(concat(format-number($year,'0000'), '-', format-number($month, '00'), '-', format-number($day, '00')))"
                  />
             </xsl:when>
             <xsl:otherwise>ILLEGAL DATE FORMAT of "<xsl:value-of select="." />".</xsl:otherwise>

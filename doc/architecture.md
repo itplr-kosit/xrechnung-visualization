@@ -15,7 +15,7 @@ Schema-Dateien.
 Im Rahmen der Umsetzung der elektronischen Rechnungsbe- und -verarbeitung wurde in 
 unterschiedlichen Zusammenhängen die Anforderung formuliert, die durch die Norm 
 spezifizierte technische Abbildung einer konkreten Rechnung (= XML-Instanz) in 
-strukturierter Form für den menschlichen Leser optimiert lesbar anzuzeigen. Bestandteile 
+strukturierter Form für menschliche Leser\*innen optimiert lesbar anzuzeigen. Bestandteile
 dieser Anzeige (Visualisierung) sind zum einen die konkreten Inhalte der elektronischen 
 Rechnung und deren Bezug zu den BTs und BGs der Norm. Zum anderen muss das 
 Konzept der Visualisierung anwendungsspezifische Anforderungen hinsichtlich Position, 

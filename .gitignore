@@ -10,3 +10,4 @@ development.build.properties
 *.zipost
 /.project
 /.settings/
+.DS_Store
