@@ -448,7 +448,7 @@
             <zipfileset dir="${src.dir}" excludes="README.md"/>
             <zipfileset dir="." includes="README.md CHANGELOG.md"/>
             <zipfileset dir="doc" prefix="doc"/>
-
+            <zipfileset dir="conf" prefix="conf" />
         </zip>
     </target>
 
