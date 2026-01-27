@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="abu-common" default="init">
+
+  <!-- Standard Properties: this is the authoritative section of naming and using common props-->
+
+  <property name="project.name.short" value="${ant.project.name}" />
+
+  <property name="project.version" value="undefined" />
+  <property name="project.full.name"
+    value="${project.name.short}-${project.version}" />
+  <property name="project.dir.name" value="${project.name.short}" />
+
+
+  <property name="src.dir" location="${basedir}/src" />
+  <property name="src.main.dir" location="${src.dir}/main" />
+  <property name="xsbi.dir" location="${src.dir}/xsbi" />
+  <property name="src.test.dir" location="${src.dir}/test" />
+  <property name="src.test.resources.dir" location="${src.test.dir}/resources" />
+
+  <property name="download.dir" location="${basedir}/download" />
+  <property name="lib.dir" location="${basedir}/lib" />
+  <property name="doc.dir" location="${basedir}/doc" />
+  <property name="dist.dir" location="${basedir}/dist" />
+
+  <property name="build.dir" location="${basedir}/build" />
+  <property name="build.test.dir" location="${build.dir}/test" />
+  <property name="build.resources.dir" location="${build.dir}/resources" />
+
+
+  <!-- cause imported files behave relative to their parent, we safe the location of the child in this var -->
+  <property name="abu-common.build.file" location="${ant.file.abu-common}" />
+
+  <target name="validate"
+    description="Validates requirements for executing this build">
+    <echo
+      message="Validating requirements for project: ${ant.project.name} using build file ${abu-common.build.file}" />
+
+    <fail message="Property lib.dir not available">
+      <condition>
+        <not>
+          <isset property="lib.dir" />
+        </not>
+      </condition>
+    </fail>
+
+  </target>
+
+  <target name="init-directories" depends="validate"
+    description="Creates common standard build directories">
+    <echo message="Creating the standard build directory structure" />
+
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${lib.dir}" />
+    <mkdir dir="${dist.dir}" />
+  </target>
+
+
+
+  <target name="init" depends="init-directories"
+    description="Initializes abu-common build">
+    <echo message="${ant.project.name} init task" />
+    <mkdir dir="${build.test.dir}" />
+  </target>
+
+
+  <target name="dist" description="Create distribution">
+    <fail
+      message="Please implement an own dist target for creating distributable artifacts"
+     />
+  </target>
+
+
+
+
+  <target name="clean" description="Deletes build directories">
+    <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true"/>
+    <delete dir="${dist.dir}" />
+  </target>
+
+
+  <target name="clean-lib" description="Deletes lib directory">
+    <delete dir="${lib.dir}" />
+  </target>
+
+
+  <target name="clean-download" description="Deletes download directory">
+    <delete dir="${download.dir}" />
+  </target>
+
+
+  <target name="clean-all" depends="clean, clean-download, clean-lib"
+    description="Delete build, download, and lib directories"> </target>
+
+
+  <macrodef name="provide-xsbi">
+    <attribute name="version" />
+    <attribute name="src-dir" />
+    <attribute name="dest" />
+    <attribute name="overwrite" default="false" />
+
+    <sequential>
+      <local name="xsbi.version" />
+      <local name="xsbi.full.name" />
+      <local name="xsbi.zip.name" />
+      <local name="xsbi.download.url" />
+      <local name="xsbi.download.dir" />
+
+
+      <property name="xsbi.version" value="@{version}" />
+      <property name="xsbi.full.name" value="xsbi-${xsbi.version}" />
+      <property name="xsbi.zip.name" value="${xsbi.full.name}.zip" />
+      <property name="xsbi.download.dir" value="${lib.dir}" />
+      <echo message="Try to access xsbi at @{src-dir}/${xsbi.zip.name}" />
+      <makeurl file="@{src-dir}/${xsbi.zip.name}" property="xsbi.download.url"
+        validate="true" />
+      <mkdir dir="${xsbi.download.dir}" />
+      <echo message="downloading-xsbi from ${xsbi.download.url}" />
+      <get src="${xsbi.download.url}" dest="${xsbi.download.dir}"
+        ignoreerrors="false" maxtime="60" />
+      <mkdir dir="@{dest}/${xsbi.full.name}" />
+      <unzip src="${xsbi.download.dir}/${xsbi.zip.name}"
+        dest="@{dest}/${xsbi.full.name}" overwrite="@{overwrite}" />
+
+    </sequential>
+  </macrodef>
+
+
+
+
+</project>

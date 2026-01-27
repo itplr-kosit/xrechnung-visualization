@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="abu-common-tasks">
+
+  <macrodef name="require-property">
+    <attribute name="name" />
+    <attribute name="message" default="Property @{name} not set or empty." />
+    <sequential>
+      <echo message="Checking property is set @{name}" level="debug" />
+      <fail message="@{message}">
+        <condition>
+          <or>
+            <equals arg1="@{name}" arg2="" />
+            <not>
+              <isset property="@{name}" />
+            </not>
+          </or>
+        </condition>
+      </fail>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="require-file">
+    <attribute name="file" />
+    <sequential>
+      <echo message="Check file exists @{file}" level="debug" />
+      <fail message="File='@{file}' not available">
+        <condition>
+          <or>
+            <equals arg1="@{file}" arg2="" />
+            <not>
+              <available file="@{file}" />
+            </not>
+          </or>
+        </condition>
+      </fail>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="mkdir-std">
+    <attribute name="dest" />
+    <sequential>
+      <echo message="Creating standard directory structure within @{dest}" />
+
+      <fail message="Directory @{dest} is not available">
+        <condition>
+          <not>
+            <available file="@{dest}" />
+          </not>
+        </condition>
+      </fail>
+      <!-- long version of fail if property is NOT set -->
+      <fail message="Property build.dir is not set.">
+        <condition>
+          <not>
+            <isset property="${build.dir}" />
+          </not>
+        </condition>
+      </fail>
+
+      <!--  short version of fail with attribute unless: 	Only fail if a property of the given name doesn't exist in the current project
+-->
+      <fail message="Property lib.dir is not set." unless="lib.dir" />
+      <fail message="Property dist.dir is not set." unless="dist.dir" />
+
+      <mkdir dir="${build.dir}" />
+      <mkdir dir="${lib.dir}" />
+      <mkdir dir="${dist.dir}" />
+
+    </sequential>
+
+  </macrodef>
+
+</project>
