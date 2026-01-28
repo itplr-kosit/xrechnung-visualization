@@ -1,0 +1,39 @@
+default:
+  image: projekte.kosit.org:5050/xse/xse-build-common/ant-base:latest
+
+stages:
+  - build
+  - test
+  - deploy
+  - release
+  - publish
+
+
+build-job:
+  stage: build
+  image: projekte.kosit.org:5050/xse/xse-build-common/ant-base:latest
+  script:
+    - echo "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"
+    - ant release
+    - cat build/build.env
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 day
+    reports:
+      dotenv: build/build.env
+
+include:
+  - component: $CI_SERVER_FQDN/xse/xse-fab/gitlab-ci-cd-components/deploy-to-xse-component-repository@0.1.4-alpha
+    inputs:
+      by: "maven"
+      stage: "deploy"
+      package_version: ${PACKAGE_VERSION}
+      group_id: ${GROUP_ID}
+      artifact_id: ${ARTIFACT_ID}
+  - component: $CI_SERVER_FQDN/xse/xse-fab/gitlab-ci-cd-components/release-to-kosit-gitlab@0.1.4-alpha
+    inputs:
+      stage: "release"
+      package_version: ${PACKAGE_VERSION}
+      package_binary: ${PACKAGE_BINARY}
+      package_name: ${MAVEN_PACKAGE_NAME}
