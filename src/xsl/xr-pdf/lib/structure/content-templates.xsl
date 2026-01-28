@@ -207,6 +207,42 @@
       </fo:list-block>
     </xsl:if>
   </xsl:template>
+
+  <xsl:template match="@*|*" mode="list-entry-bt-3">
+    <xsl:param name="value"/>
+    <xsl:param name="field-mapping-identifier">
+      <xsl:value-of select="name()"/>
+    </xsl:param>
+    <xsl:if test="normalize-space(.)">
+      <xsl:variable name="field-mapping">
+        <xsl:call-template name="field-mapping">
+          <xsl:with-param name="identifier" select="$field-mapping-identifier"/>
+        </xsl:call-template>
+      </xsl:variable>
+      <fo:list-block margin-bottom="1mm"
+                     provisional-distance-between-starts="{$wert-legende-breite}mm">
+        <fo:list-item>
+          <fo:list-item-label end-indent="label-end()">
+            <fo:block xsl:use-attribute-sets="wert-legende"><xsl:value-of select="$field-mapping/label"/>:</fo:block>
+          </fo:list-item-label>
+          <fo:list-item-body start-indent="body-start()">
+            <fo:block xsl:use-attribute-sets="wert-ausgabe">
+              <xsl:variable name="key" select="concat('xr:Invoice_type_code_text.', .)"/>
+              <xsl:variable name="localized" select="xrf:_($key)"/>
+              <xsl:choose>
+                <xsl:when test="not(starts-with($localized, '???'))">
+                  <xsl:copy-of select="concat($localized, ' (', ., ')')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="."/>
+                </xsl:otherwise>
+              </xsl:choose>
+             </fo:block>
+           </fo:list-item-body>
+        </fo:list-item>
+      </fo:list-block>
+    </xsl:if>
+  </xsl:template>
   
   <xsl:template name="list-entry-bt-7">
     <xsl:param name="value"/>
