@@ -12,10 +12,13 @@ This release is compatible with XRechnung ?.?.?
 
 * multiple BG-21 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
 * Test that contains 61x BG-1 "INVOICE NOTE"
+* Test file for Sub Invoice Lines
 
 ### Fixed
 
 * Bug in PDF visualization that prevented page break after multiple BG-1 "INVOICE NOTE"
+* Bug in UBL to XR transformation of BG-DEX-01 "SUB INVOICE LINE" and its subordinate groups
+* Bug in visualization where hovering over Elements of Sub Invoice Lines would display incorrect IDs
 
 ## v2025-07-10
 
