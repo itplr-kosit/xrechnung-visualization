@@ -403,9 +403,6 @@
         </zip>
     </target>
 
-
-    <target name="dist" depends="test,dist-only"> </target>
-
-    <target name="abu-common.clean" />
+    <target name="dist" depends="test,dist-only" /> 
 
 </project>

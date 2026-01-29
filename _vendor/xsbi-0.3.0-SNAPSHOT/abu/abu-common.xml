@@ -73,7 +73,7 @@
 
 
   <target name="clean" description="Deletes build directories">
-    <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true"/>
+    <delete dir="${build.dir}" />
     <delete dir="${dist.dir}" />
   </target>
 
