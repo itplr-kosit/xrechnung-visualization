@@ -24,14 +24,14 @@ build-job:
       dotenv: build/build.env
 
 include:
-  - component: $CI_SERVER_FQDN/xse/xse-fab/gitlab-ci-cd-components/deploy-to-xse-component-repository@0.1.4-alpha
+  - component: $CI_SERVER_FQDN/xse/xse-fab/gitlab-ci-cd-components/deploy-to-xse-component-repository@0.1.0
     inputs:
       by: "maven"
       stage: "deploy"
       package_version: ${PACKAGE_VERSION}
       group_id: ${GROUP_ID}
       artifact_id: ${ARTIFACT_ID}
-  - component: $CI_SERVER_FQDN/xse/xse-fab/gitlab-ci-cd-components/release-to-kosit-gitlab@0.1.4-alpha
+  - component: $CI_SERVER_FQDN/xse/xse-fab/gitlab-ci-cd-components/release-to-kosit-gitlab@0.1.0
     inputs:
       stage: "release"
       package_version: ${PACKAGE_VERSION}

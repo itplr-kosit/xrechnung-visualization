@@ -449,7 +449,7 @@
         depends="dependency-resolve, compile-negative-tests, test-testsuite, test-xr-transformation, test-html, test-pdf"
         description="Validates source UBL or CII XML against XRechnung, transforms to XR Sem Model and schema validates results and transforms and test HTML and PDF visualization"/>
 
-    <target name="release-env-file" depends="transform-to-visualization">
+    <target name="release-env-file" depends="dependency-resolve">
         <property name="build.env.file" value="${build.dir}/build.env" />
 
         <loadresource property="project.group.id.path">
