@@ -21,7 +21,7 @@
     <property name="fop.config" value="conf/fop.xconf"/>
 
     <!-- Naming -->
-    <property name="xr-visualization.version.full" value="2025-10-31-SNAPSHOT"/>
+    <property name="xr-visualization.version.full" value="2026-01-31-SNAPSHOT"/>
 
     <!-- Test resources -->
     <property name="xrechnung.version.major.minor" value="3.0"/>
@@ -70,6 +70,15 @@
 
     <property name="xrechnung.xsd.ns"
         value="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"/>
+
+    <!-- build/env -->
+    <property name="project.group.id" value="de.xeinkauf" />
+    <property name="project.name.short" value="visualization" />
+    <property name="project.artifact.id"
+        value="xrechnung-${xrechnung.version.full}-visualization" />
+    <property name="project.artifact.zip.name"
+      value="${project.artifact.id}-${xr-visualization.version.full}.zip" />
+
 
     <target name="init" depends="abu-common.init-directories" description="Initializes build directory structure and ISO timestamp">
         <!-- Create timestamps -->
@@ -392,9 +401,31 @@
         depends="dependency-resolve, compile-negative-tests, test-testsuite, test-xr-transformation, test-html, test-pdf"
         description="Validates source UBL or CII XML against XRechnung, transforms to XR Sem Model and schema validates results and transforms and test HTML and PDF visualization"/>
 
+    <target name="release-env-file" depends="dependency-resolve">
+        <property name="build.env.file" value="${build.dir}/build.env" />
+
+        <loadresource property="project.group.id.path">
+            <concat>${project.group.id}</concat>
+            <filterchain>
+                <replaceregex pattern="\." replace="/" />
+            </filterchain>
+        </loadresource>
+
+        <echo file="${build.env.file}" append="false" encoding="UTF-8"
+          message="GROUP_ID=${project.group.id}${line.separator}" />
+        <echo file="${build.env.file}" append="true" encoding="UTF-8"
+          message="ARTIFACT_ID=${project.artifact.id}${line.separator}" />
+        <echo file="${build.env.file}" append="true" encoding="UTF-8"
+          message="PACKAGE_VERSION=${xr-visualization.version.full}${line.separator}" />
+        <echo file="${build.env.file}" append="true" encoding="UTF-8"
+          message="PACKAGE_BINARY=${project.artifact.zip.name}${line.separator}" />
+        <echo file="${build.env.file}" append="true" encoding="UTF-8"
+          message="MAVEN_PACKAGE_NAME=${project.group.id.path}/${project.artifact.id}${line.separator}" />
+    </target>
+
     <target name="dist-only">
         <zip
-            destfile="${dist.dir}/xrechnung-${xrechnung.version.full}-${ant.project.name}-${xr-visualization.version.full}.zip">
+            destfile="${dist.dir}/${project.artifact.zip.name}">
 
             <zipfileset dir="${src.dir}" excludes="README.md"/>
             <zipfileset dir="." includes="README.md CHANGELOG.md"/>
@@ -404,5 +435,7 @@
     </target>
 
     <target name="dist" depends="test,dist-only" /> 
+
+    <target name="release" depends="release-env-file, dist"> </target>
 
 </project>
