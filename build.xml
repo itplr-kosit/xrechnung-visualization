@@ -73,8 +73,9 @@
 
     <!-- build/env -->
     <property name="project.group.id" value="de.xeinkauf" />
+    <property name="project.name.short" value="visualization" />
     <property name="project.artifact.id"
-      value="xrechnung-${xrechnung.version.full}-${ant.project.name}" />
+        value="xrechnung-${xrechnung.version.full}-visualization" />
     <property name="project.artifact.zip.name"
       value="${project.artifact.id}-${xr-visualization.version.full}.zip" />
 
