@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="abu-validator-provider" default="provide-validator">
+
+  <!-- 
+  Provides Validator dependency either from most mature release destination 
+  or from local build based Deployment:
+    * 
+ -->
+
+  <property name="validator.major.version" value="1" />
+  <property name="validator.minor.version" value="6" />
+
+  <property name="validator.version"
+    value="${validator.major.version}.${validator.minor.version}.0" />
+
+  <property name="validator.jar" value="validator-${validator.version}-standalone.jar" />
+
+  <property name="validator.download.url.prefix"
+    value="https://github.com/itplr-kosit/validator/releases/download" />
+  
+  <property name="validator.zip" value="validator-${validator.version}.zip" />
+  
+  <target name="init">
+    <echo message="Calling ${ant.project.name} init task (from ${ant.file})" />
+    <fail message="Required property download.dir not available">
+      <condition>
+        <not>
+          <isset property="download.dir" />
+        </not>
+      </condition>
+    </fail>
+    <fail message="Required property lib.dir not available">
+      <condition>
+        <not>
+          <isset property="lib.dir" />
+        </not>
+      </condition>
+    </fail>
+    <mkdir dir="${download.dir}" />
+    <mkdir dir="${lib.dir}" />
+  </target>
+  
+  <target name="retrieve-validator-from-local-build" depends="init" if="develop.local.validator">
+    <get src="${validator.download.url.prefix}/target/${validator.zip}" dest="${download.dir}/"
+      verbose="true" skipexisting="true" usetimestamp="true" />
+  </target>
+  
+  
+  <target name="retrieve-validator-from-github-release" depends="init"
+    unless="develop.local.validator">
+    <property name="download.url.full"
+      value="${validator.download.url.prefix}/v${validator.version}/${validator.zip}" />
+    
+    <echo message="Retrieving validator version=${validator.version} from ${download.url.full}" />
+    
+    <get src="${download.url.full}" dest="${download.dir}" verbose="true" skipexisting="true"
+      usetimestamp="true" />
+  </target>
+  
+  
+  <target name="retrieve-validator"
+    depends="init, retrieve-validator-from-local-build, retrieve-validator-from-github-release">
+    <!-- add check something was downloaded -->
+  </target>
+
+  <target name="provide-validator" depends="init, retrieve-validator"
+    description="Download KoSIT validation tool and add jar to library directory">
+    
+    <echo message="Unpacking Validator resources" />
+    
+    <unzip src="${download.dir}/${validator.zip}" dest="${lib.dir}">
+      <patternset>
+        <include name="**/${validator.jar}" />
+      </patternset>
+      <flattenmapper />
+    </unzip>
+    
+    <unzip src="${lib.dir}/${validator.jar}" dest="${resource.dir}">
+      <patternset>
+        <include name="xsd/scenarios.xsd" />
+      </patternset>
+    </unzip>
+  </target>
+
+</project>

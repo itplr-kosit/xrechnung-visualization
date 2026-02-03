@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="abu-saxon-provider" default="provide-saxon">
+  <!-- Saxon provider props -->
+  <property name="saxon-he.major.version" value="12" />
+  <property name="saxon-he.minor.version" value="8" />
+  <property name="saxon-he.version"
+    value="${saxon-he.major.version}-${saxon-he.minor.version}" />
+  <!-- original name example: saxon-he-12.8.jar -->
+  <property name="saxon-he.jar.name"
+    value="saxon-he-${saxon-he.major.version}.${saxon-he.minor.version}.jar" />
+  <property name="saxon-he.zip.name"
+    value="saxon${saxon-he.major.version}he.zip" />
+
+  <!-- xmlresolver props -->
+  <property name="xmlresolver.major.version" value="6" />
+  <property name="xmlresolver.minor.version" value="0" />
+  <property name="xmlresolver.patch.version" value="19" />
+  <property name="xmlresolver.version"
+    value="${xmlresolver.major.version}.${xmlresolver.minor.version}.${xmlresolver.patch.version}" />
+  <property name="xmlresolver.jar.name"
+    value="xmlresolver-${xmlresolver.version}.jar" />
+
+  <!-- this path should work after target provide-saxon -->
+  <path id="cp.saxon.xslt">
+    <pathelement location="${lib.dir}/${saxon-he.jar.name}" />
+    <pathelement location="${lib.dir}/${xmlresolver.jar.name}" />
+  </path>
+
+  <target name="init">
+    <echo message="Calling ${ant.project.name} init task (from ${ant.file})" />
+    <fail message="Required property download.dir not available">
+      <condition>
+        <not>
+          <isset property="download.dir" />
+        </not>
+      </condition>
+    </fail>
+    <fail message="Required property lib.dir not available">
+      <condition>
+        <not>
+          <isset property="lib.dir" />
+        </not>
+      </condition>
+    </fail>
+    <mkdir dir="${download.dir}" />
+    <mkdir dir="${lib.dir}" />
+  </target>
+
+  <target name="retrieve-xml-resolver" depends="init"
+    description="Download xml/resolver and add jar to lib dir">
+    <get
+      src="https://repo1.maven.org/maven2/org/xmlresolver/xmlresolver/${xmlresolver.version}/${xmlresolver.jar.name}"
+      dest="${lib.dir}/${xmlresolver.jar.name}" verbose="true"
+      skipexisting="true" usetimestamp="true" />
+  </target>
+
+  <target name="provide-xmlresolver" depends="retrieve-xml-resolver">
+    <!-- currently directly downloading jar into lib -->
+  </target>
+  <target name="retrieve-saxon" depends="init"
+    description="Download Saxon-HE and add jar to lib dir">
+    <get
+      src="https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE-${saxon-he.version}/SaxonHE${saxon-he.version}J.zip"
+      dest="${download.dir}/${saxon-he.zip.name}" verbose="true"
+      skipexisting="true" usetimestamp="true" />
+  </target>
+
+  <target name="provide-saxon" depends="retrieve-saxon, provide-xmlresolver">
+    <echo
+      message="Extract ${saxon-he.jar.name} from ${download.dir}/${saxon-he.zip.name} into ${lib.dir}" />
+    <unzip src="${download.dir}/${saxon-he.zip.name}" dest="${lib.dir}">
+      <patternset>
+        <include name="${saxon-he.jar.name}" />
+      </patternset>
+      <flattenmapper />
+    </unzip>
+    <echo message="classpath for ${lib.dir}/${saxon-he.jar.name}" />
+    <!-- this classpath should work after execution of provide-saxon -->
+    <available-saxon/>
+  </target>
+
+
+  <macrodef name="available-saxon">
+
+    <sequential>
+      <!-- logic to maybe verify that all is good -->
+      <property name="saxon.available" value="true" />
+    </sequential>
+  </macrodef>
+
+
+</project>
