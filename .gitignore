@@ -2,6 +2,9 @@
 /build
 /lib
 /reports
+/_vendor/*/project-mgmt
+/_vendor/*/xslt
+/download
 development.build.properties
 .vscode
 *.xpr

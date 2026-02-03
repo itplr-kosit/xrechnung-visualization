@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project basedir="." name="xrechnung-visualization" default="transform-to-visualization">
-
+    
+    <property name="xsbi.dir" location="${basedir}/_vendor/xsbi-0.3.0-SNAPSHOT/abu" />
+    
+    <import file="${xsbi.dir}/abu-common.xml" />
+    <include file="${xsbi.dir}/abu-saxon-provider.xml" />
+    <include file="${xsbi.dir}/abu-validator-provider.xml" />
+    
     <!-- project directory structure -->
     <property name="dist.dir" location="${basedir}/dist"/>
     <property name="lib.dir" location="${basedir}/lib"/>
     <property name="build.dir" location="${basedir}/build"/>
     <property name="src.dir" location="${basedir}/src"/>
     <property name="download.dir" location="${build.dir}/download"/>
+    <property name="resource.dir" location="${build.dir}/resources"/>
 
     <!-- fop -->
     <property name="fop.jar" value="fop.jar"/>
     <property name="fop.home" value="${lib.dir}/fop"/>
     <property name="fop.config" value="conf/fop.xconf"/>
-
-    <!-- Part of the download path -->
-    <property name="saxon.url.version" value="10"/>
-    <!-- Part of the download path -->
-    <property name="saxon.file.version" value="10-6J"/>
-    <!-- the name of the JAR file in the downloaded ZIP file -->
-    <property name="saxon.jar" value="saxon-he-10.6.jar"/>
 
     <!-- Naming -->
     <property name="xr-visualization.version.full" value="2026-01-31-SNAPSHOT"/>
@@ -27,17 +27,11 @@
     <property name="xrechnung.version.major.minor" value="3.0"/>
     <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.2"/>
 
-    <property name="github.group.url" value="https://github.com/itplr-kosit"/>
-
-    <property name="validator.version" value="1.5.0"/>
-    <property name="validator.jar" value="validationtool-${validator.version}-standalone.jar"/>
-    <property name="validator.download.zip" value="validator-${validator.version}-distribution.zip"/>
-    <property name="validator.download.url"
-        value="${github.group.url}/validator/releases/download/v${validator.version}/${validator.download.zip}"/>
-
     <!-- Validator Configuration XRechnung -->
     <property name="validator.config.proj.name" value="validator-configuration-xrechnung"/>
     <property name="validator.config.release.date" value="2025-07-10"/>
+    
+    <property name="github.group.url" value="https://github.com/itplr-kosit"/>
 
     <property name="validator.config.download.url"
         value="${github.group.url}/${validator.config.proj.name}/releases/download/release-${validator.config.release.date}/${validator.config.proj.name}_${xrechnung.version.full}_${validator.config.release.date}.zip"/>
@@ -70,7 +64,7 @@
     <!-- testsuite -->
     <property name="xr.testsuite.version" value="2025-07-10"/>
     <property name="xr.testsuite.download.url.prefix"
-        value="https://github.com/itplr-kosit/xrechnung-testsuite/releases/download"/>
+        value="${github.group.url}/xrechnung-testsuite/releases/download"/>
     <property name="xr.testsuite.zip"
         value="xrechnung-${xrechnung.version.full}-testsuite-${xr.testsuite.version}.zip"/>
 
@@ -85,17 +79,14 @@
       value="${project.artifact.id}-${xr-visualization.version.full}.zip" />
 
 
-    <target name="init" description="Initializes build directory structure and ISO timestamp">
+    <target name="init" depends="abu-common.init-directories" description="Initializes build directory structure and ISO timestamp">
         <!-- Create timestamps -->
         <tstamp>
             <format property="build.date" pattern="yyyy-MM-dd"/>
         </tstamp>
         <echo>Build date: ${build.date}</echo>
         <!-- Create the build directory structure used by compile -->
-        <mkdir dir="${build.dir}"/>
         <mkdir dir="${download.dir}"/>
-        <mkdir dir="${dist.dir}"/>
-        <mkdir dir="${lib.dir}"/>
         <mkdir dir="${fop.home}"/>
         <mkdir dir="${test.docs.dir}"/>
         <mkdir dir="${test.docs.positive.dir}"/>
@@ -109,48 +100,16 @@
         <available property="validator.repository.dir.available"
             file="${validator.repository.dir}/scenarios.xml"/>
 
-        <available file="${lib.dir}/${saxon.jar}" property="dep.saxon.available"/>
         <available file="${lib.dir}/${validator.jar}" property="dep.validator.available"/>
         <available file="${fop.home}/${fop.jar}" property="dep.fop.available"/>
         <available file="${lib.dir}/${vnu.jar}" property="dep.vnu.available"/>
 
     </target>
 
-    <target name="provide-saxon" depends="init" unless="dep.saxon.available"
-        description="Download Saxon-HE and add jar to library directory">
-        <get
-            src="https://sourceforge.net/projects/saxon/files/Saxon-HE/${saxon.url.version}/Java/SaxonHE${saxon.file.version}.zip/download"
-            dest="${download.dir}/SaxonHE${saxon.file.version}.zip" verbose="true"
-            skipexisting="true" usetimestamp="true"/>
-        <fail unless="saxon.jar" message="Provide a name for the extracted saxon jar"/>
-        <unzip src="${download.dir}/SaxonHE${saxon.file.version}.zip" dest="${lib.dir}">
-            <patternset>
-                <include name="**/${saxon.jar}"/>
-            </patternset>
-            <flattenmapper/>
-        </unzip>
-    </target>
+    <target name="provide-saxon" depends="abu-saxon-provider.provide-saxon" unless="saxon.available"
+        description="Download Saxon-HE and add jar to library directory"/>
 
-    <target name="provide-validator" depends="init" unless="dep.validator.available"
-        description="Download KoSIT validation tool and add jar to library directory">
-        <get src="${validator.download.url}" dest="${download.dir}" verbose="true"
-            skipexisting="true" usetimestamp="true"/>
-        <!-- Cause unzip task does not error on missing dest directory -->
-        <fail message="Lib directory ${lib.dir} does not exist!">
-            <condition>
-                <not>
-                    <available file="${lib.dir}"/>
-                </not>
-            </condition>
-        </fail>
-        <fail unless="validator.jar" message="Need to specify property with name 'validator.jar'"/>
-        <unzip src="${download.dir}/${validator.download.zip}" dest="${lib.dir}">
-            <patternset>
-                <include name="**/${validator.jar}"/>
-            </patternset>
-            <flattenmapper/>
-        </unzip>
-    </target>
+    <target name="provide-validator" depends="abu-validator-provider.provide-validator" unless="dep.validator.available" />
 
 
     <target name="provide-vnu" depends="init" description="Download vNU" unless="dep.vnu.available">
@@ -298,8 +257,7 @@
 
     <target name="transform-ubl-invoice-to-xr" depends="dependency-resolve, compile-negative-tests">
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
-            style="${src.dir}/xsl/ubl-invoice-xr.xsl" includes="**/*ubl.xml">
-            <classpath location="${lib.dir}/${saxon.jar}"/>
+            style="${src.dir}/xsl/ubl-invoice-xr.xsl" includes="**/*ubl.xml" classpathref="cp.saxon.xslt">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <chainedmapper>
                 <flattenmapper/>
@@ -311,8 +269,7 @@
 
     <target name="transform-ubl-creditnote-to-xr" depends="dependency-resolve, compile-negative-tests">
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
-            style="${src.dir}/xsl/ubl-creditnote-xr.xsl" includes="**/*creditnote.xml">
-            <classpath location="${lib.dir}/${saxon.jar}"/>
+            style="${src.dir}/xsl/ubl-creditnote-xr.xsl" includes="**/*creditnote.xml" classpathref="cp.saxon.xslt">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <chainedmapper>
                 <flattenmapper/>
@@ -323,8 +280,7 @@
 
     <target name="transform-cii-to-xr" depends="dependency-resolve, compile-negative-tests">
         <xslt basedir="${test.docs.dir}" destdir="${test.transformed.dir}"
-            style="${src.dir}/xsl/cii-xr.xsl" includes="**/*uncefact.xml">
-            <classpath location="${lib.dir}/${saxon.jar}"/>
+            style="${src.dir}/xsl/cii-xr.xsl" includes="**/*uncefact.xml" classpathref="cp.saxon.xslt">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <chainedmapper>
                 <flattenmapper/>
@@ -340,15 +296,13 @@
 
     <target name="transform-xr-to-html" depends="transform-to-xr">
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.html.dir}"
-            style="${src.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml">
-            <classpath location="${lib.dir}/${saxon.jar}"/>
+            style="${src.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml" classpathref="cp.saxon.xslt">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <mapper type="glob" from="*.xml" to="*.html"/>
         </xslt>
 
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.html.dir}-en"
-            style="${src.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml">
-            <classpath location="${lib.dir}/${saxon.jar}"/>
+            style="${src.dir}/xsl/xrechnung-html.xsl" includes="**/*.xml" classpathref="cp.saxon.xslt">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <param name="lang" type="STRING" expression="en"/>
             <mapper type="glob" from="*.xml" to="*.html"/>
@@ -359,8 +313,7 @@
     <target name="transform-xr-to-pdf" depends="transform-to-xr, dependency-resolve">
         <echo message="Transforming PDF with profile=${fop.config}"/>
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}"
-            style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
-            <classpath location="${lib.dir}/${saxon.jar}"/>
+            style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml" classpathref="cp.saxon.xslt">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <param name="foengine" type="STRING" expression="fop"/>
             <mapper type="glob" from="*.xml" to="*.fo"/>
@@ -374,8 +327,7 @@
         </fop>
 
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}-tabular"
-            style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
-            <classpath location="${lib.dir}/${saxon.jar}"/>
+            style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml" classpathref="cp.saxon.xslt">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/> 
             <param name="foengine" type="STRING" expression="fop"/>           
             <param name="invoiceline-layout" type="STRING" expression="tabular"/>
@@ -390,8 +342,7 @@
         </fop>
 
         <xslt basedir="${test.transformed.dir}" destdir="${test.transformed.pdf.dir}-tabular-en"
-            style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml">
-            <classpath location="${lib.dir}/${saxon.jar}"/>
+            style="${src.dir}/xsl/xr-pdf.xsl" includes="**/*.xml" classpathref="cp.saxon.xslt">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>            
             <param name="foengine" type="STRING" expression="fop"/>
             <param name="invoiceline-layout" type="STRING" expression="tabular"/>
@@ -482,14 +433,8 @@
         </zip>
     </target>
 
-
-    <target name="dist" depends="test,dist-only"> </target>
+    <target name="dist" depends="test,dist-only" /> 
 
     <target name="release" depends="release-env-file, dist"> </target>
 
-    <target name="clean">
-        <!-- Delete the ${build} and ${dist} directory trees -->
-        <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true"/>
-        <delete dir="${dist.dir}"/>
-    </target>
 </project>
