@@ -94,14 +94,23 @@ ant clean dist
 * Tag the last commit according to the following naming rule: `v${xr-visu.version.full}` e.g.
   `git tag v2025-07-10 && git push origin v2025-07-10`
 
+### Deploy
+
+* Tag the last commit according to the following naming rule: `${date-of-scheduled-release}-{rc}` e.g.
+  `git tag 2026-01-31-rc1 && git push origin 2026-01-31-rc1`
+
 ### Publish
 
-* Draft a new release at https://github.com/itplr-kosit/xrechnung-visualization/releases/new
-  * Choose the git tag you just created
-* Add release title of the following scheme: `XRechnung Visualization ${xr-visu.version.full} compatible with XRechnung ${xrechnung.version}`
+* If **all** released components are checked to be okay, tag the last commit according to the following naming rule: 
+   `v${date-of-scheduled-release-e.g. 2025-07-10}`
+  e.g.
+  `git tag v2026-01-31 && git push origin v2026-01-31`
+
+* The tag will trigger a release pipeline and create a GitLab release
 * Copy & paste the high quality changelog entries for this release from CHANGELOG.md.
-* Upload distribution zip and tick mark this release as a `pre-release`.
-* If **all** released components are checked to be okay, then uncheck pre-release.
+* Add a release title of the following scheme: `XRechnung Visualization ${xr-visu.version.full} compatible with XRechnung ${xrechnung.version}`.
+
+* Publish the new release in GitHub
 
 ### Post-Release
 
