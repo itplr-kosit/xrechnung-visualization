@@ -91,9 +91,6 @@ The `ant` target `dist` creates the distribution zip Archive for releases.
 ant clean dist
 ```
 
-* Tag the last commit according to the following naming rule: `v${xr-visu.version.full}` e.g.
-  `git tag v2025-07-10 && git push origin v2025-07-10`
-
 ### Deploy
 
 * Tag the last commit according to the following naming rule: `${date-of-scheduled-release}-{rc}` e.g.
