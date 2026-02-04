@@ -21,7 +21,7 @@
     <property name="fop.config" value="conf/fop.xconf"/>
 
     <!-- Naming -->
-    <property name="xr-visualization.version.full" value="2026-01-31-SNAPSHOT"/>
+    <property name="xr-visualization.version.full" value="2026-01-31"/>
 
     <!-- Test resources -->
     <property name="xrechnung.version.major.minor" value="3.0"/>
@@ -29,16 +29,14 @@
 
     <!-- Validator Configuration XRechnung -->
     <property name="validator.config.proj.name" value="validator-configuration-xrechnung"/>
-    <property name="validator.config.release.date" value="2025-07-10"/>
+    <property name="validator.config.release.date" value="2026-01-31"/>
     
-    <property name="github.group.url" value="https://github.com/itplr-kosit"/>
-
+    <property name="validator.config.zip"
+        value="xrechnung-${xrechnung.version.full}-validator-configuration-${validator.config.release.date}.zip"/>
     <property name="validator.config.download.url"
-        value="${github.group.url}/${validator.config.proj.name}/releases/download/release-${validator.config.release.date}/${validator.config.proj.name}_${xrechnung.version.full}_${validator.config.release.date}.zip"/>
+        value="https://projekte.kosit.org/api/v4/projects/356/packages/maven/de/xeinkauf/xrechnung-${xrechnung.version.full}-validator-configuration/${validator.config.release.date}/${validator.config.zip}"/>
     <property name="validator.config.release.version"
         value="release-${validator.config.release.date}"/>
-    <property name="validator.config.zip"
-        value="validator-configuration-xrechnung_${xrechnung.version.full}_${validator.config.release.date}.zip"/>
     <!-- Validator Configuration XRechnung Repository -->
     <property name="validator.repository.dir"
         location="${build.dir}/xrechnung-configuration-repository"/>
@@ -62,9 +60,11 @@
     <property name="test.reports.dir" location="${test.build.dir}/reports"/>
 
     <!-- testsuite -->
-    <property name="xr.testsuite.version" value="2025-07-10"/>
+    <property name="xr.testsuite.version" value="2026-01-31"/>
     <property name="xr.testsuite.download.url.prefix"
-        value="${github.group.url}/xrechnung-testsuite/releases/download"/>
+        value="https://projekte.kosit.org/api/v4/projects/356/packages/maven/de/xeinkauf/xrechnung-${xrechnung.version.full}-testsuite/${xr.testsuite.version}" />
+    <property name="xrechnung.testsuite.zip" value="xrechnung-${xrechnung.version.full}-testsuite-${xr.testsuite.version}.zip" />
+    
     <property name="xr.testsuite.zip"
         value="xrechnung-${xrechnung.version.full}-testsuite-${xr.testsuite.version}.zip"/>
 
@@ -156,16 +156,16 @@
             verbose="true" skipexisting="false" usetimestamp="false" httpusecaches="false"/>
     </target>
 
-    <target name="retrieve-xr-testsuite-from-github-release" depends="init"
+    <target name="retrieve-xr-testsuite-from-component-repository" depends="init"
         unless="develop.local.xr.testsuite">
 
         <get
-            src="${xr.testsuite.download.url.prefix}/release-${xr.testsuite.version}/${xr.testsuite.zip}"
+            src="${xr.testsuite.download.url.prefix}/${xr.testsuite.zip}"
             dest="${download.dir}" verbose="true" skipexisting="true" usetimestamp="true"/>
     </target>
 
     <target name="retrieve-xr-testsuite"
-        depends="retrieve-xr-testsuite-from-local-build, retrieve-xr-testsuite-from-github-release">
+        depends="retrieve-xr-testsuite-from-local-build, retrieve-xr-testsuite-from-component-repository">
 
         <fail message="${xr.testsuite.zip} does not exist in download files">
             <condition>
