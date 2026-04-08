@@ -135,12 +135,12 @@
       </xsl:choose>                   
   </xsl:function>
 
-  <!-- auxiliary function to insert a line break before '#conformant' in specification identifiers -->
+  <!-- auxiliary function to insert a line break after the CIUS XRechnung identifier in specification identifiers -->
   <xsl:function name="xrf:handle-specification-identifier" as="xs:string">
     <xsl:param name="specification-identifier"/>    
     <xsl:choose>
-      <xsl:when test="contains($specification-identifier, '#conformant')">      
-        <xsl:value-of select="replace($specification-identifier, '(#conformant)', ' $1')"/>
+      <xsl:when test="matches($specification-identifier, 'xrechnung_[0-9]+\.[0-9]+#')">      
+        <xsl:value-of select="replace($specification-identifier, '(xrechnung_[0-9]+\.[0-9]+)(#)', '$1 $2')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$specification-identifier"/>
