@@ -31,9 +31,10 @@ include:
       package_version: ${PACKAGE_VERSION}
       group_id: ${GROUP_ID}
       artifact_id: ${ARTIFACT_ID}
-  - component: $CI_SERVER_FQDN/xse/xse-fab/gitlab-ci-cd-components/release-to-kosit-gitlab@0.1.0
+  - component: $CI_SERVER_FQDN/xse/xse-fab/gitlab-ci-cd-components/release-to-kosit-gitlab@0.1.1-rc1
     inputs:
       stage: "release"
       package_version: ${PACKAGE_VERSION}
       package_binary: ${PACKAGE_BINARY}
       package_name: ${MAVEN_PACKAGE_NAME}
+      release_name: "XRechnung Visualization ${PACKAGE_VERSION} compatible with XRechnung ${XRECHNUNG_VERSION}"

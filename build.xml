@@ -421,6 +421,8 @@
           message="PACKAGE_BINARY=${project.artifact.zip.name}${line.separator}" />
         <echo file="${build.env.file}" append="true" encoding="UTF-8"
           message="MAVEN_PACKAGE_NAME=${project.group.id.path}/${project.artifact.id}${line.separator}" />
+        <echo file="${build.env.file}" append="true" encoding="UTF-8"
+          message="XRECHNUNG_VERSION=${xrechnung.version.full}${line.separator}" />
     </target>
 
     <target name="dist-only">
