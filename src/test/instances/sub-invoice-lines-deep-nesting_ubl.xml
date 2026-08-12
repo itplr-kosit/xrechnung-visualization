@@ -1,0 +1,261 @@
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+    <cbc:ID>DEEP-NEST-001</cbc:ID>
+    <cbc:IssueDate>2024-01-15</cbc:IssueDate>
+    <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+    <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+    <cbc:BuyerReference>deep-nesting-test</cbc:BuyerReference>
+    <cac:AccountingSupplierParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="EM">seller@example.de</cbc:EndpointID>
+            <cac:PartyName>
+                <cbc:Name>Testlieferant GmbH</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Musterstraße 1</cbc:StreetName>
+                <cbc:CityName>Berlin</cbc:CityName>
+                <cbc:PostalZone>10115</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>DE123456789</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Testlieferant GmbH</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+    <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="EM">buyer@example.de</cbc:EndpointID>
+            <cac:PostalAddress>
+                <cbc:StreetName>Käuferweg 5</cbc:StreetName>
+                <cbc:CityName>Hamburg</cbc:CityName>
+                <cbc:PostalZone>20095</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Testkäufer AG</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode>31</cbc:PaymentMeansCode>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>DE27100777770209299700</cbc:ID>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="EUR">190</cbc:TaxAmount>
+        <cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="EUR">1000</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="EUR">190</cbc:TaxAmount>
+            <cac:TaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>19</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="EUR">1000</cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="EUR">1000</cbc:TaxExclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="EUR">1190</cbc:TaxInclusiveAmount>
+        <cbc:PayableAmount currencyID="EUR">1190</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+    <!-- Depth 1: InvoiceLine -->
+    <cac:InvoiceLine>
+        <cbc:ID>1</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="EUR">1000</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>Hauptposition (Tiefe 1)</cbc:Name>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>19</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="EUR">1000</cbc:PriceAmount>
+            <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+        </cac:Price>
+        <!-- Depth 2: SubInvoiceLine -->
+        <cac:SubInvoiceLine>
+            <cbc:ID>1 1</cbc:ID>
+            <cbc:Note>Unterposition Tiefe 2</cbc:Note>
+            <cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+            <cbc:LineExtensionAmount currencyID="EUR">600</cbc:LineExtensionAmount>
+            <cac:InvoicePeriod>
+                <cbc:StartDate>2024-01-01</cbc:StartDate>
+                <cbc:EndDate>2024-01-31</cbc:EndDate>
+            </cac:InvoicePeriod>
+            <cac:AllowanceCharge>
+                <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+                <cbc:AllowanceChargeReasonCode>TAC</cbc:AllowanceChargeReasonCode>
+                <cbc:AllowanceChargeReason>Zuschlag Tiefe 2</cbc:AllowanceChargeReason>
+                <cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric>
+                <cbc:Amount currencyID="EUR">30</cbc:Amount>
+                <cbc:BaseAmount currencyID="EUR">600</cbc:BaseAmount>
+            </cac:AllowanceCharge>
+            <cac:AllowanceCharge>
+                <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+                <cbc:AllowanceChargeReasonCode>102</cbc:AllowanceChargeReasonCode>
+                <cbc:AllowanceChargeReason>Nachlass Tiefe 2</cbc:AllowanceChargeReason>
+                <cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric>
+                <cbc:Amount currencyID="EUR">30</cbc:Amount>
+                <cbc:BaseAmount currencyID="EUR">600</cbc:BaseAmount>
+            </cac:AllowanceCharge>
+            <cac:Item>
+                <cbc:Description>Artikel Tiefe 2</cbc:Description>
+                <cbc:Name>Unterposition Sanitär (Tiefe 2)</cbc:Name>
+                <cac:ClassifiedTaxCategory>
+                    <cbc:ID>S</cbc:ID>
+                    <cbc:Percent>19</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID>VAT</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:ClassifiedTaxCategory>
+            </cac:Item>
+            <cac:Price>
+                <cbc:PriceAmount currencyID="EUR">600</cbc:PriceAmount>
+                <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+            </cac:Price>
+            <!-- Depth 3: SubInvoiceLine -->
+            <cac:SubInvoiceLine>
+                <cbc:ID>1 1 1</cbc:ID>
+                <cbc:Note>Unterposition Tiefe 3</cbc:Note>
+                <cbc:InvoicedQuantity unitCode="MTR">10</cbc:InvoicedQuantity>
+                <cbc:LineExtensionAmount currencyID="EUR">300</cbc:LineExtensionAmount>
+                <cac:InvoicePeriod>
+                    <cbc:StartDate>2024-01-01</cbc:StartDate>
+                    <cbc:EndDate>2024-01-15</cbc:EndDate>
+                </cac:InvoicePeriod>
+                <cac:AllowanceCharge>
+                    <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+                    <cbc:AllowanceChargeReasonCode>TAC</cbc:AllowanceChargeReasonCode>
+                    <cbc:AllowanceChargeReason>Zuschlag Tiefe 3</cbc:AllowanceChargeReason>
+                    <cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric>
+                    <cbc:Amount currencyID="EUR">15</cbc:Amount>
+                    <cbc:BaseAmount currencyID="EUR">300</cbc:BaseAmount>
+                </cac:AllowanceCharge>
+                <cac:AllowanceCharge>
+                    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+                    <cbc:AllowanceChargeReasonCode>102</cbc:AllowanceChargeReasonCode>
+                    <cbc:AllowanceChargeReason>Nachlass Tiefe 3</cbc:AllowanceChargeReason>
+                    <cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric>
+                    <cbc:Amount currencyID="EUR">15</cbc:Amount>
+                    <cbc:BaseAmount currencyID="EUR">300</cbc:BaseAmount>
+                </cac:AllowanceCharge>
+                <cac:Item>
+                    <cbc:Description>Artikel Tiefe 3</cbc:Description>
+                    <cbc:Name>Unterposition Rohrleitungen (Tiefe 3)</cbc:Name>
+                    <cac:ClassifiedTaxCategory>
+                        <cbc:ID>S</cbc:ID>
+                        <cbc:Percent>19</cbc:Percent>
+                        <cac:TaxScheme>
+                            <cbc:ID>VAT</cbc:ID>
+                        </cac:TaxScheme>
+                    </cac:ClassifiedTaxCategory>
+                </cac:Item>
+                <cac:Price>
+                    <cbc:PriceAmount currencyID="EUR">30</cbc:PriceAmount>
+                    <cbc:BaseQuantity unitCode="MTR">1</cbc:BaseQuantity>
+                </cac:Price>
+                <!-- Depth 4: SubInvoiceLine — edge case targeted by issue #178 -->
+                <cac:SubInvoiceLine>
+                    <cbc:ID>1 1 1 1</cbc:ID>
+                    <cbc:Note>Unterposition Tiefe 4 (Randfall)</cbc:Note>
+                    <cbc:InvoicedQuantity unitCode="MTR">6</cbc:InvoicedQuantity>
+                    <cbc:LineExtensionAmount currencyID="EUR">180</cbc:LineExtensionAmount>
+                    <cac:InvoicePeriod>
+                        <cbc:StartDate>2024-01-01</cbc:StartDate>
+                        <cbc:EndDate>2024-01-08</cbc:EndDate>
+                    </cac:InvoicePeriod>
+                    <cac:AllowanceCharge>
+                        <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+                        <cbc:AllowanceChargeReasonCode>TAC</cbc:AllowanceChargeReasonCode>
+                        <cbc:AllowanceChargeReason>Zuschlag Tiefe 4</cbc:AllowanceChargeReason>
+                        <cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric>
+                        <cbc:Amount currencyID="EUR">9</cbc:Amount>
+                        <cbc:BaseAmount currencyID="EUR">180</cbc:BaseAmount>
+                    </cac:AllowanceCharge>
+                    <cac:AllowanceCharge>
+                        <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+                        <cbc:AllowanceChargeReasonCode>102</cbc:AllowanceChargeReasonCode>
+                        <cbc:AllowanceChargeReason>Nachlass Tiefe 4</cbc:AllowanceChargeReason>
+                        <cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric>
+                        <cbc:Amount currencyID="EUR">9</cbc:Amount>
+                        <cbc:BaseAmount currencyID="EUR">180</cbc:BaseAmount>
+                    </cac:AllowanceCharge>
+                    <cac:Item>
+                        <cbc:Description>Artikel Tiefe 4</cbc:Description>
+                        <cbc:Name>Tiefste Unterposition DN 50 (Tiefe 4)</cbc:Name>
+                        <cac:ClassifiedTaxCategory>
+                            <cbc:ID>S</cbc:ID>
+                            <cbc:Percent>19</cbc:Percent>
+                            <cac:TaxScheme>
+                                <cbc:ID>VAT</cbc:ID>
+                            </cac:TaxScheme>
+                        </cac:ClassifiedTaxCategory>
+                    </cac:Item>
+                    <cac:Price>
+                        <cbc:PriceAmount currencyID="EUR">30</cbc:PriceAmount>
+                        <cbc:BaseQuantity unitCode="MTR">1</cbc:BaseQuantity>
+                    </cac:Price>
+                </cac:SubInvoiceLine>
+                <cac:SubInvoiceLine>
+                    <cbc:ID>1 1 1 2</cbc:ID>
+                    <cbc:Note>Zweite Unterposition Tiefe 4 (Randfall)</cbc:Note>
+                    <cbc:InvoicedQuantity unitCode="MTR">4</cbc:InvoicedQuantity>
+                    <cbc:LineExtensionAmount currencyID="EUR">120</cbc:LineExtensionAmount>
+                    <cac:Item>
+                        <cbc:Name>Zweite Tiefste Unterposition DN 25 (Tiefe 4)</cbc:Name>
+                        <cac:ClassifiedTaxCategory>
+                            <cbc:ID>S</cbc:ID>
+                            <cbc:Percent>19</cbc:Percent>
+                            <cac:TaxScheme>
+                                <cbc:ID>VAT</cbc:ID>
+                            </cac:TaxScheme>
+                        </cac:ClassifiedTaxCategory>
+                    </cac:Item>
+                    <cac:Price>
+                        <cbc:PriceAmount currencyID="EUR">30</cbc:PriceAmount>
+                        <cbc:BaseQuantity unitCode="MTR">1</cbc:BaseQuantity>
+                    </cac:Price>
+                </cac:SubInvoiceLine>
+            </cac:SubInvoiceLine>
+        </cac:SubInvoiceLine>
+        <cac:SubInvoiceLine>
+            <cbc:ID>1 2</cbc:ID>
+            <cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+            <cbc:LineExtensionAmount currencyID="EUR">400</cbc:LineExtensionAmount>
+            <cac:Item>
+                <cbc:Name>Zweite Unterposition (Tiefe 2)</cbc:Name>
+                <cac:ClassifiedTaxCategory>
+                    <cbc:ID>S</cbc:ID>
+                    <cbc:Percent>19</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID>VAT</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:ClassifiedTaxCategory>
+            </cac:Item>
+            <cac:Price>
+                <cbc:PriceAmount currencyID="EUR">400</cbc:PriceAmount>
+                <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+            </cac:Price>
+        </cac:SubInvoiceLine>
+    </cac:InvoiceLine>
+</ubl:Invoice>
