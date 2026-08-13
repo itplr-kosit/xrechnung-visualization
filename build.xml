@@ -17,7 +17,7 @@
 
     <!-- fop -->
     <property name="fop.version" value="2.9" />
-    <property name="fop.jar" value="fop.jar"/>
+    <property name="fop.jar" value="fop-${fop.version}.jar"/>
     <property name="fop.home" value="${lib.dir}/fop"/>
     <property name="fop.config" value="conf/fop.xconf"/>
 
