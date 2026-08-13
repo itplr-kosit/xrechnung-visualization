@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* Overflow in specification identifier by adding line-break in PDF
+
 
 ## v2026-01-31
 
