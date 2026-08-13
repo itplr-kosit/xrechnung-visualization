@@ -12,6 +12,10 @@ This release is compatible with XRechnung ?.?.?
 
 * Test file for deeply nested Sub Invoice Lines
 
+### Changed
+
+* Build: VNU HTML validator is now resolved from Maven Central (`nu.validator:validator`), always pulling the latest released version instead of a pinned GitHub release download.
+
 ### Fixed
 
 * Overflow in CVD specification identifier in PDF
