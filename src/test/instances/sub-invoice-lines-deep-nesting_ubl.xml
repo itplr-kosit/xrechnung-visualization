@@ -3,9 +3,14 @@
     <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
     <cbc:ID>DEEP-NEST-001</cbc:ID>
     <cbc:IssueDate>2024-01-15</cbc:IssueDate>
+    <cbc:DueDate>2024-02-15</cbc:DueDate>
     <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
     <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
     <cbc:BuyerReference>deep-nesting-test</cbc:BuyerReference>
+    <cac:InvoicePeriod>
+        <cbc:StartDate>2019-02-01</cbc:StartDate>
+        <cbc:EndDate>2019-05-07</cbc:EndDate>
+    </cac:InvoicePeriod>
     <cac:AccountingSupplierParty>
         <cac:Party>
             <cbc:EndpointID schemeID="EM">seller@example.de</cbc:EndpointID>
@@ -29,6 +34,11 @@
             <cac:PartyLegalEntity>
                 <cbc:RegistrationName>Testlieferant GmbH</cbc:RegistrationName>
             </cac:PartyLegalEntity>
+        <cac:Contact>
+                <cbc:Name>M. Meier Handwerk GbR</cbc:Name>
+                <cbc:Telephone>010/12345</cbc:Telephone>
+                <cbc:ElectronicMail>info@m-meier.de</cbc:ElectronicMail>
+            </cac:Contact>
         </cac:Party>
     </cac:AccountingSupplierParty>
     <cac:AccountingCustomerParty>
@@ -236,6 +246,25 @@
                         <cbc:BaseQuantity unitCode="MTR">1</cbc:BaseQuantity>
                     </cac:Price>
                 </cac:SubInvoiceLine>
+            </cac:SubInvoiceLine>
+            <cac:SubInvoiceLine>
+                <cbc:ID>1 1 2</cbc:ID>
+                <cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+                <cbc:LineExtensionAmount currencyID="EUR">300</cbc:LineExtensionAmount>
+                <cac:Item>
+                    <cbc:Name>Zweite Unterposition (Tiefe 3)</cbc:Name>
+                    <cac:ClassifiedTaxCategory>
+                        <cbc:ID>S</cbc:ID>
+                        <cbc:Percent>19</cbc:Percent>
+                        <cac:TaxScheme>
+                            <cbc:ID>VAT</cbc:ID>
+                        </cac:TaxScheme>
+                    </cac:ClassifiedTaxCategory>
+                </cac:Item>
+                <cac:Price>
+                    <cbc:PriceAmount currencyID="EUR">300</cbc:PriceAmount>
+                    <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+                </cac:Price>
             </cac:SubInvoiceLine>
         </cac:SubInvoiceLine>
         <cac:SubInvoiceLine>
