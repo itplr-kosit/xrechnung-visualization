@@ -12,6 +12,9 @@ This release is compatible with XRechnung ?.?.?
 
 * Test file for deeply nested Sub Invoice Lines
 
+### Fixed
+
+* Overflow in CVD specification identifier in PDF
 
 ## v2026-01-31
 
