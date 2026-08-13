@@ -46,6 +46,7 @@
     <property name="vnu.maven.metadata.url"
         value="https://repo1.maven.org/maven2/nu/validator/validator/maven-metadata.xml"/>
     <property name="vnu.main.class" value="nu.validator.client.SimpleCommandLineValidator"/>
+    <property name="vnu.version" value="26.8.6"/>
 
     <!-- maven artifact resolver (used to fetch VNU + transitive deps from Maven Central) -->
     <property name="maven.artifact.resolver.version" value="1.5.0"/>
@@ -134,18 +135,7 @@
             classpath="${maven.artifact.resolver.jar.file}" onerror="fail"/>
     </target>
 
-    <target name="resolve-vnu-version" depends="init"
-        description="Resolve latest VNU version from Maven Central maven-metadata.xml">
-        <get src="${vnu.maven.metadata.url}"
-            dest="${download.dir}/vnu-maven-metadata.xml"
-            verbose="true" usetimestamp="false" httpusecaches="false"/>
-        <xmlproperty file="${download.dir}/vnu-maven-metadata.xml"
-            prefix="vnu.meta" keepRoot="false"/>
-        <property name="vnu.version" value="${vnu.meta.versioning.release}"/>
-        <echo>VNU latest release (Maven Central): ${vnu.version}</echo>
-    </target>
-
-    <target name="provide-vnu" depends="init, load-maven-artifact-resolver, resolve-vnu-version"
+    <target name="provide-vnu" depends="init, load-maven-artifact-resolver"
         description="Resolve VNU (nu.validator:validator) + transitive deps from Maven Central into classpath.vnu">
         <resolver:resolve>
             <dependencies>
