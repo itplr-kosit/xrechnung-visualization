@@ -205,6 +205,7 @@
         <unzip src="${download.dir}/fop-${fop.version}-bin.zip" dest="${fop.home}">
             <patternset>
                 <include name="**/build/${fop.jar}"/>
+                <include name="**/build/fop-core-${fop.version}.jar"/>
                 <include name="**/lib/*.jar"/>
                 <exclude name="**/xalan*.jar"/>
             </patternset>
@@ -225,7 +226,6 @@
                 </fileset>
             </classpath>
         </taskdef>
-
     </target>
 
 
