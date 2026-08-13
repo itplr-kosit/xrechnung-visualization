@@ -16,7 +16,7 @@
     <property name="resource.dir" location="${build.dir}/resources"/>
 
     <!-- fop -->
-    <property name="fop.version" value="2.9" />
+    <property name="fop.version" value="2.11" />
     <property name="fop.jar" value="fop-${fop.version}.jar"/>
     <property name="fop.home" value="${lib.dir}/fop"/>
     <property name="fop.config" value="conf/fop.xconf"/>
