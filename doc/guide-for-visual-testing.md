@@ -47,6 +47,7 @@ Expectation:
 
 ## Sub Invoice Lines (BG-DEX-01 and subsequent BG-DEX)
 * `sub-invoice-lines_ubl.xml`
+* `sub-invoice-lines-deep-nesting_ubl.xml`
 
 Expectation:
 * sub invoice lines 11 and 111 contain elements in HTML and PDF
