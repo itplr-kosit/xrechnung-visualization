@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:math="http://www.w3.org/2005/xpath-functions/math"
@@ -135,12 +135,12 @@
       </xsl:choose>                   
   </xsl:function>
 
-  <!-- auxiliary function to insert a line break in extension specification identifier -->
+  <!-- auxiliary function to insert a line break after the CIUS XRechnung identifier in specification identifiers -->
   <xsl:function name="xrf:handle-specification-identifier" as="xs:string">
     <xsl:param name="specification-identifier"/>    
     <xsl:choose>
-      <xsl:when test="matches($specification-identifier, 'xrechnung_[0-9]\.[0-9]#conformant')">      
-        <xsl:value-of select="replace($specification-identifier, '(xrechnung_[0-9]\.[0-9])(#conformant)', '$1 $2')"/>
+      <xsl:when test="matches($specification-identifier, 'xrechnung_[0-9]+\.[0-9]+#')">      
+        <xsl:value-of select="replace($specification-identifier, '(xrechnung_[0-9]+\.[0-9]+)(#)', '$1 $2')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$specification-identifier"/>
