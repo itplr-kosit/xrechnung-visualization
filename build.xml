@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project basedir="." name="xrechnung-visualization" default="transform-to-visualization">
+<project basedir="." name="xrechnung-visualization" default="transform-to-visualization"
+    xmlns:resolver="antlib:org.apache.maven.resolver.ant">
     
     <property name="xsbi.dir" location="${basedir}/_vendor/xsbi-0.3.0-SNAPSHOT/abu" />
     
@@ -42,12 +43,18 @@
     <property name="validator.repository.dir"
         location="${build.dir}/xrechnung-configuration-repository"/>
 
-    <!-- vnu html validator -->
-    <property name="vnu.jar" value="vnu.jar"/>
-    <property name="vnu.version" value="20.6.30"/>
-    <property name="vnu.zip" value="${vnu.jar}_${vnu.version}.zip"/>
-    <property name="vnu.download.url"
-        value="https://github.com/validator/validator/releases/download/${vnu.version}/${vnu.zip}"/>
+    <!-- vnu html validator (resolved dynamically from Maven Central, see resolve-vnu-version) -->
+    <property name="vnu.maven.metadata.url"
+        value="https://repo1.maven.org/maven2/nu/validator/validator/maven-metadata.xml"/>
+    <property name="vnu.main.class" value="nu.validator.client.SimpleCommandLineValidator"/>
+    <property name="vnu.version" value="26.8.6"/>
+
+    <!-- maven artifact resolver (used to fetch VNU + transitive deps from Maven Central) -->
+    <property name="maven.artifact.resolver.version" value="1.5.0"/>
+    <property name="maven.artifact.resolver.jar.name"
+        value="maven-resolver-ant-tasks-${maven.artifact.resolver.version}-uber.jar"/>
+    <property name="maven.artifact.resolver.jar.file"
+        value="${lib.dir}/${maven.artifact.resolver.jar.name}"/>
     <property name="xr.testsuite.docs.download.url.base"
         value="https://raw.githubusercontent.com/itplr-kosit/xrechnung-testsuite/master/src/test/business-cases"/>
     <property name="test.src.dir" location="${src.dir}/test"/>
@@ -104,7 +111,6 @@
 
         <available file="${lib.dir}/${validator.jar}" property="dep.validator.available"/>
         <available file="${fop.home}/${fop.jar}" property="dep.fop.available"/>
-        <available file="${lib.dir}/${vnu.jar}" property="dep.vnu.available"/>
 
     </target>
 
@@ -114,24 +120,30 @@
     <target name="provide-validator" depends="abu-validator-provider.provide-validator" unless="dep.validator.available" />
 
 
-    <target name="provide-vnu" depends="init" description="Download vNU" unless="dep.vnu.available">
-        <get src="${vnu.download.url}" dest="${download.dir}" verbose="true" skipexisting="true"
-            usetimestamp="true"/>
-        <!-- Cause unzip task does not error on missing dest directory -->
-        <fail message="Lib directory ${lib.dir} does not exist!">
-            <condition>
-                <not>
-                    <available file="${lib.dir}"/>
-                </not>
-            </condition>
-        </fail>
-        <fail unless="vnu.jar" message="Need to specify property with name 'vnu.jar'"/>
-        <unzip src="${download.dir}/${vnu.zip}" dest="${lib.dir}">
-            <patternset>
-                <include name="**/${vnu.jar}"/>
-            </patternset>
-            <flattenmapper/>
-        </unzip>
+    <target name="provide-maven-artifact-resolver" depends="init"
+        description="Download Maven Resolver Ant Tasks (needed to fetch VNU from Maven Central)">
+        <available property="maven.artifact.resolver.available"
+            file="${maven.artifact.resolver.jar.file}"/>
+        <get
+            src="https://repo1.maven.org/maven2/org/apache/maven/resolver/maven-resolver-ant-tasks/${maven.artifact.resolver.version}/${maven.artifact.resolver.jar.name}"
+            dest="${lib.dir}" usetimestamp="true" skipexisting="true"/>
+    </target>
+
+    <target name="load-maven-artifact-resolver" depends="provide-maven-artifact-resolver"
+        description="Register the resolver:* antlib tasks">
+        <taskdef uri="antlib:org.apache.maven.resolver.ant"
+            resource="org/apache/maven/resolver/ant/antlib.xml"
+            classpath="${maven.artifact.resolver.jar.file}" onerror="fail"/>
+    </target>
+
+    <target name="provide-vnu" depends="init, load-maven-artifact-resolver"
+        description="Resolve VNU (nu.validator:validator) + transitive deps from Maven Central into classpath.vnu">
+        <resolver:resolve>
+            <dependencies>
+                <dependency coords="nu.validator:validator:${vnu.version}"/>
+            </dependencies>
+            <path refid="classpath.vnu" classpath="runtime"/>
+        </resolver:resolve>
     </target>
 
     <target name="retrieve-validator-configuration" depends="init"
@@ -373,9 +385,10 @@
 
     <target name="test-html" depends="dependency-resolve,transform-xr-to-html"
         description="Tests HTML generation with VNU by W3C">
-        <echo>Validating HTML ...</echo>
-        <java jar="${lib.dir}/${vnu.jar}" failonerror="false" fork="yes" dir="${basedir}"
+        <echo>Validating HTML with VNU ${vnu.version} (resolved from Maven Central) ...</echo>
+        <java classname="${vnu.main.class}" failonerror="false" fork="yes" dir="${basedir}"
             logerror="true">
+            <classpath refid="classpath.vnu"/>
             <arg value="--skip-non-html"/>
             <arg value="${test.transformed.html.dir}"/>
         </java>
