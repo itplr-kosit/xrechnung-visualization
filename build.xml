@@ -16,7 +16,8 @@
     <property name="resource.dir" location="${build.dir}/resources"/>
 
     <!-- fop -->
-    <property name="fop.jar" value="fop.jar"/>
+    <property name="fop.version" value="2.11" />
+    <property name="fop.jar" value="fop-${fop.version}.jar"/>
     <property name="fop.home" value="${lib.dir}/fop"/>
     <property name="fop.config" value="conf/fop.xconf"/>
 
@@ -197,13 +198,13 @@
 
     <target name="provide-fop" depends="init, provide-saxon" unless="${dep.fop.available}"
         description="Download Apache FOP for taskdef stuff">
-        <get src="https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-2.6-bin.zip"
-            dest="${download.dir}/fop-2.6-bin.zip" verbose="true" skipexisting="true"
+        <get src="https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-${fop.version}-bin.zip"
+            dest="${download.dir}/fop-${fop.version}-bin.zip" verbose="true" skipexisting="true"
             usetimestamp="true"/>
         <fail unless="fop.jar" message="Provide a name for the extracted fop jar"/>
-        <unzip src="${download.dir}/fop-2.6-bin.zip" dest="${fop.home}">
+        <unzip src="${download.dir}/fop-${fop.version}-bin.zip" dest="${fop.home}">
             <patternset>
-                <include name="**/build/${fop.jar}"/>
+                <include name="**/build/*.jar"/>
                 <include name="**/lib/*.jar"/>
                 <exclude name="**/xalan*.jar"/>
             </patternset>
@@ -224,7 +225,6 @@
                 </fileset>
             </classpath>
         </taskdef>
-
     </target>
 
 
