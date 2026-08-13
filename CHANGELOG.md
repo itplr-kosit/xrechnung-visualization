@@ -10,7 +10,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Fixed
 
-* Overflow in specification identifier by adding line-break in PDF
+* Overflow in CVD specification identifier in PDF
 
 
 ## v2026-01-31
