@@ -57,7 +57,7 @@ function base64_to_binary(data) {
     return new Uint8Array(bytes);
 }
 
-function downloadData(element_id, mimetype, filename) {    
+function downloadData(element_id, mimetype, filename, e) {    
     var data_element = document.getElementById(element_id);  
     var text = data_element.innerHTML;
     var binary = base64_to_binary(text);
@@ -70,6 +70,10 @@ function downloadData(element_id, mimetype, filename) {
         window.navigator.msSaveOrOpenBlob(blob, filename);
     } else {
         saveAs(blob, filename);       
+    }
+    if (e) {
+        e.stopPropagation();
+        e.preventDefault();
     }
 }
 
