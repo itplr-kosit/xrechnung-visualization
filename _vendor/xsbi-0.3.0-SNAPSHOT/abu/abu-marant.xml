@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="abu-marant" default="init-marant"
+  xmlns:resolver="antlib:org.apache.maven.resolver.ant">
+
+  <description>Maven provides the maven artifcat resolver ant tasks. This allows to have full maven based dependency management within ant builds.</description>
+  <!-- cause imported files behave relativ to their parent, we safe the location of the child in this var -->
+
+  <property name="abu-marant.build.file" location="${ant.file.abu-marant}" />
+
+  <!-- marant based dependency management -->
+  <property name="maven.artifact.resolver.version" value="1.5.2" />
+  <property name="maven.artifact.resolver.jar.name"
+    value="maven-resolver-ant-tasks-${maven.artifact.resolver.version}-uber.jar" />
+
+  <property name="maven.artifact.resolver.jar.file"
+    value="${lib.dir}/${maven.artifact.resolver.jar.name}" />
+
+  <available property="maven.artifact.resolver.available"
+    file="${maven.artifact.resolver.jar.file}" />
+
+  <property name="pom.xml.file" location="${basedir}/pom.xml" />
+
+  <target name="validate-marant"
+    description="Validates requirements for executing this build">
+    <echo
+      message="Validating requirements for project: ${ant.project.name} using build file ${abu-marant.build.file}" />
+
+
+    <fail message="Property $$lib.dir not available. Must be set.">
+      <condition>
+        <not>
+          <isset property="lib.dir" />
+        </not>
+      </condition>
+    </fail>
+
+    <fail message="POM file not available at ${pom.xml.file}.">
+      <condition>
+        <not>
+          <available  file="${pom.xml.file}"/>
+        </not>
+      </condition>
+    </fail>
+
+  </target>
+
+  <target name="init-marant" depends="validate-marant"
+    description="Creates common build directories">
+    <echo message="Create the build directory structure" />
+
+    <!--<mkdir dir="${build.dir}" />-->
+    <mkdir dir="${lib.dir}" />
+
+  </target>
+
+
+  <target name="provide-marant" depends="init-marant"
+    unless="${maven.artifact.resolver.available}">
+
+    <echo message="Providing Maven Artifact Resolver Ant Tasks" />
+
+    <get
+      src="https://repo1.maven.org/maven2/org/apache/maven/resolver/maven-resolver-ant-tasks/${maven.artifact.resolver.version}/${maven.artifact.resolver.jar.name}"
+      dest="${lib.dir}" usetimestamp="true" />
+
+  </target>
+
+  <target name="load"
+    description="Load Maven Artifact Resolver into Virtual Machine"
+    depends="provide-marant">
+
+    <echo message="Initialising Project Model and Build Infrastructure" />
+    <fail
+      message="Resolver ${lib.dir}/${maven.artifact.resolver.jar.name} is missing. Use ant target provide-marant first">
+      <condition>
+        <not>
+          <available file="${lib.dir}/${maven.artifact.resolver.jar.name}" />
+        </not>
+      </condition>
+    </fail>
+
+    <taskdef uri="antlib:org.apache.maven.resolver.ant"
+      resource="org/apache/maven/resolver/ant/antlib.xml"
+      classpath="${lib.dir}/${maven.artifact.resolver.jar.name}" onerror="fail" />
+
+    <!-- Because of "If a POM is set via a file parameter its effective model is made available as properties to the Ant project" see https://maven.apache.org/resolver-ant-tasks/ -->
+    <!-- These properties are not output by echoproperties -->
+    <resolver:pom file="${pom.xml.file}" id="pom" />
+
+  </target>
+
+
+</project>

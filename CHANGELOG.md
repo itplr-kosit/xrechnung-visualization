@@ -15,6 +15,9 @@ This release is compatible with XRechnung ?.?.?
 ### Changed
 
 * Build: VNU HTML validator is now resolved from Maven Central (`nu.validator:validator`), always pulling the latest released version instead of a pinned GitHub release download.
+* Build: Apache FOP is now resolved from Maven Central (`org.apache.xmlgraphics:fop`) via the xsbi build unit `abu-marant` instead of unpacking the binary distribution from `archive.apache.org`. The FOP version is declared in the new `pom.xml`.
+* Build: XRechnung testsuite and validator configuration are now resolved as Maven dependencies from the XSE component repository instead of being downloaded via hand written package registry URLs. Their versions are declared in `pom.xml`.
+* Build: every dependency the Ant build resolves - FOP, VNU, testsuite, validator configuration - is now declared in `pom.xml`; none of their versions are kept in `build.xml` any more.
 
 ### Fixed
 
