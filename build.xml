@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project basedir="." name="xrechnung-visualization" default="transform-to-visualization"
     xmlns:resolver="antlib:org.apache.maven.resolver.ant">
+
+    <property name="xsbi.version" value="0.5.0-SNAPSHOT" />
+    <property name="xsbi.home" location="${basedir}/_vendor/xsbi-${xsbi.version}" />
+    <property name="xsbi.abu.dir" location="${xsbi.home}/abu" />
     
-    <property name="xsbi.dir" location="${basedir}/_vendor/xsbi-0.3.0-SNAPSHOT/abu" />
-    
-    <import file="${xsbi.dir}/abu-common.xml" />
-    <include file="${xsbi.dir}/abu-saxon-provider.xml" />
-    <include file="${xsbi.dir}/abu-validator-provider.xml" />
+    <import file="${xsbi.abu.dir}/abu-common.xml" />
+    <include file="${xsbi.abu.dir}/abu-saxon-provider.xml" />
+    <include file="${xsbi.abu.dir}/abu-validator-provider.xml" />
     <!-- Maven Artifact Resolver Ant Tasks; resolves the dependencies declared in pom.xml -->
-    <include file="${xsbi.dir}/abu-marant.xml" />
+    <include file="${xsbi.abu.dir}/abu-marant.xml" />
     
     <!-- project directory structure -->
     <property name="dist.dir" location="${basedir}/dist"/>
@@ -93,7 +95,7 @@
 
     </target>
 
-    <target name="provide-saxon" depends="abu-saxon-provider.provide-saxon" unless="saxon.available"
+    <target name="provide-saxon" depends="abu-saxon-provider.provide-saxon" unless="abu.available.saxon"
         description="Download Saxon-HE and add jar to library directory"/>
 
     <target name="provide-validator" depends="abu-validator-provider.provide-validator" unless="dep.validator.available" />
