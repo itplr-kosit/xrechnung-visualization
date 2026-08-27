@@ -319,7 +319,7 @@
 
     <target name="test-html" depends="dependency-resolve,transform-xr-to-html"
         description="Tests HTML generation with VNU by W3C">
-        <echo>Validating HTML with VNU (version declared in pom.xml) ...</echo>
+        <echo>Validating HTML with VNU ${pom.properties.vnu.version}</echo>
         <java classname="${vnu.main.class}" failonerror="false" fork="yes" dir="${basedir}"
             logerror="true">
             <classpath refid="classpath.vnu"/>
