@@ -8,6 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Test file for deeply nested Sub Invoice Lines
+
+### Changed
+
+* Build: VNU HTML validator is now resolved from Maven Central (`nu.validator:validator`), always pulling the latest released version instead of a pinned GitHub release download.
+
+### Fixed
+
+* Overflow in CVD specification identifier in PDF
 
 ## v2026-01-31
 
@@ -18,6 +29,10 @@ This release is compatible with XRechnung 3.0.x
 * multiple BG-21 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
 * Test that contains 61x BG-1 "INVOICE NOTE"
 * Test file for Sub Invoice Lines
+
+### Changed
+
+* using Saxon 12.8 and XML resolver 6.0.19
 
 ### Fixed
 

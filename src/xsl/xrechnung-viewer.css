@@ -308,7 +308,8 @@ button
 
 .boxdaten.wert
 {
-  padding: 5px 10px;overflow-wrap: anywhere;
+  padding: 5px 10px;
+  overflow-wrap: anywhere;
 }
 
 .boxcell
