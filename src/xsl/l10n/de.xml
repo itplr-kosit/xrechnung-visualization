@@ -256,4 +256,14 @@
   <entry key="_tax-code">St. Code</entry>
   <entry key="_total">Gesamt</entry>
   <entry key="_page">Seite</entry>
+  
+  <!-- BG 3 Additonal text for invoice type code -->
+  <entry key="xr:Invoice_type_code_text.326" id="BT-3">Teilrechnung</entry>
+  <entry key="xr:Invoice_type_code_text.380" id="BT-3">Rechnung</entry>
+  <entry key="xr:Invoice_type_code_text.384" id="BT-3">Rechnungskorrektur</entry>
+  <entry key="xr:Invoice_type_code_text.389" id="BT-3">Selbstfakturierte Rechnung</entry>
+  <entry key="xr:Invoice_type_code_text.381" id="BT-3">Gutschrift</entry>
+  <entry key="xr:Invoice_type_code_text.875" id="BT-3">Abschlagsrechnung</entry>
+  <entry key="xr:Invoice_type_code_text.876" id="BT-3">Teilschlussrechnung</entry>
+  <entry key="xr:Invoice_type_code_text.877" id="BT-3">Schlussrechnung</entry>
 </properties>
