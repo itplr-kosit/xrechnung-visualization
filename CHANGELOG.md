@@ -19,6 +19,7 @@ This release is compatible with XRechnung ?.?.?
 ### Fixed
 
 * Overflow in CVD specification identifier in PDF
+* Duplicate listing of BT-23 "Business process type" in PDF
 
 ## v2026-01-31
 
