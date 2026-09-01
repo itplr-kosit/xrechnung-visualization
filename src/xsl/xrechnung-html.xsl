@@ -1001,7 +1001,9 @@
           </div>
           <div data-title="BT-20" class="BT-20 boxdaten wert">
             <xsl:for-each select="tokenize(xr:Payment_terms,';')">
-              <xsl:value-of select="." />
+              <xsl:call-template name="payment-terms">
+                <xsl:with-param name="value" select="." />
+              </xsl:call-template>
               <xsl:if test="position() != last()">
                 <br />
               </xsl:if>
@@ -2245,4 +2247,26 @@
     </div>
   </xsl:template>
 
+
+  <!-- Outputs a payment term (BT-20). The structured SKONTO/VERZUG lines prescribed by
+       BR-DE-18 are single tokens without any whitespace. -->
+  <xsl:template name="payment-terms">
+    <xsl:param name="value" />
+    <xsl:choose>
+      <xsl:when test="starts-with(normalize-space($value), '#')">
+        <xsl:analyze-string select="$value" regex="#">
+          <xsl:matching-substring>
+            <xsl:text>#</xsl:text>
+            <wbr />
+          </xsl:matching-substring>
+          <xsl:non-matching-substring>
+            <xsl:value-of select="." />
+          </xsl:non-matching-substring>
+        </xsl:analyze-string>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$value" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 </xsl:stylesheet>

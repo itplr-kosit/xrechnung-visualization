@@ -11,6 +11,7 @@ This release is compatible with XRechnung ?.?.?
 ### Added
 
 * Test file for deeply nested Sub Invoice Lines
+* Test instance with the extended Skonto syntax of BT-20 (four segments including `BASISBETRAG`), which was not covered by any instance so far
 
 ### Changed
 
@@ -19,6 +20,8 @@ This release is compatible with XRechnung ?.?.?
 ### Fixed
 
 * Overflow in CVD specification identifier in PDF
+* Overflow of the structured payment terms (BT-20) prescribed by BR-DE-18: with the fourth segment `BASISBETRAG` a Skonto line is a single token of 48 characters without any whitespace, which neither the browser nor FOP could wrap. The HTML visualization now emits a word break opportunity (`wbr`) after every segment separator, the PDF visualization a ZERO WIDTH SPACE. Both are break opportunities only and do not change the displayed value.
+* The CSS declaration `overflow-wrap: anywhere` on all value cells is removed again. It had been introduced unintentionally together with the VNU update and it did not only affect the Skonto lines: `anywhere` lowers the min-content width of every value cell and thereby changes the column widths of every box.
 
 ## v2026-01-31
 

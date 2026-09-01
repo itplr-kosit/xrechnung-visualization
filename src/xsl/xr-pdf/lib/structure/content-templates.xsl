@@ -197,6 +197,7 @@
                  <xsl:otherwise>
                    <xsl:choose>
                      <xsl:when test="$field-mapping-identifier = 'xr:Payment_due_date'"><xsl:value-of select="format-date(xs:date(.), xrf:_('date-format'))"/></xsl:when>
+                     <xsl:when test="$field-mapping-identifier = 'xr:Payment_terms'"><xsl:value-of select="xrf:handle-payment-terms(.)"/></xsl:when>
                      <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
                    </xsl:choose>
                  </xsl:otherwise>

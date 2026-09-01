@@ -148,4 +148,17 @@
     </xsl:choose>
   </xsl:function>
 
+  <!-- auxiliary function to insert break opportunities into structured payment terms (BT-20).
+       The SKONTO/VERZUG lines prescribed by BR-DE-18 are single tokens without any whitespace. -->
+  <xsl:function name="xrf:handle-payment-terms" as="xs:string">
+    <xsl:param name="payment-terms"/>
+    <xsl:value-of select="string-join(
+        for $line in tokenize(string($payment-terms), '&#xA;')
+        return
+          if (starts-with(normalize-space($line), '#'))
+          then replace($line, '#', '#&#x200B;')
+          else $line,
+        '&#xA;')"/>
+  </xsl:function>
+
 </xsl:stylesheet>
