@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project basedir="." name="xrechnung-visualization" default="transform-to-visualization"
     xmlns:resolver="antlib:org.apache.maven.resolver.ant">
+
+    <property name="xsbi.version" value="0.5.0-SNAPSHOT" />
+    <property name="xsbi.home" location="${basedir}/_vendor/xsbi-${xsbi.version}" />
+    <property name="xsbi.abu.dir" location="${xsbi.home}/abu" />
     
-    <property name="xsbi.dir" location="${basedir}/_vendor/xsbi-0.3.0-SNAPSHOT/abu" />
-    
-    <import file="${xsbi.dir}/abu-common.xml" />
-    <include file="${xsbi.dir}/abu-saxon-provider.xml" />
-    <include file="${xsbi.dir}/abu-validator-provider.xml" />
+    <import file="${xsbi.abu.dir}/abu-common.xml" />
+    <include file="${xsbi.abu.dir}/abu-saxon-provider.xml" />
+    <include file="${xsbi.abu.dir}/abu-validator-provider.xml" />
+    <!-- Maven Artifact Resolver Ant Tasks; resolves the dependencies declared in pom.xml -->
+    <include file="${xsbi.abu.dir}/abu-marant.xml" />
     
     <!-- project directory structure -->
     <property name="dist.dir" location="${basedir}/dist"/>
@@ -16,10 +20,6 @@
     <property name="download.dir" location="${build.dir}/download"/>
     <property name="resource.dir" location="${build.dir}/resources"/>
 
-    <!-- fop -->
-    <property name="fop.version" value="2.11" />
-    <property name="fop.jar" value="fop-${fop.version}.jar"/>
-    <property name="fop.home" value="${lib.dir}/fop"/>
     <property name="fop.config" value="conf/fop.xconf"/>
 
     <!-- Naming -->
@@ -29,32 +29,21 @@
     <property name="xrechnung.version.major.minor" value="3.0"/>
     <property name="xrechnung.version.full" value="${xrechnung.version.major.minor}.2"/>
 
-    <!-- Validator Configuration XRechnung -->
+    <property name="xse.component.repository.url"
+        value="https://projekte.kosit.org/api/v4/projects/356/packages/maven"/>
+    <property name="maven.central.url" value="https://repo1.maven.org/maven2/"/>
+
+    <!-- Validator Configuration XRechnung (version declared in pom.xml) -->
     <property name="validator.config.proj.name" value="validator-configuration-xrechnung"/>
-    <property name="validator.config.release.date" value="2026-01-31"/>
-    
     <property name="validator.config.zip"
-        value="xrechnung-${xrechnung.version.full}-validator-configuration-${validator.config.release.date}.zip"/>
-    <property name="validator.config.download.url"
-        value="https://projekte.kosit.org/api/v4/projects/356/packages/maven/de/xeinkauf/xrechnung-${xrechnung.version.full}-validator-configuration/${validator.config.release.date}/${validator.config.zip}"/>
-    <property name="validator.config.release.version"
-        value="release-${validator.config.release.date}"/>
+        value="xrechnung-${xrechnung.version.full}-validator-configuration.zip"/>
     <!-- Validator Configuration XRechnung Repository -->
     <property name="validator.repository.dir"
         location="${build.dir}/xrechnung-configuration-repository"/>
 
-    <!-- vnu html validator (resolved dynamically from Maven Central, see resolve-vnu-version) -->
-    <property name="vnu.maven.metadata.url"
-        value="https://repo1.maven.org/maven2/nu/validator/validator/maven-metadata.xml"/>
+    <!-- vnu html validator (the artifact and its version are declared in pom.xml) -->
     <property name="vnu.main.class" value="nu.validator.client.SimpleCommandLineValidator"/>
-    <property name="vnu.version" value="26.8.6"/>
 
-    <!-- maven artifact resolver (used to fetch VNU + transitive deps from Maven Central) -->
-    <property name="maven.artifact.resolver.version" value="1.5.0"/>
-    <property name="maven.artifact.resolver.jar.name"
-        value="maven-resolver-ant-tasks-${maven.artifact.resolver.version}-uber.jar"/>
-    <property name="maven.artifact.resolver.jar.file"
-        value="${lib.dir}/${maven.artifact.resolver.jar.name}"/>
     <property name="xr.testsuite.docs.download.url.base"
         value="https://raw.githubusercontent.com/itplr-kosit/xrechnung-testsuite/master/src/test/business-cases"/>
     <property name="test.src.dir" location="${src.dir}/test"/>
@@ -67,14 +56,8 @@
     <property name="test.transformed.pdf.dir" location="${test.build.dir}/pdf"/>
     <property name="test.reports.dir" location="${test.build.dir}/reports"/>
 
-    <!-- testsuite -->
-    <property name="xr.testsuite.version" value="2026-01-31"/>
-    <property name="xr.testsuite.download.url.prefix"
-        value="https://projekte.kosit.org/api/v4/projects/356/packages/maven/de/xeinkauf/xrechnung-${xrechnung.version.full}-testsuite/${xr.testsuite.version}" />
-    <property name="xrechnung.testsuite.zip" value="xrechnung-${xrechnung.version.full}-testsuite-${xr.testsuite.version}.zip" />
-    
     <property name="xr.testsuite.zip"
-        value="xrechnung-${xrechnung.version.full}-testsuite-${xr.testsuite.version}.zip"/>
+        value="xrechnung-${xrechnung.version.full}-testsuite.zip"/>
 
     <property name="xrechnung.xsd.ns"
         value="urn:ce.eu:en16931:2017:xoev-de:kosit:standard:xrechnung-1"/>
@@ -96,7 +79,6 @@
         <echo>Build date: ${build.date}</echo>
         <!-- Create the build directory structure used by compile -->
         <mkdir dir="${download.dir}"/>
-        <mkdir dir="${fop.home}"/>
         <mkdir dir="${test.docs.dir}"/>
         <mkdir dir="${test.docs.positive.dir}"/>
         <mkdir dir="${test.docs.negative.dir}"/>
@@ -110,75 +92,51 @@
             file="${validator.repository.dir}/scenarios.xml"/>
 
         <available file="${lib.dir}/${validator.jar}" property="dep.validator.available"/>
-        <available file="${fop.home}/${fop.jar}" property="dep.fop.available"/>
 
     </target>
 
-    <target name="provide-saxon" depends="abu-saxon-provider.provide-saxon" unless="saxon.available"
+    <target name="provide-saxon" depends="abu-saxon-provider.provide-saxon" unless="abu.available.saxon"
         description="Download Saxon-HE and add jar to library directory"/>
 
     <target name="provide-validator" depends="abu-validator-provider.provide-validator" unless="dep.validator.available" />
 
+    <target name="provide-maven-dependencies" depends="init, abu-marant.load"
+        description="Resolve all dependencies declared in pom.xml: FOP and VNU as classpaths, the de.xeinkauf archives as files in the download directory">
 
-    <target name="provide-maven-artifact-resolver" depends="init"
-        description="Download Maven Resolver Ant Tasks (needed to fetch VNU from Maven Central)">
-        <available property="maven.artifact.resolver.available"
-            file="${maven.artifact.resolver.jar.file}"/>
-        <get
-            src="https://repo1.maven.org/maven2/org/apache/maven/resolver/maven-resolver-ant-tasks/${maven.artifact.resolver.version}/${maven.artifact.resolver.jar.name}"
-            dest="${lib.dir}" usetimestamp="true" skipexisting="true"/>
-    </target>
+        <!-- Declaring remoterepos replaces the implicit default, so central must be listed too -->
+        <resolver:remoterepos id="xse.repos">
+            <remoterepo id="central" url="${maven.central.url}"/>
+            <remoterepo id="xse-component-repository" url="${xse.component.repository.url}"/>
+        </resolver:remoterepos>
 
-    <target name="load-maven-artifact-resolver" depends="provide-maven-artifact-resolver"
-        description="Register the resolver:* antlib tasks">
-        <taskdef uri="antlib:org.apache.maven.resolver.ant"
-            resource="org/apache/maven/resolver/ant/antlib.xml"
-            classpath="${maven.artifact.resolver.jar.file}" onerror="fail"/>
-    </target>
-
-    <target name="provide-vnu" depends="init, load-maven-artifact-resolver"
-        description="Resolve VNU (nu.validator:validator) + transitive deps from Maven Central into classpath.vnu">
         <resolver:resolve>
-            <dependencies>
-                <dependency coords="nu.validator:validator:${vnu.version}"/>
-            </dependencies>
-            <path refid="classpath.vnu" classpath="runtime"/>
+            <remoterepos refid="xse.repos"/>
+            <dependencies pomRef="pom"/>
+            <path refid="classpath.fop" scopes="runtime"/>
+            <path refid="classpath.vnu" scopes="test"/>
+            <!-- layout without version: the version lives in pom.xml and must not leak into
+                 file names that build.xml would then have to know about -->
+            <files refid="xse.artifacts" dir="${download.dir}"
+                layout="{artifactId}.{extension}" scopes="provided"/>
         </resolver:resolve>
     </target>
 
-    <target name="retrieve-validator-configuration" depends="init"
-        unless="validator.repository.dir.available">
-
-        <echo
-            message="Retrieving Validator Configuration XRechnung from ${validator.config.download.url}"/>
-
-        <get src="${validator.config.download.url}" dest="${lib.dir}/${validator.config.zip}"
-            verbose="true" skipexisting="false" usetimestamp="true"/>
-    </target>
-
-
     <target name="provide-validator-configuration" unless="validator.repository.dir.available"
-        depends="retrieve-validator-configuration, provide-validator">
-        <unzip src="${lib.dir}/${validator.config.zip}" dest="${validator.repository.dir}"/>
+        depends="provide-maven-dependencies, provide-validator">
+        <unzip src="${download.dir}/${validator.config.zip}" dest="${validator.repository.dir}"/>
     </target>
 
 
-    <target name="retrieve-xr-testsuite-from-local-build" depends="init"
+    <!-- Local development override -->
+    <target name="retrieve-xr-testsuite-from-local-build" depends="provide-maven-dependencies"
         if="develop.local.xr.testsuite">
         <get src="${xr.testsuite.download.url.prefix}/${xr.testsuite.zip}" dest="${download.dir}"
             verbose="true" skipexisting="false" usetimestamp="false" httpusecaches="false"/>
     </target>
 
-    <target name="retrieve-xr-testsuite-from-component-repository" depends="init"
-        unless="develop.local.xr.testsuite">
-
-        <get
-            src="${xr.testsuite.download.url.prefix}/${xr.testsuite.zip}"
-            dest="${download.dir}" verbose="true" skipexisting="true" usetimestamp="true"/>
-    </target>
-
-    <target name="retrieve-xr-testsuite"
-        depends="retrieve-xr-testsuite-from-local-build, retrieve-xr-testsuite-from-component-repository">
+    <target name="provide-testsuite"
+        depends="provide-maven-dependencies, retrieve-xr-testsuite-from-local-build"
+        description="Get data from xrechnung-testsuite for testing visualization">
 
         <fail message="${xr.testsuite.zip} does not exist in download files">
             <condition>
@@ -187,11 +145,6 @@
                 </not>
             </condition>
         </fail>
-
-    </target>
-
-    <target name="provide-testsuite" depends="init, retrieve-xr-testsuite"
-        description="Get data from xrechnung-testsuite for testing visualization">
 
         <copy todir="${test.docs.positive.dir}" verbose="true">
             <fileset dir="${test.src.dir}/instances" includes="**/*.xml" excludes="**/wrong*.xml"/>
@@ -208,30 +161,11 @@
     </target>
 
 
-    <target name="provide-fop" depends="init, provide-saxon" unless="${dep.fop.available}"
-        description="Download Apache FOP for taskdef stuff">
-        <get src="https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-${fop.version}-bin.zip"
-            dest="${download.dir}/fop-${fop.version}-bin.zip" verbose="true" skipexisting="true"
-            usetimestamp="true"/>
-        <fail unless="fop.jar" message="Provide a name for the extracted fop jar"/>
-        <unzip src="${download.dir}/fop-${fop.version}-bin.zip" dest="${fop.home}">
-            <patternset>
-                <include name="**/build/*.jar"/>
-                <include name="**/lib/*.jar"/>
-                <exclude name="**/xalan*.jar"/>
-            </patternset>
-            <flattenmapper/>
-        </unzip>
-
-    </target>
-
     <target name="dependency-resolve"
-        depends="init, provide-fop, provide-validator, provide-validator-configuration, provide-saxon, provide-testsuite, provide-vnu">
+        depends="init, provide-maven-dependencies, provide-validator, provide-validator-configuration, provide-saxon, provide-testsuite">
         <taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop">
             <classpath>
-                <fileset dir="${fop.home}">
-                    <include name="*.jar"/>
-                </fileset>
+                <path refid="classpath.fop"/>
                 <fileset dir="${lib.dir}">
                     <include name="${saxon.jar}"/>
                 </fileset>
@@ -385,7 +319,7 @@
 
     <target name="test-html" depends="dependency-resolve,transform-xr-to-html"
         description="Tests HTML generation with VNU by W3C">
-        <echo>Validating HTML with VNU ${vnu.version} (resolved from Maven Central) ...</echo>
+        <echo>Validating HTML with VNU ${pom.properties.vnu.version}</echo>
         <java classname="${vnu.main.class}" failonerror="false" fork="yes" dir="${basedir}"
             logerror="true">
             <classpath refid="classpath.vnu"/>

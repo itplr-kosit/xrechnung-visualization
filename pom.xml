@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!--
+    This POM is not used to build or publish this project, the build is Ant based (build.xml).
+    It is the dependency declaration consumed by the Maven Artifact Resolver Ant Tasks via the
+    xsbi build unit `abu-marant`, which requires a POM in the project basedir.
+  -->
+  <groupId>de.xeinkauf</groupId>
+  <artifactId>xrechnung-visualization</artifactId>
+  <version>2026-07-31-SNAPSHOT</version>
+
+  <name>XRechnung Visualization</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <xrechnung.version>3.0.2</xrechnung.version>
+    <xrechnung.testsuite.version>2026-01-31</xrechnung.testsuite.version>
+    <validator.configuration.version>2026-01-31</validator.configuration.version>
+    <fop.version>2.11</fop.version>
+    <vnu.version>26.8.6</vnu.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>xse-component-repository</id>
+      <url>https://projekte.kosit.org/api/v4/projects/356/packages/maven</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>fop</artifactId>
+      <version>${fop.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>nu.validator</groupId>
+      <artifactId>validator</artifactId>
+      <version>${vnu.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>de.xeinkauf</groupId>
+      <artifactId>xrechnung-${xrechnung.version}-testsuite</artifactId>
+      <version>${xrechnung.testsuite.version}</version>
+      <type>zip</type>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>de.xeinkauf</groupId>
+      <artifactId>xrechnung-${xrechnung.version}-validator-configuration</artifactId>
+      <version>${validator.configuration.version}</version>
+      <type>zip</type>
+      <scope>provided</scope>
+    </dependency>
+
+  </dependencies>
+
+</project>

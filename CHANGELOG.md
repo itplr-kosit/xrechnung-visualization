@@ -14,7 +14,8 @@ This release is compatible with XRechnung ?.?.?
 
 ### Changed
 
-* Build: VNU HTML validator is now resolved from Maven Central (`nu.validator:validator`), always pulling the latest released version instead of a pinned GitHub release download.
+* Bumped XSBI to 0.5-SNAPSHOT
+* Dependency management now based on `abu-marant` which uses Maven based dependency management
 
 ### Fixed
 
@@ -30,6 +31,7 @@ This release is compatible with XRechnung 3.0.x
 * multiple BG-21 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
 * Test that contains 61x BG-1 "INVOICE NOTE"
 * Test file for Sub Invoice Lines
+* XSBI Ant Build Units for more concise and consistent build system across all components 
 
 ### Changed
 

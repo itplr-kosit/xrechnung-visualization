@@ -32,15 +32,24 @@
 ##
 # Set this property in order to activate targets for local development
 # Be aware the presence of this property determines some of the behavior independent of the value
+#
+# The testsuite is normally resolved as a Maven dependency from the XSE component repository
+# (declared in pom.xml). Setting this property additionally overwrites the resolved archive
+# with a build from your local xrechnung-testsuite clone, because a plain dist directory is
+# not a Maven repository.
 ##
 #develop.local.xr.testsuite=true
 ###
 # Get latest XRechnung Testsuite distribution from your local git project
 # Example is relative to this project directory in local file system
+# The file name expected here is xrechnung-<xrechnung.version.full>-testsuite.zip
 ##
 #xr.testsuite.download.url.prefix=file://${work.dir}/../xrechnung-testsuite/dist
 
-#xr.testsuite.version=2022-01-31-SNAPSHOT
+##
+# The testsuite and validator configuration versions are declared in pom.xml
+# (xrechnung.testsuite.version, validator.configuration.version), not here.
+##
 
 
 
