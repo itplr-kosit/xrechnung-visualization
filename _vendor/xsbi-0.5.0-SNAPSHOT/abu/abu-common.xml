@@ -4,16 +4,17 @@
   <!-- Standard Properties: this is the authoritative section of naming and using common props-->
 
   <property name="project.name.short" value="${ant.project.name}" />
-
   <property name="project.version" value="undefined" />
   <property name="project.full.name"
     value="${project.name.short}-${project.version}" />
   <property name="project.dir.name" value="${project.name.short}" />
 
 
+  <!-- cause imported files behave relative to their parent, we safe the location of the child in this var -->
+  <property name="abu-common.build.file" location="${ant.file.abu-common}" />
+
   <property name="src.dir" location="${basedir}/src" />
   <property name="src.main.dir" location="${src.dir}/main" />
-  <property name="xsbi.dir" location="${src.dir}/xsbi" />
   <property name="src.test.dir" location="${src.dir}/test" />
   <property name="src.test.resources.dir" location="${src.test.dir}/resources" />
 
@@ -26,9 +27,6 @@
   <property name="build.test.dir" location="${build.dir}/test" />
   <property name="build.resources.dir" location="${build.dir}/resources" />
 
-
-  <!-- cause imported files behave relative to their parent, we safe the location of the child in this var -->
-  <property name="abu-common.build.file" location="${ant.file.abu-common}" />
 
   <target name="validate"
     description="Validates requirements for executing this build">
@@ -91,26 +89,72 @@
   <target name="clean-all" depends="clean, clean-download, clean-lib"
     description="Delete build, download, and lib directories"> </target>
 
+  <target name="provide-xsbi-upgrade-check" depends="init">
+    <echo message="Start upgrading from ${xsbi.version} in dir ${xsbi.home}" />
 
-  <macrodef name="provide-xsbi">
+    <fail unless="xsbi.home"
+      message="Need the installtion dir of XSBI usually ${build.dir}/_vendor/xsbi-$${xsbi.version}: $${xsbi.home}" />
+
+
+    <fail unless="xsbi.version"
+      message="Need current xsbi version: $${xsbi.version}" />
+
+
+    <fail unless="xsbi.version"
+      message="Need current xsbi version: $${xsbi.version}" />
+
+    <fail unless="xsbi.upgrade.version"
+      message="Need a new version to upgrade: $${xsbi.upgrade.version}" />
+
+
+    <condition property="allow.upgrade">
+      <or>
+
+        <contains string="${xsbi.version}" substring="SNAPSHOT" />
+        <not>
+          <equals arg1="${xsbi.version}" arg2="${xsbi.upgrade.version}"
+            forcestring="true" trim="true" />
+        </not>
+      </or>
+    </condition>
+
+    <echo message="allow upgrade=${allow.upgrade}" />
+
+    <fail unless="allow.upgrade"
+      message="Must be different or contain SNAPSHOT: ${xsbi.version} and ${xsbi.upgrade.version}"> </fail>
+    <property name="xsbi.home.parent.dir" location="${xsbi.home}/.." />
+    <echo message="New version ${xsbi.upgrade.version} will be installed in " />
+
+  </target>
+
+  <target name="provide-xsbi-upgrade" depends="init, provide-xsbi-upgrade-check">
+    <fail unless="xsbi.dist.dir"
+      message="Need directory of the xsbi distribution package: $${xsbi.dist.dir}" />
+
+    <provide-xsbi-local version="${xsbi.upgrade.version}"
+      src-dir="${xsbi.dist.dir}" dest="${xsbi.home.parent.dir}" />
+  </target>
+
+
+  <macrodef name="provide-xsbi-local">
     <attribute name="version" />
     <attribute name="src-dir" />
     <attribute name="dest" />
     <attribute name="overwrite" default="false" />
 
     <sequential>
-      <local name="xsbi.version" />
-      <local name="xsbi.full.name" />
+
       <local name="xsbi.zip.name" />
       <local name="xsbi.download.url" />
       <local name="xsbi.download.dir" />
+      <local name="xsbi.full.name" />
 
-
-      <property name="xsbi.version" value="@{version}" />
-      <property name="xsbi.full.name" value="xsbi-${xsbi.version}" />
+      <property name="xsbi.full.name" value="xsbi-@{version}" />
       <property name="xsbi.zip.name" value="${xsbi.full.name}.zip" />
-      <property name="xsbi.download.dir" value="${lib.dir}" />
-      <echo message="Try to access xsbi at @{src-dir}/${xsbi.zip.name}" />
+      <!-- downloading into build.dir because it lib gets vendored anyway as source code -->
+      <property name="xsbi.download.dir" value="${build.dir}" />
+      <echo
+        message="Try to access ${xsbi.full.name} at @{src-dir}/${xsbi.zip.name}" />
       <makeurl file="@{src-dir}/${xsbi.zip.name}" property="xsbi.download.url"
         validate="true" />
       <mkdir dir="${xsbi.download.dir}" />
@@ -119,7 +163,11 @@
         ignoreerrors="false" maxtime="60" />
       <mkdir dir="@{dest}/${xsbi.full.name}" />
       <unzip src="${xsbi.download.dir}/${xsbi.zip.name}"
-        dest="@{dest}/${xsbi.full.name}" overwrite="@{overwrite}" />
+        dest="@{dest}/${xsbi.full.name}" overwrite="@{overwrite}">
+        <patternset>
+          <exclude name="project-template/**" />
+        </patternset>
+      </unzip>
 
     </sequential>
   </macrodef>
