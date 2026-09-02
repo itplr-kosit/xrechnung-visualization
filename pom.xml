@@ -11,15 +11,15 @@
   -->
   <groupId>de.xeinkauf</groupId>
   <artifactId>xrechnung-visualization</artifactId>
-  <version>2026-07-31-SNAPSHOT</version>
+  <version>2026-08-31</version>
 
   <name>XRechnung Visualization</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <xrechnung.version>3.0.2</xrechnung.version>
-    <xrechnung.testsuite.version>2026-01-31</xrechnung.testsuite.version>
-    <validator.configuration.version>2026-01-31</validator.configuration.version>
+    <xrechnung.testsuite.version>2026-08-31</xrechnung.testsuite.version>
+    <validator.configuration.version>2026-08-31</validator.configuration.version>
     <fop.version>2.11</fop.version>
     <vnu.version>26.8.6</vnu.version>
   </properties>
