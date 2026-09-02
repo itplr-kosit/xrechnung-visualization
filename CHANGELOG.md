@@ -14,11 +14,8 @@ This release is compatible with XRechnung ?.?.?
 
 ### Changed
 
-* Build: VNU HTML validator is now resolved from Maven Central (`nu.validator:validator`), always pulling the latest released version instead of a pinned GitHub release download.
-* Build: Apache FOP is now resolved from Maven Central (`org.apache.xmlgraphics:fop`) via the xsbi build unit `abu-marant` instead of unpacking the binary distribution from `archive.apache.org`. The FOP version is declared in the new `pom.xml`.
-* Build: XRechnung testsuite and validator configuration are now resolved as Maven dependencies from the XSE component repository instead of being downloaded via hand written package registry URLs. Their versions are declared in `pom.xml`.
-* Build: every dependency the Ant build resolves - FOP, VNU, testsuite, validator configuration - is now declared in `pom.xml`; none of their versions are kept in `build.xml` any more.
-* Build: vendored xsbi updated from 0.3.0-SNAPSHOT to 0.5.0-SNAPSHOT. Following the new xsbi naming convention the vendored directory is addressed as `xsbi.home` (with `xsbi.version` and `xsbi.abu.dir`) instead of `xsbi.dir`, and the Saxon availability flag `saxon.available` was renamed to `abu.available.saxon`.
+* Bumped XSBI to 0.5-SNAPSHOT
+* Dependency management now based on `abu-marant` which uses Maven based dependency management
 
 ### Fixed
 
@@ -33,6 +30,7 @@ This release is compatible with XRechnung 3.0.x
 * multiple BG-21 to `maxRechnung_ubl.xml` and `maxRechnung_creditNote.xml` test instances
 * Test that contains 61x BG-1 "INVOICE NOTE"
 * Test file for Sub Invoice Lines
+* XSBI Ant Build Units for more concise and consistent build system across all components 
 
 ### Changed
 
