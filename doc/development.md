@@ -10,37 +10,22 @@
 
 ## Dependencies Overview
 
-Dependencies and their versions are declared in `pom.xml` and resolved by the Maven Artifact
-Resolver Ant Tasks, which the xsbi build unit `abu-marant` provides. The POM is never built or
-published - it is the dependency declaration only; the build itself stays Ant.
-
-| Dependency | Coordinates | Scope | Used for |
-|---|---|---|---|
-| Apache FOP | `org.apache.xmlgraphics:fop` | `runtime` | XSL-FO to PDF |
-| VNU HTML validator | `nu.validator:validator` | `test` | validating the generated HTML |
-| XRechnung testsuite | `de.xeinkauf:xrechnung-<version>-testsuite` (zip) | `provided` | test instances |
-| Validator configuration | `de.xeinkauf:xrechnung-<version>-validator-configuration` (zip) | `provided` | validator scenarios |
+Dependencies and their versions are declared in `pom.xml` and resolved by the Maven Artifact Resolver Ant Tasks, which the xsbi build unit `abu-marant` provides. The POM serves as dependency declaration only; the build itself stays in Ant.
 
 Two repositories are used: Maven Central and the XSE component repository
 (`de.xeinkauf` artifacts). They are declared **twice on purpose**: in `build.xml` as
-`<resolver:remoterepos id="xse.repos">`, because the resolver Ant tasks do not read the POM's
-`<repositories>` block, and again in `pom.xml` so that POM-consuming tooling can resolve the
-same coordinates. Keep the two in sync.
+`<resolver:remoterepos id="xse.repos">`, because the resolver Ant tasks (at least until Version 1.5.2) do not read the POM's `<repositories>` block, and again in `pom.xml` so that POM-consuming tooling can resolve the same coordinates. Keep the two in sync.
 
 ### Why the dependencies carry a scope
 
-A `pomRef` resolve always takes the *whole* POM, so the scope is used as a **grouping
-mechanism**: `provide-maven-dependencies` performs one resolution and hands out three disjoint
-groups, selected with the resolver's `scopes` attribute. The scope says nothing about how an
-artifact is provided.
+A `pomRef` resolves always the *whole* POM, so the scope  is used as a **grouping
+mechanism** [as defined by Maven](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope) for creating different CLASSPATHs: `provide-maven-dependencies` performs one resolution and hands out three disjoint groups a.k.a CLASSPATHs, selected with the resolver's `scopes` attribute. The scope says nothing about how an artifact is provided.
 
-Keeping the groups apart matters: VNU brings its own `Saxon-HE 9.6.0`, which must never end up
-on the FOP or XSLT classpath next to the `Saxon-HE 12.8` this build uses.
+Using scoped CLASSPATHs matters in order to keep dependencies apart: VNU brings its own `Saxon-HE 9.6.0`, which must never end up on the FOP or XSLT classpath next to the `Saxon-HE 12.8` this build uses.
 
 ### Not (yet) in the POM
 
-Saxon-HE and the KoSIT validator are still downloaded as archives into `lib/` by the xsbi build
-units `abu-saxon-provider` and `abu-validator-provider`.
+Saxon-HE and the KoSIT validator are still downloaded as archives into `lib/` by the xsbi build units `abu-saxon-provider` and `abu-validator-provider`.
 
 ## The build environment
 
@@ -60,6 +45,12 @@ However, because of the complex dependencies, you may only expect `transform-to-
 ### Target reference
 
 #### Setup and dependencies
+
+For up-to-date reference use 
+
+```bash
+ant -projecthelp
+```
 
 | Target | Depends on | What it does |
 |---|---|---|
@@ -107,9 +98,7 @@ However, because of the complex dependencies, you may only expect `transform-to-
 
 #### Inherited from xsbi
 
-Vendored under `_vendor/xsbi-<version>/abu` and pulled in at the top of `build.xml`. Targets of
-an included build unit are prefixed with its name; `abu-common` is imported, so its targets are
-also available unprefixed.
+Vendored under `_vendor/xsbi-<version>/abu` and pulled in at the top of `build.xml`. Targets of an included build unit are prefixed with its name; `abu-common` is imported, so its targets are also available unprefixed.
 
 | Build unit | Provides |
 |---|---|
