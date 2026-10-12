@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This release is compatible with XRechnung ?.?
 
+### Added
+
+* Test file for JavaScript code injection in embedded documents
+
+### Fixed
+
+* Bug that allowed injection of JavaScript code with BT-122 "Supporting document reference" and BT-125 "Attached document" filename
+
 ## v2026-08-31
 
 This release is compatible with XRechnung 3.0

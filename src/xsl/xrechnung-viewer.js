@@ -57,8 +57,10 @@ function base64_to_binary(data) {
     return new Uint8Array(bytes);
 }
 
-function downloadData(element_id, mimetype, filename) {    
-    var data_element = document.getElementById(element_id);  
+function downloadData(element_id) {    
+    var data_element = document.getElementById(element_id);
+    var mimetype = data_element.getAttribute("data-download-type");
+    var filename = data_element.getAttribute("data-download-filename");  
     var text = data_element.innerHTML;
     var binary = base64_to_binary(text);
     var blob = new Blob([binary], {
