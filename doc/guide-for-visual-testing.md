@@ -51,4 +51,10 @@ Expectation:
 
 Expectation:
 * sub invoice lines 11 and 111 contain elements in HTML and PDF
-* HTML hover-over shows correct IDs for sub invoice line BGs 
+* HTML hover-over shows correct IDs for sub invoice line BGs
+
+## Additional Supporting Documents
+* `additional-supporting-documents-xss_ubl.xml`
+
+Expectation:
+* Browser dialog should not open when klicking button "Öffnen"/"Open" to access attached documents 
