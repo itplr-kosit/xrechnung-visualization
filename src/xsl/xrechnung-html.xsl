@@ -2162,14 +2162,13 @@
             <xsl:otherwise>
                 <a href="#{$download-id}" onClick="downloadData('{$download-id}')">
                     <xsl:value-of select="xrf:_('_open')" />
-                </a>    
+                </a>
+                <div id="{$download-id}" data-download-type="{xr:Attached_document/@mime_code}" data-download-filename="{xr:Attached_document/@filename}" data-original-ref-id="{$doc-ref-id}" style="display:none;">
+                  <xsl:value-of select="xr:Attached_document" />
+                </div>              
             </xsl:otherwise>
         </xsl:choose>    
         </div>
-        <div id="{$download-id}" data-download-type="{xr:Attached_document/@mime_code}" data-download-filename="{xr:Attached_document/@filename}" data-original-ref-id="{$doc-ref-id}" style="display:none;">
-          <xsl:value-of select="xr:Attached_document" />
-        </div>
-
       </div>
         
         
