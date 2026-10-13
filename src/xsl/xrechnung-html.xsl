@@ -2166,9 +2166,13 @@
             </xsl:otherwise>
         </xsl:choose>    
         </div>
-        <div id="{$download-id}" data-download-type="{xr:Attached_document/@mime_code}" data-download-filename="{xr:Attached_document/@filename}" data-original-ref-id="{$doc-ref-id}" style="display:none;">
-          <xsl:value-of select="xr:Attached_document" />
-        </div>
+        <xsl:choose>
+          <xsl:when test="not(empty(xr:Attached_document/text()))">
+            <div id="{$download-id}" data-download-type="{xr:Attached_document/@mime_code}" data-download-filename="{xr:Attached_document/@filename}" data-original-ref-id="{$doc-ref-id}" style="display:none;">
+              <xsl:value-of select="xr:Attached_document" />
+            </div>
+          </xsl:when>
+        </xsl:choose>
 
       </div>
         
