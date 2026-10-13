@@ -23,7 +23,7 @@
     <property name="fop.config" value="conf/fop.xconf"/>
 
     <!-- Naming -->
-    <property name="xr-visualization.version.full" value="2027-07-31-SNAPSHOT"/>
+    <property name="xr-visualization.version.full" value="2027-10-13"/>
 
     <!-- Test resources -->
     <property name="xrechnung.version.major.minor" value="3.0"/>
